@@ -3,11 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>許文耀 / 沈耀888π | Wen-Yao Hsu / Yao Shen</title>
+    <title>Yao Shen / Wen-Yao Hsu — Semantic Firewall, AI Governance, SRCP, SCBKR</title>
     <meta
       name="description"
-      content="許文耀 / 沈耀888π / Wen-Yao Hsu / Yao Shen 的雙語官方網站首頁，聚焦 Semantic Firewall、AI Governance、SRCP、SCBKR 與責任鏈審計。"
+      content="Yao Shen / Wen-Yao Hsu 個人官網首頁，聚焦 Semantic Firewall、AI Governance、SRCP、SCBKR、責任鏈審計與公開可驗證入口。"
     />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Yao Shen / Wen-Yao Hsu — Semantic Firewall, AI Governance, SRCP, SCBKR"
+    />
+    <meta
+      property="og:description"
+      content="雙語個人官網首頁，集中展示 Semantic Firewall、AI Governance、媒體與公開證據入口。"
+    />
+    <meta property="og:image" content="https://hijo790401.github.io/shen-yao-portal/hero-desktop.jpg" />
+    <meta property="og:url" content="https://hijo790401.github.io/shen-yao-portal/" />
+    <link rel="canonical" href="https://hijo790401.github.io/shen-yao-portal/" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,10 +56,10 @@
 
         <nav class="site-nav" id="site-nav" aria-label="主導覽">
           <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#media">Media</a>
-          <a href="#thesis">Thesis</a>
-          <a href="#contact">Contact</a>
+          <a href="projects.html">Projects</a>
+          <a href="media.html">Media</a>
+          <a href="evidence.html">Evidence</a>
+          <a href="contact.html">Contact</a>
         </nav>
       </div>
     </header>
@@ -72,8 +85,8 @@
               </span>
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#projects">查看作品 / Explore Projects</a>
-              <a class="button button-secondary" href="#contact">聯絡我 / Contact</a>
+              <a class="button button-primary" href="projects.html">查看專案 / Explore Projects</a>
+              <a class="button button-secondary" href="contact.html">聯絡我 / Contact</a>
             </div>
           </div>
 
@@ -99,7 +112,7 @@
             <h2>個人官方網站主站入口</h2>
           </div>
           <p>
-            這個首頁作為正式對外入口，統整研究主張、核心專案、媒體佐證與聯絡方式，為後續擴充 Demo、Media、Contact 與證據鏈內容預留穩定結構。
+            這個首頁作為正式對外入口，整合研究主張、核心專案、媒體佐證、公開證據鏈與聯絡方式，讓訪客可以在同一站點中理解方法、查證資料，並找到下一步要進入的頁面。
           </p>
         </div>
       </section>
@@ -113,7 +126,7 @@
               本站聚焦語意防火牆、AI 治理層、決策鏈審計與可驗證治理框架，目標是建立一個乾淨、可信、可持續擴充的個人官方入口網站。
             </p>
             <p>
-              第一階段先完成對外首頁骨架，讓研究方向、專案入口、媒體與證據區塊、聯絡方式能以正式品牌化形式呈現。
+              在 v1 階段，首頁不只是展示門面，而是串接專案詳頁、媒體入口、公開證據頁與正式聯絡資訊，讓外部訪客能快速理解研究方向與可驗證成果。
             </p>
           </div>
           <div class="info-card-stack">
@@ -123,7 +136,7 @@
             </article>
             <article class="info-card">
               <h3>Scope</h3>
-              <p>From message qualification to decision-chain accountability, with room for research, demos, and public evidence.</p>
+              <p>From message qualification to decision-chain accountability, with linked project pages, public evidence, and media visibility.</p>
             </article>
           </div>
         </div>
@@ -133,24 +146,36 @@
         <div class="container">
           <p class="section-kicker">Core Projects / 核心專案</p>
           <div class="section-heading-row">
-            <h2>核心主題與後續模組入口</h2>
-            <p>以卡片式版型保留後續擴充空間，未來可直接連接各專案頁面或 GitHub Pages 子頁。</p>
+            <h2>核心主題與正式專案入口</h2>
+            <p>每一個專案都先進入站內詳頁，再由詳頁引導到外部 demo，讓方法、背景與適用場景能被清楚理解。</p>
           </div>
           <div class="card-grid three-up">
-            <article class="feature-card">
+            <article class="feature-card feature-card-link">
               <span class="card-tag">01</span>
-              <h3>Semantic Firewall</h3>
-              <p>針對訊息是否具有進入人類決策鏈資格進行判定的治理入口。</p>
+              <h3>基礎語意防火牆<br /><span>Semantic Firewall System</span></h3>
+              <p>展示 semantic audit、semantic contamination、subject misalignment 與 SCBKR 結構審計的基礎骨架。</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="project-semantic-firewall.html">查看詳頁</a>
+                <a class="button button-tertiary" href="projects.html">全部專案</a>
+              </div>
             </article>
-            <article class="feature-card">
+            <article class="feature-card feature-card-link">
               <span class="card-tag">02</span>
-              <h3>SRCP</h3>
-              <p>作為責任鏈與來源判讀的核心框架，占位為未來正式技術頁入口。</p>
+              <h3>反詐騙語意防火牆<br /><span>Anti-Scam Semantic Firewall</span></h3>
+              <p>把語意責任鏈落在反詐騙場景，檢查訊息是否具有進入人類決策鏈的資格。</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="project-anti-scam.html">查看詳頁</a>
+                <a class="button button-tertiary" href="projects.html">全部專案</a>
+              </div>
             </article>
-            <article class="feature-card">
+            <article class="feature-card feature-card-link">
               <span class="card-tag">03</span>
-              <h3>SCBKR</h3>
-              <p>保留給語義控制、知識風險與行為約束體系的說明與展示模組。</p>
+              <h3>沈耀語意防火牆 vπ10<br /><span>Shen-Yao Semantic Firewall vπ10</span></h3>
+              <p>作為掛在 LLM 前方的治理展示包，集中呈現 safety locks、法律規則、審計紀錄與工程 API。</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="project-vpi10.html">查看詳頁</a>
+                <a class="button button-tertiary" href="projects.html">全部專案</a>
+              </div>
             </article>
           </div>
         </div>
@@ -160,17 +185,23 @@
         <div class="container">
           <p class="section-kicker">Media &amp; Evidence / 媒體與證據</p>
           <div class="section-heading-row">
-            <h2>媒體、紀錄與可驗證材料入口</h2>
-            <p>先提供整齊的占位模組，未來可掛載文章、採訪、發布記錄、聲明或證據鏈索引。</p>
+            <h2>媒體報導、公開入口與查證路徑</h2>
+            <p>媒體頁整理外部報導與可見度入口；證據頁彙整 GitHub、LinkedIn、demo 與履歷等查證連結。</p>
           </div>
           <div class="card-grid two-up">
-            <article class="feature-card subtle">
+            <article class="feature-card subtle feature-card-link">
               <h3>Media Archive</h3>
-              <p>整理專訪、報導、對談、公開紀錄與發表內容。</p>
+              <p>查看 SecurityBrief Asia 報導與公開對外可見內容，理解外部如何描述 Semantic Firewall 與治理主張。</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="media.html">前往媒體頁</a>
+              </div>
             </article>
-            <article class="feature-card subtle">
+            <article class="feature-card subtle feature-card-link">
               <h3>Evidence Repository</h3>
-              <p>承接文件、時間軸、證據鏈、佐證材料與外部參考連結。</p>
+              <p>整理 GitHub、LinkedIn、demo、履歷與公開入口，讓合作方、媒體與研究者可以快速查證。</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="evidence.html">前往證據頁</a>
+              </div>
             </article>
           </div>
         </div>
@@ -190,7 +221,7 @@
               對應英文表述：Not only whether a message looks fraudulent, but whether it is qualified to enter a human decision chain.
             </p>
             <p>
-              這個首頁將此主張作為主視覺核心，後續可延伸到 AI Governance、責任鏈、審計流程與技術白皮書頁面。
+              這個主張已延伸到專案詳頁、媒體頁與公開證據頁，讓抽象方法不只停留在標語，而能對應到具體展示、外部報導與可查證入口。
             </p>
           </div>
         </div>
@@ -202,15 +233,20 @@
             <p class="section-kicker">Contact / 聯絡方式</p>
             <h2>合作洽詢、媒體聯繫與專案入口</h2>
             <p>
-              第一階段先保留清楚的聯絡區塊與行動呼籲，後續可替換成正式 Email、表單、社群平台或媒體窗口。
+              若對 Semantic Firewall、SRCP、SCBKR、AI governance、媒體採訪或合作交流有興趣，可透過以下正式聯絡方式聯繫。
             </p>
           </div>
           <div class="contact-card">
-            <a href="mailto:hello@example.com">hello@example.com</a>
-            <p>可替換為正式官方信箱或媒體聯絡資訊。</p>
+            <div class="contact-list">
+              <p><strong>Wen-Yao Hsu / Yao Shen</strong><br />許文耀 / 沈耀888π</p>
+              <p>Taichung, Taiwan</p>
+              <p><a href="mailto:ken0963521@gmail.com">ken0963521@gmail.com</a></p>
+              <p><a href="https://github.com/HIJO790401" target="_blank" rel="noreferrer">GitHub / HIJO790401</a></p>
+              <p><a href="https://www.linkedin.com/in/yao-shen-150ab93b2" target="_blank" rel="noreferrer">LinkedIn / Yao Shen</a></p>
+            </div>
             <div class="hero-actions compact">
-              <a class="button button-primary" href="mailto:hello@example.com">寄送 Email</a>
-              <a class="button button-secondary" href="#top">返回首頁</a>
+              <a class="button button-primary" href="contact.html">前往正式聯絡頁</a>
+              <a class="button button-secondary" href="mailto:ken0963521@gmail.com">寄送 Email</a>
             </div>
           </div>
         </div>
@@ -220,7 +256,7 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p>© 2026 許文耀 / 沈耀888π · Wen-Yao Hsu / Yao Shen</p>
-        <p>Built for GitHub Pages deployment.</p>
+        <p>Built as a static GitHub Pages website.</p>
       </div>
     </footer>
 
