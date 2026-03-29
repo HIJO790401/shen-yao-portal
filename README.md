@@ -80,4 +80,5 @@ Recommended next steps:
 
 ## Planning notes
 
+- `docs/content-ia-cleanup-audit.md` — information-architecture audit for page-role overlap, duplication, and cleanup sequencing.
 - `docs/homepage-integration-plan-youtube-scbkr-rlock.md` — homepage placement strategy for YouTube + SCBKR/R-Lock links (analysis-only, no UI changes yet).
