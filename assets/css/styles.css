@@ -65,7 +65,7 @@ p, li { color: var(--muted); }
   position: absolute; inset: 0; background: linear-gradient(180deg, rgba(244, 247, 251, 0) 62%, rgba(244, 247, 251, 0.92) 100%);
 }
 .hero-grid {
-  position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr); gap: 32px; padding: 72px 0 96px;
+  position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr); gap: 42px; padding: 84px 0 104px; align-items: center;
 }
 .hero-copy {
   color: white; max-width: 700px; padding: 32px; border-radius: var(--radius-lg);
@@ -95,10 +95,10 @@ p, li { color: var(--muted); }
 .button-tertiary { background: rgba(16, 58, 115, 0.06); color: var(--navy); border-color: rgba(16, 58, 115, 0.1); }
 .subpage-main .button-secondary, .content-card .button-secondary, .section-actions .button-secondary { background: rgba(16, 58, 115, 0.08); color: var(--navy); border-color: rgba(16, 58, 115, 0.1); }
 .hero-panel {
-  align-self: end; background: rgba(255, 255, 255, 0.9); border-radius: var(--radius-lg); padding: 18px; box-shadow: var(--shadow);
-  border: 1px solid rgba(255,255,255,0.4);
+  align-self: center; justify-self: center; width: min(100%, 380px); background: rgba(255, 255, 255, 0.92); border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.52);
 }
-.hero-panel img { border-radius: 22px; aspect-ratio: 4 / 5; object-fit: cover; }
+.hero-panel img { width: 100%; border-radius: 20px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; }
 .hero-panel-copy { padding: 18px 6px 8px; }
 .panel-label { color: var(--blue); margin-bottom: 12px; }
 .hero-panel ul { margin: 0; padding-left: 18px; }
@@ -135,6 +135,8 @@ p, li { color: var(--muted); }
 }
 .feature-card.subtle { background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(243,247,252,0.96)); }
 .feature-card-link { display: flex; flex-direction: column; justify-content: space-between; }
+.core-project-grid { align-items: stretch; }
+.flagship-card { border-color: rgba(31, 111, 255, 0.28); background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%); box-shadow: 0 22px 64px rgba(31, 111, 255, 0.14); }
 .card-tag { color: var(--gold); display: inline-block; margin-bottom: 14px; }
 .contact-card a, .link-list a { font-size: 1.02rem; font-weight: 700; color: var(--navy); }
 .contact-list p { margin: 0 0 12px; }
@@ -153,6 +155,8 @@ p, li { color: var(--muted); }
   .hero-grid, .intro-grid, .section-heading-row, .about-grid, .thesis-grid, .contact-grid, .three-up, .four-up, .two-up, .footer-inner {
     grid-template-columns: 1fr;
   }
+  .hero-grid { justify-items: center; text-align: left; }
+  .hero-copy { max-width: 100%; }
   .hero-panel { max-width: 360px; }
   .contact-card-wide { grid-column: auto; }
 }
@@ -169,8 +173,8 @@ p, li { color: var(--muted); }
       linear-gradient(180deg, rgba(9, 27, 55, 0.68) 0%, rgba(9, 27, 55, 0.56) 40%, rgba(9, 27, 55, 0.4) 100%),
       url('../../hero-mobile.jpg') center/cover no-repeat;
   }
-  .hero-grid { padding: 44px 0 72px; }
-  .hero-copy { padding: 24px; }
+  .hero-grid { padding: 44px 0 72px; gap: 28px; text-align: center; }
+  .hero-copy { padding: 24px; text-align: left; }
   .hero-role, .hero-thesis, .lead { font-size: 0.98rem; }
   .section { padding: 76px 0; }
   .brand-text span { display: none; }
