@@ -1,0 +1,19 @@
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+
+export const newsPosts = sqliteTable("news_posts", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  slug: text("slug").notNull().unique(),
+  titleZh: text("title_zh").notNull(),
+  titleEn: text("title_en").notNull().default(""),
+  summaryZh: text("summary_zh").notNull().default(""),
+  summaryEn: text("summary_en").notNull().default(""),
+  bodyZh: text("body_zh").notNull().default(""),
+  bodyEn: text("body_en").notNull().default(""),
+  category: text("category").notNull().default("REPORT"),
+  coverUrl: text("cover_url").notNull().default(""),
+  videoUrl: text("video_url").notNull().default(""),
+  status: text("status").notNull().default("draft"),
+  publishedAt: text("published_at").notNull(),
+  updatedAt: text("updated_at").notNull(),
+  authorEmail: text("author_email").notNull(),
+});

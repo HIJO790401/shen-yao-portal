@@ -1,85 +1,98 @@
-# shen-yao-portal
+# vinext-starter
 
-Official personal website for Wen-Yao Hsu / Yao Shen (許文耀 / 沈耀888π), built as a static GitHub Pages site.
+A clean full-stack starter running on
+[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
+Drizzle support.
 
-## What this repository is
+## Prerequisites
 
-This repository contains the v1 public-facing website for showcasing Semantic Firewall, AI governance, SRCP, SCBKR, media visibility, public evidence links, and official contact information.
+- Node.js `>=22.13.0`
 
-## Website purpose
+## Quick Start
 
-The site is designed to:
+```bash
+npm install
+npm run dev
+npm run build
+```
 
-- serve as the official bilingual homepage and landing portal;
-- route visitors from the homepage to real project detail pages;
-- provide public evidence and verification links;
-- offer a formal contact page for collaboration, media, and research outreach.
+This starter does not use `wrangler.jsonc`.
 
-## Technical structure
+## Included Shape
 
-This project is intentionally simple and GitHub Pages friendly:
+- edit site code under `app/`
+- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
+- `vite.config.ts` simulates declared bindings for local development
+- `db/schema.ts` starts intentionally empty
+- `examples/d1/` contains an optional D1 example surface
+- `drizzle.config.ts` supports local migration generation when needed
 
-- static HTML pages;
-- shared CSS in `assets/css/styles.css`;
-- lightweight JavaScript for navigation in `assets/js/main.js`;
-- image assets stored at the repository root;
-- no backend, database, or build system required.
+## Workspace Auth Headers
 
-## Image assets
+OpenAI workspace sites can read the current user's email from
+`oai-authenticated-user-email`.
 
-The current site uses the following image assets:
+SIWC-authenticated workspace sites may also receive
+`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
+`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
+`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
 
-- `hero-desktop.jpg` for large-screen hero backgrounds;
-- `hero-mobile.jpg` for mobile hero backgrounds;
-- `founder-portrait.jpg` for the founder profile image;
-- `assets/favicon.svg` as the site favicon.
+Treat the full name as optional and fall back to email when it is absent:
 
-If you replace these files, keep the same filenames or update the HTML/CSS references accordingly.
+```tsx
+import { headers } from "next/headers";
 
-## Page structure
+export default async function Home() {
+  const requestHeaders = await headers();
+  const email = requestHeaders.get("oai-authenticated-user-email");
+  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
+  const fullName =
+    encodedFullName &&
+    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
+      "percent-encoded-utf-8"
+      ? decodeURIComponent(encodedFullName)
+      : null;
 
-The site currently includes:
+  const displayName = fullName ?? email;
+  // ...
+}
+```
 
-- `index.html` — homepage;
-- `projects.html` — project overview page;
-- `project-semantic-firewall.html` — Semantic Firewall System detail page;
-- `project-anti-scam.html` — Anti-Scam Semantic Firewall detail page;
-- `project-vpi10.html` — Shen-Yao Semantic Firewall vπ10 detail page;
-- `media.html` — media coverage and public visibility page;
-- `evidence.html` — public evidence chain / verification links page;
-- `contact.html` — official contact page.
+## Optional Dispatch-Owned ChatGPT Sign-In
 
-## Deploying to GitHub Pages
+Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
+optional or required ChatGPT sign-in:
 
-### Option 1: deploy from the repository root
+- Use `getChatGPTUser()` for optional signed-in UI.
+- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
+  anonymous visitors through Sign in with ChatGPT.
+- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
+  browser links or actions.
+- Pass a same-origin relative `returnTo` path for the destination after sign-in
+  or sign-out. The helper validates and safely encodes it.
+- Mark protected pages with `export const dynamic = "force-dynamic"` because
+  they depend on per-request identity headers.
 
-1. Push this repository to GitHub.
-2. Open **Settings** → **Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select the branch you want to publish, typically `main` or your default branch.
-5. Select the `/ (root)` folder.
-6. Save the configuration.
+Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
+OAuth cookies, and identity header injection. Do not implement app routes for
+those reserved paths. Routes that do not import and call the helper remain
+anonymous-compatible.
 
-GitHub Pages will publish the static site directly from the repository root.
+SIWC establishes identity only; it does not prove workspace membership. Use the
+Sites hosting platform's access policy controls for workspace-wide restrictions,
+or enforce explicit server-side membership or allowlist checks.
 
-### Suggested canonical base URL
+Use SIWC for account pages, user-specific dashboards, saved records, and write
+actions tied to the current ChatGPT user. Leave public content anonymous.
 
-If the repository is published as a project site under the `HIJO790401` account, the expected base URL is:
+## Useful Commands
 
-`https://hijo790401.github.io/shen-yao-portal/`
+- `npm run dev`: start local development
+- `npm run build`: verify the vinext build output
+- `npm test`: build the starter and verify its rendered loading skeleton
+- `npm run db:generate`: generate Drizzle migrations after schema changes
 
-If you publish under a different repository name or custom domain, update the canonical and Open Graph URLs in each HTML page.
+## Learn More
 
-## Future extension directions
-
-Recommended next steps:
-
-1. add a downloadable resume PDF and link it from `evidence.html`;
-2. expand each project into deeper research / whitepaper / case-study pages;
-3. add structured data, analytics, and richer SEO / social preview assets.
-
-## Planning notes
-
-- `docs/SHENYAO.PORTAL.SITE.SEQ.v20260330-LATEST.txt` — cloud-backup one-copy record for the latest portal sequence.
-- `docs/content-ia-cleanup-audit.md` — information-architecture audit for page-role overlap, duplication, and cleanup sequencing.
-- `docs/homepage-integration-plan-youtube-scbkr-rlock.md` — homepage placement strategy for YouTube + SCBKR/R-Lock links (analysis-only, no UI changes yet).
+- [vinext Documentation](https://github.com/cloudflare/vinext)
+- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
