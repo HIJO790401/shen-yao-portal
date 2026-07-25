@@ -1,0 +1,66 @@
+receipt_id: WEBSITE_RECEIPT-20260726-SERENE-CMS-CONTACT-V1
+task_id: TASK-20260726-SERENE-CMS-CONTACT-V1
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室官方網站
+brand_en: SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+branch: main
+code_commit: b5a6a124d442937671787cef57e0239c01621cfb
+github_push:
+  state: CONFIRMED
+  target: origin/main
+  pull_request: 0
+formal_deployment: 0
+sites_version_saved: 0
+domain_change: 0
+paid_service_change: 0
+states:
+  contact_form: PASS
+  contact_recipient: FIXED_OWNER_EMAIL
+  contact_transport: MAILTO_VISITOR_SENDS
+  contact_server_storage: 0
+  contact_header_injection_guard: PASS
+  owner_studio_ui: PASS_LOCAL_PREVIEW
+  news_editor: SOURCE_READY
+  museum_editor: SOURCE_READY
+  bilingual_fields: PRESENT
+  draft_publish: PRESENT
+  youtube_tiktok_field: PRESENT
+  cover_upload_field: PRESENT
+  owner_auth: SIWC_EMAIL_ALLOWLIST
+  plaintext_password_storage: 0
+  same_origin_guard: PASS
+  server_validation: PASS
+  image_mime_signature_guard: PASS
+  d1_binding: PRESENT_NOT_E2E_VERIFIED
+  r2_binding: PRESENT_NOT_E2E_VERIFIED
+  reusable_local_skill: VALID
+  canonical_project_license: ACTIVE
+verification:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  contract_tests:
+    passed: 15
+    failed: 0
+  interactive_browser:
+    home_contact_form: PASS
+    fixed_recipient_visible: PASS
+    owner_studio_route: PASS
+    news_editor_fields: PASS
+    museum_editor_fields: PASS
+    outbound_test_email_sent: 0
+preserved:
+  rollback_zip: LOCAL_ONLY_UNCOMMITTED
+  unused_newsroom_assets: LOCAL_ONLY_UNCOMMITTED
+  password_value: NEVER_RECORDED
+pending:
+  - owner_production_sign_in
+  - d1_news_and_museum_crud_end_to_end
+  - r2_upload_and_read_end_to_end
+  - media_revision_history_and_orphan_cleanup
+  - intro_video
+  - domain_purchase
+  - formal_sites_version_and_deployment
+final_state: OWNER_REVIEW
+detail_state: SOURCE_COMPLETE_NOT_LIVE

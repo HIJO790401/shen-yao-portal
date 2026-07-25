@@ -1,0 +1,34 @@
+task_id: TASK-20260726-SERENE-CMS-CONTACT-V1
+parent_task: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+license: .pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md
+goal: 完成站主內容中心、合作寄信入口、安全邊界與可重用施工駕照
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+branch: main
+scope:
+  - fixed_recipient_contact_composer
+  - owner_studio_news_crud
+  - owner_studio_museum_crud
+  - bilingual_content_fields
+  - cover_upload_and_video_url
+  - server_side_owner_authorization
+  - same_origin_and_input_validation
+  - d1_r2_source_contract
+  - local_skill_license
+  - interactive_browser_review
+  - github_main_push
+excluded:
+  - plaintext_password_storage
+  - direct_server_email_delivery
+  - sites_version_save
+  - private_deployment
+  - production_deployment
+  - domain_or_dns_change
+  - paid_email_or_api_service
+  - media_revision_history
+  - orphan_media_cleanup
+code_commit: b5a6a124d442937671787cef57e0239c01621cfb
+github_push: CONFIRMED
+formal_deployment: 0
+final_gate: OWNER_REVIEW
+state: SOURCE_COMPLETE_NOT_LIVE
