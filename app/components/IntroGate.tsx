@@ -69,7 +69,7 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
           />
         ) : (
           <div className={styles.introPlaceholder}>
-            <Image src={poster} alt="" fill priority sizes="100vw" />
+            <Image src={poster} alt="" fill priority unoptimized sizes="100vw" />
           </div>
         )}
         <div className={styles.introShade} aria-hidden="true" />

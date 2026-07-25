@@ -86,6 +86,7 @@ export default function WorksPage() {
               src="/media/works/language-god-exhibition-16x9.png"
               alt="語之神神器展覽篇音樂動畫作品視覺"
               fill
+              unoptimized
               sizes="(max-width: 760px) 100vw, 50vw"
             />
             <span><Lang zh="前往 TikTok 觀看" en="WATCH ON TIKTOK" /> ↗</span>

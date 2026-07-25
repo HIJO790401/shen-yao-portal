@@ -47,6 +47,7 @@ export function SereneWaterHero() {
               alt="沉靜流派工作室創辦人沈耀888π／許文耀"
               fill
               priority
+              unoptimized
               sizes="(max-width: 760px) 92vw, 42vw"
             />
           </div>

@@ -101,6 +101,7 @@ export default function AboutPage() {
                 fill
                 sizes="(max-width: 820px) 92vw, 43vw"
                 priority
+                unoptimized
               />
             </div>
             <div className={styles.brandSeal}>
@@ -179,6 +180,7 @@ export default function AboutPage() {
                 src="/media/public-activity/agent-for-truth-hackathon.jpg"
                 alt="許文耀於去偽存真：全民偵查黑客松現場展示 SCBKR + R-Lock"
                 fill
+                unoptimized
                 sizes="(max-width: 900px) 100vw, 58vw"
               />
               <figcaption><Lang zh="現場簡報與系統展示・照片取自原始 Repo" en="ON-SITE PRESENTATION AND SYSTEM DEMO · ORIGINAL REPOSITORY PHOTO" /></figcaption>

@@ -129,7 +129,7 @@ export default function Home() {
               {featuredWorks.map((work) => (
                 <LocalizedLink href={work.href} key={work.titleEn}>
                   <span className={styles.workImage}>
-                    <Image src={work.image} alt="" fill sizes="(max-width: 760px) 44vw, 18vw" />
+                    <Image src={work.image} alt="" fill unoptimized sizes="(max-width: 760px) 44vw, 18vw" />
                   </span>
                   <h3><Lang zh={work.titleZh} en={work.titleEn} /></h3>
                   <p><Lang zh={work.labelZh} en={work.labelEn} /></p>

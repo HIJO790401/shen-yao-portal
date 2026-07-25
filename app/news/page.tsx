@@ -165,6 +165,7 @@ export default async function NewsPage() {
               src="/media/works/reality-goes-live-16x9.png"
               alt="實相上線／Reality Goes Live 啟動前導視覺"
               fill
+              unoptimized
               sizes="(max-width: 760px) 100vw, 48vw"
             />
             <span>LAUNCH SIGNAL · REALITY / ACCOUNTABILITY / ARCHIVE</span>
@@ -244,7 +245,7 @@ export default async function NewsPage() {
         <div className={styles.axisGrid}>
           {newsroomAxes.map((axis) => <details className={styles.axisCard} key={axis.slug}>
             <summary>
-              <div className={styles.axisPortrait}><Image src={axis.image} alt={`${axis.nameZh} / ${axis.nameEn}`} fill sizes="(max-width: 720px) 46vw, (max-width: 1100px) 30vw, 22vw" /></div>
+              <div className={styles.axisPortrait}><Image src={axis.image} alt={`${axis.nameZh} / ${axis.nameEn}`} fill unoptimized sizes="(max-width: 720px) 46vw, (max-width: 1100px) 30vw, 22vw" /></div>
               <span>{axis.code}</span>
               <h3>{axis.nameZh}<small>{axis.nameEn}</small></h3>
               <p><Lang zh={axis.roleZh} en={axis.roleEn} /></p>

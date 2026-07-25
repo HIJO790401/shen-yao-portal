@@ -107,9 +107,9 @@ export default async function PublishedNewsPage({ params }: { params: Promise<{ 
             src={report.cover}
             alt={`${report.titleZh} 報導封面`}
             width={1600}
+            unoptimized
             height={900}
             sizes="(max-width: 900px) 100vw, 860px"
-            unoptimized={report.cover.startsWith("http")}
           />
           <figcaption><Lang zh="原新聞台報導封面／發布卷宗視覺" en="Original newsroom cover / publication dossier visual" /></figcaption>
         </figure>}

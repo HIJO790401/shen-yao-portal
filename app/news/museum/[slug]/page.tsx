@@ -134,9 +134,9 @@ export default async function MuseumDetailPage({ params }: { params: Promise<{ s
             src={item.cover}
             alt={`${item.titleZh} 館藏封面`}
             width={1600}
+            unoptimized
             height={900}
             sizes="(max-width: 900px) 100vw, 860px"
-            unoptimized={item.cover.startsWith("http")}
           />
           <figcaption><Lang zh={`館藏 ${item.registryId} 卷宗視覺`} en={`Accession dossier visual · ${item.registryId}`} /></figcaption>
         </figure>}

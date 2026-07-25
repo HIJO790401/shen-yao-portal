@@ -81,6 +81,29 @@ test("keeps the supplied image static while animating only the water treatment",
   ]);
 });
 
+test("serves curated local raster assets directly in the browser runtime", async () => {
+  const [intro, hero, home, works, about, news, reportDetail, museumDetail] = await Promise.all([
+    source("app/components/IntroGate.tsx"),
+    source("app/components/SereneWaterHero.tsx"),
+    source("app/page.tsx"),
+    source("app/works/page.tsx"),
+    source("app/about/page.tsx"),
+    source("app/news/page.tsx"),
+    source("app/news/[slug]/page.tsx"),
+    source("app/news/museum/[slug]/page.tsx"),
+  ]);
+  assert.match(intro, /<Image[^>]*\bunoptimized\b[^>]*>/);
+  assert.match(hero, /founder-v2\.jpg[\s\S]*?\bunoptimized\b/);
+  assert.match(home, /src=\{work\.image\}[^>]*\bunoptimized\b/);
+  assert.match(works, /language-god-exhibition-16x9\.png[\s\S]*?\bunoptimized\b/);
+  assert.match(about, /founder-v2\.jpg[\s\S]*?\bunoptimized\b/);
+  assert.match(about, /agent-for-truth-hackathon\.jpg[\s\S]*?\bunoptimized\b/);
+  assert.match(news, /reality-goes-live-16x9\.png[\s\S]*?\bunoptimized\b/);
+  assert.match(news, /src=\{axis\.image\}[^>]*\bunoptimized\b/);
+  assert.match(reportDetail, /src=\{report\.cover\}[\s\S]*?\bunoptimized\b/);
+  assert.match(museumDetail, /src=\{item\.cover\}[\s\S]*?\bunoptimized\b/);
+});
+
 test("renders a legal Intro Gate placeholder and enters only on owner action", async () => {
   const [home, intro] = await Promise.all([
     source("app/page.tsx"),
