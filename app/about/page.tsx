@@ -135,7 +135,7 @@ export default function AboutPage() {
             <div className={styles.actions}>
               <a href="/Wen-Yao-Hsu-Resume.pdf"><Lang zh="查看履歷" en="VIEW RESUME" /><span aria-hidden="true">↗</span></a>
               <LocalizedLink href="/products"><Lang zh="查看系統作品" en="EXPLORE SYSTEMS" /><span aria-hidden="true">→</span></LocalizedLink>
-              <a href="mailto:ken0963521@gmail.com"><Lang zh="合作聯絡" en="CONTACT" /></a>
+              <a href="mailto:ken0963521@gmail.com?subject=%E6%B2%89%E9%9D%9C%E6%B5%81%E6%B4%BE%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%90%88%E4%BD%9C%E6%8F%90%E6%A1%88"><Lang zh="合作聯絡" en="CONTACT" /></a>
             </div>
           </div>
         </section>
@@ -287,7 +287,7 @@ export default function AboutPage() {
             <h2><Lang zh="從可查證的作品開始對話。" en="START WITH WORK THAT CAN BE VERIFIED." /></h2>
           </div>
           <div>
-            <a href="mailto:ken0963521@gmail.com"><Lang zh="寄送合作郵件" en="SEND AN EMAIL" /><span aria-hidden="true">→</span></a>
+            <a href="mailto:ken0963521@gmail.com?subject=%E6%B2%89%E9%9D%9C%E6%B5%81%E6%B4%BE%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%90%88%E4%BD%9C%E6%8F%90%E6%A1%88"><Lang zh="寄送合作郵件" en="SEND AN EMAIL" /><span aria-hidden="true">→</span></a>
             <LocalizedLink href="/works"><Lang zh="瀏覽創作" en="VIEW CREATIVE WORK" /><span aria-hidden="true">↗</span></LocalizedLink>
           </div>
         </section>

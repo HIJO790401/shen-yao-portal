@@ -69,10 +69,10 @@ export async function savePost(input: Omit<NewsPost, "id" | "updated_at"> & { id
   const db = await database();
   const now = new Date().toISOString();
   if (input.id) {
-    await db.prepare(`UPDATE news_posts SET slug=?, title_zh=?, title_en=?, summary_zh=?, summary_en=?, body_zh=?, body_en=?, category=?, cover_url=?, video_url=?, status=?, published_at=?, updated_at=?, author_email=? WHERE id=?`).bind(
+    const result = await db.prepare(`UPDATE news_posts SET slug=?, title_zh=?, title_en=?, summary_zh=?, summary_en=?, body_zh=?, body_en=?, category=?, cover_url=?, video_url=?, status=?, published_at=?, updated_at=?, author_email=? WHERE id=?`).bind(
       input.slug, input.title_zh, input.title_en, input.summary_zh, input.summary_en, input.body_zh, input.body_en, input.category, input.cover_url, input.video_url, input.status, input.published_at, now, input.author_email, input.id,
     ).run();
-    return input.id;
+    return result.meta.changes > 0 ? input.id : null;
   }
   const result = await db.prepare(`INSERT INTO news_posts (slug,title_zh,title_en,summary_zh,summary_en,body_zh,body_en,category,cover_url,video_url,status,published_at,updated_at,author_email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(
     input.slug, input.title_zh, input.title_en, input.summary_zh, input.summary_en, input.body_zh, input.body_en, input.category, input.cover_url, input.video_url, input.status, input.published_at, now, input.author_email,
@@ -82,5 +82,6 @@ export async function savePost(input: Omit<NewsPost, "id" | "updated_at"> & { id
 
 export async function removePost(id: number) {
   const db = await database();
-  await db.prepare("DELETE FROM news_posts WHERE id = ?").bind(id).run();
+  const result = await db.prepare("DELETE FROM news_posts WHERE id = ?").bind(id).run();
+  return result.meta.changes > 0;
 }

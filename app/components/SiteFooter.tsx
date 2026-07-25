@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Lang, LocalizedLink } from "./LanguageControl";
 import styles from "./site-chrome.module.css";
 
@@ -34,7 +35,8 @@ export function SiteFooter() {
           <a href="https://github.com/HIJO790401" target="_blank" rel="noreferrer">GITHUB ↗</a>
           <a href="https://vocus.cc/salon/hijo19900401/room/hijo1990" target="_blank" rel="noreferrer">VOCUS ↗</a>
           <a href="https://ai-arts.org/author/shen-yao/" target="_blank" rel="noreferrer">AI-ARTS ↗</a>
-          <a href="mailto:ken0963521@gmail.com"><Lang zh="合作聯絡" en="CONTACT" /> →</a>
+          <a href="mailto:ken0963521@gmail.com?subject=%E6%B2%89%E9%9D%9C%E6%B5%81%E6%B4%BE%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%90%88%E4%BD%9C%E6%8F%90%E6%A1%88"><Lang zh="合作聯絡" en="CONTACT" /> →</a>
+          <Link href="/studio"><Lang zh="站主編輯台" en="OWNER STUDIO" /> →</Link>
         </div>
       </div>
 

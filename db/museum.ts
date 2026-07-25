@@ -135,8 +135,8 @@ export async function saveMuseumEntry(input: Omit<MuseumEntry, "id" | "updated_a
 
   if (input.id) {
     const assignments = writableColumns.map((column) => `${column}=?`).join(",");
-    await db.prepare(`UPDATE museum_entries SET ${assignments} WHERE id=?`).bind(...values, input.id).run();
-    return input.id;
+    const result = await db.prepare(`UPDATE museum_entries SET ${assignments} WHERE id=?`).bind(...values, input.id).run();
+    return result.meta.changes > 0 ? input.id : null;
   }
 
   const placeholders = writableColumns.map(() => "?").join(",");
@@ -146,5 +146,6 @@ export async function saveMuseumEntry(input: Omit<MuseumEntry, "id" | "updated_a
 
 export async function removeMuseumEntry(id: number) {
   const db = await database();
-  await db.prepare("DELETE FROM museum_entries WHERE id = ?").bind(id).run();
+  const result = await db.prepare("DELETE FROM museum_entries WHERE id = ?").bind(id).run();
+  return result.meta.changes > 0;
 }

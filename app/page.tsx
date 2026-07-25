@@ -4,6 +4,7 @@ import { Lang, LocalizedLink } from "./components/LanguageControl";
 import { SereneWaterHero } from "./components/SereneWaterHero";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import { ContactComposer } from "./components/ContactComposer";
 import { products } from "./site-data";
 import styles from "./serene-home.module.css";
 
@@ -184,10 +185,7 @@ export default function Home() {
             <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="合作聯絡" en="COLLABORATION" /></p>
             <h2 id="contact-title"><Lang zh="讓合作先有清楚的主體、範圍與責任。" en="BEGIN WITH A CLEAR SUBJECT, SCOPE AND RESPONSIBILITY." /></h2>
           </div>
-          <div>
-            <p><Lang zh="技術合作、公開研究、動畫與音樂企劃，可先以電子郵件說明目的與預期成果。" en="For technical collaboration, public research, animation or music projects, begin with the purpose and expected outcome by email." /></p>
-            <a href="mailto:ken0963521@gmail.com"><Lang zh="寄送合作提案" en="SEND A PROPOSAL" /> <span aria-hidden="true">→</span></a>
-          </div>
+          <ContactComposer />
         </section>
       </main>
       <SiteFooter />

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import { buildContactMailto, CONTACT_EMAIL } from "../app/contact-mailto.ts";
 
 const projectRoot = new URL("../", import.meta.url);
 
@@ -152,10 +153,56 @@ test("retains the quote and compact language control on mobile", async () => {
 });
 
 test("finishes the official home route with a separate collaboration section", async () => {
-  const home = await source("app/page.tsx");
+  const [home, contact, footer] = await Promise.all([
+    source("app/page.tsx"),
+    source("app/components/ContactComposer.tsx"),
+    source("app/components/SiteFooter.tsx"),
+  ]);
   assert.match(home, /id="contact"/);
   assert.match(home, /合作聯絡/);
-  assert.match(home, /mailto:ken0963521@gmail\.com/);
+  assert.match(home, /<ContactComposer\s*\/>/);
+  assert.match(contact, /CONTACT_EMAIL/);
+  assert.match(contact, /window\.location\.assign/);
+  assert.match(contact, /buildContactMailto/);
+  assert.match(contact, /type="email"/);
+  assert.match(contact, /<textarea/);
+  assert.match(contact, /本站不保存這份聯絡內容/);
+  assert.doesNotMatch(contact, /\bfetch\s*\(|localStorage|\/api\/contact/);
+  assert.match(footer, /href="\/studio"/);
+});
+
+test("builds a fixed-recipient, encoded mail draft without header injection", () => {
+  const href = buildContactMailto({
+    locale: "zh",
+    name: "許文耀",
+    replyEmail: "review@example.com",
+    topicLabel: "研究 & 公開文章",
+    subject: "合作？#100%",
+    message: "第一行\n第二行 & 更多",
+  });
+  const mail = new URL(href);
+  assert.equal(mail.pathname, CONTACT_EMAIL);
+  assert.equal(mail.searchParams.get("subject"), "合作？#100%");
+  assert.equal(
+    mail.searchParams.get("body"),
+    "姓名：許文耀\n回信信箱：review@example.com\n合作類型：研究 & 公開文章\n\n第一行\n第二行 & 更多",
+  );
+  assert.throws(() => buildContactMailto({
+    locale: "en",
+    name: "Review",
+    replyEmail: "not-an-email",
+    topicLabel: "Research",
+    subject: "Hello",
+    message: "Body",
+  }), /正確的回信信箱/);
+  assert.throws(() => buildContactMailto({
+    locale: "en",
+    name: "Review",
+    replyEmail: "review@example.com",
+    topicLabel: "Research",
+    subject: "Hello\r\nBcc: injected@example.com",
+    message: "Body",
+  }), /主旨不能包含換行/);
 });
 
 test("turns audited products into no-input, product-specific fixed-case films", async () => {
@@ -257,6 +304,76 @@ test("preserves the original museum CMS shape in D1 and R2 owner tooling", async
   assert.match(upload, /R2Bucket/);
   assert.match(hosting, /"d1": "DB"/);
   assert.match(hosting, /"r2": "MEDIA"/);
+});
+
+test("protects the owner CMS at the page, API and upload boundaries", async () => {
+  const [
+    studioPage,
+    studioAuth,
+    guard,
+    postApi,
+    museumApi,
+    uploadApi,
+    mediaApi,
+    editor,
+    museumEditor,
+    license,
+  ] = await Promise.all([
+    source("app/studio/page.tsx"),
+    source("app/studio-auth.ts"),
+    source("app/studio-guard.ts"),
+    source("app/api/studio/posts/route.ts"),
+    source("app/api/studio/museum/route.ts"),
+    source("app/api/studio/upload/route.ts"),
+    source("app/api/media/[...key]/route.ts"),
+    source("app/studio/StudioEditor.tsx"),
+    source("app/studio/MuseumEditor.tsx"),
+    source(".pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md"),
+  ]);
+
+  assert.match(studioAuth, /ken0963521@gmail\.com/);
+  assert.match(studioAuth, /getChatGPTUser/);
+  assert.ok(
+    studioPage.indexOf("if (!owner && !localPreview)") < studioPage.indexOf("listAllPosts()"),
+    "owner gate must run before private post reads",
+  );
+  assert.ok(
+    studioPage.indexOf("if (!owner && !localPreview)") < studioPage.indexOf("listAllMuseumEntries()"),
+    "owner gate must run before private museum reads",
+  );
+  assert.match(studioPage, /process\.env\.NODE_ENV === "development"/);
+  assert.doesNotMatch(studioPage, /headers\(\)|startsWith\("localhost"\)|startsWith\("127\.0\.0\.1"\)/);
+
+  for (const api of [postApi, museumApi, uploadApi]) {
+    assert.match(api, /getStudioOwner/);
+    assert.match(api, /assertStudioWriteRequest\(request\)/);
+  }
+  for (const api of [postApi, museumApi]) {
+    assert.match(api, /studioSlug/);
+    assert.match(api, /studioVideoUrl/);
+    assert.match(api, /status:\s*404/);
+  }
+
+  assert.match(guard, /sec-fetch-site/);
+  assert.match(guard, /origin !== requestUrl\.origin/);
+  assert.match(guard, /url\.protocol !== "https:"/);
+  assert.match(guard, /YouTube 或 TikTok 官方網址/);
+  assert.doesNotMatch(guard, /javascript:|data:/);
+
+  assert.match(uploadApi, /image\/jpeg/);
+  assert.match(uploadApi, /image\/png/);
+  assert.match(uploadApi, /image\/webp/);
+  assert.doesNotMatch(uploadApi, /image\/svg\+xml/);
+  assert.match(uploadApi, /matchesImageSignature/);
+  assert.match(uploadApi, /圖片儲存空間尚未連接/);
+  assert.match(mediaApi, /nosniff/);
+  assert.match(mediaApi, /covers/);
+
+  assert.match(editor, /accept="image\/jpeg,image\/png,image\/webp"/);
+  assert.match(editor, /網址代碼/);
+  assert.match(museumEditor, /accept="image\/jpeg,image\/png,image\/webp"/);
+  assert.match(license, /不得把任何密碼、權杖、Cookie 或秘密寫入程式、Git、駕照或收據/);
+  assert.match(license, /OWNER_REVIEW/);
 });
 
 test("publishes crawler, AI discovery and structured-search surfaces", async () => {

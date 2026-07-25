@@ -803,6 +803,152 @@
   font-weight: 800;
 }
 
+.contactComposer {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid rgba(15, 86, 170, 0.14);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 24px 70px rgba(10, 75, 150, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.contactRecipient {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(15, 86, 170, 0.12);
+}
+
+.contactRecipient span {
+  color: #6180a5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.contactRecipient strong {
+  color: #06479a;
+  font-size: clamp(13px, 1.25vw, 17px);
+  word-break: break-all;
+}
+
+.contactLead,
+.contactPrivacy {
+  margin: 0;
+  color: #557497;
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.contactError {
+  margin: 0;
+  color: #9f1f2d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contactFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contactFields label {
+  display: grid;
+  gap: 8px;
+  color: #315d8c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+.contactFields input,
+.contactFields select,
+.contactFields textarea {
+  width: 100%;
+  border: 1px solid rgba(15, 86, 170, 0.16);
+  border-radius: 13px;
+  outline: 0;
+  color: #143f70;
+  background: rgba(255, 255, 255, 0.82);
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.contactFields input,
+.contactFields select {
+  min-height: 44px;
+  padding: 0 13px;
+}
+
+.contactFields textarea {
+  min-height: 128px;
+  padding: 13px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.contactFields input:focus,
+.contactFields select:focus,
+.contactFields textarea:focus {
+  border-color: rgba(13, 112, 213, 0.58);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(13, 112, 213, 0.09);
+}
+
+.contactMessage {
+  grid-column: 1 / -1;
+}
+
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.contactActions button,
+.contactActions a {
+  display: inline-flex;
+  min-width: 190px;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding: 13px 17px;
+  border: 1px solid rgba(15, 86, 170, 0.18);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.contactActions button {
+  color: white;
+  background: linear-gradient(135deg, #0d70d5, #073b99);
+  box-shadow: 0 12px 28px rgba(5, 70, 159, 0.17);
+}
+
+.contactActions a {
+  min-width: 0;
+  color: #0a5ab5;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: none;
+}
+
+.contactPrivacy {
+  padding-top: 2px;
+  font-size: 9px;
+}
+
 .recordGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1426,7 +1572,26 @@
 
   .contactBand h2 { font-size: 35px; }
 
-  .contactBand > div:last-child { margin-top: 30px; }
+  .contactComposer {
+    margin-top: 30px;
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .contactFields { grid-template-columns: 1fr; }
+
+  .contactMessage { grid-column: auto; }
+
+  .contactActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contactActions button,
+  .contactActions a {
+    width: 100%;
+    min-width: 0;
+  }
 
   .introBrand {
     left: 18px;
