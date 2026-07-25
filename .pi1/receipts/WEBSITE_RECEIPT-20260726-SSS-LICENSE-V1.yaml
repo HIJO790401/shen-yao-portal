@@ -7,7 +7,7 @@ brand_en: SERENE SCHOOL STUDIO
 repository: HIJO790401/shen-yao-portal
 branch: main
 source_commit: 39985742adfb7b7245c01b22e2d5c98bdde657cf
-website_commit: 6cde1003840340c0c2219b67955bceafcbd8f553
+website_commit: bd436dc949e4fe7cdec09572eb2b3882ba6eda9c
 github_push:
   state: CONFIRMED
   target: origin/main
@@ -46,8 +46,13 @@ verification:
   lint: PASS
   production_build: PASS
   contract_tests:
-    passed: 12
+    passed: 13
     failed: 0
+  interactive_browser:
+    local_preview: PASS
+    intro_enter_action: PASS
+    product_navigation: PASS
+    local_asset_loading: PASS
   http_routes:
     total: 7
     passed: 7
@@ -57,7 +62,7 @@ verification:
     enter_site_button: true
     exact_owner_name: true
     runtime_01: true
-  visual_owner_review: PENDING
+  visual_owner_review: ACTIVE_IN_APP_BROWSER
 sites_state:
   project_id: appgprj_6a57846b68f0819186daf7489f59a72f
   current_live_url: null

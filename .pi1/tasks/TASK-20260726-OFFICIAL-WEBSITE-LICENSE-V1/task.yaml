@@ -31,7 +31,7 @@ excluded:
   - invented_product_links
   - ai_generated_owner_portrait
 final_gate: OWNER_REVIEW
-website_commit: 6cde1003840340c0c2219b67955bceafcbd8f553
+website_commit: bd436dc949e4fe7cdec09572eb2b3882ba6eda9c
 github_branch: main
 github_push: CONFIRMED
 formal_deployment: 0
