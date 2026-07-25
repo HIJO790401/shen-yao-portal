@@ -1,0 +1,21 @@
+task_id: TASK-20260717-SHENYAO-BRAND-REBUILD
+parent_task: SHENYAO-OFFICIAL-PLATFORM-REBUILD
+goal: 以沉靜流派 Logo 為視覺母核，重建官網與新聞台的可驗收基本架構
+scope:
+  - brand_system
+  - official_home
+  - products_architecture
+  - newsroom_architecture
+  - local_browser_preview
+excluded:
+  - responsibility_chain_motion_demo
+  - custom_domain_activation
+  - enterprise_mail
+inputs:
+  - owner_logo
+  - owner_portrait
+  - GitHub repositories
+  - newsroom assets
+  - public articles and media
+rollback: git tag pi1-rejected-baseline-20260717
+state: IMPLEMENTED_AWAITING_OWNER_REVIEW

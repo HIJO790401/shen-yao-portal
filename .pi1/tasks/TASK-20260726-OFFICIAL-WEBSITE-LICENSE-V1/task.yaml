@@ -1,0 +1,38 @@
+task_id: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+parent_task: SHENYAO-OFFICIAL-PLATFORM-REBUILD
+license_id: Ω∞8888|SHENYAO.OFFICIAL-WEBSITE.LICENSE|v1.0
+goal: 依沈耀官網駕照 v1.0 校準現有官網候選版，不另建無關模板
+owner: 許文耀／沈耀888π
+branch: main
+baseline_head: 39985742adfb7b7245c01b22e2d5c98bdde657cf
+rollback_archive: .pi1/rollback/20260726-website-license-v1-baseline/portal-review-source-baseline.zip
+scope:
+  - intro_gate_placeholder
+  - owner_locked_hero_copy
+  - owner_real_portrait_water_blend
+  - runtime_01_development_slot
+  - official_home_information_order
+  - public_press_boundary
+  - responsive_accessibility
+  - local_verification
+  - receipt
+inputs:
+  - owner_website_license_v1
+  - current_portal_review_worktree
+  - owner_real_portrait
+  - owner_visual_material_01
+  - owner_visual_material_02
+excluded:
+  - public_deployment
+  - domain_purchase
+  - dns_change
+  - analytics
+  - new_third_party_packages
+  - invented_product_links
+  - ai_generated_owner_portrait
+final_gate: OWNER_REVIEW
+website_commit: 6cde1003840340c0c2219b67955bceafcbd8f553
+github_branch: main
+github_push: CONFIRMED
+formal_deployment: 0
+state: OWNER_REVIEW

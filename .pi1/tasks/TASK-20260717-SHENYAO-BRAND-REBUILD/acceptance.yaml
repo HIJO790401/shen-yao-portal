@@ -1,0 +1,11 @@
+acceptance:
+  - Logo visibly governs color, geometry, motion and spacing.
+  - Founder image has intentional hierarchy and crop.
+  - Homepage and newsroom are distinct but recognizably one brand.
+  - Water and ripple motion is purposeful, responsive and isolated from the static supplied imagery.
+  - No demo behavior is invented.
+  - Chinese and English never render mixed together.
+  - Desktop 1440x900 and mobile 390x844 are visually verified.
+  - Browser console and network have no unhandled errors.
+  - Owner reviews the right-side preview before GitHub push or deployment.
+final_gate: OWNER_REVIEW

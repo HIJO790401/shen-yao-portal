@@ -1,0 +1,18 @@
+brand_name_zh: 沉靜流派工作室
+brand_name_en: SERENE SCHOOL STUDIO
+owner_name: 沈耀888π／許文耀
+primary_source: public/media/chenjingliupai-logo.jpg
+visual_core:
+  - water_drop
+  - concentric_ripple
+  - stillness_and_motion
+  - deep_brand_blue
+rules:
+  - Logo is the visual source of truth.
+  - Do not redesign or AI-regenerate the logo.
+  - Do not use unrelated generic technology imagery as the primary identity.
+  - Founder photography must preserve identity and require owner approval for hero placement.
+  - Chinese is the default language; English is a separate switchable presentation.
+  - The supplied founder and brand images remain static; motion belongs to the water and ripple background layers.
+  - Demo interfaces must map to verified source behavior.
+  - Responsibility-chain model animation is deferred for this phase.

@@ -1,0 +1,33 @@
+project_id: SHENYAO-OFFICIAL-PLATFORM
+project_name: 沉靜流派工作室官方網站
+owner: 沈耀888π／許文耀
+mode: MULTI_REPO
+root: C:/Users/thoma/Documents/Codex/2026-07-15/sites-plugin-sites-openai-bundled/work/portal-review
+primary_repo: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 39985742adfb7b7245c01b22e2d5c98bdde657cf
+baseline_state: REJECTED_VISUAL_BASELINE
+stack:
+  - Vinext
+  - React 19
+  - TypeScript
+  - Cloudflare Workers
+  - D1
+  - R2
+commands:
+  dev: npm run dev
+  build: npm run build
+  test: npm test
+  typecheck: npx tsc --noEmit
+surfaces:
+  - official_home
+  - products
+  - demos
+  - newsroom
+  - owner_studio
+unknowns:
+  - each_demo_runtime_contract
+  - final_homepage_visual_direction
+  - final_portrait_selection
+state: SUBJECT_LOCKED
+

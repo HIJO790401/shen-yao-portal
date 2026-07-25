@@ -1,0 +1,12 @@
+module_route: MODULE_HIT
+known_modules:
+  - vinext_site_build
+  - bilingual_language_switch
+  - d1_news_storage
+  - verified_demo_to_motion_storyboard
+  - static_image_water_ripple_brand_stage
+  - original_newsroom_archive_integration
+missing_capabilities:
+  - owner_approved_visual_baseline
+required_generation: []
+owner_review_required: true

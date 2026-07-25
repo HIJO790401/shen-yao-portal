@@ -1,0 +1,78 @@
+receipt_id: WEBSITE_RECEIPT-20260726-SSS-LICENSE-V1
+task_id: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+license_id: Ω∞8888|SHENYAO.OFFICIAL-WEBSITE.LICENSE|v1.0
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室官方網站
+brand_en: SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+branch: main
+source_commit: 39985742adfb7b7245c01b22e2d5c98bdde657cf
+website_commit: 6cde1003840340c0c2219b67955bceafcbd8f553
+github_push:
+  state: CONFIRMED
+  target: origin/main
+  pull_request: 0
+formal_deployment: 0
+domain_change: 0
+current_route: /
+current_language:
+  primary: zh-Hant
+  separate_routes:
+    - /zh
+    - /en
+states:
+  intro_gate: LEGAL_PLACEHOLDER_ACTIVE
+  intro_video: PENDING_OWNER_PROVIDED_ASSET
+  enter_button: ACTIVE_OWNER_CLICK_ONLY
+  hero_subject: LOCKED
+  owner_name: 許文耀／沈耀888π
+  founder_studio_line: 沉靜流派工作室
+  founder_title_line: 語意防火牆創辦人
+  owner_portrait: OWNER_PROVIDED_UNALTERED
+  owner_portrait_sha256: 24490038C4AA971516F1B47469AA46053B83ED4419FA1DBE17B14F7323F7A634
+  portrait_water_blend: IMPLEMENTED
+  essence_quote: LOCKED
+  about_section: PRESENT
+  product_section: PRESENT
+  runtime_01_card: DEVELOPMENT_NO_LINK
+  work_section: PRESENT
+  newsroom_museum: PRESENT
+  public_record: PRESENT
+  third_party_press_boundary: PRESENT
+  collaboration_section: PRESENT
+  footer: PRESENT
+verification:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  contract_tests:
+    passed: 12
+    failed: 0
+  http_routes:
+    total: 7
+    passed: 7
+    failed: 0
+  local_home_contract:
+    intro_placeholder: true
+    enter_site_button: true
+    exact_owner_name: true
+    runtime_01: true
+  visual_owner_review: PENDING
+sites_state:
+  project_id: appgprj_6a57846b68f0819186daf7489f59a72f
+  current_live_url: null
+  current_preview_url: null
+  latest_saved_version: 1
+  latest_saved_commit: 39985742adfb7b7245c01b22e2d5c98bdde657cf
+rollback:
+  archive: .pi1/rollback/20260726-website-license-v1-baseline/portal-review-source-baseline.zip
+  archive_scope: LOCAL_ONLY
+  archive_bytes: 104604180
+  archive_sha256: 50F6859AF8B70B23C63A34568A86B202A6DD8202E6E5ED5F3DF8D69030F49695
+pending:
+  - final_intro_video
+  - runtime_01_public_project_link_and_evidence
+  - desktop_mobile_owner_visual_signoff
+  - domain_purchase
+  - formal_sites_version_and_deployment
+final_state: OWNER_REVIEW

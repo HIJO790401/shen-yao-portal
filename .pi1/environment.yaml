@@ -1,0 +1,24 @@
+os: Windows
+shell: PowerShell
+node: 24.18.0
+npm: 11.16.0
+python: 3.12.10
+git: 2.54.0.windows.1
+github_cli: 2.95.0
+tools_ready:
+  - git
+  - gh
+  - node
+  - npm
+  - python
+  - numpy
+  - in_app_browser
+  - windows_computer_control
+tool_miss:
+  - inkscape
+  - pillow
+  - ffmpeg
+  - imagemagick
+  - blender
+install_policy: project_or_user_scope_only
+
