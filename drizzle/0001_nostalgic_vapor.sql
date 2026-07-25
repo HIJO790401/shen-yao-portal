@@ -1,0 +1,31 @@
+CREATE TABLE `museum_entries` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`slug` text NOT NULL,
+	`registry_id` text DEFAULT '' NOT NULL,
+	`title_zh` text NOT NULL,
+	`title_en` text DEFAULT '' NOT NULL,
+	`subtitle_zh` text DEFAULT '' NOT NULL,
+	`subtitle_en` text DEFAULT '' NOT NULL,
+	`guide_zh` text DEFAULT '' NOT NULL,
+	`guide_en` text DEFAULT '' NOT NULL,
+	`summary_zh` text DEFAULT '' NOT NULL,
+	`summary_en` text DEFAULT '' NOT NULL,
+	`body_zh` text DEFAULT '' NOT NULL,
+	`body_en` text DEFAULT '' NOT NULL,
+	`hall_zh` text DEFAULT '' NOT NULL,
+	`hall_en` text DEFAULT '' NOT NULL,
+	`verdict_zh` text DEFAULT '' NOT NULL,
+	`verdict_en` text DEFAULT '' NOT NULL,
+	`repair_zh` text DEFAULT '' NOT NULL,
+	`repair_en` text DEFAULT '' NOT NULL,
+	`evidence_url` text DEFAULT '' NOT NULL,
+	`cover_url` text DEFAULT '' NOT NULL,
+	`video_url` text DEFAULT '' NOT NULL,
+	`category` text DEFAULT 'RESPONSIBILITY' NOT NULL,
+	`status` text DEFAULT 'draft' NOT NULL,
+	`occurred_at` text NOT NULL,
+	`updated_at` text NOT NULL,
+	`author_email` text NOT NULL
+);
+--> statement-breakpoint
+CREATE UNIQUE INDEX `museum_entries_slug_unique` ON `museum_entries` (`slug`);

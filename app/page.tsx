@@ -1,75 +1,196 @@
 import Image from "next/image";
-import Link from "next/link";
-import { DemoStage } from "./components/DemoStage";
+import { IntroGate } from "./components/IntroGate";
+import { Lang, LocalizedLink } from "./components/LanguageControl";
+import { SereneWaterHero } from "./components/SereneWaterHero";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { Lang } from "./components/LanguageControl";
-import { newsItems, products } from "./site-data";
+import { products } from "./site-data";
+import styles from "./serene-home.module.css";
+
+const quickLinks = [
+  { href: "/", glyph: "⌂", zh: "首頁", en: "HOME" },
+  { href: "/products", glyph: "◌", zh: "產品", en: "PRODUCTS" },
+  { href: "/#works", glyph: "✦", zh: "作品", en: "WORKS" },
+  { href: "/news", glyph: "▥", zh: "新聞台 × 博物館", en: "NEWS × MUSEUM" },
+  { href: "/#founder", glyph: "●", zh: "自介", en: "ABOUT" },
+];
+
+const featuredWorks = [
+  {
+    titleZh: "語之神神器展覽篇",
+    titleEn: "Artifacts of the Language God",
+    labelZh: "音樂動畫作品",
+    labelEn: "MUSIC-ANIMATION WORK",
+    image: "/media/works/language-god-exhibition-16x9.png",
+    href: "/works#music-animation",
+  },
+  {
+    titleZh: "實相上線",
+    titleEn: "Reality Goes Live",
+    labelZh: "新聞台 × 責任博物館啟動前導",
+    labelEn: "NEWSROOM × MUSEUM LAUNCH PRELUDE",
+    image: "/media/works/reality-goes-live-16x9.png",
+    href: "/news#reality-goes-live",
+  },
+  {
+    titleZh: "去偽存真：全民偵查黑客松",
+    titleEn: "Agent for Truth Hackathon",
+    labelZh: "SCBKR + R-Lock 公開展示",
+    labelEn: "PUBLIC SCBKR + R-LOCK DEMONSTRATION",
+    image: "/media/public-activity/agent-for-truth-hackathon.jpg",
+    href: "/about#public-activity",
+  },
+];
+
+const publicRecords = [
+  { label: "GITHUB", zh: "官方工程作品總入口", en: "Official Engineering Archive", href: "https://github.com/HIJO790401" },
+  { label: "VOCS", zh: "沈耀公開文章與研究", en: "Public Writing and Research", href: "https://vocus.cc/salon/hijo19900401/room/hijo1990" },
+  { label: "NVIDIA COMMUNITY", zh: "SCBKR 技術文章", en: "SCBKR Technical Post", href: "https://forums.developer.nvidia.com/t/scbkr-a-local-responsibility-chain-workbench-for-llms-with-human-confirmed-generation-storage-replay-and-retrieval-gates/373910" },
+  { label: "AI-ARTS", zh: "動畫、音樂與跨域創作", en: "Animation, Music and Cross-disciplinary Work", href: "https://ai-arts.org/author/shen-yao/" },
+  {
+    label: "SECURITYBRIEF ASIA · THIRD-PARTY PRESS · 2025.11.18",
+    zh: "語意防火牆獲第三方科技媒體報導",
+    en: "SEMANTIC FIREWALL IN THIRD-PARTY TECH COVERAGE",
+    textZh: "報導聚焦語意治理、AI 推論成本與對話安全；文中效能數據為歸因主張，不是媒體獨立驗證。",
+    textEn: "Coverage focuses on semantic governance, AI inference cost and conversational safety. Performance figures remain attributed claims, not independent findings.",
+    href: "https://securitybrief.asia/story/semantic-firewall-promises-ai-cost-savings-safer-chat-models",
+  },
+];
 
 export default function Home() {
-  return <>
-    <SiteHeader />
-    <main>
-      <section className="hero">
-        <div className="hero-grid" aria-hidden="true" />
-        <div className="hero-orb" aria-hidden="true" />
-        <div className="hero-copy">
-          <p className="eyebrow"><span><Lang zh="沉靜流派工作室" en="SILENT SCHOOL STUDIO" /></span> TAIWAN / 2026</p>
-          <p className="founder-line"><Lang zh="沈耀888π／許文耀" en="SHEN-YAO / WEN-YAO HSU" /></p>
-          <h1><Lang zh={<>AI 行動之前，<br/><em>先建立責任。</em></>} en={<>Before AI can act,<br/><em>responsibility must exist.</em></>} /></h1>
-          <p className="hero-lead"><Lang zh="獨立系統架構師沈耀打造語意防火牆、SCBKR／AVRCK 與決策責任鏈，同時以動畫和音樂把抽象系統轉成可感知的作品。" en="Independent systems architect Wen-Yao Hsu builds Semantic Firewall, SCBKR / AVRCK and decision-responsibility systems—then turns abstract structures into motion and music." /></p>
-          <div className="actions"><Link className="button primary" href="/products"><Lang zh="探索系統" en="EXPLORE SYSTEMS" /> <span>↗</span></Link><Link className="button ghost" href="/demo/anti-scam"><Lang zh="觀看動畫 Demo" en="WATCH MOTION DEMO" /></Link></div>
-        </div>
-        <div className="hero-visual"><DemoStage /><p><b>SCBKR / LIVE STRUCTURE</b><span>SUBJECT · CAUSALITY · BOUNDARY · KEY · RESPONSIBILITY</span></p></div>
-        <div className="hero-foot"><span>SCROLL TO ENTER</span><span>語意治理 × 責任鏈 × 決策資格</span></div>
-      </section>
+  return (
+    <div className={styles.site}>
+      <IntroGate />
+      <SiteHeader />
+      <main>
+        <SereneWaterHero />
 
-      <section className="statement section-pad">
-        <p className="section-index">01 / POSITION</p>
-        <div><h2><Lang zh={<>這不是另一個 AI 工具。<br/>這是模型行動前的<span>責任控制層。</span></>} en={<>This is not another AI tool.<br/>It is a <span>responsibility control layer.</span></>} /></h2></div>
-        <div className="statement-metrics"><p><b>05</b><span>SCBKR AUDIT AXES</span></p><p><b>01</b><span>FINAL OWNER</span></p><p><b>∞</b><span>REPLAYABLE TRACE</span></p></div>
-      </section>
+        <nav className={styles.quickNav} aria-label="首頁快速導覽">
+          {quickLinks.map((item) => (
+            <LocalizedLink href={item.href} key={item.href + item.en}>
+              <span aria-hidden="true">{item.glyph}</span>
+              <b><Lang zh={item.zh} en={item.en} /></b>
+            </LocalizedLink>
+          ))}
+        </nav>
 
-      <section className="products section-pad">
-        <div className="section-head"><div><p className="section-index">02 / SYSTEMS</p><h2><Lang zh={<>核心產品與<br/>責任鏈應用</>} en={<>CORE SYSTEMS &<br/>RESPONSIBILITY APPS</>} /></h2></div><p><Lang zh="每個系統都有獨立的產品敘事、動畫流程與公開證據。" en="Every system has its own product story, motion flow and public evidence." /></p></div>
-        <div className="product-grid">
-          {products.map((product, i) => <Link href={product.href} className={`product-card ${product.tone}`} key={product.slug}>
-            <div className="product-top"><span>{product.index}</span><small>{product.kind}</small></div>
-            <div className="mini-visual"><i/><i/><i/><b>{i === 0 ? "Rπ" : i === 1 ? "VOID" : i === 2 ? "TIRC" : "WIF"}</b></div>
-            <h3><Lang zh={product.title} en={product.en} /></h3><p><Lang zh={product.description} en={product.descriptionEn} /></p><div className="card-link"><Lang zh="觀看系統" en="VIEW SYSTEM" /> <span>↗</span></div>
-          </Link>)}
-        </div>
-        <Link className="text-link" href="/products">查看全部作品與歷程系統 <span>VIEW ALL SYSTEMS ↗</span></Link>
-      </section>
+        <section className={styles.overview} id="about">
+          <div className={styles.aboutPanel}>
+            <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="關於沉靜流派" en="ABOUT THE STUDIO" /></p>
+            <h2><Lang zh="古文明符號 × 數學公式 × 系統架構。" en="ANCIENT SYMBOLS × FORMULAS × SYSTEMS." /></h2>
+            <p><Lang zh="沉靜流派把符號做成語言、把公式做成責任結構，再把責任結構落成語意防火牆、固定案例 Demo、動畫與音樂作品。" en="SERENE SCHOOL turns symbols into language, formulas into responsibility structures, and those structures into the Semantic Firewall, fixed-case demos, animation and music." /></p>
+            <LocalizedLink href="/#founder"><Lang zh="了解更多" en="DISCOVER MORE" /> <span aria-hidden="true">›</span></LocalizedLink>
+          </div>
 
-      <section className="demo-feature section-pad">
-        <div className="demo-copy"><p className="section-index">03 / MOTION DEMO</p><h2><Lang zh={<>不是截圖。<br/>讓系統自己演給你看。</>} en={<>NOT A SCREENSHOT.<br/>LET THE SYSTEM PERFORM.</>} /></h2><p><Lang zh="不用輸入資料。每個 Demo 以電影式介面動畫呈現運算、責任鏈與結果，文字結構同時供搜尋引擎與 AI 理解。" en="No input required. Each demo uses cinematic interface animation to reveal computation, responsibility chains and outcomes while preserving crawlable text." /></p><Link className="button primary" href="/demo/anti-scam"><Lang zh="播放反詐 Demo" en="PLAY ANTI-SCAM DEMO" /> <span>▶</span></Link></div>
-        <DemoStage variant="scam" />
-      </section>
+          <div className={styles.productPreview}>
+            <div className={styles.panelHeading}>
+              <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="核心產品" en="CORE PRODUCTS" /></p>
+              <LocalizedLink href="/products"><Lang zh="查看全部" en="VIEW ALL" /> <span aria-hidden="true">›</span></LocalizedLink>
+            </div>
+            <div className={styles.miniProductGrid}>
+              {products.map((product, index) => {
+                const card = <>
+                  <span className={styles.productGlyph}>{["S", "AI", "Rπ", "W", "0/1"][index]}</span>
+                  <h3><Lang zh={product.title} en={product.en} /></h3>
+                  <p>
+                    <Lang
+                      zh={product.href ? (product.kind === "LIVE DEMO" ? "安全防護操作" : product.kind) : "合法產品空位"}
+                      en={product.href ? product.kind : "LEGAL PRODUCT SLOT"}
+                    />
+                  </p>
+                  <b className={!product.href ? styles.productStatus : undefined}>
+                    <Lang
+                      zh={product.href ? "了解更多" : (product.statusZh ?? "開發中")}
+                      en={product.href ? "DETAILS" : (product.statusEn ?? "IN DEVELOPMENT")}
+                    />
+                    <span aria-hidden="true">{product.href ? "→" : "—"}</span>
+                  </b>
+                </>;
 
-      <section className="news-section section-pad">
-        <div className="section-head"><div><p className="section-index">04 / NEWSROOM</p><h2><Lang zh="國際實相新聞台" en="INTERNATIONAL REALITY NEWS" /></h2></div><p><Lang zh="報導、責任與長期回放的獨立公共界面。" en="An independent public interface for reporting, responsibility and long-term replay." /></p></div>
-        <div className="news-list">{newsItems.map((item) => <a href={item.href} key={item.title} className="news-row"><div><span>{item.date}</span><b>{item.category}</b></div><h3><Lang zh={item.title} en={item.en} /></h3><p><Lang zh={item.excerpt} en={item.excerptEn} /></p><i>↗</i></a>)}</div>
-        <Link className="text-link" href="/news">進入完整新聞台 <span>ENTER NEWSROOM ↗</span></Link>
-      </section>
+                return product.href ? (
+                  <LocalizedLink className={styles.miniProductCard} href={product.href} key={product.slug}>
+                    {card}
+                  </LocalizedLink>
+                ) : (
+                  <article className={`${styles.miniProductCard} ${styles.productPending}`} key={product.slug}>
+                    {card}
+                  </article>
+                );
+              })}
+            </div>
+          </div>
 
-      <section className="founder section-pad" id="founder">
-        <div className="portrait-wrap"><Image src="/media/founder.jpg" alt="沈耀888π／許文耀" fill sizes="(max-width: 800px) 100vw, 42vw" /></div>
-        <div className="founder-copy"><p className="section-index">05 / FOUNDER</p><div className="studio-lockup"><Image src="/media/chenjingliupai-logo.jpg" alt="沉靜流派品牌標誌" width={1500} height={1500} /></div><h2>沈耀888π<br/><span>許文耀 / Wen-Yao Hsu</span></h2><p className="founder-role"><Lang zh={<>沉靜流派工作室・語意防火牆創辦人<br/>SCBKR／AVRCK 系統架構師・動畫與音樂創作者</>} en={<>Founder of Silent School Studio & Semantic Firewall<br/>SCBKR / AVRCK Systems Architect · Animation & Music Creator</>} /></p><p className="truth-note"><Lang zh="獨立研發、獨立設計、獨立負責；不是公司團隊包裝，而是一個人的完整創作與系統架構。" en="Independently researched, designed and owned—not presented as a corporate team, but as one person's complete creative and systems practice." /></p><blockquote><Lang zh="「治理不是讓模型更快回答，而是讓模型在回答、行動與記憶入庫之前，先交出責任鏈。」" en="“Governance is not about making a model answer faster. It is about requiring a responsibility chain before answers, actions or memory.”" /></blockquote><div className="actions"><a className="button primary" href="/Wen-Yao-Hsu-Resume.pdf"><Lang zh="下載履歷" en="DOWNLOAD RESUME" /></a><a className="button ghost" href="mailto:ken0963521@gmail.com"><Lang zh="聯絡合作" en="CONTACT" /></a></div></div>
-      </section>
+          <div className={styles.worksPreview} id="works">
+            <div className={styles.panelHeading}>
+              <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="精選作品" en="FEATURED WORKS" /></p>
+              <LocalizedLink href="/works"><Lang zh="瀏覽更多作品" en="VIEW MORE" /> <span aria-hidden="true">›</span></LocalizedLink>
+            </div>
+            <div className={styles.workGrid}>
+              {featuredWorks.map((work) => (
+                <LocalizedLink href={work.href} key={work.titleEn}>
+                  <span className={styles.workImage}>
+                    <Image src={work.image} alt="" fill sizes="(max-width: 760px) 44vw, 18vw" />
+                  </span>
+                  <h3><Lang zh={work.titleZh} en={work.titleEn} /></h3>
+                  <p><Lang zh={work.labelZh} en={work.labelEn} /></p>
+                </LocalizedLink>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      <section className="public-work section-pad">
-        <div className="section-head"><div><p className="section-index">06 / PUBLIC WORK</p><h2><Lang zh={<>公開研究與<br/>外部行動</>} en={<>PUBLIC RESEARCH &<br/>EXTERNAL ACTION</>} /></h2></div><p><Lang zh="精選可直接查證的文章、提案與外部紀錄。" en="Selected writing, proposals and external records that can be verified directly." /></p></div>
-        <div className="public-work-grid">
-          <a href="https://vocus.cc/article/6a49f63dfd897800010e5197"><span>VOCUS · 2026.07</span><h3><Lang zh="第 0 定理" en="The Zeroth Theorem" /></h3><p><Lang zh="任何答案被採用前，先審主體、邊界、責任與回放。" en="Audit subject, boundary, responsibility and replay before any answer is accepted." /></p><b>↗</b></a>
-          <a href="https://vocus.cc/article/6a3c8bdbfd897800013dbd47"><span>VOCUS · 2026.06</span><h3>SCBKR Local Responsibility Chain</h3><p><Lang zh="本地 AI 責任鏈控制系統的公開說明。" en="A public explanation of the local AI responsibility-chain control system." /></p><b>↗</b></a>
-          <a href="https://vocus.cc/article/693fd66bfd89780001a53801"><span>VOCUS · 2025.12</span><h3><Lang zh="NVIDIA 泡沫悖論" en="The NVIDIA Bubble Paradox" /></h3><p><Lang zh="從算力、能耗與責任外包檢視 AI 基礎設施敘事。" en="A critique of AI infrastructure narratives through compute, energy and outsourced responsibility." /></p><b>↗</b></a>
-          <a href="https://github.com/deepseek-ai/DeepSeek-V3/issues/1088"><span>GITHUB · ISSUE #1088</span><h3>DeepSeek-V4 Diagnostic</h3><p><Lang zh="語意法律、算力治理與責任鏈的公開技術交流。" en="A public technical exchange on semantic law, compute governance and responsibility chains." /></p><b>↗</b></a>
-        </div>
-      </section>
+        <section className={styles.newsMuseum} aria-labelledby="news-museum-title">
+          <div className={styles.newsIntro}>
+            <p className={styles.sectionKicker}><i aria-hidden="true" /> ARCHIVE / NEWSROOM</p>
+            <h2 id="news-museum-title"><Lang zh="實相新聞台 × 責任博物館" en="REALITY NEWSROOM × RESPONSIBILITY MUSEUM" /></h2>
+            <p><Lang zh="記錄真實世界的脈動，保存人類責任的軌跡；讓報導、影像與責任證據在同一座公開架構中被看見。" en="Reporting, moving image and responsibility evidence live in one public architecture—recording the world while preserving the trail of human responsibility." /></p>
+            <LocalizedLink href="/news"><Lang zh="探索更多內容" en="EXPLORE THE ARCHIVE" /> <span aria-hidden="true">→</span></LocalizedLink>
+          </div>
+          <div className={styles.newsPillars}>
+            <LocalizedLink href="/news">
+              <span aria-hidden="true">◎</span>
+              <div><h3><Lang zh="實相新聞台" en="REALITY NEWSROOM" /></h3><p><Lang zh="即時、真實、深度報導世界正在發生的事。" en="Timely, grounded reporting on the world in motion." /></p></div>
+            </LocalizedLink>
+            <LocalizedLink href="/news#museum">
+              <span aria-hidden="true">▥</span>
+              <div><h3><Lang zh="責任博物館" en="RESPONSIBILITY MUSEUM" /></h3><p><Lang zh="保存記憶、啟動反思，讓責任成為未來的指南針。" en="Preserve memory and turn responsibility into a compass." /></p></div>
+            </LocalizedLink>
+            <LocalizedLink href="/news">
+              <span aria-hidden="true">♥</span>
+              <div><h3><Lang zh="共同守護未來" en="GUARDING THE FUTURE" /></h3><p><Lang zh="每一次閱讀、每一段參與，都是改變。" en="Every reading and every act of participation matters." /></p></div>
+            </LocalizedLink>
+          </div>
+        </section>
 
-      <section className="evidence section-pad" id="evidence"><p className="section-index">07 / PUBLIC EVIDENCE</p><h2><Lang zh={<>所有主張，都必須有<br/><span>可回放的公開路徑。</span></>} en={<>EVERY CLAIM NEEDS<br/><span>A REPLAYABLE PUBLIC PATH.</span></>} /></h2><div className="evidence-links"><a href="https://github.com/HIJO790401">GitHub Repository <b>↗</b></a><a href="https://www.linkedin.com/in/yao-shen-150ab93b2">LinkedIn Profile <b>↗</b></a><a href="https://www.youtube.com/@JM-qy7gv">Official YouTube <b>↗</b></a><a href="https://securitybrief.asia/story/semantic-firewall-promises-ai-cost-savings-safer-chat-models">Media Coverage <b>↗</b></a></div></section>
-    </main>
-    <SiteFooter />
-  </>;
+        <section className={styles.publicRecord} id="public-record">
+          <div>
+            <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="公開紀錄" en="PUBLIC RECORD" /></p>
+            <h2><Lang zh="讓外部世界能查到、讀懂、回放。" en="SEARCHABLE. READABLE. REPLAYABLE." /></h2>
+          </div>
+          <div className={styles.recordGrid}>
+            {publicRecords.map((record) => (
+              <a href={record.href} key={record.href} target="_blank" rel="noreferrer">
+                <span>{record.label}</span>
+                <h3><Lang zh={record.zh} en={record.en} /></h3>
+                {"textZh" in record && <p><Lang zh={record.textZh ?? ""} en={record.textEn ?? ""} /></p>}
+                <b aria-hidden="true">↗</b>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.contactBand} id="contact" aria-labelledby="contact-title">
+          <div>
+            <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="合作聯絡" en="COLLABORATION" /></p>
+            <h2 id="contact-title"><Lang zh="讓合作先有清楚的主體、範圍與責任。" en="BEGIN WITH A CLEAR SUBJECT, SCOPE AND RESPONSIBILITY." /></h2>
+          </div>
+          <div>
+            <p><Lang zh="技術合作、公開研究、動畫與音樂企劃，可先以電子郵件說明目的與預期成果。" en="For technical collaboration, public research, animation or music projects, begin with the purpose and expected outcome by email." /></p>
+            <a href="mailto:ken0963521@gmail.com"><Lang zh="寄送合作提案" en="SEND A PROPOSAL" /> <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
 }

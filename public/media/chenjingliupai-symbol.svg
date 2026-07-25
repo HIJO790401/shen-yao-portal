@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">沉靜流派水滴與漣漪符號</title>
+  <desc id="desc">由原始品牌標誌整理的小尺寸向量符號版：一枚水滴落向多層同心漣漪。</desc>
+  <g fill="none" stroke="#131A77" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="25" d="M256 48C236 99 162 178 162 267c0 69 41 108 94 108s94-39 94-108c0-89-74-168-94-219Z"/>
+    <path stroke-width="12" d="M220 231c-16 38-14 78 6 104 11 14 26 24 45 29-30 1-58-13-72-38-18-33-11-70 21-95Z"/>
+    <ellipse cx="256" cy="414" rx="151" ry="33" stroke-width="17"/>
+    <ellipse cx="256" cy="414" rx="88" ry="18" stroke-width="10"/>
+    <path stroke-width="13" d="M73 430c35 45 112 65 183 65s148-20 183-65"/>
+  </g>
+</svg>

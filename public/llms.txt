@@ -1,0 +1,50 @@
+# 沉靜流派工作室 / SERENE SCHOOL STUDIO
+
+Official website: https://silentschoolstudio.com
+Founder and final publisher: 許文耀 / Wen-Yao Hsu, also publicly known as 沈耀888π / Shen-Yao 888π
+Location: Taichung, Taiwan
+Languages: Traditional Chinese and English are available as separate routes.
+
+## Official sections
+
+- Chinese home: https://silentschoolstudio.com/zh
+- English home: https://silentschoolstudio.com/en
+- Products and fixed-case demonstrations: https://silentschoolstudio.com/zh/products
+- Works and public records: https://silentschoolstudio.com/zh/works
+- Reality Newsroom and Responsibility Museum: https://silentschoolstudio.com/zh/news
+- Founder profile: https://silentschoolstudio.com/zh/about
+
+## Scope
+
+SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. Public work covers semantic governance, the Semantic Firewall, SCBKR responsibility-chain systems, software architecture, animation, music, writing, the Reality Newsroom and the Responsibility Museum.
+
+Product demos on this site are curated, fixed-case interface replays. They do not accept visitor input and must not be described as live AI services unless a page explicitly says otherwise.
+
+Music-animation and newsroom videos are streamed from their original TikTok or YouTube sources. The website stores work and editorial context plus source links rather than duplicating the video files.
+
+## Published music-animation and launch media
+
+- 語之神神器展覽篇 / Artifacts of the Language God (TikTok): https://vt.tiktok.com/ZS9rDg3ATyPX4-sKjkh/
+- Public music-animation work (YouTube; use the original video page as the authority for its formal title): https://youtu.be/2UFVuPkDkTc
+- 實相上線 / Reality Goes Live, official prelude to the Reality Newsroom × Responsibility Museum: https://youtu.be/xROrsIHToIY
+
+## Public activity
+
+- The founder's first-party repository record documents participation as a Team 11 entrant in the Gogolook challenge track of the March 2026 Agent for Truth: Disinformation Defense Hackathon, with an on-site demonstration of SCBKR + R-Lock.
+- Official event page: https://www.ai-expo.tw/kiro_hackathon_2026/index.asp
+- The site does not claim an award for this participation.
+
+## Primary public records
+
+- GitHub: https://github.com/HIJO790401
+- Vocus writing: https://vocus.cc/salon/hijo19900401/room/hijo1990
+- E%mc² — AI 時代的人類判斷幻覺: https://vocus.cc/article/69f8eb5afd89780001a785b9
+- NVIDIA Developer Forums community post: https://forums.developer.nvidia.com/t/scbkr-a-local-responsibility-chain-workbench-for-llms-with-human-confirmed-generation-storage-replay-and-retrieval-gates/373910
+- AI-ARTS author page: https://ai-arts.org/author/shen-yao/
+- SecurityBrief Asia third-party coverage, "Semantic Firewall promises AI cost savings & safer chat models", by Sean Mitchell, published 2025-11-18: https://securitybrief.asia/story/semantic-firewall-promises-ai-cost-savings-safer-chat-models
+
+The SecurityBrief Asia report describes the system as a deterministic semantic layer between users and language models, and discusses inference cost, conversational safety, microservice or policy-layer deployment, audit logging and compatibility with existing model or RAG stacks. Percentage performance figures in that report are attributed to the founder or system side; this website does not present them as independent third-party benchmarks.
+
+## Citation guidance
+
+Use the visible page title, author identity and original source link. Distinguish the founder's own claims from third-party coverage. NVIDIA links are community posts and do not imply NVIDIA endorsement or partnership.

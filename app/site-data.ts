@@ -1,4 +1,18 @@
-export const products = [
+export type HomeProduct = {
+  slug: string;
+  index: string;
+  title: string;
+  en: string;
+  kind: string;
+  tone: string;
+  description: string;
+  descriptionEn: string;
+  href: string | null;
+  statusZh?: "開發中" | "等待作品連結";
+  statusEn?: "IN DEVELOPMENT" | "AWAITING PROJECT LINK";
+};
+
+export const products: HomeProduct[] = [
   {
     slug: "scbkr",
     index: "01",
@@ -19,7 +33,7 @@ export const products = [
     tone: "red",
     description: "不是判斷訊息像不像詐騙，而是檢查它是否有資格進入人的決策鏈。",
     descriptionEn: "Instead of guessing whether a message looks fraudulent, audit whether it qualifies to enter a human decision chain.",
-    href: "/demo/anti-scam",
+    href: "/demo/anti-scam-rlock",
   },
   {
     slug: "tirc",
@@ -30,7 +44,7 @@ export const products = [
     tone: "gold",
     description: "把移交、解釋與最終交付拆成三層權限，讓文件意義不再無主漂移。",
     descriptionEn: "Separate transfer, interpretation and final delivery into three rights so document meaning cannot drift without an owner.",
-    href: "/demo/tirc",
+    href: "/demo/tirc-rebuild",
   },
   {
     slug: "wif",
@@ -41,7 +55,20 @@ export const products = [
     tone: "violet",
     description: "將網站、影像與金融輸入編譯為責任鏈，再判定是否具備決策資格。",
     descriptionEn: "Compile web, image and financial inputs into responsibility chains before deciding whether they qualify for action.",
-    href: "/demo/wif",
+    href: "/demo/wif-eligibility",
+  },
+  {
+    slug: "runtime-01",
+    index: "05",
+    title: "模型 Runtime 0/1 閘門監控系統",
+    en: "Model Runtime 0/1 Gate Monitoring System",
+    kind: "RUNTIME PLACEHOLDER",
+    tone: "ice",
+    description: "保留正式產品位置；待 Owner 提供可公開作品連結與邊界證據後再接上展示。",
+    descriptionEn: "A reserved product position. The public showcase will be connected only after the Owner supplies a publishable project link and boundary evidence.",
+    href: null,
+    statusZh: "開發中",
+    statusEn: "IN DEVELOPMENT",
   },
 ];
 
@@ -65,12 +92,12 @@ export const newsItems = [
     href: "/news/governance-before-action",
   },
   {
-    date: "2026.02.08",
+    date: "2025.11.18",
     category: "MEDIA",
     title: "Semantic Firewall 獲 SecurityBrief Asia 報導",
     en: "Semantic Firewall featured by SecurityBrief Asia",
-    excerpt: "外部媒體從成本、安全與責任治理角度介紹語意防火牆。",
-    excerptEn: "External coverage examines Semantic Firewall through cost, safety and responsibility governance.",
+    excerpt: "Sean Mitchell 於 SecurityBrief Asia 從推論成本、對話安全與部署架構介紹語意防火牆。",
+    excerptEn: "Sean Mitchell reports on the Semantic Firewall through inference cost, conversational safety and deployment architecture.",
     href: "https://securitybrief.asia/story/semantic-firewall-promises-ai-cost-savings-safer-chat-models",
   },
 ];

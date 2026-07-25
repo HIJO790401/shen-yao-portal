@@ -1,8 +1,5 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { DemoStage } from "../../components/DemoStage";
-import { SiteFooter } from "../../components/SiteFooter";
-import { SiteHeader } from "../../components/SiteHeader";
-import { Lang } from "../../components/LanguageControl";
-export const metadata: Metadata = { title: "TIRC 文件責任邊界 Demo", description: "三重解釋權文件防火牆動畫展示。" };
-export default function Tirc(){return <><SiteHeader/><main className="subpage demo-page"><section className="demo-hero"><div><p className="eyebrow"><span>PRODUCT FILM 03</span> DOCUMENT GATE</p><h1><Lang zh={<>能打開文件，<br/><em>不代表有權解釋。</em></>} en={<>Opening a document<br/><em>does not grant interpretation rights.</em></>} /></h1><p><Lang zh="不用上傳文件。觀看三重權限如何依序開啟。" en="No upload required. Watch three document rights unlock in sequence." /></p></div><DemoStage variant="tirc"/></section><section className="demo-explain section-pad"><p className="section-index"><Lang zh="三重文件權限" en="THREE DOCUMENT RIGHTS" /></p><div className="steps"><article><span>01</span><h2><Lang zh="移交權" en="TRANSFER" /></h2><p><Lang zh="誰有資格持有、傳送或接收文件。" en="Who may hold, send or receive the document." /></p></article><article><span>02</span><h2><Lang zh="解釋權" en="INTERPRET" /></h2><p><Lang zh="誰能定義文件內容及其有效邊界。" en="Who may define the content and its valid boundary." /></p></article><article><span>03</span><h2><Lang zh="交付權" en="DELIVER" /></h2><p><Lang zh="誰能簽收最終結果並承擔文件意義。" en="Who may accept the final outcome and own its meaning." /></p></article></div><div className="actions"><Link className="button primary" href="/demo/tirc"><Lang zh="重新播放動畫" en="REPLAY FILM" /> ↻</Link><Link className="button ghost" href="/products"><Lang zh="返回產品中心" en="BACK TO PRODUCTS" /></Link></div></section></main><SiteFooter/></>}
+import { redirect } from "next/navigation";
+
+export default function LegacyTircDemo() {
+  redirect("/zh/demo/tirc-rebuild");
+}

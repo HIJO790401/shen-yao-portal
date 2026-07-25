@@ -1,3 +1,41 @@
 import type { MetadataRoute } from "next";
 import { productFilms } from "./showcase-data";
-export default function sitemap(): MetadataRoute.Sitemap { const base="https://silentschoolstudio.com"; const films=productFilms.map(({slug})=>`/demo/${slug}`); return ["","/products","/news","/demo/anti-scam","/demo/tirc","/demo/wif",...films,"/news/platform-rebuild","/news/governance-before-action"].map(path=>({url:base+path,lastModified:new Date("2026-07-15"),changeFrequency:path.includes("news")?"weekly":"monthly",priority:path===""?1:.8})); }
+
+const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://silentschoolstudio.com";
+const updated = new Date("2026-07-18T00:00:00+08:00");
+
+const reportSlugs = [
+  "openai-tbpn-audit",
+  "yan-rm-ai-replace-myth-audit",
+  "abstract-math-audit",
+  "giant-ai-deep-think-illusion-audit",
+  "massage-talk-ai-safety-love",
+  "platform-rebuild",
+  "governance-before-action",
+];
+
+const museumSlugs = [
+  "abstract-sanctuary",
+  "glass-brain-chamber-ip-echo-state",
+  "theology-outsourcing",
+  "ya-rm-ep001-massage-talk",
+  "yc-rm-c006-ai-deep-think-evaporation",
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const primary = ["", "/products", "/works", "/news", "/about"];
+  const demos = productFilms.map(({ slug }) => `/demo/${slug}`);
+  const reports = reportSlugs.map((slug) => `/news/${slug}`);
+  const museum = museumSlugs.map((slug) => `/news/museum/${slug}`);
+  const localized = ["zh", "en"].flatMap((locale) =>
+    [...primary, ...demos, ...reports, ...museum].map((path) => `/${locale}${path}`),
+  );
+  const routes = ["/", ...primary.filter(Boolean), ...demos, ...reports, ...museum, ...localized];
+
+  return [...new Set(routes)].map((path) => ({
+    url: `${base}${path}`,
+    lastModified: updated,
+    changeFrequency: path.includes("/news") ? "weekly" : "monthly",
+    priority: path === "/" || path === "/zh" || path === "/en" ? 1 : path.includes("/demo/") ? 0.72 : 0.82,
+  }));
+}

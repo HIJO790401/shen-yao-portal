@@ -1,0 +1,38 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import type { MuseumEntry } from "@/db/museum";
+import { VideoEmbed } from "../components/VideoEmbed";
+
+const emptyEntry = {
+  id:0, slug:"", registry_id:"", title_zh:"", title_en:"", subtitle_zh:"", subtitle_en:"", guide_zh:"", guide_en:"", summary_zh:"", summary_en:"", body_zh:"", body_en:"", hall_zh:"", hall_en:"", verdict_zh:"", verdict_en:"", repair_zh:"", repair_en:"", evidence_url:"", cover_url:"", video_url:"", category:"RESPONSIBILITY", status:"draft", occurred_at:new Date().toISOString().slice(0,16), updated_at:"", author_email:"",
+} as MuseumEntry;
+
+export function MuseumEditor({ initialEntries, canSave, ownerEmail }: { initialEntries:MuseumEntry[]; canSave:boolean; ownerEmail?:string }) {
+  const [entries,setEntries]=useState(initialEntries);
+  const [form,setForm]=useState<MuseumEntry>(emptyEntry);
+  const [message,setMessage]=useState("");
+  const [busy,setBusy]=useState(false);
+  const update=(name:keyof MuseumEntry,value:string|number)=>setForm(old=>({...old,[name]:value}));
+
+  async function refresh(){const res=await fetch("/api/studio/museum");if(res.ok)setEntries(((await res.json()) as {entries:MuseumEntry[]}).entries)}
+  async function save(event:FormEvent){event.preventDefault();if(!canSave)return setMessage("這是本機驗收畫面；正式上線登入後才能發布館藏。");setBusy(true);setMessage("正在儲存…");const res=await fetch("/api/studio/museum",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(form)});const data=await res.json() as {error?:string;id:number;slug:string};setBusy(false);if(!res.ok)return setMessage(data.error||"儲存失敗");setMessage(form.status==="published"?"館藏已發布。":"館藏草稿已保存。");await refresh();setForm(old=>({...old,id:data.id,slug:data.slug}))}
+  async function remove(){if(!form.id||!canSave||!confirm("確定刪除這件館藏？"))return;const res=await fetch("/api/studio/museum",{method:"DELETE",headers:{"content-type":"application/json"},body:JSON.stringify({id:form.id})});if(res.ok){setMessage("館藏已刪除。");setForm(emptyEntry);await refresh()}}
+  async function upload(file?:File){if(!file)return;if(!canSave)return setMessage("正式上線登入後才能上傳封面。");setBusy(true);const data=new FormData();data.append("file",file);const res=await fetch("/api/studio/upload",{method:"POST",body:data});const result=await res.json() as {error?:string;url:string};setBusy(false);if(!res.ok)return setMessage(result.error||"上傳失敗");update("cover_url",result.url);setMessage("封面已上傳，記得儲存館藏。");}
+
+  return <div className="studio-shell museum-editor">
+    <aside className="studio-list"><div className="studio-list-head"><div><b>責任博物館</b><small>{ownerEmail?`登入：${ownerEmail}`:"本機驗收模式"}</small></div><button onClick={()=>{setForm(emptyEntry);setMessage("")}}>＋ 新增館藏</button></div>
+      {entries.length===0&&<p className="studio-empty">目前還沒有自行發布的館藏。</p>}
+      {entries.map(entry=><button className={form.id===entry.id?"is-current":""} key={entry.id} onClick={()=>{setForm({...entry,occurred_at:entry.occurred_at.slice(0,16)});setMessage("")}}><span>{entry.status==="published"?"已發布":"草稿"}</span><b>{entry.title_zh}</b><small>{entry.category} · {entry.occurred_at.slice(0,10)}</small></button>)}
+    </aside>
+    <form className="studio-form" onSubmit={save}>
+      <div className="studio-form-title"><div><span>責任館藏編輯</span><h1>{form.title_zh||"新增一件館藏"}</h1></div><a href="/news#museum" target="_blank">查看博物館 ↗</a></div>
+      {!canSave&&<div className="studio-preview-note">本機可完整驗收欄位；正式上線並以站主帳號登入後才能儲存。</div>}
+      <fieldset><legend>一、館藏身分</legend><div className="studio-two"><label>館藏編號<input value={form.registry_id} onChange={e=>update("registry_id",e.target.value)} placeholder="例如：YaoRM-E001"/></label><label>網址代碼<input value={form.slug} onChange={e=>update("slug",e.target.value)} placeholder="例如：theology-outsourcing"/></label></div><label>中文標題<input value={form.title_zh} onChange={e=>update("title_zh",e.target.value)} placeholder="例如：文明神學外包"/></label><label>英文標題<input value={form.title_en} onChange={e=>update("title_en",e.target.value)}/></label><label>中文副標題<textarea rows={2} value={form.subtitle_zh} onChange={e=>update("subtitle_zh",e.target.value)}/></label><label>英文副標題<textarea rows={2} value={form.subtitle_en} onChange={e=>update("subtitle_en",e.target.value)}/></label><div className="studio-two"><label>中文館別<input value={form.hall_zh} onChange={e=>update("hall_zh",e.target.value)} placeholder="例如：責任蒸發館"/></label><label>英文館別<input value={form.hall_en} onChange={e=>update("hall_en",e.target.value)} placeholder="Responsibility Evaporation Hall"/></label></div><div className="studio-two"><label>分類<select value={form.category} onChange={e=>update("category",e.target.value)}><option value="RESPONSIBILITY">責任</option><option value="EVIDENCE">證據</option><option value="VERSION">版本</option><option value="REPAIR">修復</option><option value="PUBLIC_RECORD">公共紀錄</option></select></label><label>事件時間<input type="datetime-local" value={form.occurred_at} onChange={e=>update("occurred_at",e.target.value)}/></label></div></fieldset>
+      <fieldset><legend>二、導覽、封面與影片</legend><label>中文導覽<textarea rows={5} value={form.guide_zh} onChange={e=>update("guide_zh",e.target.value)} placeholder="進館前，先告訴觀眾這件館藏要看什麼。"/></label><label>英文導覽<textarea rows={5} value={form.guide_en} onChange={e=>update("guide_en",e.target.value)}/></label><label>上傳館藏封面<input type="file" accept="image/*" onChange={e=>upload(e.target.files?.[0])}/></label><label>封面網址<input value={form.cover_url} onChange={e=>update("cover_url",e.target.value)}/></label><label>YouTube 影片網址<input value={form.video_url} onChange={e=>update("video_url",e.target.value)} placeholder="貼上 YouTube 網址，館藏頁會直接播放"/></label>{form.video_url&&<VideoEmbed url={form.video_url} title={form.title_zh||"館藏影片"}/>}</fieldset>
+      <fieldset><legend>三、完整館藏內容</legend><p className="field-help">保留原獨立責任博物館的「導覽 → 影片 → 內文 → 封面／責任紀錄」結構；中英文在網站上分開顯示。</p><label>中文摘要<textarea rows={3} value={form.summary_zh} onChange={e=>update("summary_zh",e.target.value)}/></label><label>中文內文<textarea rows={14} value={form.body_zh} onChange={e=>update("body_zh",e.target.value)}/></label><label>英文摘要<textarea rows={3} value={form.summary_en} onChange={e=>update("summary_en",e.target.value)}/></label><label>英文內文<textarea rows={14} value={form.body_en} onChange={e=>update("body_en",e.target.value)}/></label></fieldset>
+      <fieldset><legend>四、判詞、證據與修復</legend><label>證據或來源連結<input value={form.evidence_url} onChange={e=>update("evidence_url",e.target.value)} placeholder="https://..."/></label><label>中文判詞<textarea rows={5} value={form.verdict_zh} onChange={e=>update("verdict_zh",e.target.value)} placeholder="這件館藏最後確認了什麼？"/></label><label>英文判詞<textarea rows={5} value={form.verdict_en} onChange={e=>update("verdict_en",e.target.value)}/></label><label>中文修復紀錄<textarea rows={5} value={form.repair_zh} onChange={e=>update("repair_zh",e.target.value)} placeholder="錯在哪、如何修、誰承擔？"/></label><label>英文修復紀錄<textarea rows={5} value={form.repair_en} onChange={e=>update("repair_en",e.target.value)}/></label></fieldset>
+      <fieldset><legend>五、儲存或發布</legend><div className="publish-choice"><label><input type="radio" checked={form.status==="draft"} onChange={()=>update("status","draft")}/> 先存草稿</label><label><input type="radio" checked={form.status==="published"} onChange={()=>update("status","published")}/> 發布到責任博物館</label></div><div className="studio-actions"><button className="save-button" disabled={busy} type="submit">{busy?"處理中…":form.status==="published"?"發布館藏":"儲存草稿"}</button>{form.id>0&&<button className="delete-button" type="button" onClick={remove}>刪除館藏</button>}</div>{message&&<p className="studio-message">{message}</p>}</fieldset>
+    </form>
+  </div>;
+}

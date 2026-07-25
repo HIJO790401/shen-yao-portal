@@ -1,9 +1,5 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { DemoStage } from "../../components/DemoStage";
-import { SiteFooter } from "../../components/SiteFooter";
-import { SiteHeader } from "../../components/SiteHeader";
-import { Lang } from "../../components/LanguageControl";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "反詐騙語意防火牆 Demo", description: "以動畫流程展示 SCBKR 如何檢查訊息的主體、因果、邊界、依據與責任。" };
-export default function AntiScam(){return <><SiteHeader/><main className="subpage demo-page"><section className="demo-hero"><div><p className="eyebrow"><span>PRODUCT FILM 02</span> ANTI-SCAM</p><h1><Lang zh={<>它不猜是不是詐騙。<br/><em>它審查訊息有沒有資格。</em></>} en={<>It does not guess fraud.<br/><em>It audits decision eligibility.</em></>} /></h1><p><Lang zh="不用輸入。觀看訊息如何被掃描、拒絕與歸零。" en="No input required. Watch a message become scanned, rejected and voided." /></p></div><DemoStage variant="scam"/></section><section className="demo-explain section-pad"><p className="section-index"><Lang zh="運作方式" en="HOW IT WORKS" /></p><div className="steps"><article><span>01</span><h2><Lang zh="訊息出現" en="MESSAGE APPEARS" /></h2><p><Lang zh="模擬簡訊、Email、社群訊息或可疑連結進場。" en="A simulated SMS, email, social message or suspicious link enters the scene." /></p></article><article><span>02</span><h2><Lang zh="五鏈掃描" en="FIVE-CHAIN SCAN" /></h2><p><Lang zh="動畫依序檢查主體、因果、邊界、依據與責任。" en="The film audits subject, causality, boundary, basis and responsibility in sequence." /></p></article><article><span>03</span><h2><Lang zh="資格判定" en="ELIGIBILITY VERDICT" /></h2><p><Lang zh="缺少核心責任條件的訊息不進入人的決策鏈。" en="A message without core responsibility conditions cannot enter a human decision chain." /></p></article></div><div className="formula">MESSAGE × SCBKR × R-LOCK → <b>RETURN / VOID</b></div><div className="actions"><Link className="button primary" href="/demo/anti-scam"><Lang zh="重新播放動畫" en="REPLAY FILM" /> ↻</Link><Link className="button ghost" href="/products"><Lang zh="返回產品中心" en="BACK TO PRODUCTS" /></Link></div></section></main><SiteFooter/></>}
+export default function LegacyAntiScamDemo() {
+  redirect("/zh/demo/anti-scam-rlock");
+}

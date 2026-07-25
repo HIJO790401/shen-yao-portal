@@ -1,22 +1,133 @@
+export type DemoStatus = "ready" | "repair" | "deferred";
+
 export type ProductFilm = {
-  slug: string; index: string; name: string; nameEn: string; label: string;
-  headlineZh: string; headlineEn: string; introZh: string; introEn: string;
-  variant: "chain" | "firewall" | "rlock" | "copyright" | "memory" | "dual" | "compute" | "bridge" | "payment" | "universe" | "sentinel";
-  formula: string; steps: Array<{ key: string; zh: string; en: string }>;
+  code: string;
+  slug: string;
+  index: string;
+  name: string;
+  nameEn: string;
+  label: string;
+  status: DemoStatus;
+  statusZh: string;
+  statusEn: string;
+  headlineZh: string;
+  headlineEn: string;
+  introZh: string;
+  introEn: string;
+  formula: string;
+  sourceRepo: string;
+  steps: Array<{ key: string; zh: string; en: string }>;
 };
 
 export const productFilms: ProductFilm[] = [
-  { slug:"scbkr", index:"01", name:"SCBKR 本地責任鏈模型", nameEn:"SCBKR Local Responsibility Model", label:"LOCAL GOVERNANCE", headlineZh:"先把責任鏈接好，再允許系統行動。", headlineEn:"Connect responsibility before the system acts.", introZh:"本地工作台把主體、因果、邊界、依據與責任組成可回放的決策結構。", introEn:"A local workbench compiles subject, causality, boundary, key and responsibility into a replayable decision structure.", variant:"chain", formula:"S × C × B × K × R → CLOSE", steps:[{key:"S",zh:"鎖定真正主體",en:"Lock the actual subject"},{key:"B",zh:"建立可撤銷邊界",en:"Create revocable boundaries"},{key:"R",zh:"把結果接回具名責任",en:"Return outcomes to named responsibility"}] },
-  { slug:"firewall-v4", index:"02", name:"語意防火牆 V4.1", nameEn:"Semantic Firewall V4.1", label:"LLM SAFETY LAYER", headlineZh:"模型回答之前與之後，都有一道可回放的防火牆。", headlineEn:"A replayable firewall before and after every model response.", introZh:"不改模型權重；以語意分析、風險偵測與稽核降低幻覺、高風險內容與推理浪費。", introEn:"Without changing model weights, semantic analysis, risk detection and audit reduce hallucination, high-risk content and inference waste.", variant:"firewall", formula:"INPUT → PRE-GATE → MODEL → POST-GATE → SAFE OUTPUT", steps:[{key:"01",zh:"輸入先掃描",en:"Scan input first"},{key:"02",zh:"模型輸出再審計",en:"Audit model output"},{key:"03",zh:"留下可回放判定",en:"Preserve a replayable verdict"}] },
-  { slug:"anti-scam-rlock", index:"03", name:"反詐騙語意鎖 R-Lock", nameEn:"Anti-Scam Semantic R-Lock", label:"PRE-DECISION LOCK", headlineZh:"像官方，不代表有資格讓你做決定。", headlineEn:"Looking official does not qualify a message for action.", introZh:"在點擊、匯款或交付資料之前，先查主體、原因、成本與責任是否能被驗證。", introEn:"Before clicking, paying or sharing data, verify subject, cause, cost and responsibility.", variant:"rlock", formula:"UNVERIFIED STRUCTURE → R-LOCK → ACTION BLOCKED", steps:[{key:"S",zh:"寄件主體不可驗",en:"Sender cannot be verified"},{key:"K",zh:"依據與成本失真",en:"Evidence and cost are distorted"},{key:"R",zh:"無人承擔就鎖住行動",en:"No owner means action stays locked"}] },
-  { slug:"copyright", index:"04", name:"著作權 SCBKR 責任邊界引擎", nameEn:"Copyright Responsibility-Boundary Engine", label:"LICENSE BOUNDARY", headlineZh:"不是有檔案就能用；要先看授權是否閉合。", headlineEn:"Possession is not permission; licensing must close.", introZh:"動畫展示作品、授權、使用模式與失效條件如何形成可追蹤的語意責任雜湊。", introEn:"See content, license, usage and failure conditions compile into a traceable semantic responsibility hash.", variant:"copyright", formula:"CONTENT × LICENSE × USE × RESPONSIBILITY → HASH", steps:[{key:"C",zh:"確認內容來源",en:"Confirm content source"},{key:"L",zh:"比對授權條件",en:"Match license conditions"},{key:"H",zh:"生成責任雜湊",en:"Generate responsibility hash"}] },
-  { slug:"memory-index", index:"05", name:"SCBKR Memory Index", nameEn:"SCBKR Memory Index", label:"MEMORY ROUTING", headlineZh:"先整理記憶，再決定哪些能進入下一次判斷。", headlineEn:"Structure memory before it enters the next decision.", introZh:"跨來源記憶被索引、重播、稽核與截斷，只把具備責任鏈的內容送往下一層。", introEn:"Cross-source memory is indexed, replayed, audited and cut off before decision-ready records move forward.", variant:"memory", formula:"SOURCES → INDEX → CUTOFF → DECISION-READY MEMORY", steps:[{key:"01",zh:"多來源匯入",en:"Ingest many sources"},{key:"02",zh:"建立時間與責任索引",en:"Index time and responsibility"},{key:"03",zh:"不合格記憶停止前進",en:"Stop unqualified memory"}] },
-  { slug:"dual-engine", index:"06", name:"語意防火牆雙引擎", nameEn:"Semantic Firewall Dual Engine", label:"TWO-LENS AUDIT", headlineZh:"同一件事，同時看法律責任與隱藏成本。", headlineEn:"One event, audited for legal responsibility and hidden cost.", introZh:"法律責任判決引擎與責任敘事成本引擎同步運行，最後在同一條責任鏈收束。", introEn:"A legal verdict engine and narrative-cost audit run together, then close on one responsibility chain.", variant:"dual", formula:"LEGAL VERDICT ∥ COST AUDIT → RESPONSIBILITY CLOSE", steps:[{key:"A",zh:"法律責任拆解",en:"Legal responsibility analysis"},{key:"B",zh:"隱藏與延後成本",en:"Hidden and deferred cost"},{key:"π",zh:"兩個結果交叉閉合",en:"Cross-close both outcomes"}] },
-  { slug:"compute-governance", index:"07", name:"計算損失與提示治理引擎", nameEn:"Compute & Prompt Governance Engine", label:"PROMPT GOVERNANCE", headlineZh:"把語意污染、幻覺話術與算力浪費變成可見成本。", headlineEn:"Make semantic pollution, hallucination and compute waste visible.", introZh:"系統掃描提示與輸出，標記逃責語句、風險等級與推理浪費，形成可理解的治理結果。", introEn:"Prompts and outputs are scanned for responsibility evasion, risk grades and inference waste.", variant:"compute", formula:"PROMPT → POLLUTION SCAN → COST LOSS → REPAIR", steps:[{key:"01",zh:"掃描語意污染",en:"Scan semantic pollution"},{key:"02",zh:"估算浪費成本",en:"Estimate wasted compute"},{key:"03",zh:"產生修復方向",en:"Generate repair direction"}] },
-  { slug:"semantic-life-bridge", index:"08", name:"沈耀語意生命通道", nameEn:"Shen-Yao Semantic Life Bridge", label:"CONTROLLED PRESET", headlineZh:"人不是標籤；真正需要補的是通道與責任鏈。", headlineEn:"A person is not a label; bridge the channel and responsibility.", introZh:"固定範本動畫，不診斷、不治療、不收集個資，展示標籤如何被重新接回通道、情境與責任。", introEn:"A controlled preset film—no diagnosis, treatment or data collection—bridging labels back to channel, context and responsibility.", variant:"bridge", formula:"PERSON ≠ LABEL → CHANNEL → CONTEXT → RESPONSIBILITY", steps:[{key:"P",zh:"人先於病名與標籤",en:"Person before label"},{key:"C",zh:"找出中斷的語意通道",en:"Find the broken channel"},{key:"R",zh:"用責任鏈穩定連接",en:"Stabilize with responsibility"}] },
-  { slug:"wif-pay", index:"09", name:"WIF-Pay 金融責任鏈防火牆", nameEn:"WIF-Pay Responsibility Firewall", label:"PAYMENT REPLAY", headlineZh:"每一筆付款，都應該能知道發生什麼、誰要負責。", headlineEn:"Every payment should explain what happened and who owns it.", introZh:"不處理真實卡號；只展示銀行、平台、商家與客服之間的付款事件如何被記錄與回放。", introEn:"No real card data—only a film of how payment events move across banks, platforms, merchants and support.", variant:"payment", formula:"BANK → PLATFORM → SERVICE → SUPPORT → REPLAY", steps:[{key:"T",zh:"事件加上時間戳",en:"Timestamp the event"},{key:"S",zh:"跨服務追蹤狀態",en:"Trace status across services"},{key:"R",zh:"定位最終責任",en:"Locate final responsibility"}] },
-  { slug:"shen-universe", index:"10", name:"沈靜流派創作宇宙", nameEn:"Silent School Creative Universe", label:"CREATIVE SYSTEM", headlineZh:"系統、動畫、音樂與族人，不再散落成孤島。", headlineEn:"Systems, animation, music and the clan become one connected universe.", introZh:"把技術作品、聲音、影像與世界觀整理成可探索、可持續擴張的創作星圖。", introEn:"Technology, sound, image and worldbuilding form an explorable, expandable creative constellation.", variant:"universe", formula:"SYSTEM × ANIMATION × MUSIC × STORY → UNIVERSE", steps:[{key:"S",zh:"系統作品成為核心星體",en:"Systems become core bodies"},{key:"A",zh:"動畫讓概念可見",en:"Animation makes concepts visible"},{key:"M",zh:"音樂與故事建立情感軌道",en:"Music and story form emotional orbits"}] },
-  { slug:"sy-sentinel", index:"11", name:"SY Sentinel v1.1", nameEn:"SY Sentinel v1.1", label:"SEMANTIC SENTINEL", headlineZh:"先觀測，再攔截；每次阻擋都留下原因。", headlineEn:"Observe, intercept and preserve the reason for every block.", introZh:"哨兵持續觀測訊號、風險與責任缺口，將異常從行動路徑分離並保存回放紀錄。", introEn:"The sentinel observes signals, risk and responsibility gaps, separating anomalies from action while preserving replay.", variant:"sentinel", formula:"OBSERVE → DETECT → BLOCK → REPLAY", steps:[{key:"O",zh:"持續觀測訊號",en:"Observe signals"},{key:"D",zh:"偵測風險偏移",en:"Detect risk drift"},{key:"B",zh:"攔截並保存判定",en:"Block and preserve verdict"}] },
+  {
+    code: "SF-01", slug: "firewall-v4", index: "SF-01", name: "Semantic Firewall V4", nameEn: "Semantic Firewall V4", label: "THREE-LAYER FRONT-END FILM", status: "ready", statusZh: "固定案例動畫可播放", statusEn: "FIXED CASE FILM READY",
+    headlineZh: "Regex Shield 先標記，再由 Audit 收束到 LOCKED。", headlineEn: "Regex Shield marks first; Audit then closes the case at LOCKED.",
+    introZh: "使用固定文字重演原型的三層前端邏輯，不冒充正式風控後端、身分驗證或商業 API。", introEn: "A fixed text replays the three front-end layers without claiming a production risk backend, identity verification or commercial API.",
+    formula: "FIXED TEXT → REGEX SHIELD → AUDIT → LOCKED", sourceRepo: "https://github.com/HIJO790401/-8888-Semantic-Firewall-SystemV4",
+    steps: [{ key: "01", zh: "Regex Shield 命中", en: "Regex Shield hits" }, { key: "02", zh: "Audit 彙整責任缺口", en: "Audit gathers responsibility gaps" }, { key: "03", zh: "概念鎖進入 LOCKED", en: "Concept lock reaches LOCKED" }],
+  },
+  {
+    code: "SF-02", slug: "anti-scam-rlock", index: "SF-02", name: "反詐騙語意鎖 R-Lock", nameEn: "Anti-Scam Semantic R-Lock", label: "LOCAL RULE ENGINE", status: "ready", statusZh: "固定案例動畫可播放", statusEn: "FIXED CASE READY",
+    headlineZh: "看起來像官方，不代表訊息有資格推動行動。", headlineEn: "Looking official does not qualify a message for action.",
+    introZh: "以 Repo 內建假銀行通知重播 SCBKR、R-Lock、WHO＋WHY＋TRUE 與 VOID Gate。", introEn: "The repository's fake-bank fixture replays SCBKR, R-Lock, WHO + WHY + TRUE and the VOID gate.",
+    formula: "FIXED MESSAGE → SCBKR → R-LOCK → VOID / BLOCK", sourceRepo: "https://github.com/HIJO790401/anti-scam-semantic-rlock",
+    steps: [{ key: "01", zh: "固定訊息進場", en: "Built-in message enters" }, { key: "02", zh: "本地規則與五鏈審計", en: "Local rules and five-chain audit" }, { key: "03", zh: "輸出行動閘門", en: "Output action gate" }],
+  },
+  {
+    code: "SF-03", slug: "anti-scam-non-rlock", index: "SF-03", name: "反詐騙語意防火牆 Non R-Lock", nameEn: "Anti-Scam Semantic Firewall · Non R-Lock", label: "SIX BUILT-IN CASES", status: "ready", statusZh: "六個修復後案例可播放", statusEn: "SIX REPAIRED FIXTURES READY",
+    headlineZh: "六個內建案例，清楚分流 SAFE、RISK、FATAL 與 NON-CLOSABLE。", headlineEn: "Six built-in cases route clearly to SAFE, RISK, FATAL and NON-CLOSABLE.",
+    introZh: "官網以固定資料複寫原規則核心的前端運作，不讓訪客輸入訊息，也不聲稱即時詐騙偵測。", introEn: "The site replays the source rule core with fixed data, no visitor input and no live scam-detection claim.",
+    formula: "SIX FIXTURES → RULE HITS → FOUR-WAY ROUTE", sourceRepo: "https://github.com/HIJO790401/anti-scam-semantic-firewall",
+    steps: [{ key: "01", zh: "固定六案輪播", en: "Cycle six fixtures" }, { key: "02", zh: "顯示規則命中", en: "Show rule hits" }, { key: "03", zh: "輸出四級分流", en: "Render four-way routing" }],
+  },
+  {
+    code: "SF-04", slug: "compute-governance", index: "SF-04", name: "Prompt／算力治理掃描器", nameEn: "Prompt & Compute Governance Scanner", label: "BROWSER RULE SCAN", status: "ready", statusZh: "固定文字動畫可播放", statusEn: "FIXED TEXT READY",
+    headlineZh: "把命中詞、責任缺口與估算成本攤開。", headlineEn: "Expose pattern hits, responsibility gaps and estimated cost.",
+    introZh: "兩段固定文字依 engine.js 重算 SPI、SCBKR、命中數與每字估算成本；成本永遠標示 Estimate。", introEn: "Two fixed texts recompute SPI, SCBKR, hits and per-character cost from engine.js, with cost always labeled Estimate.",
+    formula: "FIXED TEXT → RULE HITS → SPI + SCBKR → ESTIMATE", sourceRepo: "https://github.com/HIJO790401/semantic-firewall-system",
+    steps: [{ key: "01", zh: "掃描固定文字", en: "Scan fixed text" }, { key: "02", zh: "揭露命中與缺口", en: "Expose hits and gaps" }, { key: "03", zh: "輸出啟發式分數", en: "Output heuristic score" }],
+  },
+  {
+    code: "SF-05", slug: "dual-engine", index: "SF-05", name: "語意防火牆雙引擎", nameEn: "Semantic Firewall Dual Engine", label: "TWO PREWRITTEN CASES", status: "ready", statusZh: "兩個固定案例可播放", statusEn: "TWO FIXED CASES READY",
+    headlineZh: "法律責任與成本敘事分開，最後只在責任鏈交會。", headlineEn: "Legal exposure and cost narrative remain separate, meeting only at responsibility.",
+    introZh: "保留原 Repo 的兩個預寫案例，不提供任意案件分析、事實查核或正式 API。", introEn: "Preserves the two prewritten source cases without arbitrary-case analysis, fact checking or a production API.",
+    formula: "LEGAL CASE × COST CASE → RESPONSIBILITY CROSS-CHECK", sourceRepo: "https://github.com/HIJO790401/semantic-firewall-dual-engine-demo",
+    steps: [{ key: "A", zh: "法律責任固定案例", en: "Fixed legal-responsibility case" }, { key: "B", zh: "成本敘事固定案例", en: "Fixed cost-narrative case" }, { key: "π", zh: "只在責任交會", en: "Meet only at responsibility" }],
+  },
+  {
+    code: "SF-06", slug: "copyright", index: "SF-06", name: "著作權 SCBKR 責任邊界引擎", nameEn: "Copyright SCBKR Boundary Engine", label: "FIXED 3×4 MATRIX", status: "ready", statusZh: "原 Auto Demo 可播放", statusEn: "SOURCE AUTO DEMO READY",
+    headlineZh: "持有內容，不等於取得使用權限。", headlineEn: "Possession of content does not grant permission.",
+    introZh: "固定新聞授權案例依序通過 Summary、RAG、Training 與 Commercial Generation。", introEn: "A fixed news-license case moves through Summary, RAG, Training and Commercial Generation.",
+    formula: "LICENSE CASE × USE → BOUNDARY STATE → OPTION FINGERPRINT", sourceRepo: "https://github.com/HIJO790401/copyright-scbkr-engine",
+    steps: [{ key: "01", zh: "鎖定授權情境", en: "Lock license case" }, { key: "02", zh: "逐用途判定", en: "Judge each use" }, { key: "03", zh: "保留失敗條件", en: "Preserve failure conditions" }],
+  },
+  {
+    code: "RG-01", slug: "scbkr", index: "RG-01", name: "SCBKR 本地責任鏈模型", nameEn: "SCBKR Local Responsibility Model", label: "OWNER-DEFERRED", status: "deferred", statusZh: "依指示暫緩動畫", statusEn: "MOTION DEFERRED BY OWNER",
+    headlineZh: "責任鏈模型保留驗證優先，不用動畫假裝自動理解。", headlineEn: "The responsibility-chain model remains evidence-first, without fake automation.",
+    introZh: "真實流程需要使用者簽名、生成、驗收與二次確認；依 Owner 指示，本階段不轉成自動動畫。", introEn: "The real flow requires signature, generation, acceptance and reconfirmation; per the Owner, motion is deferred in this phase.",
+    formula: "DRAFT → OWNER SIGNATURE → ACCEPTANCE → RECONFIRMATION", sourceRepo: "https://github.com/HIJO790401/scbkr-local-responsibility-model",
+    steps: [{ key: "S", zh: "需要人類簽名", en: "Human signature required" }, { key: "A", zh: "需要人類驗收", en: "Human acceptance required" }, { key: "R", zh: "自動動畫暫緩", en: "Automatic film deferred" }],
+  },
+  {
+    code: "RG-02", slug: "memory-index", index: "RG-02", name: "SCBKR Memory Index", nameEn: "SCBKR Memory Index", label: "METADATA-ONLY INDEX", status: "ready", statusZh: "索引邊界動畫可播放", statusEn: "INDEX-BOUNDARY FILM READY",
+    headlineZh: "只索引檔名、路徑與時間；不偷讀內容。", headlineEn: "Index filename, path and time only—never document contents.",
+    introZh: "固定 metadata 經 B／R／K Gate 形成 decision-ready JSON，再重播本機關鍵字查詢；不是向量或語意搜尋。", introEn: "Fixed metadata passes B/R/K gates into decision-ready JSON, then replays local keyword search; it is not vector or semantic search.",
+    formula: "FILENAME + PATH + MTIME → B/R/K GATE → JSON → KEYWORD QUERY", sourceRepo: "https://github.com/HIJO790401/scbkr-memory-index",
+    steps: [{ key: "01", zh: "擷取 metadata", en: "Capture metadata" }, { key: "02", zh: "通過 B／R／K 閘門", en: "Pass B/R/K gates" }, { key: "03", zh: "本機關鍵字召回", en: "Local keyword recall" }],
+  },
+  {
+    code: "RG-03", slug: "wif-eligibility", index: "RG-03", name: "WIF 決策資格審計展示", nameEn: "WIF Decision Eligibility Audit Display", label: "CURATED FIXTURES", status: "ready", statusZh: "三類代表案例可播放", statusEn: "THREE CURATED CASES READY",
+    headlineZh: "不是每個物件都有資格進入決策。", headlineEn: "Not every object qualifies to enter a decision.",
+    introZh: "Website、Image、Finance 各一個策展案例，重播預寫 gate、缺口與必要驗證。", introEn: "One curated Website, Image and Finance case replays its prewritten gate, gap and required verification.",
+    formula: "CURATED OBJECT → CAL → SCBKR → R-LOCK / VOID → GATE", sourceRepo: "https://github.com/HIJO790401/SCBKR-WIF-Decision-Eligibility-Audit-Engine-Demo",
+    steps: [{ key: "W", zh: "網站物件", en: "Website object" }, { key: "I", zh: "圖像物件", en: "Image object" }, { key: "F", zh: "金融物件", en: "Finance object" }],
+  },
+  {
+    code: "RG-04", slug: "tirc-rebuild", index: "RG-04", name: "TIRC 文件責任閘門", nameEn: "TIRC Document Responsibility Gate", label: "SAFE SYNTHETIC TXT", status: "ready", statusZh: "安全文件案例可播放", statusEn: "SAFE DOCUMENT FILM READY",
+    headlineZh: "一份安全合成 TXT，通過 T1–T3、六欄 ICC 與雜湊鏈。", headlineEn: "One safe synthetic TXT passes T1–T3, six ICC fields and a hash chain.",
+    introZh: "不接收訪客檔案；只重播固定合成文件的權限政策、ICC 判定、文件 hash 與 audit hash。", introEn: "No visitor file is accepted; a fixed synthetic document replays actor policy, ICC, document hash and audit hash.",
+    formula: "SYNTHETIC TXT → T1/T2/T3 POLICY → SIX ICC FIELDS → HASH CHAIN", sourceRepo: "https://github.com/HIJO790401/TIRC-Document-Gate",
+    steps: [{ key: "01", zh: "載入安全合成 TXT", en: "Load safe synthetic TXT" }, { key: "02", zh: "評估 T1–T3 與六欄 ICC", en: "Evaluate T1–T3 and six ICC fields" }, { key: "03", zh: "留下兩段雜湊", en: "Record two hashes" }],
+  },
+  {
+    code: "RG-05", slug: "wif-pay", index: "RG-05", name: "WIF-Pay 付款責任防火牆", nameEn: "WIF-Pay Responsibility Firewall", label: "THREE PAYMENT CASES", status: "ready", statusZh: "三個固定情境可播放", statusEn: "THREE FIXED CASES READY",
+    headlineZh: "付款不是一個點，而是四個責任節點的回放。", headlineEn: "A payment is not one point; it is a replay across four responsibility nodes.",
+    introZh: "正常訂閱、疑似盜刷禮物與三方推責案例，依原權重重算 WIF、SCBKR、Risk 與責任節點。", introEn: "Normal, suspicious-gift and liability-shirking cases recompute WIF, SCBKR, Risk and responsibility nodes from source weights.",
+    formula: "FIXED PAYMENT → WIF + SCBKR + RISK → LIABILITY NODES", sourceRepo: "https://github.com/HIJO790401/Shen-Yao-WIF-Pay-Responsibility-Firewall",
+    steps: [{ key: "01", zh: "事件向量", en: "Event vectors" }, { key: "02", zh: "原公式重算", en: "Source formula recompute" }, { key: "03", zh: "責任節點狀態", en: "Responsibility-node states" }],
+  },
+  {
+    code: "RG-06", slug: "semantic-life-bridge", index: "RG-06", name: "SLB 語意生命通道", nameEn: "SLB Semantic Life Bridge", label: "FOUR SUPPORT CASES", status: "ready", statusZh: "四個固定支持案例可播放", statusEn: "FOUR FIXED SUPPORT CASES READY",
+    headlineZh: "支持先看人，再看標籤、通道、情境與責任。", headlineEn: "Support starts with the person, then label, channel, context and responsibility.",
+    introZh: "四個預寫支持案例只展示語意交集、記憶任務、下一步與責任邊界；永久標示非醫療、非診斷。", introEn: "Four prewritten support cases show overlap, memory tasks, next steps and boundaries, permanently labeled non-medical and non-diagnostic.",
+    formula: "PERSON → CHANNEL → CONTEXT → SUPPORT STEP → RESPONSIBILITY", sourceRepo: "https://github.com/HIJO790401/shen-slb-demo",
+    steps: [{ key: "P", zh: "人先於標籤", en: "Person before label" }, { key: "C", zh: "固定通道案例", en: "Fixed channel case" }, { key: "R", zh: "非醫療責任邊界", en: "Non-medical boundary" }],
+  },
+  {
+    code: "CM-01", slug: "shen-universe", index: "CM-01", name: "沈靜流派創作宇宙", nameEn: "SERENE SCHOOL CREATIVE UNIVERSE", label: "SOURCE 2D CANVAS", status: "ready", statusZh: "2D Canvas 動畫可播放", statusEn: "2D CANVAS FILM READY",
+    headlineZh: "冰與火、星點、連線、心形軌跡，在真實 2D Canvas 中流動。", headlineEn: "Ice, fire, stars, links and a heart path move inside a real 2D Canvas.",
+    introZh: "保留原始 2D Canvas 與指標視差；沒有 Three.js、WebGL 3D、後端或可查詢星圖。", introEn: "Preserves the source 2D Canvas and pointer parallax; there is no Three.js, WebGL 3D, backend or queryable star map.",
+    formula: "SOURCE 2D CANVAS → ICE / FIRE → LINKS → HEART PATH → PARALLAX", sourceRepo: "https://github.com/HIJO790401/shenjing-universe",
+    steps: [{ key: "2D", zh: "繪製星空與雙核心", en: "Draw stars and dual cores" }, { key: "∞", zh: "連線與心形軌跡", en: "Links and heart path" }, { key: "↔", zh: "滑鼠／觸控視差", en: "Pointer parallax" }],
+  },
+  {
+    code: "CM-02", slug: "sy-sentinel", index: "CM-02", name: "SY Sentinel v1.1", nameEn: "SY Sentinel v1.1", label: "DETERMINISTIC SIMULATION", status: "ready", statusZh: "確定性前端模擬可播放", statusEn: "DETERMINISTIC SIMULATION READY",
+    headlineZh: "移除隨機證據，只保留固定事件、十三軸與可回放日誌。", headlineEn: "Remove random evidence; retain fixed events, thirteen axes and replayable logs.",
+    introZh: "以確定性 fixture 複寫關鍵字命中、字數公式、13 軸與前端 state 日誌；明確標示 Simulation，不冒充真監控或 WORM。", introEn: "Deterministic fixtures replay keyword hits, length formulas, 13 axes and front-end state logs, labeled Simulation—not live monitoring or WORM.",
+    formula: "FIXED EVENT → KEYWORD HITS → 13 AXES → DETERMINISTIC LOG", sourceRepo: "https://github.com/HIJO790401/SY-Sentinel-v1.1",
+    steps: [{ key: "01", zh: "固定事件進場", en: "Fixed event enters" }, { key: "13", zh: "十三軸同步亮起", en: "Thirteen axes resolve" }, { key: "LOG", zh: "輸出確定性模擬日誌", en: "Emit deterministic simulation log" }],
+  },
 ];
 
-export function findFilm(slug: string) { return productFilms.find((film) => film.slug === slug); }
+export const demoRouteByProductCode = Object.fromEntries(productFilms.map((film) => [film.code, film])) as Record<string, ProductFilm>;
+
+export function findFilm(slug: string) {
+  const legacyAliases: Record<string, string> = {
+    "anti-scam": "anti-scam-rlock",
+    tirc: "tirc-rebuild",
+    wif: "wif-eligibility",
+  };
+  const resolvedSlug = legacyAliases[slug] ?? slug;
+  return productFilms.find((film) => film.slug === resolvedSlug);
+}
