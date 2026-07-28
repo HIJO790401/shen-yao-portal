@@ -1,0 +1,30 @@
+task_id: TASK-20260728-RESUME-EVIDENCE-V2
+parent_task: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+license: .pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md
+goal: 以外部可查證來源重構許文耀／沈耀888π的中英文活履歷，停止依賴舊PDF
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+branch: main
+scope:
+  - bilingual_live_resume_route
+  - founder_profile_evidence_labels
+  - selected_public_engineering
+  - third_party_press
+  - ai_arts_submission_record
+  - nvidia_community_record
+  - public_writing_and_media
+  - owner_reported_hackathon_boundary
+  - print_to_pdf_action
+  - navigation_and_sitemap
+  - interactive_browser_review
+  - github_main_push
+excluded:
+  - invented_employment_or_degree
+  - unverified_awards_or_partnerships
+  - independent_benchmark_claim
+  - github_pages
+  - sites_version_save
+  - private_or_production_deployment
+  - domain_or_dns_change
+  - paid_service
+state: READY_FOR_OWNER_REVIEW

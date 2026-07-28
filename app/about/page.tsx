@@ -37,12 +37,12 @@ const publicRecords = [
     href: "https://forums.developer.nvidia.com/t/scbkr-a-local-responsibility-chain-workbench-for-llms-with-human-confirmed-generation-storage-replay-and-retrieval-gates/373910",
   },
   {
-    platform: "AI-ARTS · AUTHOR PROFILE",
-    titleZh: "語之神神器展覽篇",
-    titleEn: "Artifacts of the Language God",
-    textZh: "外部作者頁記錄以聲、光、動、時、語構成的動畫、音樂、詩學與符號作品。",
-    textEn: "An external author profile documenting animation, music, poetics and symbolic works structured through sound, light, motion, time and language.",
-    href: "https://ai-arts.org/author/shen-yao/",
+    platform: "AI-ARTS · OFFICIAL COMPETITION SUBMISSION · 2025.10.30",
+    titleZh: "第四屆 AI-ARTS 競賽投稿",
+    titleEn: "4TH AI-ARTS COMPETITION SUBMISSION",
+    textZh: "官方投稿頁列出沈耀888π及其作品；確認投稿紀錄，不代表得獎或主辦方背書。",
+    textEn: "The official submission page lists Shen-Yao 888π and the work; this confirms a submission record, not an award or organizer endorsement.",
+    href: "https://ai-arts.org/4th-ai-arts-competition-submissions/",
   },
   {
     platform: "SECURITYBRIEF ASIA · 2025.11.18 · THIRD-PARTY PRESS",
@@ -79,7 +79,7 @@ const pressCoverageSchema = {
       publisher: { "@type": "Organization", name: "SecurityBrief Asia" },
       about: [
         { "@id": "https://silentschoolstudio.com/#person" },
-        { "@id": "https://silentschoolstudio.com/#studio" },
+        { "@type": "Thing", name: "Semantic Firewall" },
       ],
     },
   },
@@ -133,7 +133,7 @@ export default function AboutPage() {
             </figure>
 
             <div className={styles.actions}>
-              <a href="/Wen-Yao-Hsu-Resume.pdf"><Lang zh="查看履歷" en="VIEW RESUME" /><span aria-hidden="true">↗</span></a>
+              <LocalizedLink href="/resume"><Lang zh="查看履歷" en="VIEW RESUME" /><span aria-hidden="true">↗</span></LocalizedLink>
               <LocalizedLink href="/products"><Lang zh="查看系統作品" en="EXPLORE SYSTEMS" /><span aria-hidden="true">→</span></LocalizedLink>
               <a href="mailto:ken0963521@gmail.com?subject=%E6%B2%89%E9%9D%9C%E6%B5%81%E6%B4%BE%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%90%88%E4%BD%9C%E6%8F%90%E6%A1%88"><Lang zh="合作聯絡" en="CONTACT" /></a>
             </div>
@@ -166,11 +166,11 @@ export default function AboutPage() {
 
         <section className={styles.publicActivity} id="public-activity" aria-labelledby="public-activity-title">
           <div className={styles.activityHeading}>
-            <p>PUBLIC ACTIVITY · 2026.03 · TAIWAN</p>
-            <h2 id="public-activity-title"><Lang zh="從責任公式，走到公開現場。" en="FROM RESPONSIBILITY FORMULAS TO A PUBLIC DEMONSTRATION." /></h2>
+            <p>OWNER-REPORTED HACKATHON RECORD · 2026.03 · TAIWAN</p>
+            <h2 id="public-activity-title"><Lang zh="從責任公式，走到本人紀錄的公開現場。" en="FROM RESPONSIBILITY FORMULAS TO AN OWNER-DOCUMENTED ON-SITE DEMONSTRATION." /></h2>
             <p><Lang
-              zh="這段行動軌跡來自創辦人原始 Repo 的中英文紀錄、現場照片，以及可交叉查閱的官方活動頁；不移入新聞台或責任博物館，而是作為主官網的創辦人實作證據。"
-              en="This activity record is grounded in the founder's original bilingual repository record, an on-site photograph and the official event page. It belongs to the main founder profile—not the newsroom or museum—as evidence of public implementation."
+              zh="這段行動軌跡來自創辦人原始 Repo、現場照片、Instagram 與 YouTube 紀錄。官方活動頁只用來核對賽事日期、Gogolook 命題與活動內容；目前未見主辦方公開個人名冊可交叉驗證 Team 11、個人身分或展示內容。"
+              en="This activity trail comes from the founder's repository, on-site photograph, Instagram and YouTube records. The official event page is used only to verify the event dates, Gogolook challenge and event format; no public organizer roster was found that independently verifies Team 11, the individual's identity or the demonstrated system."
             /></p>
           </div>
 
@@ -178,31 +178,35 @@ export default function AboutPage() {
             <figure className={styles.activityPhoto}>
               <Image
                 src="/media/public-activity/agent-for-truth-hackathon.jpg"
-                alt="許文耀於去偽存真：全民偵查黑客松現場展示 SCBKR + R-Lock"
+                alt="創辦人提供的去偽存真：全民偵查黑客松現場照片"
                 fill
                 unoptimized
                 sizes="(max-width: 900px) 100vw, 58vw"
               />
-              <figcaption><Lang zh="現場簡報與系統展示・照片取自原始 Repo" en="ON-SITE PRESENTATION AND SYSTEM DEMO · ORIGINAL REPOSITORY PHOTO" /></figcaption>
+              <figcaption><Lang zh="創辦人提供的現場照片・取自原始 Repo" en="FOUNDER-PROVIDED ON-SITE PHOTO · ORIGINAL REPOSITORY" /></figcaption>
             </figure>
 
             <article className={styles.activityCopy}>
-              <span>AGENT FOR TRUTH · DISINFORMATION DEFENSE HACKATHON</span>
+              <span>OWNER-REPORTED · AGENT FOR TRUTH HACKATHON</span>
               <h3><Lang zh="去偽存真：全民偵查黑客松" en="AGENT FOR TRUTH HACKATHON" /></h3>
               <p><Lang
-                zh="依創辦人原始 Repo 紀錄，2026 年 3 月，許文耀以 Gogolook 命題組 Team 11 參賽成員身分參與活動，並在現場展示自行設計的 SCBKR + R-Lock 反詐治理系統。"
-                en="According to the founder's original repository record, Wen-Yao Hsu participated in March 2026 as a Team 11 entrant in the Gogolook challenge track and publicly demonstrated his SCBKR + R-Lock anti-scam governance system."
+                zh="依創辦人 Repo 與現場照片，許文耀表示其於 2026 年 3 月參與 Gogolook 命題，並展示自行設計的 SCBKR + R-Lock 反詐治理介面。Team 11 與個人參賽身分屬創辦人第一方紀錄。"
+                en="According to the founder's repository and on-site photograph, Wen-Yao Hsu reports participating in the Gogolook challenge in March 2026 and demonstrating his SCBKR + R-Lock anti-scam governance interface. Team 11 and the individual's entrant status remain first-party founder records."
               /></p>
               <p><Lang
-                zh="核心問題不是訊息『像不像詐騙』，而是它是否具備足夠可驗證的責任結構，是否有資格進入人的決策流程。這是語意防火牆從公式、介面走入真實提問與現場交流的一次公開驗證。"
-                en="The core question was not merely whether a message looked fraudulent, but whether it carried enough verifiable responsibility structure to qualify for human decision-making. It was a public test of the Semantic Firewall moving from formula and interface into live questions and exchange."
+                zh="核心問題不是訊息『像不像詐騙』，而是它是否具備足夠可檢查的責任結構，是否有資格進入人的決策流程。這是本人紀錄的現場展示，不是主辦方技術認證、成效驗證或得獎聲明。"
+                en="The core question was not merely whether a message looked fraudulent, but whether it carried enough inspectable responsibility structure to qualify for human decision-making. This is an owner-documented on-site demonstration, not organizer certification, performance validation or an award claim."
               /></p>
               <dl>
-                <div><dt><Lang zh="身份" en="ROLE" /></dt><dd><Lang zh="Gogolook 命題組 Team 11 參賽成員" en="TEAM 11 · GOOGOLOOK CHALLENGE TRACK" /></dd></div>
+                <div><dt><Lang zh="身分來源" en="ROLE SOURCE" /></dt><dd><Lang zh="本人紀錄：Gogolook 命題組 Team 11" en="OWNER-REPORTED: TEAM 11 · GOGOLOOK CHALLENGE" /></dd></div>
                 <div><dt><Lang zh="展示系統" en="SYSTEM" /></dt><dd>SCBKR + R-LOCK</dd></div>
                 <div><dt><Lang zh="方法" en="METHOD" /></dt><dd><Lang zh="決策前責任審計" en="PRE-DECISION RESPONSIBILITY AUDIT" /></dd></div>
               </dl>
-              <a href="https://www.ai-expo.tw/kiro_hackathon_2026/index.asp" target="_blank" rel="noreferrer"><Lang zh="查看官方活動頁" en="OPEN OFFICIAL EVENT PAGE" /> ↗</a>
+              <div className={styles.activityLinks}>
+                <a href="https://www.ai-expo.tw/kiro_hackathon_2026/index.asp" target="_blank" rel="noreferrer"><Lang zh="官方活動頁" en="OFFICIAL EVENT PAGE" /> ↗</a>
+                <a href="https://www.instagram.com/p/DW9Jwi5kTZO/" target="_blank" rel="noreferrer"><Lang zh="本人 Instagram 紀錄" en="FOUNDER INSTAGRAM RECORD" /> ↗</a>
+                <a href="https://www.youtube.com/watch?v=MLZiapRm2_o" target="_blank" rel="noreferrer"><Lang zh="本人 YouTube 紀錄" en="FOUNDER YOUTUBE RECORD" /> ↗</a>
+              </div>
             </article>
           </div>
         </section>
@@ -235,7 +239,7 @@ export default function AboutPage() {
               <div className={styles.pressSignals} aria-hidden="true">
                 <span>CLEAN</span><span>ROUTE</span><span>CONTROL</span><span>AUDIT</span>
               </div>
-              <small>ORIGINAL EDITORIAL DIAGRAM · SERENE SCHOOL STUDIO</small>
+              <small>STUDIO-CREATED EXPLANATORY DIAGRAM · SERENE SCHOOL STUDIO</small>
             </div>
 
             <article className={styles.pressCopy}>
@@ -257,6 +261,10 @@ export default function AboutPage() {
                 zh="聲明邊界：報導提及的 70–88%、25–40%、30% 與 10–20% 均為文中歸因於創辦人／系統方的主張；本站不把這些數字改寫成第三方獨立基準測試。"
                 en="Claim boundary: the reported 70–88%, 25–40%, 30% and 10–20% figures are attributed in the article to the founder or system side; this site does not recast them as independently benchmarked results."
               /></aside>
+              <aside><Lang
+                zh="名稱註記：原文以 Silent School Studio 稱呼受訪者所屬工作室；本站現行官方英文名稱為 SERENE SCHOOL STUDIO。"
+                en="Name note: the article refers to the founder's studio as Silent School Studio; the current official English brand is SERENE SCHOOL STUDIO."
+              /></aside>
               <a href={pressCoverageUrl} target="_blank" rel="noreferrer"><Lang zh="閱讀 SecurityBrief Asia 原文" en="READ THE ORIGINAL REPORT" /> ↗</a>
             </article>
           </div>
@@ -265,7 +273,7 @@ export default function AboutPage() {
         <section className={styles.publicRecord} id="public-record" aria-labelledby="public-record-title">
           <div className={styles.sectionIntro}>
             <p><Lang zh="外部來源" en="PUBLIC SOURCES" /></p>
-            <h2 id="public-record-title"><Lang zh="身份與工作，不只寫在自己的官網。" en="IDENTITY AND WORK, VERIFIED BEYOND THIS SITE." /></h2>
+            <h2 id="public-record-title"><Lang zh="身份與工作，附上可追溯的公開來源。" en="IDENTITY AND WORK, TRACEABLE THROUGH PUBLIC SOURCES." /></h2>
             <p><Lang zh="第一方發布、開發者社群文章、外部作者頁與媒體報導分開標示，避免把平台出現誤寫成平台背書。" en="First-party publishing, developer-community posts, external author pages and media coverage are labelled separately—presence on a platform is not presented as endorsement." /></p>
           </div>
           <div className={styles.recordGrid}>

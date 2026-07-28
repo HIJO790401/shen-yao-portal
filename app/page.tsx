@@ -36,8 +36,8 @@ const featuredWorks = [
   {
     titleZh: "去偽存真：全民偵查黑客松",
     titleEn: "Agent for Truth Hackathon",
-    labelZh: "SCBKR + R-Lock 公開展示",
-    labelEn: "PUBLIC SCBKR + R-LOCK DEMONSTRATION",
+    labelZh: "本人紀錄的 SCBKR + R-Lock 現場展示",
+    labelEn: "OWNER-REPORTED SCBKR + R-LOCK DEMONSTRATION",
     image: "/media/public-activity/agent-for-truth-hackathon.jpg",
     href: "/about#public-activity",
   },

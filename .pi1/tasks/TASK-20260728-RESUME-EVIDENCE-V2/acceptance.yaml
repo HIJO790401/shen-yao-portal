@@ -1,0 +1,32 @@
+must_have:
+  - /zh/resume and /en/resume are directly browsable
+  - Chinese and English remain separately switchable
+  - old PDF is not linked or required
+  - a print or save-as-PDF action works from the live page
+  - SecurityBrief Asia is labelled third-party press
+  - performance figures remain attributed claims rather than independent benchmarks
+  - AI-ARTS is labelled as an official competition submission and not an award
+  - NVIDIA Developer Forums is labelled as a community post and not endorsement
+  - hackathon participation is labelled owner-reported until organizer proof exists
+  - GitHub systems distinguish runtime, local tool, demo and PoC boundaries
+  - current English brand is SERENE SCHOOL STUDIO
+  - historical sources using Silent School Studio are not silently rewritten
+  - header navigation and sitemap expose the resume route
+  - desktop and mobile layouts remain readable and operable
+must_not_have:
+  - old PDF as the canonical resume
+  - invented company team degree employment patent award client or partnership
+  - DeepSeek NVIDIA AWS Gogolook OpenAI or AI-ARTS endorsement claims
+  - unlicensed repositories collectively described as open source
+  - mixed Chinese and English paragraphs in one locale
+  - secrets or authentication changes
+verification:
+  - npx tsc --noEmit
+  - npm run lint
+  - npm test
+  - desktop_browser
+  - mobile_browser
+  - language_switch
+  - external_link_audit
+  - print_action
+final_gate: OWNER_REVIEW

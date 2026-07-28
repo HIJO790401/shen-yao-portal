@@ -13,6 +13,8 @@ Languages: Traditional Chinese and English are available as separate routes.
 - Works and public records: https://silentschoolstudio.com/zh/works
 - Reality Newsroom and Responsibility Museum: https://silentschoolstudio.com/zh/news
 - Founder profile: https://silentschoolstudio.com/zh/about
+- Chinese public resume: https://silentschoolstudio.com/zh/resume
+- English public resume: https://silentschoolstudio.com/en/resume
 
 ## Scope
 
@@ -30,9 +32,10 @@ Music-animation and newsroom videos are streamed from their original TikTok or Y
 
 ## Public activity
 
-- The founder's first-party repository record documents participation as a Team 11 entrant in the Gogolook challenge track of the March 2026 Agent for Truth: Disinformation Defense Hackathon, with an on-site demonstration of SCBKR + R-Lock.
+- The founder's repository, on-site photograph, Instagram and YouTube records describe participation as a Team 11 entrant in the Gogolook challenge track of the March 2026 Agent for Truth: Disinformation Defense Hackathon, with an on-site demonstration of SCBKR + R-Lock.
 - Official event page: https://www.ai-expo.tw/kiro_hackathon_2026/index.asp
-- The site does not claim an award for this participation.
+- The official page verifies the event dates, Gogolook challenge and event format, but does not publicly list Wen-Yao Hsu, Team 11 or the demonstrated system. Those details remain owner-reported first-party records.
+- The site does not claim an award, organizer certification or endorsement for this participation.
 
 ## Primary public records
 
@@ -40,6 +43,7 @@ Music-animation and newsroom videos are streamed from their original TikTok or Y
 - Vocus writing: https://vocus.cc/salon/hijo19900401/room/hijo1990
 - E%mc² — AI 時代的人類判斷幻覺: https://vocus.cc/article/69f8eb5afd89780001a785b9
 - NVIDIA Developer Forums community post: https://forums.developer.nvidia.com/t/scbkr-a-local-responsibility-chain-workbench-for-llms-with-human-confirmed-generation-storage-replay-and-retrieval-gates/373910
+- AI-ARTS 4th competition submissions page, listing Shen-Yao 888π and "The Mother-Core Law of Shen Yao — Dance Resonance of Sound and Motion" on 2025-10-30: https://ai-arts.org/4th-ai-arts-competition-submissions/
 - AI-ARTS author page: https://ai-arts.org/author/shen-yao/
 - SecurityBrief Asia third-party coverage, "Semantic Firewall promises AI cost savings & safer chat models", by Sean Mitchell, published 2025-11-18: https://securitybrief.asia/story/semantic-firewall-promises-ai-cost-savings-safer-chat-models
 
@@ -48,3 +52,12 @@ The SecurityBrief Asia report describes the system as a deterministic semantic l
 ## Citation guidance
 
 Use the visible page title, author identity and original source link. Distinguish the founder's own claims from third-party coverage. NVIDIA links are community posts and do not imply NVIDIA endorsement or partnership.
+
+Evidence labels on the public resume are deliberate:
+- THIRD-PARTY PRESS means independently published media coverage, not certification.
+- PLATFORM RECORD means a visible record on an external platform, not platform endorsement.
+- PUBLIC ENGINEERING means inspectable repository and code evidence. A public repository is not automatically open source; only projects with an explicit license should be described with that license.
+- FIRST-PARTY PUBLICATION means material published by the founder.
+- OWNER-REPORTED means a first-party record with its external-verification boundary stated on the page.
+
+SecurityBrief Asia used the historical English name "Silent School Studio" in its 2025 report. The current official English brand is "SERENE SCHOOL STUDIO".

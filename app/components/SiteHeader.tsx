@@ -42,6 +42,7 @@ export function SiteHeader() {
         <LocalizedLink href="/works" onClick={() => setOpen(false)}><Lang zh="作品" en="WORKS" /></LocalizedLink>
         <LocalizedLink href="/news" onClick={() => setOpen(false)}><Lang zh="實相新聞台 × 責任博物館" en="NEWS × MUSEUM" /></LocalizedLink>
         <LocalizedLink href="/about" onClick={() => setOpen(false)}><Lang zh="自介" en="ABOUT" /></LocalizedLink>
+        <LocalizedLink href="/resume" onClick={() => setOpen(false)}><Lang zh="履歷" en="RESUME" /></LocalizedLink>
       </nav>
 
       <LanguageControl />

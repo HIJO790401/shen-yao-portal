@@ -30,6 +30,7 @@ export function SiteFooter() {
           <LocalizedLink href="/works"><Lang zh="作品" en="WORKS" /></LocalizedLink>
           <LocalizedLink href="/news"><Lang zh="新聞台 × 博物館" en="NEWS × MUSEUM" /></LocalizedLink>
           <LocalizedLink href="/about"><Lang zh="創辦人" en="FOUNDER" /></LocalizedLink>
+          <LocalizedLink href="/resume"><Lang zh="履歷" en="RESUME" /></LocalizedLink>
         </nav>
         <div className={styles.footerExternal}>
           <a href="https://github.com/HIJO790401" target="_blank" rel="noreferrer">GITHUB ↗</a>

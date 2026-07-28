@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { productFilms } from "./showcase-data";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://silentschoolstudio.com";
-const updated = new Date("2026-07-18T00:00:00+08:00");
+const updated = new Date("2026-07-28T00:00:00+08:00");
 
 const reportSlugs = [
   "openai-tbpn-audit",
@@ -23,7 +23,7 @@ const museumSlugs = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const primary = ["", "/products", "/works", "/news", "/about"];
+  const primary = ["", "/products", "/works", "/news", "/about", "/resume"];
   const demos = productFilms.map(({ slug }) => `/demo/${slug}`);
   const reports = reportSlugs.map((slug) => `/news/${slug}`);
   const museum = museumSlugs.map((slug) => `/news/museum/${slug}`);

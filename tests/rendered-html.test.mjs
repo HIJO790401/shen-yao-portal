@@ -259,11 +259,74 @@ test("keeps the hackathon action trail on the founder site, outside the newsroom
     source("app/news/page.tsx"),
   ]);
   assert.match(home + about, /去偽存真：全民偵查黑客松/);
-  assert.match(about, /Gogolook 命題組 Team 11 參賽成員/);
+  assert.match(about, /OWNER-REPORTED HACKATHON RECORD/);
+  assert.match(about, /本人紀錄：Gogolook 命題組 Team 11/);
+  assert.match(about, /目前未見主辦方公開個人名冊/);
   assert.match(about, /SCBKR \+ R-Lock/);
   assert.match(about, /ai-expo\.tw\/kiro_hackathon_2026/);
+  assert.match(about, /instagram\.com\/p\/DW9Jwi5kTZO/);
+  assert.match(about, /youtube\.com\/watch\?v=MLZiapRm2_o/);
+  assert.doesNotMatch(about, /公開驗證|public test/i);
   assert.doesNotMatch(news, /Team 11|agent-for-truth-hackathon/);
   await access(new URL("public/media/public-activity/agent-for-truth-hackathon.jpg", projectRoot));
+});
+
+test("publishes a bilingual source-labelled living resume and removes the legacy PDF surface", async () => {
+  const [resume, resumeCss, printButton, localizedResume, header, footer, about, sitemap, llms] = await Promise.all([
+    source("app/resume/page.tsx"),
+    source("app/resume/resume.module.css"),
+    source("app/resume/PrintResumeButton.tsx"),
+    source("app/[locale]/resume/page.tsx"),
+    source("app/components/SiteHeader.tsx"),
+    source("app/components/SiteFooter.tsx"),
+    source("app/about/page.tsx"),
+    source("app/sitemap.ts"),
+    source("public/llms.txt"),
+  ]);
+
+  assert.match(resume, /VERIFIED PUBLIC PROFILE/);
+  assert.match(resume, /許文耀/);
+  assert.match(resume, /WEN-YAO HSU/);
+  assert.match(resume, /SERENE SCHOOL STUDIO/);
+  assert.match(resume, /THIRD-PARTY PRESS/);
+  assert.match(resume, /PLATFORM RECORD/);
+  assert.match(resume, /PUBLIC ENGINEERING/);
+  assert.match(resume, /OWNER-REPORTED/);
+  assert.match(resume, /SCBKR/);
+  assert.match(resume, /TIRC DOCUMENT GATE/);
+  assert.match(resume, /SOURCE COMPLETE \/ DEPLOYMENT PENDING/);
+  assert.match(resume, /DEMO \/ POC · NOT A PRODUCTION DECISION SYSTEM/);
+  assert.match(resume, /4th-ai-arts-competition-submissions/);
+  assert.match(resume, /COMMUNITY CONTENT; NO NVIDIA PARTNERSHIP/);
+  assert.match(resume, /歷史英文名稱 Silent School Studio/);
+  assert.match(resume, /不虛構公司登記、團隊規模、學位、專利、獎項、客戶、採用或合作關係/);
+  assert.match(resume, /getProfileSchema/);
+  assert.match(resume, /inLanguage: language/);
+  assert.match(resume, /dateModified: "2026-07-28"/);
+  assert.match(localizedResume, /\/zh\/resume/);
+  assert.match(localizedResume, /\/en\/resume/);
+  assert.match(localizedResume, /title: \{ absolute:/);
+  assert.match(localizedResume, /"x-default": "\/zh\/resume"/);
+  assert.match(localizedResume, /generateMetadata/);
+  assert.match(localizedResume, /<ResumePage locale=/);
+  assert.match(resume, /founder of SERENE SCHOOL STUDIO/);
+
+  assert.match(printButton, /window\.print\(\)/);
+  assert.match(printButton, /type="button"/);
+  assert.match(resumeCss, /@media print/);
+  assert.match(resumeCss, /prefers-reduced-motion/);
+  assert.match(resumeCss, /page-break-inside: avoid/);
+
+  assert.match(header, /href="\/resume"/);
+  assert.match(footer, /href="\/resume"/);
+  assert.match(about, /<LocalizedLink href="\/resume"/);
+  assert.doesNotMatch(about, /Wen-Yao-Hsu-Resume\.pdf/);
+  assert.match(sitemap, /"\/resume"/);
+  assert.match(llms, /\/zh\/resume/);
+  assert.match(llms, /\/en\/resume/);
+  assert.match(llms, /Evidence labels on the public resume are deliberate/);
+
+  await assert.rejects(access(new URL("public/Wen-Yao-Hsu-Resume.pdf", projectRoot)));
 });
 
 test("labels SecurityBrief Asia as dated third-party coverage with claim boundaries", async () => {
@@ -387,6 +450,7 @@ test("publishes crawler, AI discovery and structured-search surfaces", async () 
   assert.match(robots, /sitemap\.xml/);
   assert.match(sitemap, /\/zh/);
   assert.match(sitemap, /\/en/);
+  assert.match(sitemap, /\/resume/);
   assert.match(sitemap, /\/news\/museum/);
   assert.match(llms, /SERENE SCHOOL STUDIO/);
   assert.match(llms, /Artifacts of the Language God/);
