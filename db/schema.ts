@@ -1,4 +1,4 @@
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const newsPosts = sqliteTable("news_posts", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -16,7 +16,9 @@ export const newsPosts = sqliteTable("news_posts", {
   publishedAt: text("published_at").notNull(),
   updatedAt: text("updated_at").notNull(),
   authorEmail: text("author_email").notNull(),
-});
+}, (table) => [
+  index("news_posts_status_date_idx").on(table.status, table.publishedAt),
+]);
 
 export const museumEntries = sqliteTable("museum_entries", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -46,4 +48,6 @@ export const museumEntries = sqliteTable("museum_entries", {
   occurredAt: text("occurred_at").notNull(),
   updatedAt: text("updated_at").notNull(),
   authorEmail: text("author_email").notNull(),
-});
+}, (table) => [
+  index("museum_entries_status_date_idx").on(table.status, table.occurredAt),
+]);

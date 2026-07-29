@@ -1,0 +1,31 @@
+must_have:
+  - all public canonical structured data crawler and AI-discovery URLs derive from one validated site origin
+  - changing NEXT_PUBLIC_SITE_URL changes the generated public origin without editing page files
+  - the intro gate accepts one owner-provided public video URL through configuration
+  - the intro video may autoplay muted but never auto-enters or traps the visitor
+  - the legal owner-approved poster remains available when no video is configured or playback fails
+  - D1 schema and generated migrations remain aligned
+  - public pages read published records only
+  - owner APIs reject anonymous cross-origin malformed and unsafe requests
+  - R2 upload accepts only verified JPEG PNG and WebP within the size limit
+  - the deployment build and Sites package rehearsal include server output hosting metadata and migrations
+  - Chinese and English routes remain separately browsable on desktop and mobile
+  - unrelated user assets and rollback files remain uncommitted
+must_not_have:
+  - invented domain ownership
+  - generated substitute intro film
+  - plaintext password token cookie or OAuth credential
+  - GitHub Pages dependency
+  - Sites version deployment DNS or paid-service mutation without a separate explicit gate
+verification:
+  - npx tsc --noEmit
+  - npm run lint
+  - npm test
+  - npm run db:generate
+  - sites_package_rehearsal
+  - desktop_browser
+  - mobile_browser
+  - locale_switch
+  - studio_public_boundary
+  - secret_and_hardcoded_origin_scan
+final_gate: OWNER_REVIEW

@@ -7,13 +7,16 @@ import { VideoEmbed } from "../components/VideoEmbed";
 import { listPublishedPosts } from "@/db/news";
 import { listPublishedMuseumEntries } from "@/db/museum";
 import { archiveMuseumItems, archiveReports, newsroomAxes } from "../newsroom-data";
+import { localizedAlternates, siteUrl } from "../site-config";
 import styles from "./newsroom.module.css";
 
 export const metadata: Metadata = {
   title: "沈耀國際實相新聞台 × 責任博物館",
   description: "由許文耀／沈耀888π 建立的獨立報導、責任審計、公共館藏與十四軸職能平台。",
   keywords: ["沈耀", "許文耀", "實相新聞台", "責任博物館", "語意防火牆", "SCBKR"],
+  alternates: localizedAlternates("zh", "/news"),
   openGraph: {
+    url: "/zh/news",
     title: "沈耀國際實相新聞台 × 責任博物館",
     description: "報導、審計、保存、回放與公共責任的獨立平台。",
     images: [{ url: "/media/works/reality-goes-live-16x9.png", width: 1672, height: 941, alt: "實相上線／Reality Goes Live" }],
@@ -25,12 +28,12 @@ const launchFilmSchema = {
   "@type": "VideoObject",
   name: "實相上線 / Reality Goes Live",
   description: "沈耀國際實相新聞台 × 責任博物館的正式啟動前導。",
-  creator: { "@id": "https://silentschoolstudio.com/#person" },
-  thumbnailUrl: "https://silentschoolstudio.com/media/works/reality-goes-live-16x9.png",
+  creator: { "@id": siteUrl("/#person") },
+  thumbnailUrl: siteUrl("/media/works/reality-goes-live-16x9.png"),
   contentUrl: "https://youtu.be/xROrsIHToIY",
   embedUrl: "https://www.youtube-nocookie.com/embed/xROrsIHToIY",
   inLanguage: ["zh-Hant", "en"],
-  isPartOf: { "@id": "https://silentschoolstudio.com/#website" },
+  isPartOf: { "@id": siteUrl("/#website") },
 };
 
 export const dynamic = "force-dynamic";

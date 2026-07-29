@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Lang, LocalizedLink } from "../components/LanguageControl";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { localizedAlternates, siteUrl } from "../site-config";
 import { PrintResumeButton } from "./PrintResumeButton";
 import styles from "./resume.module.css";
 
@@ -20,11 +21,9 @@ export const metadata: Metadata = {
     "TIRC",
     "獨立系統架構師",
   ],
-  alternates: {
-    canonical: "/zh/resume",
-    languages: { "zh-Hant": "/zh/resume", en: "/en/resume" },
-  },
+  alternates: localizedAlternates("zh", "/resume"),
   openGraph: {
+    url: "/zh/resume",
     title: "許文耀／沈耀888π｜可查證公開履歷",
     description: "獨立系統架構、語意治理、動畫、音樂與公開作品紀錄。",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "SERENE SCHOOL STUDIO" }],
@@ -205,7 +204,7 @@ const creativeWorks = [
 
 function getProfileSchema(locale: "zh" | "en") {
   const language = locale === "en" ? "en" : "zh-Hant";
-  const url = `https://silentschoolstudio.com/${locale}/resume`;
+  const url = siteUrl(`/${locale}/resume`);
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
@@ -215,7 +214,7 @@ function getProfileSchema(locale: "zh" | "en") {
     dateModified: "2026-07-28",
     mainEntity: {
       "@type": "Person",
-      "@id": "https://silentschoolstudio.com/#person",
+      "@id": siteUrl("/#person"),
       name: "Wen-Yao Hsu",
       alternateName: ["許文耀", "沈耀888π", "Shen-Yao 888π"],
       jobTitle: "Founder and Independent Systems Architect",

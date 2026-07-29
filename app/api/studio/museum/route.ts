@@ -1,12 +1,19 @@
 import { NextResponse } from "next/server";
-import { listAllMuseumEntries, removeMuseumEntry, saveMuseumEntry } from "@/db/museum";
+import {
+  findMuseumCoverUrl,
+  listAllMuseumEntries,
+  removeMuseumEntry,
+  saveMuseumEntry,
+} from "@/db/museum";
+import { deleteManagedCoverIfUnreferenced } from "@/db/media";
 import { getStudioOwner } from "@/app/studio-auth";
 import {
-  assertStudioWriteRequest,
+  readStudioJson,
   studioCoverUrl,
   studioDate,
   studioError,
   studioEvidenceUrl,
+  studioId,
   StudioRequestError,
   studioSlug,
   studioText,
@@ -17,21 +24,32 @@ export const dynamic = "force-dynamic";
 
 const categories = new Set(["RESPONSIBILITY", "EVIDENCE", "VERSION", "REPAIR", "PUBLIC_RECORD"]);
 
+function privateJson(body: unknown, status = 200) {
+  return NextResponse.json(body, {
+    status,
+    headers: { "cache-control": "private, no-store" },
+  });
+}
+
 export async function GET() {
   const owner = await getStudioOwner();
-  if (!owner) return NextResponse.json({ error: "只有站主可以進入編輯台" }, { status: 401 });
-  return NextResponse.json({ entries: await listAllMuseumEntries(), owner: owner.email });
+  if (!owner) return privateJson({ error: "只有站主可以進入編輯台" }, 401);
+  try {
+    return privateJson({ entries: await listAllMuseumEntries(), owner: owner.email });
+  } catch (error) {
+    const issue = studioError(error);
+    return privateJson({ error: issue.message }, issue.status);
+  }
 }
 
 export async function POST(request: Request) {
   const owner = await getStudioOwner();
-  if (!owner) return NextResponse.json({ error: "請先用站主帳號登入" }, { status: 401 });
+  if (!owner) return privateJson({ error: "請先用站主帳號登入" }, 401);
   try {
-    assertStudioWriteRequest(request);
-    const data = await request.json() as Record<string, unknown>;
+    const data = await readStudioJson(request);
     const titleZh = studioText(data.title_zh, "中文館藏標題", 180);
     if (!titleZh) throw new StudioRequestError("請填寫中文館藏標題");
-    const id = Number(data.id || 0) || undefined;
+    const id = studioId(data.id);
     const slug = studioSlug(data.slug, "archive");
     const status = data.status === "published" ? "published" : "draft";
     const guideZh = studioText(data.guide_zh, "中文導覽", 5_000);
@@ -42,6 +60,8 @@ export async function POST(request: Request) {
     }
     const requestedCategory = studioText(data.category, "分類", 32).toUpperCase();
     const category = categories.has(requestedCategory) ? requestedCategory : "RESPONSIBILITY";
+    const coverUrl = studioCoverUrl(data.cover_url);
+    const previousCoverUrl = id ? await findMuseumCoverUrl(id) : "";
     const savedId = await saveMuseumEntry({
       id,
       slug,
@@ -63,33 +83,39 @@ export async function POST(request: Request) {
       repair_zh: studioText(data.repair_zh, "中文修復紀錄", 5_000),
       repair_en: studioText(data.repair_en, "英文修復紀錄", 5_000),
       evidence_url: studioEvidenceUrl(data.evidence_url),
-      cover_url: studioCoverUrl(data.cover_url),
+      cover_url: coverUrl,
       video_url: videoUrl,
       category,
       status,
       occurred_at: studioDate(data.occurred_at, "事件時間"),
       author_email: owner.email,
     });
-    if (!savedId) return NextResponse.json({ error: "找不到要更新的館藏" }, { status: 404 });
-    return NextResponse.json({ ok: true, id: savedId, slug });
+    if (!savedId) return privateJson({ error: "找不到要更新的館藏" }, 404);
+    if (previousCoverUrl && previousCoverUrl !== coverUrl) {
+      await deleteManagedCoverIfUnreferenced(previousCoverUrl);
+    }
+    return privateJson({ ok: true, id: savedId, slug });
   } catch (error) {
     const issue = studioError(error);
-    return NextResponse.json({ error: issue.message }, { status: issue.status });
+    return privateJson({ error: issue.message }, issue.status);
   }
 }
 
 export async function DELETE(request: Request) {
   const owner = await getStudioOwner();
-  if (!owner) return NextResponse.json({ error:"請先登入" }, { status:401 });
+  if (!owner) return privateJson({ error: "請先登入" }, 401);
   try {
-    assertStudioWriteRequest(request);
-    const { id } = await request.json() as { id?: number };
-    if (!id) throw new StudioRequestError("缺少館藏編號");
-    const removed = await removeMuseumEntry(Number(id));
-    if (!removed) return NextResponse.json({ error: "找不到要刪除的館藏" }, { status: 404 });
-    return NextResponse.json({ ok: true });
+    const data = await readStudioJson(request);
+    const id = studioId(data.id, true);
+    const previousCoverUrl = await findMuseumCoverUrl(id);
+    const removed = await removeMuseumEntry(id);
+    if (!removed) return privateJson({ error: "找不到要刪除的館藏" }, 404);
+    if (previousCoverUrl) {
+      await deleteManagedCoverIfUnreferenced(previousCoverUrl);
+    }
+    return privateJson({ ok: true });
   } catch (error) {
     const issue = studioError(error);
-    return NextResponse.json({ error: issue.message }, { status: issue.status });
+    return privateJson({ error: issue.message }, issue.status);
   }
 }

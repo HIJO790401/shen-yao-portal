@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server";
-import { listAllPosts, removePost, savePost } from "@/db/news";
+import {
+  findPostCoverUrl,
+  listAllPosts,
+  removePost,
+  savePost,
+} from "@/db/news";
+import { deleteManagedCoverIfUnreferenced } from "@/db/media";
 import { getStudioOwner } from "@/app/studio-auth";
 import {
-  assertStudioWriteRequest,
+  readStudioJson,
   studioCoverUrl,
   studioDate,
   studioError,
+  studioId,
   StudioRequestError,
   studioSlug,
   studioText,
@@ -16,21 +23,32 @@ export const dynamic = "force-dynamic";
 
 const categories = new Set(["REPORT", "VIDEO", "SYSTEM", "MUSIC", "ANIMATION", "ANNOUNCEMENT"]);
 
+function privateJson(body: unknown, status = 200) {
+  return NextResponse.json(body, {
+    status,
+    headers: { "cache-control": "private, no-store" },
+  });
+}
+
 export async function GET() {
   const owner = await getStudioOwner();
-  if (!owner) return NextResponse.json({ error: "只有站主可以進入編輯台" }, { status: 401 });
-  return NextResponse.json({ posts: await listAllPosts(), owner: owner.email });
+  if (!owner) return privateJson({ error: "只有站主可以進入編輯台" }, 401);
+  try {
+    return privateJson({ posts: await listAllPosts(), owner: owner.email });
+  } catch (error) {
+    const issue = studioError(error);
+    return privateJson({ error: issue.message }, issue.status);
+  }
 }
 
 export async function POST(request: Request) {
   const owner = await getStudioOwner();
-  if (!owner) return NextResponse.json({ error: "請先用站主帳號登入" }, { status: 401 });
+  if (!owner) return privateJson({ error: "請先用站主帳號登入" }, 401);
   try {
-    assertStudioWriteRequest(request);
-    const data = await request.json() as Record<string, unknown>;
+    const data = await readStudioJson(request);
     const titleZh = studioText(data.title_zh, "中文標題", 180);
     if (!titleZh) throw new StudioRequestError("請填寫中文標題");
-    const id = Number(data.id || 0) || undefined;
+    const id = studioId(data.id);
     const slug = studioSlug(data.slug, "report");
     const status = data.status === "published" ? "published" : "draft";
     const summaryZh = studioText(data.summary_zh, "中文摘要", 1_200);
@@ -41,6 +59,8 @@ export async function POST(request: Request) {
     }
     const requestedCategory = studioText(data.category, "分類", 32).toUpperCase();
     const category = categories.has(requestedCategory) ? requestedCategory : "REPORT";
+    const coverUrl = studioCoverUrl(data.cover_url);
+    const previousCoverUrl = id ? await findPostCoverUrl(id) : "";
     const savedId = await savePost({
       id,
       slug,
@@ -51,32 +71,38 @@ export async function POST(request: Request) {
       body_zh: bodyZh,
       body_en: studioText(data.body_en, "英文內文", 50_000),
       category,
-      cover_url: studioCoverUrl(data.cover_url),
+      cover_url: coverUrl,
       video_url: videoUrl,
       status,
       published_at: studioDate(data.published_at, "發布時間"),
       author_email: owner.email,
     });
-    if (!savedId) return NextResponse.json({ error: "找不到要更新的文章" }, { status: 404 });
-    return NextResponse.json({ ok: true, id: savedId, slug });
+    if (!savedId) return privateJson({ error: "找不到要更新的文章" }, 404);
+    if (previousCoverUrl && previousCoverUrl !== coverUrl) {
+      await deleteManagedCoverIfUnreferenced(previousCoverUrl);
+    }
+    return privateJson({ ok: true, id: savedId, slug });
   } catch (error) {
     const issue = studioError(error);
-    return NextResponse.json({ error: issue.message }, { status: issue.status });
+    return privateJson({ error: issue.message }, issue.status);
   }
 }
 
 export async function DELETE(request: Request) {
   const owner = await getStudioOwner();
-  if (!owner) return NextResponse.json({ error: "請先登入" }, { status: 401 });
+  if (!owner) return privateJson({ error: "請先登入" }, 401);
   try {
-    assertStudioWriteRequest(request);
-    const { id } = await request.json() as { id?: number };
-    if (!id) throw new StudioRequestError("缺少文章編號");
-    const removed = await removePost(Number(id));
-    if (!removed) return NextResponse.json({ error: "找不到要刪除的文章" }, { status: 404 });
-    return NextResponse.json({ ok: true });
+    const data = await readStudioJson(request);
+    const id = studioId(data.id, true);
+    const previousCoverUrl = await findPostCoverUrl(id);
+    const removed = await removePost(id);
+    if (!removed) return privateJson({ error: "找不到要刪除的文章" }, 404);
+    if (previousCoverUrl) {
+      await deleteManagedCoverIfUnreferenced(previousCoverUrl);
+    }
+    return privateJson({ ok: true });
   } catch (error) {
     const issue = studioError(error);
-    return NextResponse.json({ error: issue.message }, { status: issue.status });
+    return privateJson({ error: issue.message }, issue.status);
   }
 }

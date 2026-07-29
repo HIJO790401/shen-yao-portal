@@ -33,7 +33,7 @@ html,body{background:#f8f5ff;color:var(--ink)}::selection{background:#d9cbff;col
 .site-footer{background:#2a2140;border-color:rgba(255,255,255,.12)}
 .site-footer p{color:#cfc5df}.site-footer p b,.site-footer a{color:#fff}
 @media(prefers-reduced-motion:reduce){.scroll-progress{display:none}}
-.lang-en{display:none!important}html[data-locale="en"] .lang-zh{display:none!important}html[data-locale="en"] .lang-en{display:contents!important}
+.lang-en{display:none!important}[data-locale="en"] .lang-zh{display:none!important}[data-locale="en"] .lang-en{display:contents!important}
 .language-control{display:flex;gap:3px;padding:3px;border:1px solid rgba(33,26,43,.13);border-radius:999px;background:rgba(255,255,255,.62)}
 .language-control button{border:0;background:transparent;color:#726a7e;border-radius:999px;padding:6px 9px;font:700 9px/1 var(--font-sans);cursor:pointer}
 .language-control button.is-active{background:var(--ink);color:#fff}

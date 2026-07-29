@@ -1606,7 +1606,7 @@
     padding: 14px 18px 18px;
   }
 
-  .introActions p { margin-bottom: 10px; }
+  .introActions p { margin-top: 10px; }
 
   .introEnter {
     width: 100%;

@@ -20,6 +20,30 @@ interface ExecutionContext {
   passThroughOnException(): void;
 }
 
+function withSecurityHeaders(response: Response, url: URL) {
+  const localeMatch = url.pathname.match(/^\/(en|zh)(?:\/|$)/);
+  const htmlResponse =
+    localeMatch && response.headers.get("Content-Type")?.includes("text/html")
+      ? new HTMLRewriter()
+          .on("html", {
+            element(element) {
+              element.setAttribute("lang", localeMatch[1] === "en" ? "en" : "zh-Hant");
+            },
+          })
+          .transform(response)
+      : response;
+  const secured = new Response(htmlResponse.body, htmlResponse);
+  secured.headers.set("Content-Security-Policy", "frame-ancestors 'none'; base-uri 'self'; object-src 'none'");
+  secured.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  secured.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  secured.headers.set("X-Content-Type-Options", "nosniff");
+  secured.headers.set("X-Frame-Options", "DENY");
+  if (url.protocol === "https:") {
+    secured.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  }
+  return secured;
+}
+
 // Image security config. SVG sources with .svg extension auto-skip the
 // optimization endpoint on the client side (served directly, no proxy).
 // To route SVGs through the optimizer (with security headers), set
@@ -32,16 +56,17 @@ const worker = {
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
-      return handleImageOptimization(request, {
+      const response = await handleImageOptimization(request, {
         fetchAsset: (path) => env.ASSETS.fetch(new Request(new URL(path, request.url))),
         transformImage: async (body, { width, format, quality }) => {
           const result = await env.IMAGES.input(body).transform(width > 0 ? { width } : {}).output({ format, quality });
           return result.response();
         },
       }, allowedWidths);
+      return withSecurityHeaders(response, url);
     }
 
-    return handler.fetch(request, env, ctx);
+    return withSecurityHeaders(await handler.fetch(request, env, ctx), url);
   },
 };
 

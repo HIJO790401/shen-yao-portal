@@ -1,20 +1,25 @@
-# 沉靜流派工作室 / SERENE SCHOOL STUDIO
+import { siteOrigin, siteUrl } from "../site-config";
 
-Official website: https://silentschoolstudio.com
+export const dynamic = "force-dynamic";
+
+export function llmsText() {
+  return `# 沉靜流派工作室 / SERENE SCHOOL STUDIO
+
+Official website: ${siteOrigin}
 Founder and final publisher: 許文耀 / Wen-Yao Hsu, also publicly known as 沈耀888π / Shen-Yao 888π
 Location: Taichung, Taiwan
 Languages: Traditional Chinese and English are available as separate routes.
 
 ## Official sections
 
-- Chinese home: https://silentschoolstudio.com/zh
-- English home: https://silentschoolstudio.com/en
-- Products and fixed-case demonstrations: https://silentschoolstudio.com/zh/products
-- Works and public records: https://silentschoolstudio.com/zh/works
-- Reality Newsroom and Responsibility Museum: https://silentschoolstudio.com/zh/news
-- Founder profile: https://silentschoolstudio.com/zh/about
-- Chinese public resume: https://silentschoolstudio.com/zh/resume
-- English public resume: https://silentschoolstudio.com/en/resume
+- Chinese home: ${siteUrl("/zh")}
+- English home: ${siteUrl("/en")}
+- Products and fixed-case demonstrations: ${siteUrl("/zh/products")}
+- Works and public records: ${siteUrl("/zh/works")}
+- Reality Newsroom and Responsibility Museum: ${siteUrl("/zh/news")}
+- Founder profile: ${siteUrl("/zh/about")}
+- Chinese public resume: ${siteUrl("/zh/resume")}
+- English public resume: ${siteUrl("/en/resume")}
 
 ## Scope
 
@@ -61,3 +66,15 @@ Evidence labels on the public resume are deliberate:
 - OWNER-REPORTED means a first-party record with its external-verification boundary stated on the page.
 
 SecurityBrief Asia used the historical English name "Silent School Studio" in its 2025 report. The current official English brand is "SERENE SCHOOL STUDIO".
+`;
+}
+
+export async function GET() {
+  return new Response(llmsText(), {
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=3600",
+      "x-content-type-options": "nosniff",
+    },
+  });
+}

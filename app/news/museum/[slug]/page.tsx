@@ -7,6 +7,7 @@ import { SiteHeader } from "@/app/components/SiteHeader";
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { VideoEmbed } from "@/app/components/VideoEmbed";
 import { archiveMuseumItems, splitArchiveParagraphs } from "@/app/newsroom-data";
+import { localizedAlternates } from "@/app/site-config";
 
 export const dynamic = "force-dynamic";
 
@@ -91,12 +92,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const item = await getMuseumItem((await params).slug);
+  const slug = (await params).slug;
+  const item = await getMuseumItem(slug);
   if (!item) return { title: "館藏不存在" };
   return {
     title: `${item.titleZh}｜責任博物館`,
     description: item.guideZh || item.subtitleZh || item.titleZh,
+    alternates: localizedAlternates("zh", `/news/museum/${slug}`),
     openGraph: {
+      url: `/zh/news/museum/${slug}`,
       title: item.titleZh,
       description: item.guideZh || item.subtitleZh || item.titleZh,
       images: item.cover ? [item.cover] : [],

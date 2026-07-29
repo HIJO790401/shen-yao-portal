@@ -3,12 +3,15 @@ import Image from "next/image";
 import { Lang, LocalizedLink } from "../components/LanguageControl";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { localizedAlternates, siteUrl } from "../site-config";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
   title: "許文耀／沈耀888π｜沉靜流派工作室創辦人",
   description: "沉靜流派工作室與語意防火牆創辦人許文耀／沈耀888π。以古文明符號、數學公式與系統架構融合語意治理、動畫及音樂創作。",
   keywords: ["許文耀", "沈耀888π", "語意防火牆創辦人", "古文明符號", "數學公式", "系統架構", "SCBKR", "R-Lock", "去偽存真 黑客松", "Agent for Truth Hackathon"],
+  alternates: localizedAlternates("zh", "/about"),
+  openGraph: { url: "/zh/about" },
 };
 
 const publicRecords = [
@@ -65,10 +68,10 @@ const pressCoverageUrl = "https://securitybrief.asia/story/semantic-firewall-pro
 const pressCoverageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  "@id": "https://silentschoolstudio.com/zh/about#profile",
+  "@id": siteUrl("/zh/about#profile"),
   mainEntity: {
     "@type": "Person",
-    "@id": "https://silentschoolstudio.com/#person",
+    "@id": siteUrl("/#person"),
     subjectOf: {
       "@type": "NewsArticle",
       "@id": pressCoverageUrl,
@@ -78,7 +81,7 @@ const pressCoverageSchema = {
       author: { "@type": "Person", name: "Sean Mitchell" },
       publisher: { "@type": "Organization", name: "SecurityBrief Asia" },
       about: [
-        { "@id": "https://silentschoolstudio.com/#person" },
+        { "@id": siteUrl("/#person") },
         { "@type": "Thing", name: "Semantic Firewall" },
       ],
     },

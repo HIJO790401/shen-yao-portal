@@ -15,6 +15,7 @@ type IntroGateProps = {
 
 export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: IntroGateProps) {
   const [dismissed, setDismissed] = useState(false);
+  const [playbackFailed, setPlaybackFailed] = useState(false);
   const sessionEligible = useSyncExternalStore(
     subscribeToNothing,
     () => {
@@ -27,6 +28,7 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
     () => true,
   );
   const visible = sessionEligible && !dismissed;
+  const videoReady = Boolean(src) && !playbackFailed;
 
   useEffect(() => {
     if (!visible) return;
@@ -57,15 +59,17 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
       aria-describedby="serene-intro-note"
     >
       <div className={styles.introMedia}>
-        {src ? (
+        {videoReady ? (
           <video
             className={styles.introVideo}
             src={src}
             poster={poster}
             muted
+            autoPlay
             controls
             playsInline
-            preload="metadata"
+            preload="auto"
+            onError={() => setPlaybackFailed(true)}
           />
         ) : (
           <div className={styles.introPlaceholder}>
@@ -76,29 +80,52 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
         <div className={styles.introBrand}>
           <p>SERENE SCHOOL STUDIO</p>
           <h2 id="serene-intro-title">
-            <Lang zh={src ? "沉靜流派工作室・開場" : "正式開場影片待提供"} en={src ? "SERENE SCHOOL STUDIO · INTRO" : "FINAL INTRO VIDEO PENDING"} />
+            <Lang
+              zh={
+                videoReady
+                  ? "沉靜流派工作室・開場"
+                  : src && playbackFailed
+                    ? "開場影片暫時無法播放"
+                    : "正式開場影片待提供"
+              }
+              en={
+                videoReady
+                  ? "SERENE SCHOOL STUDIO · INTRO"
+                  : src && playbackFailed
+                    ? "INTRO VIDEO UNAVAILABLE"
+                    : "FINAL INTRO VIDEO PENDING"
+              }
+            />
           </h2>
-          {!src && (
+          {!videoReady && (
             <span>
               <Lang
-                zh="目前使用 Owner 核准的水滴視覺作為合法佔位，不生成替代影片。"
-                en="The Owner-approved water visual is used as a legal placeholder. No substitute video is generated."
+                zh={
+                  src && playbackFailed
+                    ? "影片載入失敗，已安全回復為你核准的水滴封面；仍可直接進入官網。"
+                    : "目前使用你核准的水滴視覺作為合法佔位，不生成替代影片。"
+                }
+                en={
+                  src && playbackFailed
+                    ? "Playback failed, so the approved water poster is shown. You can still enter the site."
+                    : "The approved water visual is used as a placeholder. No substitute video is generated."
+                }
               />
             </span>
           )}
         </div>
       </div>
       <div className={styles.introActions}>
+        <button className={styles.introEnter} type="button" onClick={enterSite}>
+          <span><Lang zh="進入官網" en="ENTER THE STUDIO" /></span>
+          <b aria-hidden="true">→</b>
+        </button>
         <p id="serene-intro-note">
           <Lang
             zh="不必等待影片播放完畢；由你決定何時進入。"
             en="You decide when to enter. Watching the entire film is never required."
           />
         </p>
-        <button className={styles.introEnter} type="button" onClick={enterSite}>
-          <span><Lang zh="進入官網" en="ENTER THE STUDIO" /></span>
-          <b aria-hidden="true">→</b>
-        </button>
       </div>
     </div>
   );

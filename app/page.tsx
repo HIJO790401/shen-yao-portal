@@ -6,6 +6,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { ContactComposer } from "./components/ContactComposer";
 import { products } from "./site-data";
+import { introVideoSource } from "./site-config";
 import styles from "./serene-home.module.css";
 
 const quickLinks = [
@@ -61,7 +62,7 @@ const publicRecords = [
 export default function Home() {
   return (
     <div className={styles.site}>
-      <IntroGate />
+      <IntroGate src={introVideoSource} />
       <SiteHeader />
       <main>
         <SereneWaterHero />

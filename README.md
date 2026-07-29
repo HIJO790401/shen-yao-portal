@@ -1,98 +1,50 @@
-# vinext-starter
+# 沉靜流派工作室官方網站
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+**SERENE SCHOOL STUDIO** 是許文耀／沈耀888π的官方網站與內容系統，整合：
 
-## Prerequisites
+- 中、英文分流的工作室門面、履歷、產品與作品頁。
+- 不需訪客輸入的產品動畫 DEMO。
+- 實相新聞台與責任博物館。
+- 站主內容中心 `/studio`：新聞、YouTube 報導與館藏的新增、修改、草稿、發布、刪除與封面管理。
+- 搜尋引擎、AI 爬蟲、Open Graph、結構化資料、sitemap、robots 與 `llms.txt`。
 
-- Node.js `>=22.13.0`
+## 系統結構
 
-## Quick Start
+- Vinext／Next App Router：公開網站與伺服器 API。
+- Cloudflare D1：新聞與館藏的結構化資料。
+- Cloudflare R2：站主上傳的封面圖片。
+- Sites 平台身分：登入後由伺服器 email allowlist 判定站主權限。
+- GitHub：只保存來源碼，不依賴 GitHub Pages 驅動正式網站。
+
+公開頁只讀 `published` 內容；草稿、上傳及所有寫入都會在伺服器重新驗證身分、同源請求與欄位邊界。密碼、Cookie、權杖及 OAuth 憑證不得寫入此 Repo。
+
+## 本機驗證
+
+需求：Node.js `>=22.13.0`
 
 ```bash
 npm install
 npm run dev
-npm run build
+npx tsc --noEmit
+npm run lint
+npm test
 ```
 
-This starter does not use `wrangler.jsonc`.
+`npm test` 會先完成正式建置，再執行品牌、雙語、動畫 DEMO、新聞台、博物館、SEO、CMS 權限、上傳簽章與 D1 migration 測試。
 
-## Included Shape
+修改 `db/schema.ts` 後使用：
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run db:generate
+npx drizzle-kit check
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## 部署狀態
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+目前是 `SOURCE_COMPLETE_NOT_LIVE` 的部署候選來源：
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+- 正式開場影片由站主另行提供，未生成替代影片。
+- 正式網域與 DNS 由站主付款並另行授權後處理。
+- Sites 私有部署、真實登入及 D1／R2 CRUD 驗收完成前，不宣稱 CMS 已正式上線。
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+部署設定位於 `.openai/hosting.json`，施工與驗收紀錄位於 `.pi1/`。

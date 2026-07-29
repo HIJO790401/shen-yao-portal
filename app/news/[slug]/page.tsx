@@ -7,6 +7,7 @@ import { SiteHeader } from "@/app/components/SiteHeader";
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { VideoEmbed } from "@/app/components/VideoEmbed";
 import { archiveReports, splitArchiveParagraphs } from "@/app/newsroom-data";
+import { localizedAlternates } from "@/app/site-config";
 
 export const dynamic = "force-dynamic";
 
@@ -64,12 +65,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const report = await getReport((await params).slug);
+  const slug = (await params).slug;
+  const report = await getReport(slug);
   if (!report) return { title: "報導不存在" };
   return {
     title: report.titleZh,
     description: report.summaryZh || report.titleZh,
+    alternates: localizedAlternates("zh", `/news/${slug}`),
     openGraph: {
+      url: `/zh/news/${slug}`,
       title: report.titleZh,
       description: report.summaryZh || report.titleZh,
       images: report.cover ? [report.cover] : [],

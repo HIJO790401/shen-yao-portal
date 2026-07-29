@@ -5,11 +5,14 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { productFamilies } from "../product-audit-data";
 import { demoRouteByProductCode } from "../showcase-data";
+import { localizedAlternates } from "../site-config";
 import demoStyles from "../demo-system.module.css";
 
 export const metadata: Metadata = {
   title: "產品與工程作品",
   description: "沉靜流派工作室的語意防火牆、SCBKR、WIF、TIRC 與媒體作品；依原始碼核實能力、邊界與展示狀態。",
+  alternates: localizedAlternates("zh", "/products"),
+  openGraph: { url: "/zh/products" },
 };
 
 export default function ProductsPage() {

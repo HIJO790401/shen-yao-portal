@@ -1,0 +1,26 @@
+task_id: TASK-20260728-DEPLOYMENT-PREFLIGHT-V1
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室官方網站
+brand_en: SERENE SCHOOL STUDIO
+goal: 將目前 GitHub main 整理成只待站主提供開場影片與確認購買正式網域的部署候選版
+scope:
+  - centralized_site_origin
+  - intro_video_runtime_interface
+  - seo_and_crawler_surfaces
+  - d1_r2_schema_and_migration_preflight
+  - studio_auth_and_crud_contract_tests
+  - upload_and_media_security_tests
+  - production_build_and_sites_package_rehearsal
+  - desktop_and_mobile_browser_qa
+  - github_main_update
+excluded:
+  - fabricated_intro_video
+  - domain_purchase
+  - dns_change
+  - enterprise_mail_purchase
+  - production_publication_without_separate_gate
+owner_inputs_remaining:
+  - final_intro_video
+  - final_domain_purchase_and_dns_authorization
+final_gate: OWNER_REVIEW
+state: READY_FOR_OWNER_REVIEW

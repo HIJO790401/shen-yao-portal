@@ -26,12 +26,13 @@ function cssRule(css, selector) {
 }
 
 test("locks the SERENE brand, founder identity and separate locale routes", async () => {
-  const [home, hero, layout, locale, language] = await Promise.all([
+  const [home, hero, layout, locale, language, globals] = await Promise.all([
     source("app/page.tsx"),
     source("app/components/SereneWaterHero.tsx"),
     source("app/layout.tsx"),
     source("app/[locale]/layout.tsx"),
     source("app/components/LanguageControl.tsx"),
+    source("app/globals.css"),
   ]);
   assert.match(home + hero + layout, /SERENE SCHOOL STUDIO/);
   assert.match(hero, /許文耀／沈耀888π/);
@@ -49,8 +50,12 @@ test("locks the SERENE brand, founder identity and separate locale routes", asyn
   assert.match(layout, /Wen-Yao Hsu/);
   assert.match(locale, /generateStaticParams/);
   assert.match(locale, /zh-Hant/);
+  assert.match(locale, /data-locale=\{locale\}/);
   assert.match(language, /LocalizedLink/);
   assert.match(language, /localizeHref/);
+  assert.match(globals, /\[data-locale="en"\] \.lang-zh/);
+  assert.match(globals, /\[data-locale="en"\] \.lang-en/);
+  assert.doesNotMatch(globals, /html\[data-locale="en"\]/);
 });
 
 test("keeps the supplied image static while animating only the water treatment", async () => {
@@ -106,20 +111,31 @@ test("serves curated local raster assets directly in the browser runtime", async
 });
 
 test("renders a legal Intro Gate placeholder and enters only on owner action", async () => {
-  const [home, intro] = await Promise.all([
+  const [home, intro, siteConfig] = await Promise.all([
     source("app/page.tsx"),
     source("app/components/IntroGate.tsx"),
+    source("app/site-config.ts"),
   ]);
-  assert.match(home, /<IntroGate\s*\/>/);
+  assert.match(home, /introVideoSource/);
+  assert.match(home, /<IntroGate src=\{introVideoSource\}\s*\/>/);
+  assert.match(siteConfig, /NEXT_PUBLIC_INTRO_VIDEO_URL/);
+  assert.match(siteConfig, /normalizeIntroVideoSource/);
   assert.match(intro, /正式開場影片待提供/);
   assert.match(intro, /不生成替代影片/);
   assert.match(intro, /進入官網/);
   assert.match(intro, /sessionStorage/);
   assert.match(intro, /controls/);
-  assert.match(intro, /src\s*\?\s*\(/);
-  assert.doesNotMatch(intro, /if\s*\(\s*!src[\s|)]/);
+  assert.match(intro, /Boolean\(src\)\s*&&\s*!playbackFailed/);
+  assert.match(intro, /onError=\{\(\) => setPlaybackFailed\(true\)\}/);
+  assert.match(intro, /\bautoPlay\b/);
+  assert.match(intro, /\bmuted\b/);
+  assert.match(intro, /\bplaysInline\b/);
   assert.doesNotMatch(intro, /onEnded=\{enterSite\}|onError=\{enterSite\}/);
-  assert.doesNotMatch(intro, /autoPlay/);
+  const actions = intro.slice(intro.indexOf("styles.introActions"));
+  assert.ok(
+    actions.indexOf("styles.introEnter") < actions.indexOf('id="serene-intro-note"'),
+    "the explicit enter action must remain on the left before the supporting note",
+  );
 });
 
 test("keeps the Runtime 0/1 slot legal, visible and intentionally unlinkable", async () => {
@@ -281,7 +297,7 @@ test("publishes a bilingual source-labelled living resume and removes the legacy
     source("app/components/SiteFooter.tsx"),
     source("app/about/page.tsx"),
     source("app/sitemap.ts"),
-    source("public/llms.txt"),
+    source("app/llms.txt/route.ts"),
   ]);
 
   assert.match(resume, /VERIFIED PUBLIC PROFILE/);
@@ -377,6 +393,7 @@ test("protects the owner CMS at the page, API and upload boundaries", async () =
     postApi,
     museumApi,
     uploadApi,
+    studioImage,
     mediaApi,
     editor,
     museumEditor,
@@ -388,6 +405,7 @@ test("protects the owner CMS at the page, API and upload boundaries", async () =
     source("app/api/studio/posts/route.ts"),
     source("app/api/studio/museum/route.ts"),
     source("app/api/studio/upload/route.ts"),
+    source("app/studio-image.ts"),
     source("app/api/media/[...key]/route.ts"),
     source("app/studio/StudioEditor.tsx"),
     source("app/studio/MuseumEditor.tsx"),
@@ -409,24 +427,30 @@ test("protects the owner CMS at the page, API and upload boundaries", async () =
 
   for (const api of [postApi, museumApi, uploadApi]) {
     assert.match(api, /getStudioOwner/);
-    assert.match(api, /assertStudioWriteRequest\(request\)/);
+    assert.match(api, /private,\s*no-store/);
   }
   for (const api of [postApi, museumApi]) {
+    assert.match(api, /readStudioJson\(request\)/);
     assert.match(api, /studioSlug/);
     assert.match(api, /studioVideoUrl/);
-    assert.match(api, /status:\s*404/);
+    assert.match(api, /studioId/);
+    assert.match(api, /deleteManagedCoverIfUnreferenced/);
+    assert.match(api, /找不到要更新[\s\S]*?,\s*404\)/);
   }
 
   assert.match(guard, /sec-fetch-site/);
-  assert.match(guard, /origin !== requestUrl\.origin/);
+  assert.match(guard, /!origin \|\| origin !== requestUrl\.origin/);
+  assert.match(guard, /application\/json/);
+  assert.match(guard, /content-length/);
   assert.match(guard, /url\.protocol !== "https:"/);
   assert.match(guard, /YouTube 或 TikTok 官方網址/);
   assert.doesNotMatch(guard, /javascript:|data:/);
 
-  assert.match(uploadApi, /image\/jpeg/);
-  assert.match(uploadApi, /image\/png/);
-  assert.match(uploadApi, /image\/webp/);
-  assert.doesNotMatch(uploadApi, /image\/svg\+xml/);
+  assert.match(uploadApi, /assertStudioMultipartRequest/);
+  assert.match(studioImage, /image\/jpeg/);
+  assert.match(studioImage, /image\/png/);
+  assert.match(studioImage, /image\/webp/);
+  assert.doesNotMatch(studioImage, /image\/svg\+xml/);
   assert.match(uploadApi, /matchesImageSignature/);
   assert.match(uploadApi, /圖片儲存空間尚未連接/);
   assert.match(mediaApi, /nosniff/);
@@ -440,19 +464,38 @@ test("protects the owner CMS at the page, API and upload boundaries", async () =
 });
 
 test("publishes crawler, AI discovery and structured-search surfaces", async () => {
-  const [robots, sitemap, llms] = await Promise.all([
+  const [robots, sitemap, llms, siteConfig, demoMeta, reportMeta, museumMeta] = await Promise.all([
     source("app/robots.ts"),
     source("app/sitemap.ts"),
-    source("public/llms.txt"),
+    source("app/llms.txt/route.ts"),
+    source("app/site-config.ts"),
+    source("app/[locale]/demo/[slug]/page.tsx"),
+    source("app/[locale]/news/[slug]/page.tsx"),
+    source("app/[locale]/news/museum/[slug]/page.tsx"),
   ]);
   assert.match(robots, /OAI-SearchBot/);
   assert.match(robots, /GPTBot/);
   assert.match(robots, /sitemap\.xml/);
-  assert.match(sitemap, /\/zh/);
-  assert.match(sitemap, /\/en/);
+  assert.match(siteConfig, /normalizeSiteOrigin/);
+  assert.match(siteConfig, /NEXT_PUBLIC_SITE_URL/);
+  assert.match(sitemap, /\(\["zh", "en"\] as const\)\.flatMap/);
   assert.match(sitemap, /\/resume/);
   assert.match(sitemap, /\/news\/museum/);
+  assert.match(sitemap, /listPublishedPosts/);
+  assert.match(sitemap, /listPublishedMuseumEntries/);
+  assert.match(sitemap, /archiveReports/);
+  assert.match(sitemap, /archiveMuseumItems/);
+  assert.match(sitemap, /"x-default"/);
+  assert.doesNotMatch(sitemap, /const routes = \["\/"/);
+  for (const localizedMeta of [demoMeta, reportMeta, museumMeta]) {
+    assert.match(localizedMeta, /localizedAlternates\(locale, path\)/);
+    assert.match(localizedMeta, /url: `\/\$\{locale\}\$\{path\}`/);
+    assert.match(localizedMeta, /locale === "en" \? "en_US" : "zh_TW"/);
+    assert.match(localizedMeta, /alternateLocale/);
+  }
   assert.match(llms, /SERENE SCHOOL STUDIO/);
+  assert.match(llms, /siteUrl\("\/zh"\)/);
+  assert.match(llms, /text\/plain; charset=utf-8/);
   assert.match(llms, /Artifacts of the Language God/);
   assert.match(llms, /Agent for Truth/);
   assert.match(llms, /NVIDIA links are community posts/);

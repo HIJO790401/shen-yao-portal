@@ -5,11 +5,18 @@ import { Lang, LocalizedLink } from "@/app/components/LanguageControl";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { findFilm, productFilms } from "@/app/showcase-data";
+import { localizedAlternates } from "@/app/site-config";
 
 export function generateStaticParams() { return productFilms.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const film = findFilm((await params).slug);
-  return film ? { title: `${film.name}｜${film.status === "ready" ? "固定案例 DEMO" : "展示狀態"}`, description: film.introZh } : {};
+  const slug = (await params).slug;
+  const film = findFilm(slug);
+  return film ? {
+    title: `${film.name}｜${film.status === "ready" ? "固定案例 DEMO" : "展示狀態"}`,
+    description: film.introZh,
+    alternates: localizedAlternates("zh", `/demo/${slug}`),
+    openGraph: { url: `/zh/demo/${slug}` },
+  } : {};
 }
 
 export default async function ProductFilmPage({ params }: { params: Promise<{ slug: string }> }) {

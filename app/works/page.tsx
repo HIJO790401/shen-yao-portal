@@ -5,13 +5,16 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { VideoEmbed } from "../components/VideoEmbed";
 import { productFilms } from "../showcase-data";
+import { localizedAlternates, siteUrl } from "../site-config";
 import styles from "../demo-system.module.css";
 
 export const metadata: Metadata = {
   title: "作品總覽｜系統・動畫・音樂・文章",
   description: "許文耀／沈耀888π的系統工程、固定案例 Demo、動畫音樂公開入口與文章紀錄。",
   keywords: ["語之神神器展覽篇", "Artifacts of the Language God", "沈耀888π", "許文耀", "AI 音樂動畫", "語意防火牆"],
+  alternates: localizedAlternates("zh", "/works"),
   openGraph: {
+    url: "/zh/works",
     title: "語之神神器展覽篇｜沉靜流派工作室作品",
     description: "古文明符號、音樂、動畫、數學公式與系統工程的公開作品總覽。",
     images: [{ url: "/media/works/language-god-exhibition-16x9.png", width: 1672, height: 941, alt: "語之神神器展覽篇" }],
@@ -23,12 +26,12 @@ const creativeWorkSchema = {
   "@type": "CreativeWork",
   name: "語之神神器展覽篇",
   alternateName: "Artifacts of the Language God",
-  creator: { "@id": "https://silentschoolstudio.com/#person" },
-  image: "https://silentschoolstudio.com/media/works/language-god-exhibition-16x9.png",
+  creator: { "@id": siteUrl("/#person") },
+  image: siteUrl("/media/works/language-god-exhibition-16x9.png"),
   url: "https://vt.tiktok.com/ZS9rDg3ATyPX4-sKjkh/",
   inLanguage: ["zh-Hant", "en"],
   genre: ["Music animation", "Symbolic art", "AI-assisted art"],
-  isPartOf: { "@id": "https://silentschoolstudio.com/#website" },
+  isPartOf: { "@id": siteUrl("/#website") },
 };
 
 const mediaWorks = [

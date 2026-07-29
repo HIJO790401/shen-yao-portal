@@ -15,6 +15,13 @@
       "when": 1784358821797,
       "tag": "0001_nostalgic_vapor",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1785218605315,
+      "tag": "0002_illegal_luke_cage",
+      "breakpoints": true
     }
   ]
 }

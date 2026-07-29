@@ -18,39 +18,91 @@ export function StudioEditor({ initialPosts, canSave, ownerEmail }: { initialPos
   const selected = useMemo(() => posts.find((p) => p.id === form.id), [posts, form.id]);
   const update = (name: keyof NewsPost, value: string | number) => setForm((old) => ({ ...old, [name]: value }));
 
-  async function refresh() {
-    const res = await fetch("/api/studio/posts");
-    if (res.ok) setPosts(((await res.json()) as { posts: NewsPost[] }).posts);
+  async function refresh(): Promise<boolean> {
+    try {
+      const res = await fetch("/api/studio/posts", { cache: "no-store" });
+      const data = await readApiJson<{ posts?: NewsPost[]; error?: string }>(res);
+      if (!res.ok || !data.posts) return false;
+      setPosts(data.posts);
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async function save(event: FormEvent) {
     event.preventDefault();
     if (!canSave) return setMessage("這是本機驗收畫面；正式上線登入後才能發布。");
-    setBusy(true); setMessage("正在儲存…");
-    const res = await fetch("/api/studio/posts", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(form) });
-    const data = await res.json() as { error?: string; id: number; slug: string };
-    setBusy(false);
-    if (!res.ok) return setMessage(data.error || "儲存失敗");
-    setMessage(form.status === "published" ? "已發布，新聞台現在看得到。" : "草稿已保存。");
-    await refresh();
-    setForm((old) => ({ ...old, id: data.id, slug: data.slug }));
+    setBusy(true);
+    setMessage("正在儲存…");
+    try {
+      const res = await fetch("/api/studio/posts", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await readApiJson<{ error?: string; id?: number; slug?: string }>(res);
+      if (!res.ok || !data.id || !data.slug) {
+        setMessage(data.error || "儲存失敗");
+        return;
+      }
+      const refreshed = await refresh();
+      setForm((old) => ({ ...old, id: data.id!, slug: data.slug! }));
+      const success = form.status === "published" ? "已發布，新聞台現在看得到。" : "草稿已保存。";
+      setMessage(refreshed ? success : `${success} 但列表更新失敗，請重新整理頁面。`);
+    } catch {
+      setMessage("網路連線失敗，這次內容尚未確認儲存，請稍後重試。");
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function upload(file?: File) {
     if (!file) return;
     if (!canSave) return setMessage("正式上線登入後才能上傳封面。");
-    setBusy(true); setMessage("正在上傳封面…");
-    const data = new FormData(); data.append("file", file);
-    const res = await fetch("/api/studio/upload", { method: "POST", body: data });
-    const result = await res.json() as { error?: string; url: string }; setBusy(false);
-    if (!res.ok) return setMessage(result.error || "上傳失敗");
-    update("cover_url", result.url); setMessage("封面已上傳，記得按最下方儲存。");
+    setBusy(true);
+    setMessage("正在上傳封面…");
+    try {
+      const data = new FormData();
+      data.append("file", file);
+      const res = await fetch("/api/studio/upload", { method: "POST", body: data });
+      const result = await readApiJson<{ error?: string; url?: string }>(res);
+      if (!res.ok || !result.url) {
+        setMessage(result.error || "上傳失敗");
+        return;
+      }
+      update("cover_url", result.url);
+      setMessage("封面已上傳，記得按最下方儲存。");
+    } catch {
+      setMessage("封面上傳連線失敗，請稍後重試。");
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function remove() {
     if (!form.id || !canSave || !confirm("確定刪除這篇文章？")) return;
-    const res = await fetch("/api/studio/posts", { method: "DELETE", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: form.id }) });
-    if (res.ok) { setMessage("文章已刪除。"); setForm(emptyPost); await refresh(); }
+    setBusy(true);
+    setMessage("正在刪除…");
+    try {
+      const res = await fetch("/api/studio/posts", {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ id: form.id }),
+      });
+      const data = await readApiJson<{ error?: string }>(res);
+      if (!res.ok) {
+        setMessage(data.error || "刪除失敗");
+        return;
+      }
+      setForm(emptyPost);
+      const refreshed = await refresh();
+      setMessage(refreshed ? "文章已刪除。" : "文章已刪除，但列表更新失敗，請重新整理頁面。");
+    } catch {
+      setMessage("刪除時網路連線失敗，請稍後重試。");
+    } finally {
+      setBusy(false);
+    }
   }
 
   return <div className="studio-shell">
@@ -62,10 +114,18 @@ export function StudioEditor({ initialPosts, canSave, ownerEmail }: { initialPos
       <div className="studio-form-title"><div><span>{selected ? "編輯內容" : "建立新內容"}</span><h1>{form.title_zh || "新增一篇報導"}</h1></div><a href="/news" target="_blank">查看新聞台 ↗</a></div>
       {!canSave && <div className="studio-preview-note">這是本機驗收畫面。可以查看所有欄位；正式上線後用站主帳號登入，就能儲存與發布。</div>}
       <fieldset><legend>一、基本資料</legend><label>中文標題（一定要填）<input value={form.title_zh} onChange={(e) => update("title_zh", e.target.value)} placeholder="例如：語意防火牆正式公開" /></label><label>英文標題（國際版顯示）<input value={form.title_en} onChange={(e) => update("title_en", e.target.value)} placeholder="例如：Semantic Firewall is now public" /></label><label>網址代碼（可留空自動產生）<input value={form.slug} onChange={(e) => update("slug", e.target.value)} placeholder="例如：semantic-firewall-public-launch" /></label><div className="studio-two"><label>分類<select value={form.category} onChange={(e) => update("category", e.target.value)}><option value="REPORT">報導</option><option value="VIDEO">影片</option><option value="SYSTEM">系統</option><option value="MUSIC">音樂</option><option value="ANIMATION">動畫</option><option value="ANNOUNCEMENT">公告</option></select></label><label>發布時間<input type="datetime-local" value={form.published_at} onChange={(e) => update("published_at", e.target.value)} /></label></div></fieldset>
-      <fieldset><legend>二、封面與影片</legend><label>上傳封面圖片<input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => upload(e.target.files?.[0])} /></label><p className="field-help">封面支援 JPG、PNG、WebP，單張不超過 8MB。</p><label>或貼上封面網址<input value={form.cover_url} onChange={(e) => update("cover_url", e.target.value)} placeholder="https://..." /></label><label>YouTube 或 TikTok 影片連結<input value={form.video_url} onChange={(e) => update("video_url", e.target.value)} placeholder="貼上 YouTube 影片網址，就會自動變成播放器" /></label>{form.video_url && <VideoEmbed url={form.video_url} title={form.title_zh || "影片預覽"} />}</fieldset>
+      <fieldset><legend>二、封面與影片</legend><label>上傳封面圖片<input type="file" accept="image/jpeg,image/png,image/webp" disabled={!canSave || busy} onChange={(e) => upload(e.target.files?.[0])} /></label><p className="field-help">封面支援 JPG、PNG、WebP，單張不超過 8MB。</p><label>或貼上封面網址<input value={form.cover_url} onChange={(e) => update("cover_url", e.target.value)} placeholder="https://..." /></label><label>YouTube 或 TikTok 影片連結<input value={form.video_url} onChange={(e) => update("video_url", e.target.value)} placeholder="貼上 YouTube 影片網址，就會自動變成播放器" /></label>{form.video_url && <VideoEmbed url={form.video_url} title={form.title_zh || "影片預覽"} />}</fieldset>
       <fieldset><legend>三、中文內容</legend><label>中文摘要<textarea rows={3} value={form.summary_zh} onChange={(e) => update("summary_zh", e.target.value)} placeholder="用兩三句話說清楚這篇報導在講什麼" /></label><label>中文內文<textarea rows={12} value={form.body_zh} onChange={(e) => update("body_zh", e.target.value)} placeholder="直接寫文章。空一行就會自動分段。" /></label></fieldset>
       <fieldset><legend>四、英文國際版</legend><p className="field-help">中文與英文會分開顯示，不會擠在同一頁。英文可之後再補。</p><label>英文摘要<textarea rows={3} value={form.summary_en} onChange={(e) => update("summary_en", e.target.value)} /></label><label>英文內文<textarea rows={12} value={form.body_en} onChange={(e) => update("body_en", e.target.value)} /></label></fieldset>
-      <fieldset><legend>五、儲存或發布</legend><div className="publish-choice"><label><input type="radio" checked={form.status === "draft"} onChange={() => update("status", "draft")} /> 先存草稿，訪客看不到</label><label><input type="radio" checked={form.status === "published"} onChange={() => update("status", "published")} /> 直接發布到新聞台</label></div><div className="studio-actions"><button className="save-button" disabled={busy} type="submit">{busy ? "處理中…" : form.status === "published" ? "發布到新聞台" : "儲存草稿"}</button>{form.id > 0 && <button className="delete-button" type="button" onClick={remove}>刪除文章</button>}</div>{message && <p className="studio-message">{message}</p>}</fieldset>
+      <fieldset><legend>五、儲存或發布</legend><div className="publish-choice"><label><input type="radio" checked={form.status === "draft"} onChange={() => update("status", "draft")} /> 先存草稿，訪客看不到</label><label><input type="radio" checked={form.status === "published"} onChange={() => update("status", "published")} /> 直接發布到新聞台</label></div><div className="studio-actions"><button className="save-button" disabled={busy || !canSave} type="submit">{busy ? "處理中…" : form.status === "published" ? "發布到新聞台" : "儲存草稿"}</button>{form.id > 0 && <button className="delete-button" type="button" onClick={remove}>刪除文章</button>}</div>{message && <p className="studio-message">{message}</p>}</fieldset>
     </form>
   </div>;
+}
+
+async function readApiJson<T>(response: Response): Promise<Partial<T>> {
+  try {
+    return await response.json() as T;
+  } catch {
+    return {};
+  }
 }

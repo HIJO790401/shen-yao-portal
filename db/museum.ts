@@ -83,7 +83,19 @@ const additiveColumns: Record<string, string> = {
   video_url: "TEXT NOT NULL DEFAULT ''",
 };
 
+let databaseReady: Promise<D1Database> | null = null;
+
 async function database() {
+  if (!databaseReady) databaseReady = initializeDatabase();
+  try {
+    return await databaseReady;
+  } catch (error) {
+    databaseReady = null;
+    throw error;
+  }
+}
+
+async function initializeDatabase() {
   const runtime = env as unknown as { DB: D1Database };
   if (!runtime.DB) throw new Error("責任博物館資料庫尚未連接");
   await runtime.DB.prepare(createTableSql).run();
@@ -142,6 +154,15 @@ export async function saveMuseumEntry(input: Omit<MuseumEntry, "id" | "updated_a
   const placeholders = writableColumns.map(() => "?").join(",");
   const result = await db.prepare(`INSERT INTO museum_entries (${writableColumns.join(",")}) VALUES (${placeholders})`).bind(...values).run();
   return Number(result.meta.last_row_id);
+}
+
+export async function findMuseumCoverUrl(id: number): Promise<string> {
+  const db = await database();
+  const row = await db
+    .prepare("SELECT cover_url FROM museum_entries WHERE id = ? LIMIT 1")
+    .bind(id)
+    .first<{ cover_url: string }>();
+  return row?.cover_url ?? "";
 }
 
 export async function removeMuseumEntry(id: number) {

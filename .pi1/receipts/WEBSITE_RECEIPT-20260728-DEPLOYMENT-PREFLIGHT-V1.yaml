@@ -1,0 +1,98 @@
+receipt_id: WEBSITE_RECEIPT-20260728-DEPLOYMENT-PREFLIGHT-V1
+task_id: TASK-20260728-DEPLOYMENT-PREFLIGHT-V1
+issued_at: "2026-07-29T14:49:20+08:00"
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室官方網站
+brand_en: SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 561cd1f53ec7b9b1e63ea3c7a655c18c75a9b58f
+candidate_commit: PENDING_FINAL_COMMIT
+github_push:
+  state: PENDING_FINAL_COMMIT_AND_PUSH
+  target: origin/main
+  pull_request: 0
+state_transition:
+  current: READY_FOR_OWNER_REVIEW
+  target_after_verified_push: SOURCE_COMPLETE_NOT_LIVE
+  promotion_rule: candidate_commit_must_equal_remote_origin_main
+formal_deployment: 0
+sites_version_saved: 0
+domain_change: 0
+paid_service_change: 0
+states:
+  site_origin_config: PASS_SOURCE_AND_TESTS
+  intended_canonical_fallback: CONFIGURED_NOT_OWNERSHIP_PROOF
+  intro_runtime_interface: PASS_SOURCE_AND_TESTS
+  intro_final_video: PENDING_OWNER_ASSET
+  crawler_and_ai_discovery: PASS_SOURCE_AND_TESTS
+  bilingual_routes: PASS_LOCAL_BROWSER
+  english_server_locale_css: PASS_SOURCE_AND_TESTS
+  branded_404: PASS_LOCAL_BROWSER_HTTP_404
+  fixed_case_no_input_demo: PASS_LOCAL_BROWSER
+  newsroom_and_museum: PASS_LOCAL_BROWSER
+  owner_studio_preview: PASS_READ_ONLY
+  owner_studio_submit_controls: DISABLED_LOCAL_PREVIEW
+  owner_studio_upload_controls: DISABLED_LOCAL_PREVIEW
+  owner_auth_siwc: SOURCE_PRESENT_LIVE_UNVERIFIED
+  d1_schema_and_migrations: PASS_LOCAL
+  d1_blank_database_migration: PASS
+  d1_upgrade_path_migration: PASS
+  d1_live_crud: NOT_E2E_VERIFIED
+  r2_upload_contract: PASS_LOCAL
+  r2_live_upload_and_read: NOT_E2E_VERIFIED
+  worker_security_headers: SOURCE_PRESENT_LIVE_UNVERIFIED
+  plaintext_password_storage: 0
+verification:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  contract_tests:
+    passed: 32
+    failed: 0
+  drizzle_check: PASS
+  git_diff_check: PASS
+  hardcoded_origin_scan: PASS_CENTRAL_CONFIG_ONLY
+  secret_candidate_scan: PASS
+  npm_audit_production:
+    low: 0
+    moderate: 0
+    high: 0
+    critical: 0
+  sites_package_rehearsal:
+    state: PASS
+    entry_count: 234
+    bytes: 13998417
+    sha256: 93e671ed7e340ebd7752958444e2c3e06f0a064e4591fd2af982bf2bb02fdf43
+    server_entry: PRESENT
+    hosting_metadata: PRESENT
+    drizzle_0000: PRESENT
+    drizzle_0001: PRESENT
+    drizzle_0002: PRESENT
+    saved_as_sites_version: 0
+  browser:
+    desktop_zh_en: PASS
+    final_desktop_1440x900: PASS_INTRO_AND_ZH_HOME
+    mobile_390x844_zh_en: PASS
+    intro_gate: PASS
+    no_input_demo: PASS
+    newsroom: PASS
+    museum: PASS
+    studio_read_only_boundary: PASS
+    branded_404: PASS_HTTP_404
+    console_final: PASS_ZERO_ERRORS_ZERO_WARNINGS
+preserved:
+  user_assets: UNCHANGED
+  rollback_files: LOCAL_ONLY_UNCOMMITTED
+  password_value: NEVER_RECORDED
+pending:
+  - final_candidate_commit_and_origin_main_push
+  - owner_production_siwc_sign_in
+  - d1_news_and_museum_crud_end_to_end
+  - r2_upload_read_content_type_etag_and_delete_end_to_end
+  - owner_final_intro_video
+  - domain_purchase_ownership_dns_tls_and_binding
+  - formal_sites_version_and_deployment
+final_state: OWNER_REVIEW
+detail_state: READY_FOR_OWNER_REVIEW
+target_detail_state: SOURCE_COMPLETE_NOT_LIVE

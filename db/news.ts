@@ -38,7 +38,19 @@ const createTableSql = `CREATE TABLE IF NOT EXISTS news_posts (
 
 const createIndexSql = "CREATE INDEX IF NOT EXISTS news_posts_status_date_idx ON news_posts (status, published_at DESC)";
 
+let databaseReady: Promise<D1Database> | null = null;
+
 async function database() {
+  if (!databaseReady) databaseReady = initializeDatabase();
+  try {
+    return await databaseReady;
+  } catch (error) {
+    databaseReady = null;
+    throw error;
+  }
+}
+
+async function initializeDatabase() {
   const runtime = env as unknown as { DB: D1Database };
   if (!runtime.DB) throw new Error("新聞資料庫尚未連接");
   await runtime.DB.batch([
@@ -78,6 +90,15 @@ export async function savePost(input: Omit<NewsPost, "id" | "updated_at"> & { id
     input.slug, input.title_zh, input.title_en, input.summary_zh, input.summary_en, input.body_zh, input.body_en, input.category, input.cover_url, input.video_url, input.status, input.published_at, now, input.author_email,
   ).run();
   return Number(result.meta.last_row_id);
+}
+
+export async function findPostCoverUrl(id: number): Promise<string> {
+  const db = await database();
+  const row = await db
+    .prepare("SELECT cover_url FROM news_posts WHERE id = ? LIMIT 1")
+    .bind(id)
+    .first<{ cover_url: string }>();
+  return row?.cover_url ?? "";
 }
 
 export async function removePost(id: number) {
