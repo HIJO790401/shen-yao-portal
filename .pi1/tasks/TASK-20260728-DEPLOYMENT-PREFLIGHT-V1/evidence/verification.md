@@ -2,8 +2,7 @@
 
 - 任務：`TASK-20260728-DEPLOYMENT-PREFLIGHT-V1`
 - 驗證日期：2026-07-29（Asia/Taipei）
-- 目前狀態：`OWNER_REVIEW / READY_FOR_OWNER_REVIEW`
-- 推送後目標狀態：`OWNER_REVIEW / SOURCE_COMPLETE_NOT_LIVE`
+- 目前狀態：`OWNER_REVIEW / SOURCE_COMPLETE_NOT_LIVE`
 - 正式上線狀態：`NOT_LIVE`
 
 ## 主體、專案與 Git 邊界
@@ -11,11 +10,10 @@
 - 站主與最終簽收：許文耀／沈耀888π。
 - 專案根目錄同時包含 `.openai/hosting.json`、`.pi1`、`app`、`db`。
 - Git remote 為 `https://github.com/HIJO790401/shen-yao-portal.git`，分支為 `main`。
-- 本紀錄產生時，`HEAD` 與 `origin/main` 都是
-  `561cd1f53ec7b9b1e63ea3c7a655c18c75a9b58f`；本輪部署前封版仍在工作樹，
-  尚未形成並推送最終 commit。
-- 因此目前不得宣稱 `SOURCE_COMPLETE_NOT_LIVE` 已成立；主流程完成最終
-  commit 並確認同一 SHA 已到達 `origin/main` 後，才可升級細分狀態。
+- 本輪已驗證來源 commit：
+  `b98b811672273af89b0d4466d7721522e82231d7`。
+- 該 commit 已直接推到 `origin/main`，且推送後已確認遠端與本機 SHA
+  完全相同；因此 `SOURCE_COMPLETE_NOT_LIVE` 已成立。
 - 未建立 PR、未儲存 Sites version、未部署、未改 DNS、未購買網域或其他付費服務。
 
 ## 已成立的原始碼與契約
@@ -98,8 +96,8 @@
 
 ## 升級條件
 
-1. 把本輪已驗證來源形成單一最終 commit，確認相同 SHA 已推到
-   `origin/main`，才可把細分狀態升為 `SOURCE_COMPLETE_NOT_LIVE`。
+1. 已完成：驗證來源 commit 已到達 `origin/main`，細分狀態為
+   `SOURCE_COMPLETE_NOT_LIVE`。
 2. Sites private deployment 後，以站主真實登入完成 D1/R2 CRUD 與上傳回讀，
    才可升為 `DEPLOYMENT_VERIFIED`。
 3. 正式網域、TLS、production deployment 與站主簽收全數

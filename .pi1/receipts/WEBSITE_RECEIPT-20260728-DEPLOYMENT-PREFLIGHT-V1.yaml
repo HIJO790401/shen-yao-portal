@@ -7,15 +7,15 @@ brand_en: SERENE SCHOOL STUDIO
 repository: HIJO790401/shen-yao-portal
 branch: main
 baseline_head: 561cd1f53ec7b9b1e63ea3c7a655c18c75a9b58f
-candidate_commit: PENDING_FINAL_COMMIT
+candidate_commit: b98b811672273af89b0d4466d7721522e82231d7
 github_push:
-  state: PENDING_FINAL_COMMIT_AND_PUSH
+  state: VERIFIED_CANDIDATE_ON_ORIGIN_MAIN
   target: origin/main
   pull_request: 0
 state_transition:
-  current: READY_FOR_OWNER_REVIEW
-  target_after_verified_push: SOURCE_COMPLETE_NOT_LIVE
-  promotion_rule: candidate_commit_must_equal_remote_origin_main
+  current: SOURCE_COMPLETE_NOT_LIVE
+  next_after_private_deployment_and_owner_crud: DEPLOYMENT_VERIFIED
+  promotion_evidence: candidate_commit_equaled_remote_origin_main_after_push
 formal_deployment: 0
 sites_version_saved: 0
 domain_change: 0
@@ -86,7 +86,6 @@ preserved:
   rollback_files: LOCAL_ONLY_UNCOMMITTED
   password_value: NEVER_RECORDED
 pending:
-  - final_candidate_commit_and_origin_main_push
   - owner_production_siwc_sign_in
   - d1_news_and_museum_crud_end_to_end
   - r2_upload_read_content_type_etag_and_delete_end_to_end
@@ -94,5 +93,5 @@ pending:
   - domain_purchase_ownership_dns_tls_and_binding
   - formal_sites_version_and_deployment
 final_state: OWNER_REVIEW
-detail_state: READY_FOR_OWNER_REVIEW
-target_detail_state: SOURCE_COMPLETE_NOT_LIVE
+detail_state: SOURCE_COMPLETE_NOT_LIVE
+target_detail_state: DEPLOYMENT_VERIFIED

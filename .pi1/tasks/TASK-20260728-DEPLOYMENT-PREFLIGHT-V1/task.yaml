@@ -23,4 +23,4 @@ owner_inputs_remaining:
   - final_intro_video
   - final_domain_purchase_and_dns_authorization
 final_gate: OWNER_REVIEW
-state: READY_FOR_OWNER_REVIEW
+state: SOURCE_COMPLETE_NOT_LIVE
