@@ -1,0 +1,75 @@
+receipt_id: WEBSITE_RECEIPT-20260808-AICC-PRODUCT-V1
+task_id: TASK-20260808-AICC-PRODUCT-V1
+issued_at: "2026-08-08T14:07:02+08:00"
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室官方網站
+brand_en: SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 3217b031d305dd324e545d0947693e0839df8d6a
+candidate_commit: e5d8c4b7564491ddfb70c1dfec77b0ea2b551a44
+github_push:
+  state: VERIFIED_CANDIDATE_ON_ORIGIN_MAIN
+  target: origin/main
+  local_equals_remote: 1
+  pull_request: 0
+product_transition:
+  primary_product: SCBKR
+  second_current_product: AICC OS
+  aicc_expansion: AI Capability Compiler
+  aicc_state: v0.2.CANDIDATE
+  aicc_public_runtime_released: 0
+  aicc_downloadable: 0
+  aicc_public_l4: 0
+states:
+  homepage_aicc_card: PASS
+  products_aicc_candidate_surface: PASS
+  zh_candidate_architecture_film: PASS
+  en_candidate_architecture_film: PASS
+  six_scene_auto_play: PASS
+  visitor_input_controls: 0
+  l1_solidified_execution: PASS
+  l2_minimum_delta: PASS
+  l3_bounded_reasoning: PASS
+  version_gap_stop: PASS
+  owner_plane_read_only_concept: PASS
+  resume_scbkr_aicc_pair: PASS
+  metadata_candidate_boundary: PASS
+  llms_txt_candidate_boundary: PASS
+  fabricated_aicc_source_link: 0
+  tirc_archive_preserved: PASS
+  avrck_historical_record_preserved: PASS
+verification:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  tests:
+    passed: 32
+    failed: 0
+  drizzle_check: PASS
+  git_diff_check: PASS
+  secret_candidate_scan:
+    state: PASS
+    files_scanned: 24
+  independent_spec_review:
+    p0: 0
+    p1: 0
+    p2: 0
+  browser:
+    desktop_zh: PASS
+    desktop_en: PASS
+    mobile_390x844: PASS
+    page_horizontal_overflow: 0
+    console_errors: 0
+    console_warnings: 0
+    final_route: http://localhost:4173/zh/demo/aicc-os
+preserved:
+  owner_assets: UNCHANGED
+  rollback_files: LOCAL_ONLY_UNCOMMITTED
+  cms_and_auth: UNCHANGED
+formal_deployment: 0
+sites_version_saved: 0
+domain_change: 0
+paid_service_change: 0
+final_state: OWNER_REVIEW
+detail_state: SOURCE_COMPLETE_NOT_LIVE
