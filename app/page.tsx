@@ -92,11 +92,11 @@ export default function Home() {
             <div className={styles.miniProductGrid}>
               {products.map((product, index) => {
                 const card = <>
-                  <span className={styles.productGlyph}>{["S", "AI", "Rπ", "W", "0/1"][index]}</span>
+                  <span className={styles.productGlyph}>{["S", "AI", "Rπ", "W", "AICC"][index]}</span>
                   <h3><Lang zh={product.title} en={product.en} /></h3>
                   <p>
                     <Lang
-                      zh={product.href ? (product.kind === "LIVE DEMO" ? "安全防護操作" : product.kind) : "合法產品空位"}
+                      zh={product.href ? (product.kindZh ?? (product.kind === "LIVE DEMO" ? "安全防護操作" : product.kind)) : "合法產品空位"}
                       en={product.href ? product.kind : "LEGAL PRODUCT SLOT"}
                     />
                   </p>

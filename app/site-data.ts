@@ -4,6 +4,7 @@ export type HomeProduct = {
   title: string;
   en: string;
   kind: string;
+  kindZh?: string;
   tone: string;
   description: string;
   descriptionEn: string;
@@ -58,17 +59,16 @@ export const products: HomeProduct[] = [
     href: "/demo/wif-eligibility",
   },
   {
-    slug: "runtime-01",
+    slug: "aicc-os",
     index: "05",
-    title: "模型 Runtime 0/1 閘門監控系統",
-    en: "Model Runtime 0/1 Gate Monitoring System",
-    kind: "RUNTIME PLACEHOLDER",
+    title: "AICC OS｜AI 能力編譯器",
+    en: "AICC OS · AI Capability Compiler",
+    kind: "v0.2.CANDIDATE · ENGINEERING CANDIDATE",
+    kindZh: "v0.2.CANDIDATE｜工程候選",
     tone: "ice",
-    description: "保留正式產品位置；待 Owner 提供可公開作品連結與邊界證據後再接上展示。",
-    descriptionEn: "A reserved product position. The public showcase will be connected only after the Owner supplies a publishable project link and boundary evidence.",
-    href: null,
-    statusZh: "開發中",
-    statusEn: "IN DEVELOPMENT",
+    description: "將已知能力編譯為可重用路徑：L1 固化執行、L2 最小差異、L3 邊界推理；超出版本就停在 VERSION GAP。",
+    descriptionEn: "Compile known capabilities into reusable L1 execution, L2 minimum-delta updates and L3 bounded reasoning, stopping at VERSION GAP when the current version is exceeded.",
+    href: "/demo/aicc-os",
   },
 ];
 

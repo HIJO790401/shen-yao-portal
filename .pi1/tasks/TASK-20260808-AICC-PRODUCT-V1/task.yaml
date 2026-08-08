@@ -1,0 +1,36 @@
+task_id: TASK-20260808-AICC-PRODUCT-V1
+parent_task: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+license: .pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md
+goal: 將官網現行第二核心產品更新為 AICC OS，並提供中英文無輸入架構動畫
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 3217b031d305dd324e545d0947693e0839df8d6a
+source_spec:
+  title: 沈耀律法・AICC 模組化能力編譯暨版本治理作業系統
+  version: v0.2.CANDIDATE
+  authority: owner_provided_specification
+scope:
+  - homepage_second_core_product
+  - product_catalog_candidate_surface
+  - bilingual_fixed_case_architecture_film
+  - resume_current_engineering_pair
+  - about_and_search_metadata
+  - llms_txt_discovery
+  - interactive_desktop_and_mobile_review
+  - github_main_push
+preserved:
+  - scbkr_primary_product
+  - tirc_archive_and_demo
+  - avcrk_historical_article
+  - owner_assets
+excluded:
+  - public_aicc_runtime_release
+  - downloadable_aicc_installer
+  - public_l4_controls
+  - sites_version_save
+  - production_deployment
+  - domain_or_dns_change
+  - paid_service
+state: READY_FOR_OWNER_REVIEW
+final_gate: OWNER_REVIEW

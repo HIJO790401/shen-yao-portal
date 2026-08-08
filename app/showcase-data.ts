@@ -15,11 +15,20 @@ export type ProductFilm = {
   introZh: string;
   introEn: string;
   formula: string;
-  sourceRepo: string;
+  sourceRepo?: string;
+  presentation?: "architecture";
   steps: Array<{ key: string; zh: string; en: string }>;
 };
 
 export const productFilms: ProductFilm[] = [
+  {
+    code: "AICC-01", slug: "aicc-os", index: "AICC-01", name: "AICC OS｜AI 能力編譯器", nameEn: "AICC OS · AI Capability Compiler", label: "v0.2.CANDIDATE ARCHITECTURE FILM", status: "ready", statusZh: "候選架構動畫可播放", statusEn: "CANDIDATE ARCHITECTURE FILM READY",
+    presentation: "architecture",
+    headlineZh: "需要推理時才推理；能固化的，就直接重用。", headlineEn: "Reason when necessary. Reuse what becomes stable.",
+    introZh: "依 Owner 提供的 v0.2.CANDIDATE 母規格，無輸入重播 Local Gateway、L1、L2、L3、VERSION GAP 與 Owner 簽署發布路徑；這是架構展示，不是已上線 Runtime。", introEn: "Based on the owner-provided v0.2.CANDIDATE specification, this no-input film replays the Local Gateway, L1, L2, L3, VERSION GAP and owner-signed release path. It is an architecture showcase, not a live runtime.",
+    formula: "AICC ON → SIGNED-VERSION GATE → L1 / L2 / L3 → VERSION GAP || SEPARATE OWNER PROCESS → NEXT RELEASE",
+    steps: [{ key: "L1", zh: "已知路徑直接執行", en: "Execute known paths" }, { key: "L2", zh: "只更新最小差異", en: "Update minimum delta" }, { key: "L3", zh: "只在簽名版本內組合", en: "Compose inside signed boundaries" }, { key: "GAP", zh: "缺少能力就停止擴權", en: "Stop when capability is missing" }],
+  },
   {
     code: "SF-01", slug: "firewall-v4", index: "SF-01", name: "Semantic Firewall V4", nameEn: "Semantic Firewall V4", label: "THREE-LAYER FRONT-END FILM", status: "ready", statusZh: "固定案例動畫可播放", statusEn: "FIXED CASE FILM READY",
     headlineZh: "Regex Shield 先標記，再由 Audit 收束到 LOCKED。", headlineEn: "Regex Shield marks first; Audit then closes the case at LOCKED.",

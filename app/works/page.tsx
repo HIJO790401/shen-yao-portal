@@ -61,15 +61,15 @@ export default function WorksPage() {
   const readyDemos = productFilms.filter((film) => film.status === "ready");
   return <><SiteHeader/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }} /><main className={styles.worksPage}>
     <section className={styles.worksHero}>
-      <div><small>SELECTED WORKS · SYSTEMS / MOTION / MUSIC / WRITING</small><h1><Lang zh={<>作品<br/>不是清單。</>} en={<>WORKS<br/>ARE NOT A LIST.</>} /></h1><p><Lang zh="每件作品依真實媒介分流：能運算的系統進固定案例 Demo，動畫與音樂回到公開影音，文章回到原始發布頁。" en="Each work stays in its real medium: executable systems become fixed-case demos, animation and music return to public media, and writing links to its original publication." /></p></div>
-      <aside><span>SYSTEMS<br/>{readyDemos.length} FIXED DEMOS</span><span>ANIMATION<br/>EXTERNAL MEDIA</span><span>MUSIC<br/>EXTERNAL MEDIA</span><span>WRITING<br/>PRIMARY LINKS</span></aside>
+      <div><small>SELECTED WORKS · SYSTEMS / MOTION / MUSIC / WRITING</small><h1><Lang zh={<>作品<br/>不是清單。</>} en={<>WORKS<br/>ARE NOT A LIST.</>} /></h1><p><Lang zh="每件作品依真實媒介分流：能運算的系統進固定案例 Demo，候選系統進架構動畫，動畫與音樂回到公開影音，文章回到原始發布頁。" en="Each work stays in its real medium: executable systems become fixed-case demos, candidate systems become architecture films, animation and music return to public media, and writing links to its original publication." /></p></div>
+      <aside><span>SYSTEMS<br/>{readyDemos.length} AUTO DEMOS</span><span>ANIMATION<br/>EXTERNAL MEDIA</span><span>MUSIC<br/>EXTERNAL MEDIA</span><span>WRITING<br/>PRIMARY LINKS</span></aside>
     </section>
 
     <section className={styles.worksSection}>
-      <header><span>01</span><div><h2><Lang zh="系統與固定案例" en="SYSTEMS & FIXED CASES" /></h2><p><Lang zh="以下十三套展示不收訪客輸入；畫面只重播 Repo 內建案例、原公式或策展資料。SCBKR 本地責任鏈模型依指示暫緩動畫。" en="These thirteen displays accept no visitor input; they replay only repository fixtures, source formulas or curated case data. Motion for the SCBKR Local Responsibility Model remains deferred by the owner." /></p></div></header>
+      <header><span>01</span><div><h2><Lang zh="系統、架構與固定案例" en="SYSTEMS, ARCHITECTURE & FIXED CASES" /></h2><p><Lang zh="以下十四套展示不收訪客輸入；畫面只重播母規格架構、Repo 內建案例、原公式或策展資料。SCBKR 本地責任鏈模型依指示暫緩動畫。" en="These fourteen displays accept no visitor input; they replay only the owner specification architecture, repository fixtures, source formulas or curated case data. Motion for the SCBKR Local Responsibility Model remains deferred by the owner." /></p></div></header>
       <div className={styles.worksGrid}>{readyDemos.map((film) => <LocalizedLink className={styles.workCard} href={`/demo/${film.slug}`} key={film.slug}>
         <div><small>{film.index} · {film.label}</small><h3><Lang zh={film.name} en={film.nameEn} /></h3><p><Lang zh={film.introZh} en={film.introEn} /></p></div>
-        <span><Lang zh="播放固定案例" en="PLAY FIXED CASE" /> →</span>
+        <span><Lang zh="播放展示" en="PLAY DEMO" /> →</span>
       </LocalizedLink>)}</div>
     </section>
 

@@ -42,6 +42,36 @@ function SceneTags({ scene }: { scene: DemoScene }) {
   return <div className={styles.sceneTags}>{scene.tags.map((tag) => <span key={tag.zh}><Lang zh={tag.zh} en={tag.en} /></span>)}</div>;
 }
 
+function AiccVisual({ scene }: { scene: DemoScene }) {
+  const stages = [
+    { key: "ON", label: "GATEWAY" },
+    { key: "L1", label: "L1" },
+    { key: "L2", label: "L2" },
+    { key: "L3", label: "L3" },
+    { key: "GAP", label: "VERSION GAP" },
+  ];
+  const active = Math.max(0, stages.findIndex((stage) => stage.key === scene.step));
+  const ownerActive = scene.step === "L4";
+
+  return <div className={styles.aiccVisual}>
+    <div className={styles.aiccRuntimeBar}><span>PUBLIC RUNTIME ARCHITECTURE</span><b>v0.2.CANDIDATE</b><em>PUBLIC AUTHORITY · L1–L3 ONLY</em></div>
+    <div className={styles.aiccRuntimeCore}>
+      <div className={styles.aiccGateway} data-active={scene.step === "ON"}><i /><span>LOCAL GATEWAY</span><b>VERSION GATE</b></div>
+      <div className={styles.aiccRoute}>
+        {stages.slice(1).map((stage, index) => <div className={`${index + 1 === active ? styles.aiccRouteActive : ""} ${stage.key === "GAP" ? styles.aiccGap : ""}`} key={stage.key}>
+          <small>{String(index + 1).padStart(2, "0")}</small><b>{stage.label}</b><i />
+        </div>)}
+      </div>
+    </div>
+    <div className={`${styles.aiccPlaneSplit} ${ownerActive ? styles.aiccOwnerActive : ""}`}>
+      <div><span>PUBLIC → L4</span><b>AUTO ESCALATION FORBIDDEN</b></div>
+      <i aria-hidden="true" />
+      <div><small>OWNER DEVELOPER PLANE · READ-ONLY CONCEPT</small><b>REVIEW → MANIFEST → HASH → SIGN → RELEASE</b></div>
+    </div>
+    <div className={styles.aiccEvidence}><Nodes scene={scene} /><SceneTags scene={scene} /></div>
+  </div>;
+}
+
 function RLockVisual({ scene }: { scene: DemoScene }) {
   return <div className={styles.rlockVisual}>
     <div className={styles.messageCard}>
@@ -194,6 +224,7 @@ function SentinelVisual({ scene }: { scene: DemoScene }) {
 }
 
 function SceneVisual({ fixture, scene, playing, replayKey }: { fixture: DemoFixture; scene: DemoScene; playing: boolean; replayKey: number }) {
+  if (fixture.kind === "aicc") return <AiccVisual scene={scene} />;
   if (fixture.kind === "rlock") return <RLockVisual scene={scene} />;
   if (fixture.kind === "copyright") return <CopyrightVisual scene={scene} />;
   if (fixture.kind === "payment") return <PaymentVisual scene={scene} />;

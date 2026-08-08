@@ -138,22 +138,21 @@ test("renders a legal Intro Gate placeholder and enters only on owner action", a
   );
 });
 
-test("keeps the Runtime 0/1 slot legal, visible and intentionally unlinkable", async () => {
+test("replaces the Runtime 0/1 slot with an honest AICC candidate surface", async () => {
   const [home, siteData, productsPage] = await Promise.all([
     source("app/page.tsx"),
     source("app/site-data.ts"),
     source("app/products/page.tsx"),
   ]);
-  const runtime = siteData.slice(siteData.indexOf('slug: "runtime-01"'), siteData.indexOf("];", siteData.indexOf('slug: "runtime-01"')));
-  assert.match(runtime, /模型 Runtime 0\/1 閘門監控系統/);
-  assert.match(runtime, /href:\s*null/);
-  assert.match(runtime, /statusZh:\s*"開發中"/);
-  assert.doesNotMatch(runtime, /https?:\/\/|href:\s*"[^"]+"/);
-  assert.match(home, /<article className=\{`\$\{styles\.miniProductCard\}/);
-  assert.match(productsPage, /runtime-placeholder-v3/);
-  assert.match(productsPage, /不建立假網址/);
-  const runtimeSection = productsPage.slice(productsPage.indexOf('<section className="runtime-placeholder-v3"'), productsPage.indexOf("</section>", productsPage.indexOf('<section className="runtime-placeholder-v3"')));
-  assert.doesNotMatch(runtimeSection, /<a\b|LocalizedLink/);
+  const aicc = siteData.slice(siteData.indexOf('slug: "aicc-os"'), siteData.indexOf("];", siteData.indexOf('slug: "aicc-os"')));
+  assert.match(aicc, /AICC OS｜AI 能力編譯器/);
+  assert.match(aicc, /v0\.2\.CANDIDATE/);
+  assert.match(aicc, /href:\s*"\/demo\/aicc-os"/);
+  assert.doesNotMatch(aicc, /https?:\/\//);
+  assert.match(home, /"AICC"/);
+  assert.match(productsPage, /aicc-product-v3/);
+  assert.match(productsPage, /Public Runtime 已正式發布或可下載/);
+  assert.match(productsPage, /href="\/demo\/aicc-os"/);
 });
 
 test("retains the quote and compact language control on mobile", async () => {
@@ -221,11 +220,13 @@ test("builds a fixed-recipient, encoded mail draft without header injection", ()
   }), /主旨不能包含換行/);
 });
 
-test("turns audited products into no-input, product-specific fixed-case films", async () => {
-  const [films, fixtures, stage, works] = await Promise.all([
+test("turns audited products into no-input, product-specific films", async () => {
+  const [films, fixtures, stage, demoPage, localizedDemoPage, works] = await Promise.all([
     source("app/showcase-data.ts"),
     source("app/demo-fixtures.ts"),
     source("app/components/ProductFilmStage.tsx"),
+    source("app/demo/[slug]/page.tsx"),
+    source("app/[locale]/demo/[slug]/page.tsx"),
     source("app/works/page.tsx"),
   ]);
   assert.match(stage, /AUTO \/ NO INPUT/);
@@ -236,6 +237,18 @@ test("turns audited products into no-input, product-specific fixed-case films", 
   assert.match(fixtures, /SIMULATED PAYMENT CASE/);
   assert.match(fixtures, /CURATED FIXTURE/);
   assert.match(fixtures, /NOT MEDICAL|非醫療/);
+  assert.match(films + fixtures + stage, /AICC OS/);
+  assert.match(films, /presentation: "architecture"/);
+  assert.match(films, /SIGNED-VERSION GATE/);
+  assert.match(fixtures, /VERSION GAP/);
+  assert.match(fixtures, /SIGNED VERSION GATE \/ CONCEPT/);
+  assert.match(fixtures, /PUBLIC → L4 FORBIDDEN|PUBLIC → L4 禁止/);
+  assert.match(stage, /PUBLIC RUNTIME ARCHITECTURE/);
+  assert.match(stage, /PUBLIC AUTHORITY · L1–L3 ONLY/);
+  assert.match(demoPage, /候選架構動畫會自動循環/);
+  assert.match(demoPage, /四個核心閘門/);
+  assert.match(localizedDemoPage, /Candidate architecture film/);
+  assert.match(localizedDemoPage, /候選架構動畫/);
   assert.match(works, /SERENE SCHOOL/);
   assert.match(works, /語之神神器展覽篇/);
   assert.match(works, /Artifacts of the Language God/i);
@@ -309,7 +322,8 @@ test("publishes a bilingual source-labelled living resume and removes the legacy
   assert.match(resume, /PUBLIC ENGINEERING/);
   assert.match(resume, /OWNER-REPORTED/);
   assert.match(resume, /SCBKR/);
-  assert.match(resume, /TIRC DOCUMENT GATE/);
+  assert.match(resume, /AICC OS/);
+  assert.match(resume, /ENGINEERING CANDIDATE; PUBLIC RUNTIME NOT RELEASED/);
   assert.match(resume, /SOURCE COMPLETE \/ DEPLOYMENT PENDING/);
   assert.match(resume, /DEMO \/ POC · NOT A PRODUCTION DECISION SYSTEM/);
   assert.match(resume, /4th-ai-arts-competition-submissions/);
@@ -499,4 +513,6 @@ test("publishes crawler, AI discovery and structured-search surfaces", async () 
   assert.match(llms, /Artifacts of the Language God/);
   assert.match(llms, /Agent for Truth/);
   assert.match(llms, /NVIDIA links are community posts/);
+  assert.match(llms, /AICC OS candidate/);
+  assert.match(llms, /v0\.2\.CANDIDATE/);
 });

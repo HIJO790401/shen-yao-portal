@@ -8,7 +8,7 @@ import styles from "./about.module.css";
 
 export const metadata: Metadata = {
   title: "許文耀／沈耀888π｜沉靜流派工作室創辦人",
-  description: "沉靜流派工作室與語意防火牆創辦人許文耀／沈耀888π。以古文明符號、數學公式與系統架構融合語意治理、動畫及音樂創作。",
+  description: "沉靜流派工作室與語意防火牆創辦人許文耀／沈耀888π。以古文明符號、數學公式與系統架構融合語意治理、AICC OS v0.2.CANDIDATE 候選架構、動畫及音樂創作。",
   keywords: ["許文耀", "沈耀888π", "語意防火牆創辦人", "古文明符號", "數學公式", "系統架構", "SCBKR", "R-Lock", "去偽存真 黑客松", "Agent for Truth Hackathon"],
   alternates: localizedAlternates("zh", "/about"),
   openGraph: { url: "/zh/about" },
@@ -60,7 +60,7 @@ const publicRecords = [
 const disciplines = [
   { index: "01", zh: "古文明符號與語之神器", en: "ANCIENT SYMBOLS & LANGUAGE ARTIFACTS", textZh: "從水滴、聖書體、幾何封印到神器視覺，把符號視為可讀、可回放的語言結構，並以動畫、音樂與光影讓規則顯形。", textEn: "Water, sacred scripts, geometric seals and artifacts are treated as readable, replayable language structures, made perceptible through motion, music and light." },
   { index: "02", zh: "數學公式與責任結構", en: "MATHEMATICAL FORMULAS & RESPONSIBILITY", textZh: "以 E%mc²、SCBKR 與 0／1／π 等公式壓縮主體、因果、邊界、依據與責任，讓抽象思想能被檢查與追問。", textEn: "Formulas including E%mc², SCBKR and 0/1/π compress subject, causality, boundary, grounds and responsibility into structures that can be inspected and challenged." },
-  { index: "03", zh: "系統架構與可執行工程", en: "SYSTEM ARCHITECTURE & EXECUTABLE ENGINEERING", textZh: "把公式落成語意防火牆、責任閘門、AVRCK、WORM 回放與固定案例 Demo；以一人工作室公開程式碼、版本與能力邊界。", textEn: "The formulas become the Semantic Firewall, responsibility gates, AVRCK, WORM replay and fixed-case demos, with source, versions and capability boundaries published by a one-person studio." },
+  { index: "03", zh: "系統架構、候選與可執行工程", en: "SYSTEM ARCHITECTURE, CANDIDATES & EXECUTABLE ENGINEERING", textZh: "把公式落成已有公開工程紀錄的語意防火牆、責任閘門與 WORM 回放，也把 AICC OS v0.2.CANDIDATE 整理成候選架構與無輸入動畫；分別公開版本、來源狀態與能力邊界。", textEn: "The formulas become publicly evidenced engineering for the Semantic Firewall, responsibility gates and WORM replay, while AICC OS v0.2.CANDIDATE remains a candidate architecture with a no-input film; version, source status and capability boundaries are disclosed separately." },
 ];
 
 const pressCoverageUrl = "https://securitybrief.asia/story/semantic-firewall-promises-ai-cost-savings-safer-chat-models";

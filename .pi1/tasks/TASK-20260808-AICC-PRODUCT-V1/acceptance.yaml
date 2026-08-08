@@ -1,0 +1,36 @@
+task_id: TASK-20260808-AICC-PRODUCT-V1
+must_have:
+  - SCBKR remains the primary responsibility-chain product
+  - AICC OS is the current second core engineering product
+  - AICC is identified as AI Capability Compiler
+  - public status is v0.2.CANDIDATE engineering candidate
+  - homepage and product catalog link to /demo/aicc-os
+  - /zh/demo/aicc-os and /en/demo/aicc-os remain separate localized routes
+  - the AICC film auto-plays a fixed six-scene architecture case without user input
+  - L1 solidified execution, L2 minimum delta and L3 bounded reasoning are visible
+  - VERSION GAP stops automatic expansion and Public L4 escalation
+  - Owner review, manifest, hash, sign and release appear as a read-only concept
+  - the resume presents SCBKR and AICC as the current lead engineering pair
+  - crawler and AI discovery text names AICC and preserves candidate boundaries
+  - desktop and 390px mobile layouts have no page-level horizontal overflow
+must_not_have:
+  - claim that AICC Public Runtime is live
+  - claim that AICC is released, downloadable or production ready
+  - interactive Public L4 controls
+  - a fabricated AICC GitHub source link
+  - redirect of historical TIRC routes to AICC
+  - removal of historical TIRC or AVRCK records
+  - mixed Chinese and English presentation copy in one locale
+  - secrets or authentication changes
+verification:
+  - npx tsc --noEmit
+  - npm run lint
+  - npm test
+  - npx drizzle-kit check
+  - git diff --check
+  - secret_candidate_scan
+  - desktop_browser
+  - mobile_390x844_browser
+  - zh_en_route_review
+  - browser_console_review
+final_gate: OWNER_REVIEW

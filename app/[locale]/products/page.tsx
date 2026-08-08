@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ...baseMetadata,
     title: isEnglish ? "Products and Engineering Works" : baseMetadata.title,
     description: isEnglish
-      ? "Code-audited Semantic Firewall, SCBKR, WIF, TIRC and fixed-case demonstrations with explicit capability boundaries."
+      ? "The specification-audited AICC OS v0.2.CANDIDATE architecture, plus code-audited Semantic Firewall, SCBKR, WIF, TIRC and fixed-case demonstrations with explicit capability boundaries."
       : baseMetadata.description,
     alternates: localizedAlternates(locale, "/products"),
     openGraph: { ...(baseMetadata.openGraph ?? {}), url: `/${locale}/products` },

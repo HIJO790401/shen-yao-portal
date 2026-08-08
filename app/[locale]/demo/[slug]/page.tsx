@@ -19,9 +19,10 @@ export async function generateMetadata({
     };
   }
 
+  const architecture = film.presentation === "architecture";
   const title = locale === "en"
-    ? `${film.nameEn} | ${film.status === "ready" ? "Fixed-case demo" : "Demo status"}`
-    : `${film.name}｜${film.status === "ready" ? "固定案例 DEMO" : "展示狀態"}`;
+    ? `${film.nameEn} | ${architecture ? "Candidate architecture film" : film.status === "ready" ? "Fixed-case demo" : "Demo status"}`
+    : `${film.name}｜${architecture ? "候選架構動畫" : film.status === "ready" ? "固定案例 DEMO" : "展示狀態"}`;
   const description = locale === "en" ? film.introEn : film.introZh;
   const path = `/demo/${slug}`;
 

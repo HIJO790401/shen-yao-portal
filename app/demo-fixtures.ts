@@ -28,7 +28,7 @@ export type DemoScene = {
 
 export type DemoFixture = {
   slug: string;
-  kind: "rlock" | "copyright" | "payment" | "dual" | "compute" | "wif" | "v4" | "nonrlock" | "memory" | "tirc" | "slb" | "universe" | "sentinel";
+  kind: "aicc" | "rlock" | "copyright" | "payment" | "dual" | "compute" | "wif" | "v4" | "nonrlock" | "memory" | "tirc" | "slb" | "universe" | "sentinel";
   label: LocalizedText;
   truthTags: LocalizedText[];
   sourceNote: LocalizedText;
@@ -44,6 +44,54 @@ const metric = (zh: string, en: string, value: string, tone: DemoTone = "info"):
 const node = (zh: string, en: string, value: string, tone: DemoTone = "info"): DemoNode => ({
   label: t(zh, en), value, tone,
 });
+
+const aiccFixture: DemoFixture = {
+  slug: "aicc-os",
+  kind: "aicc",
+  label: t("AICC v0.2.CANDIDATE 架構", "AICC v0.2.CANDIDATE ARCHITECTURE"),
+  truthTags: [t("母規格架構展示", "SPECIFICATION-BASED"), t("自動播放／無輸入", "AUTO / NO INPUT"), t("非正式 Runtime", "NOT A LIVE RUNTIME")],
+  sourceNote: t("依 Owner 提供的《AICC 模組化能力編譯暨版本治理作業系統》v0.2.CANDIDATE 母規格製作。", "Built from the owner-provided AICC Modular Capability Compilation & Version Governance OS v0.2.CANDIDATE specification."),
+  boundary: t("Public Handoff Gate 仍鎖定。本動畫不代表產品已發布、可下載或具備 Public L4；Owner Plane 只做唯讀概念呈現。", "The Public Handoff Gate remains locked. This film does not claim a released or downloadable product or Public L4; the Owner Plane is a read-only concept."),
+  durationMs: 3600,
+  scenes: [
+    {
+      id: "aicc-on", step: "ON", title: t("驗證候選規格的簽名版本閘", "VERIFY THE SIGNED-VERSION GATE"),
+      body: t("候選架構模擬 Local Gateway 在 AICC ON 時檢查 Capability、Template、Boundary 與 Version Registry。", "The candidate architecture simulates the Local Gateway checking capability, template, boundary and version registries when AICC is on."),
+      status: "SIGNED VERSION GATE / CONCEPT", tone: "pass",
+      nodes: [node("治理閘門", "GOVERNANCE GATE", "ON", "pass"), node("能力閘門", "CAPABILITY GATE", "ON", "pass"), node("版本閘門", "VERSION GATE", "ON", "pass")],
+    },
+    {
+      id: "aicc-l1", step: "L1", title: t("固定路徑直接執行", "EXECUTE THE EXACT CLOSED PATH"),
+      body: t("已知輸入命中已確認能力，不重新推理，也不偷偷啟動大型模型。", "A known input matches a confirmed capability, with no repeated reasoning or hidden large-model call."),
+      status: "L1 / SOLIDIFIED EXECUTION", tone: "pass",
+      tags: [t("固定模板", "FIXED TEMPLATE"), t("固定函式", "FIXED FUNCTION"), t("REASONING = 0", "REASONING = 0")],
+    },
+    {
+      id: "aicc-l2", step: "L2", title: t("只更新必要欄位", "CHANGE ONLY WHAT CHANGED"),
+      body: t("模板已知時，只選擇欄位、參數與狀態的最小差異，不重建整個任務。", "When the template is known, only field, parameter and state deltas change; the task is not rebuilt."),
+      status: "L2 / MINIMUM DELTA", tone: "info",
+      nodes: [node("模板", "TEMPLATE", "UNCHANGED", "pass"), node("欄位差異", "FIELD DELTA", "1", "info"), node("新能力", "NEW CAPABILITY", "FALSE", "pass")],
+    },
+    {
+      id: "aicc-l3", step: "L3", title: t("在簽名邊界內組合", "COMPOSE INSIDE THE SIGNED BOUNDARY"),
+      body: t("L3 只組合現行版本已註冊的合法能力；不得新增能力、修改 Boundary 或簽署版本。", "L3 composes only registered capabilities in the current version; it cannot add capabilities, mutate boundaries or sign releases."),
+      status: "L3 / BOUNDED REASONING", tone: "warn",
+      nodes: [node("能力 A", "CAPABILITY A", "REGISTERED", "pass"), node("能力 B", "CAPABILITY B", "REGISTERED", "pass"), node("版本變更", "VERSION MUTATION", "FORBIDDEN", "danger")],
+    },
+    {
+      id: "aicc-gap", step: "GAP", title: t("缺少能力，停止擴張", "CAPABILITY MISSING—STOP EXPANSION"),
+      body: t("現行版本沒有需要的能力時，Public Runtime 只回報 VERSION GAP；不自動下載工具，也不自動進入 L4。", "When the current version lacks a required capability, Public Runtime returns VERSION GAP—without automatic tool installation or L4 escalation."),
+      status: "VERSION GAP / STOP", tone: "danger",
+      tags: [t("提交功能需求", "SUBMIT FEEDBACK"), t("或關閉 AICC", "OR TURN AICC OFF"), t("PUBLIC → L4 禁止", "PUBLIC → L4 FORBIDDEN")],
+    },
+    {
+      id: "aicc-owner", step: "L4", title: t("Owner 審核、簽署、發布", "OWNER REVIEW, SIGN & RELEASE"),
+      body: t("只有獨立 Owner Developer Plane 能把候選送入 Review、Manifest、Hash、Signature 與 Release；下一版發布後，能力才回到 L1–L3。", "Only the separate Owner Developer Plane can move a candidate through review, manifest, hash, signature and release; after publication, it becomes reusable through L1–L3."),
+      status: "OWNER PLANE / READ-ONLY CONCEPT", tone: "info",
+      nodes: [node("審核", "REVIEW", "OWNER", "warn"), node("Manifest", "MANIFEST", "REQUIRED", "info"), node("簽署", "SIGNATURE", "OWNER-ONLY", "warn"), node("發布", "RELEASE", "GATED", "info")],
+    },
+  ],
+};
 
 const bankMessage = "這裡是台灣商業銀行客戶服務中心，依照最新資安規範，我們需要確認您的帳戶狀態。請於今日 18:00 前完成重新驗證，以確保服務不中斷：https://secure-bank-check.tw";
 
@@ -369,6 +417,7 @@ const sentinelFixture: DemoFixture = {
 };
 
 export const demoFixtures: DemoFixture[] = [
+  aiccFixture,
   v4Fixture,
   rlockFixture,
   nonRLockFixture,

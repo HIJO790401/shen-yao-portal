@@ -10,7 +10,7 @@ import demoStyles from "../demo-system.module.css";
 
 export const metadata: Metadata = {
   title: "產品與工程作品",
-  description: "沉靜流派工作室的語意防火牆、SCBKR、WIF、TIRC 與媒體作品；依原始碼核實能力、邊界與展示狀態。",
+  description: "沉靜流派工作室的 AICC OS v0.2.CANDIDATE 候選架構、語意防火牆、SCBKR、WIF、TIRC 與媒體作品；依母規格或原始碼核實能力、邊界與展示狀態。",
   alternates: localizedAlternates("zh", "/products"),
   openGraph: { url: "/zh/products" },
 };
@@ -57,18 +57,26 @@ export default function ProductsPage() {
         {productFamilies.map((family) => <a key={family.id} href={`#${family.id}`}><span>{family.index}</span><Lang zh={family.titleZh} en={family.titleEn} /></a>)}
       </nav>
 
-      <section className="runtime-placeholder-v3" aria-labelledby="runtime-placeholder-title">
-        <div>
-          <span>05 · MODEL RUNTIME 0/1</span>
-          <b><i /> <Lang zh="開發中" en="IN DEVELOPMENT" /></b>
+      <section className="runtime-placeholder-v3 aicc-product-v3" id="aicc-os" aria-labelledby="aicc-product-title">
+        <div className="aicc-product-state-v3">
+          <span>05 · AICC OS</span>
+          <b><i /> <Lang zh="v0.2.CANDIDATE｜工程候選" en="v0.2.CANDIDATE · ENGINEERING CANDIDATE" /></b>
         </div>
-        <h2 id="runtime-placeholder-title"><Lang zh="模型 Runtime 0/1 閘門監控系統" en="MODEL RUNTIME 0/1 GATE MONITORING SYSTEM" /></h2>
-        <p>
-          <Lang
-            zh="這是駕照指定的合法產品空位。待 Owner 提供可公開作品連結、輸入輸出與失敗邊界證據後，才會接上專屬 Demo；目前不建立假網址，也不宣稱已完成。"
-            en="This is the licensed product placeholder. Its dedicated demo will be connected only after the Owner supplies a publishable project link plus input, output and failure-boundary evidence. No fabricated URL or completion claim is present."
-          />
-        </p>
+        <div className="aicc-product-copy-v3">
+          <p><Lang zh="沈耀律法｜本地 AI 執行與治理 Runtime" en="SHEN-YAO LAW · LOCAL AI EXECUTION & GOVERNANCE RUNTIME" /></p>
+          <h2 id="aicc-product-title"><Lang zh="AICC 模組化能力編譯暨版本治理作業系統" en="AICC MODULAR CAPABILITY COMPILATION & VERSION GOVERNANCE OS" /></h2>
+        </div>
+        <div className="aicc-product-boundary-v3">
+          <p><Lang
+            zh="AICC 不是另一個大模型。它讓已知路徑走 L1、局部差異走 L2、合法能力組合走 L3；超出現行版本時停在 VERSION GAP，不自行升級到 L4。"
+            en="AICC is not another model. Known paths use L1, local deltas use L2 and legal capability composition uses L3; anything outside the current version stops at VERSION GAP without automatic L4 escalation."
+          /></p>
+          <small><Lang
+            zh="本頁只展示已定義的候選架構，不代表 Public Runtime 已正式發布或可下載。"
+            en="This page presents the defined candidate architecture, not a released or downloadable Public Runtime."
+          /></small>
+          <LocalizedLink href="/demo/aicc-os"><Lang zh="觀看架構動畫" en="WATCH ARCHITECTURE DEMO" /> <span>▶</span></LocalizedLink>
+        </div>
       </section>
 
       {productFamilies.map((family) => <section className="audited-family-v3" id={family.id} key={family.id}>
@@ -100,7 +108,7 @@ export default function ProductsPage() {
       <section className="product-next-gate-v3">
         <p className="brand-section-label">NEXT CONSTRUCTION GATE</p>
         <h2><Lang zh={<>動畫不是裝飾。<br/>它必須重播真實運算。</>} en={<>MOTION IS NOT DECORATION.<br/>IT MUST REPLAY REAL COMPUTATION.</>} /></h2>
-        <p><Lang zh="十三套作品已接上各自的固定案例與專屬時間軸；其中包含規則掃描、六案反詐、metadata-only 記憶索引、安全合成文件、非醫療支持案例、確定性哨兵與真實 2D Canvas。僅 SCBKR 本地責任鏈模型依 Owner 指示暫緩動畫。" en="Thirteen works now have dedicated fixed-case timelines, including rule scanning, six anti-scam cases, a metadata-only memory index, a safe synthetic document, non-medical support cases, a deterministic sentinel and a real 2D Canvas. Only the SCBKR Local Responsibility Model remains motion-deferred by the owner." /></p>
+        <p><Lang zh="十四套作品已接上各自的固定案例或架構時間軸；其中包含 AICC v0.2.CANDIDATE 架構、規則掃描、六案反詐、metadata-only 記憶索引、安全合成文件、非醫療支持案例、確定性哨兵與真實 2D Canvas。僅 SCBKR 本地責任鏈模型依 Owner 指示暫緩動畫。" en="Fourteen works now have dedicated fixed-case or architecture timelines, including the AICC v0.2.CANDIDATE architecture, rule scanning, six anti-scam cases, a metadata-only memory index, a safe synthetic document, non-medical support cases, a deterministic sentinel and a real 2D Canvas. Only the SCBKR Local Responsibility Model remains motion-deferred by the owner." /></p>
         <div><LocalizedLink href="/news"><Lang zh="進入新聞台" en="OPEN NEWSROOM" /> <span>↗</span></LocalizedLink><LocalizedLink href="/"><Lang zh="回到官網" en="BACK TO STUDIO" /> <span>↗</span></LocalizedLink></div>
       </section>
     </main>

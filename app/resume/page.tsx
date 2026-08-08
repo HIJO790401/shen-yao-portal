@@ -10,7 +10,7 @@ import styles from "./resume.module.css";
 export const metadata: Metadata = {
   title: "公開履歷｜許文耀／沈耀888π",
   description:
-    "許文耀／沈耀888π的中英雙語公開履歷：沉靜流派工作室、語意防火牆、SCBKR、TIRC、公開工程、外部媒體紀錄、文章、動畫與音樂。",
+    "許文耀／沈耀888π的中英雙語公開履歷：沉靜流派工作室、語意防火牆、SCBKR、AICC OS v0.2.CANDIDATE 候選架構、公開工程、外部媒體紀錄、文章、動畫與音樂。",
   keywords: [
     "許文耀履歷",
     "沈耀888π",
@@ -18,7 +18,8 @@ export const metadata: Metadata = {
     "SERENE SCHOOL STUDIO",
     "Semantic Firewall",
     "SCBKR",
-    "TIRC",
+    "AICC OS",
+    "AI Capability Compiler",
     "獨立系統架構師",
   ],
   alternates: localizedAlternates("zh", "/resume"),
@@ -48,18 +49,19 @@ const engineeringWorks = [
   },
   {
     number: "02",
-    title: "TIRC DOCUMENT GATE",
-    subtitleZh: "本地文件解釋權與交付閘門 V1",
-    subtitleEn: "LOCAL DOCUMENT INTERPRETATION & DELIVERY GATE V1",
-    status: "PUBLIC ENGINEERING · LOCAL V1 PROTOTYPE · MIT",
+    title: "AICC OS",
+    subtitleZh: "AI 能力編譯暨版本治理作業系統",
+    subtitleEn: "AI CAPABILITY COMPILER & VERSION GOVERNANCE OS",
+    status: "v0.2.CANDIDATE · ENGINEERING CANDIDATE",
     summaryZh:
-      "支援 TXT、Markdown、PDF、DOCX 匯入，將三層解釋權、規則式審查、JSONL 稽核與 SHA-256 雜湊鏈放進本地文件流程。",
+      "把已確認的能力、模板與邊界編譯成可重用路徑：L1 固化執行、L2 最小差異、L3 邊界推理；超出現行版本時停在 VERSION GAP。",
     summaryEn:
-      "A local document flow for TXT, Markdown, PDF and DOCX, combining three-level interpretation rights, deterministic review, JSONL auditing and SHA-256 hash-chain verification.",
-    stack: "FASTAPI · SQLITE · REACT · TYPESCRIPT · DOCKER",
-    href: "https://github.com/HIJO790401/TIRC-Document-Gate",
-    licenseZh: "MIT 授權",
-    licenseEn: "MIT LICENSE",
+      "Confirmed capabilities, templates and boundaries become reusable paths through L1 solidified execution, L2 minimum-delta updates and L3 bounded reasoning, with out-of-version requests stopping at VERSION GAP.",
+    stack: "L1 · L2 · L3 · CAPABILITY REGISTRY · MODULE MANAGER · LOCAL GATEWAY",
+    href: "/demo/aicc-os",
+    internal: true,
+    licenseZh: "工程候選；Public Runtime 尚未正式發布",
+    licenseEn: "ENGINEERING CANDIDATE; PUBLIC RUNTIME NOT RELEASED",
   },
   {
     number: "03",
@@ -275,8 +277,8 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
             </p>
             <p className={styles.heroSummary}>
               <Lang
-                zh="於台灣台中獨立研發語意治理、AI 責任鏈與本地模型工作流，公開建立 Semantic Firewall、SCBKR、TIRC 等系統；創作延伸至動畫、音樂、符號設計與雙語長文。所有系統、作品與公開發布由本人獨立策劃、設計、開發並承擔最終責任。"
-                en="Based in Taichung, Taiwan, I independently develop semantic-governance, AI responsibility-chain and local-model workflows, including the Semantic Firewall, SCBKR and TIRC. My practice also spans animation, music, symbolic design and bilingual long-form writing. I independently plan, design, develop and take final responsibility for the studio's systems, works and publications."
+                zh="於台灣台中獨立研發語意治理、AI 責任鏈與本地模型工作流，公開建立 Semantic Firewall、SCBKR，並提出 AICC OS 模組化能力編譯與版本治理架構；創作延伸至動畫、音樂、符號設計與雙語長文。所有系統、作品與公開發布由本人獨立策劃、設計、開發並承擔最終責任。"
+                en="Based in Taichung, Taiwan, I independently develop semantic-governance, AI responsibility-chain and local-model workflows, including the Semantic Firewall and SCBKR, and I define the AICC OS architecture for modular capability compilation and version governance. My practice also spans animation, music, symbolic design and bilingual long-form writing. I independently plan, design, develop and take final responsibility for the studio's systems, works and publications."
               />
             </p>
             <div className={styles.heroTags}>
@@ -352,9 +354,11 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
                   <div><dt>STACK</dt><dd>{work.stack}</dd></div>
                   <div><dt><Lang zh="狀態邊界" en="BOUNDARY" /></dt><dd><Lang zh={work.licenseZh} en={work.licenseEn} /></dd></div>
                 </dl>
-                <a href={work.href} target="_blank" rel="noreferrer">
+                {work.internal ? <LocalizedLink href={work.href}>
+                  <Lang zh="觀看候選架構" en="VIEW CANDIDATE ARCHITECTURE" /><span aria-hidden="true">→</span>
+                </LocalizedLink> : <a href={work.href} target="_blank" rel="noreferrer">
                   <Lang zh="檢視工程證據" en="INSPECT ENGINEERING EVIDENCE" /><span aria-hidden="true">↗</span>
-                </a>
+                </a>}
               </article>
             ))}
           </div>

@@ -10,8 +10,8 @@ const tc = Noto_Sans_TC({ variable: "--font-tc", subsets: ["latin"], weight: ["4
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: { default: "沉靜流派工作室｜SERENE SCHOOL STUDIO｜許文耀／沈耀888π", template: "%s｜沉靜流派工作室" },
-  description: "沉靜流派工作室創辦人沈耀888π／許文耀的官方網站。融合古文明符號、數學公式與系統架構，公開語意防火牆、SCBKR、AVRCK、動畫及音樂作品。",
-  keywords: ["沉靜流派", "沈耀888π", "許文耀", "Shen Yao 888pi", "Wen-Yao Hsu", "古文明符號", "數學公式", "SCBKR", "AVRCK", "Semantic Firewall", "語意防火牆", "Artifacts of the Language God", "AI governance"],
+  description: "沉靜流派工作室創辦人沈耀888π／許文耀的官方網站。融合古文明符號、數學公式與系統架構，公開語意防火牆、SCBKR、AICC OS v0.2.CANDIDATE 候選架構、動畫及音樂作品。",
+  keywords: ["沉靜流派", "沈耀888π", "許文耀", "Shen Yao 888pi", "Wen-Yao Hsu", "古文明符號", "數學公式", "SCBKR", "AICC OS", "AI Capability Compiler", "Semantic Firewall", "語意防火牆", "Artifacts of the Language God", "AI governance"],
   authors: [{ name: "沈耀888π／許文耀" }],
   creator: "沈耀888π／許文耀",
   alternates: { canonical: "/zh", languages: { "zh-Hant": "/zh", en: "/en" } },

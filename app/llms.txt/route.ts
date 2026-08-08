@@ -23,9 +23,18 @@ Languages: Traditional Chinese and English are available as separate routes.
 
 ## Scope
 
-SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. Public work covers semantic governance, the Semantic Firewall, SCBKR responsibility-chain systems, software architecture, animation, music, writing, the Reality Newsroom and the Responsibility Museum.
+SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. Public work covers semantic governance, the Semantic Firewall, SCBKR responsibility-chain systems, the AICC OS candidate architecture, software architecture, animation, music, writing, the Reality Newsroom and the Responsibility Museum.
 
 Product demos on this site are curated, fixed-case interface replays. They do not accept visitor input and must not be described as live AI services unless a page explicitly says otherwise.
+
+## AICC OS candidate
+
+- Product name: AICC OS / AI Capability Compiler
+- Architecture demo: ${siteUrl("/zh/demo/aicc-os")}
+- Current state: v0.2.CANDIDATE / engineering candidate
+- Public authority in the specification: L1-L3 only
+- A missing capability stops at VERSION GAP; Public Runtime does not auto-escalate to L4.
+- The page is a specification-based architecture film. It is not evidence that a Public Runtime has been released, is downloadable or is production-ready.
 
 Music-animation and newsroom videos are streamed from their original TikTok or YouTube sources. The website stores work and editorial context plus source links rather than duplicating the video files.
 
