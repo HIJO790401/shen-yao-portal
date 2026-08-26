@@ -258,6 +258,51 @@ test("turns audited products into no-input, product-specific films", async () =>
   assert.equal((films.match(/status: "deferred"/g) ?? []).length, 1, "only the owner-deferred SCBKR film may remain deferred");
 });
 
+test("publishes the verified SCBKR Microsoft Store entry without changing AICC or motion boundaries", async () => {
+  const [siteConfig, home, homeData, products, localizedProducts, productData, films, demoPage, resume, localizedResume, localeLayout, llms, layout, sitemap] = await Promise.all([
+    source("app/site-config.ts"),
+    source("app/page.tsx"),
+    source("app/site-data.ts"),
+    source("app/products/page.tsx"),
+    source("app/[locale]/products/page.tsx"),
+    source("app/product-audit-data.ts"),
+    source("app/showcase-data.ts"),
+    source("app/demo/[slug]/page.tsx"),
+    source("app/resume/page.tsx"),
+    source("app/[locale]/resume/page.tsx"),
+    source("app/[locale]/layout.tsx"),
+    source("app/llms.txt/route.ts"),
+    source("app/layout.tsx"),
+    source("app/sitemap.ts"),
+  ]);
+  const storeProductId = /9N1SMMBL6J4D/i;
+  assert.match(siteConfig, storeProductId);
+  assert.match(siteConfig, /https:\/\/apps\.microsoft\.com\/detail\/9n1smmbl6j4d/i);
+  assert.match(homeData, /MICROSOFT STORE｜已上架/);
+  assert.match(home, /SCBKR Windows 應用免費取得/);
+  assert.match(home, /scbkrMicrosoftStore\.url/);
+  assert.match(products, /Microsoft Store 免費取得/);
+  assert.match(products, /GET FREE ON MICROSOFT STORE/);
+  assert.match(localizedProducts, /SCBKR is available free on Microsoft Store/);
+  assert.match(demoPage, /從 Microsoft Store 免費取得/);
+  assert.match(demoPage, /GET FREE FROM MICROSOFT STORE/);
+  assert.match(productData, /storeUrl: scbkrMicrosoftStore\.url/);
+  assert.match(films, /storeUrl: scbkrMicrosoftStore\.url/);
+  assert.equal((productData.match(/storeUrl:/g) ?? []).length, 1, "SCBKR is the only audited product with a Store value");
+  assert.equal((films.match(/storeUrl:/g) ?? []).length, 1, "SCBKR is the only film record with a Store value");
+  assert.equal((films.match(/status: "deferred"/g) ?? []).length, 1);
+  assert.match(resume, /OFFICIAL DISTRIBUTION · MICROSOFT STORE/);
+  assert.match(resume, /dateModified: "2026-08-26"/);
+  assert.match(localizedResume, /SCBKR Windows application on Microsoft Store/);
+  assert.match(localeLayout, /SCBKR Windows application on Microsoft Store/);
+  assert.match(llms, /SCBKR Windows application/);
+  assert.match(llms, /Installation availability remains subject to Microsoft Store region and device compatibility/);
+  assert.match(layout, /SoftwareApplication/);
+  assert.match(layout, /downloadUrl: scbkrMicrosoftStore\.url/);
+  assert.match(sitemap, /2026-08-26/);
+  assert.match(home + homeData + products + films + llms, /v0\.2\.CANDIDATE/);
+});
+
 test("integrates the original newsroom archive without a GitHub runtime dependency", async () => {
   const [news, archive, reportDetail, museumDetail] = await Promise.all([
     source("app/news/page.tsx"),
@@ -332,7 +377,7 @@ test("publishes a bilingual source-labelled living resume and removes the legacy
   assert.match(resume, /不虛構公司登記、團隊規模、學位、專利、獎項、客戶、採用或合作關係/);
   assert.match(resume, /getProfileSchema/);
   assert.match(resume, /inLanguage: language/);
-  assert.match(resume, /dateModified: "2026-07-28"/);
+  assert.match(resume, /dateModified: "2026-08-26"/);
   assert.match(localizedResume, /\/zh\/resume/);
   assert.match(localizedResume, /\/en\/resume/);
   assert.match(localizedResume, /title: \{ absolute:/);

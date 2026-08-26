@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ...baseMetadata,
     title: isEnglish ? "Products and Engineering Works" : baseMetadata.title,
     description: isEnglish
-      ? "The specification-audited AICC OS v0.2.CANDIDATE architecture, plus code-audited Semantic Firewall, SCBKR, WIF, TIRC and fixed-case demonstrations with explicit capability boundaries."
+      ? "Products and engineering works from SERENE SCHOOL STUDIO: SCBKR is available free on Microsoft Store, alongside the AICC OS v0.2.CANDIDATE architecture, Semantic Firewall, WIF, TIRC and bounded fixed-case demonstrations."
       : baseMetadata.description,
     alternates: localizedAlternates(locale, "/products"),
     openGraph: { ...(baseMetadata.openGraph ?? {}), url: `/${locale}/products` },

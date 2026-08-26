@@ -1,5 +1,14 @@
 const INTENDED_CANONICAL_FALLBACK = "https://silentschool.studio";
 
+export const scbkrMicrosoftStore = {
+  productId: "9N1SMMBL6J4D",
+  title: "SCBKR Responsibility Chain Language Model",
+  publisher: "shenyao888pi",
+  developer: "Wen-Yao Hsu / 許文耀",
+  url: "https://apps.microsoft.com/detail/9n1smmbl6j4d",
+  datePublished: "2026-08-25",
+} as const;
+
 export function normalizeSiteOrigin(value?: string) {
   const candidate = value?.trim() || INTENDED_CANONICAL_FALLBACK;
   try {

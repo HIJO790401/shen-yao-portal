@@ -10,7 +10,7 @@ import demoStyles from "../demo-system.module.css";
 
 export const metadata: Metadata = {
   title: "產品與工程作品",
-  description: "沉靜流派工作室的 AICC OS v0.2.CANDIDATE 候選架構、語意防火牆、SCBKR、WIF、TIRC 與媒體作品；依母規格或原始碼核實能力、邊界與展示狀態。",
+  description: "沉靜流派工作室的產品與工程作品：已於 Microsoft Store 免費上架的 SCBKR、AICC OS v0.2.CANDIDATE 候選架構、語意防火牆、WIF、TIRC 與固定案例展示。",
   alternates: localizedAlternates("zh", "/products"),
   openGraph: { url: "/zh/products" },
 };
@@ -96,6 +96,7 @@ export default function ProductsPage() {
                 <div><dt><Lang zh="展示施工" en="MOTION ROUTE" /></dt><dd><Lang zh={product.motionZh} en={product.motionEn} /></dd></div>
               </dl>
               <div className={demoStyles.productActions}>
+                {product.storeUrl && <a href={product.storeUrl} target="_blank" rel="noreferrer"><Lang zh="Microsoft Store 免費取得" en="GET FREE ON MICROSOFT STORE" /> <span>↗</span></a>}
                 {film?.status === "ready" ? <LocalizedLink href={`/demo/${film.slug}`}><Lang zh="觀看固定案例" en="WATCH FIXED CASE" /> <span>▶</span></LocalizedLink> :
                   film ? <LocalizedLink href={`/demo/${film.slug}`}><Lang zh={film.status === "repair" ? "查看修復狀態" : "查看暫緩原因"} en={film.status === "repair" ? "VIEW REPAIR STATE" : "VIEW DEFERRED STATE"} /> <span>→</span></LocalizedLink> : null}
                 <a href={product.repo} target="_blank" rel="noreferrer"><Lang zh="原始碼證據" en="SOURCE EVIDENCE" /> <span>↗</span></a>

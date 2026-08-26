@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Lang, LocalizedLink } from "../components/LanguageControl";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
-import { localizedAlternates, siteUrl } from "../site-config";
+import { localizedAlternates, scbkrMicrosoftStore, siteUrl } from "../site-config";
 import { PrintResumeButton } from "./PrintResumeButton";
 import styles from "./resume.module.css";
 
@@ -37,15 +37,15 @@ const engineeringWorks = [
     title: "SCBKR",
     subtitleZh: "本地優先 AI 責任鏈執行系統",
     subtitleEn: "LOCAL-FIRST AI RESPONSIBILITY-CHAIN RUNTIME",
-    status: "PUBLIC ENGINEERING · RUNTIME / DESKTOP PROTOTYPE",
+    status: "MICROSOFT STORE · FREE WINDOWS APPLICATION",
     summaryZh:
-      "把使用者簽署規則、四庫資料結構、規則包編譯、權限閘、事件回放與本地模型介面整合成可執行的桌面原型。",
+      "已於 Microsoft Store 免費上架的 Windows 本地責任鏈應用，把使用者簽署規則、四庫資料結構、規則包編譯、權限閘、事件回放與本地模型介面整合成可執行系統。",
     summaryEn:
-      "An executable desktop prototype integrating owner-signed rules, four-store data structures, rule-pack compilation, permission gates, event replay and local-model interfaces.",
+      "A free Windows application published on Microsoft Store, integrating owner-signed rules, four-store data structures, rule-pack compilation, permission gates, event replay and local-model interfaces.",
     stack: "PYTHON · FASTAPI · SQLITE · REACT · TYPESCRIPT · TAURI",
     href: "https://github.com/HIJO790401/scbkr-local-responsibility-model",
-    licenseZh: "公開原始碼；未標示 OSI 授權",
-    licenseEn: "PUBLIC SOURCE; NO OSI LICENSE DECLARED",
+    licenseZh: "Microsoft Store 免費提供；公開原始碼未標示 OSI 授權",
+    licenseEn: "FREE ON MICROSOFT STORE; PUBLIC SOURCE WITH NO OSI LICENSE DECLARED",
   },
   {
     number: "02",
@@ -96,6 +96,19 @@ const engineeringWorks = [
 ];
 
 const publicEvidence = [
+  {
+    kind: "OFFICIAL DISTRIBUTION · MICROSOFT STORE",
+    date: "2026.08.25",
+    titleZh: "SCBKR Responsibility Chain Language Model 正式上架",
+    titleEn: "SCBKR RESPONSIBILITY CHAIN LANGUAGE MODEL PUBLISHED",
+    textZh:
+      "Microsoft 官方商品頁列出由 shenyao888pi 發布、Wen-Yao Hsu／許文耀開發的免費 Windows 應用程式。",
+    textEn:
+      "The official Microsoft listing identifies a free Windows application published by shenyao888pi and developed by Wen-Yao Hsu / 許文耀.",
+    noteZh: "應用已上架；是否能安裝仍由 Microsoft Store 依地區與裝置相容性判定。官網動畫另待提供。",
+    noteEn: "THE APPLICATION IS LIVE; INSTALLATION STILL DEPENDS ON MICROSOFT STORE REGION AND DEVICE COMPATIBILITY. THE WEBSITE FILM REMAINS PENDING.",
+    href: scbkrMicrosoftStore.url,
+  },
   {
     kind: "THIRD-PARTY PRESS",
     date: "2025.11.18",
@@ -213,7 +226,7 @@ function getProfileSchema(locale: "zh" | "en") {
     "@id": `${url}#profile`,
     url,
     inLanguage: language,
-    dateModified: "2026-07-28",
+    dateModified: "2026-08-26",
     mainEntity: {
       "@type": "Person",
       "@id": siteUrl("/#person"),
@@ -236,6 +249,7 @@ function getProfileSchema(locale: "zh" | "en") {
         "https://ai-arts.org/author/shen-yao/",
         "https://www.youtube.com/@JM-qy7gv",
         "https://www.tiktok.com/@shenyao888pi",
+        scbkrMicrosoftStore.url,
       ],
       subjectOf: {
         "@type": "NewsArticle",

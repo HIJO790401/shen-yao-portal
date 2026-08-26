@@ -1,0 +1,31 @@
+task_id: TASK-20260826-SCBKR-MICROSOFT-STORE-CTA-V1
+must_have:
+  - the official Microsoft Store URL is attached only to SCBKR
+  - Chinese and English Store calls to action are separate and localized
+  - the SCBKR detail page keeps its source-evidence and return actions
+  - the products catalog exposes the Store action without removing the internal deferred-motion page
+  - the homepage identifies SCBKR as available in Microsoft Store while retaining the internal detail route
+  - the public resume records the Microsoft Store listing as official distribution evidence
+  - crawler and structured data identify the exact Store product and free Windows availability
+  - external links open safely in a new tab
+  - desktop and 390x844 layouts have no page-level horizontal overflow
+must_not_have:
+  - claim that the SCBKR animation is complete
+  - claim that the website or CMS is deployed
+  - change AICC OS from v0.2.CANDIDATE
+  - attach the Microsoft Store URL to AICC or another work
+  - remove GitHub source evidence
+  - include tracking parameters, credentials or secrets
+verification:
+  - npx tsc --noEmit
+  - npm run lint
+  - npm test
+  - npx drizzle-kit check
+  - git diff --check
+  - scoped_secret_candidate_scan
+  - desktop_browser
+  - mobile_390x844_browser
+  - zh_en_route_review
+  - official_store_link_review
+  - browser_console_review
+final_gate: OWNER_REVIEW

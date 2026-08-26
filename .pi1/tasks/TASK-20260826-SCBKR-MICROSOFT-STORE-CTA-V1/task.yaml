@@ -1,0 +1,38 @@
+task_id: TASK-20260826-SCBKR-MICROSOFT-STORE-CTA-V1
+parent_task: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+license: .pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md
+goal: 將已驗證的 SCBKR Microsoft Store 上架狀態與官方取得入口接入中英文官網
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 4c75b38a6fe5fabd303d7d7156dd3b7c93d0b66f
+external_evidence:
+  source_type: OFFICIAL_MICROSOFT_STORE_LISTING
+  product_id: 9N1SMMBL6J4D
+  canonical_url: https://apps.microsoft.com/detail/9n1smmbl6j4d
+  verified_title: SCBKR Responsibility Chain Language Model
+  verified_publisher: shenyao888pi
+  verified_developer: Wen-Yao Hsu / 許文耀
+  verified_price: FREE
+  observed_at: "2026-08-26T02:45:57+08:00"
+scope:
+  - scbkr_store_status
+  - bilingual_store_cta
+  - products_and_resume_public_evidence
+  - crawler_and_structured_discovery
+  - desktop_and_mobile_external_link_qa
+  - github_main_update
+preserved:
+  - scbkr_animation_deferred
+  - scbkr_internal_detail_and_source_evidence
+  - aicc_v0_2_candidate_boundary
+  - cms_auth_d1_r2
+  - existing_owner_assets_and_rollback
+excluded:
+  - animation_implementation
+  - aicc_status_change
+  - sites_version_or_deployment
+  - domain_or_dns_change
+  - paid_service
+state: READY_FOR_OWNER_REVIEW
+final_gate: OWNER_REVIEW

@@ -5,7 +5,7 @@ import { archiveMuseumItems, archiveReports } from "./newsroom-data";
 import { productFilms } from "./showcase-data";
 import { siteOrigin } from "./site-config";
 
-const updated = new Date("2026-07-28T00:00:00+08:00");
+const updated = new Date("2026-08-26T00:00:00+08:00");
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type ChangeFrequency = NonNullable<SitemapEntry["changeFrequency"]>;

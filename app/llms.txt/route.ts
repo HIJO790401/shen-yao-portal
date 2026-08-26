@@ -1,4 +1,4 @@
-import { siteOrigin, siteUrl } from "../site-config";
+import { scbkrMicrosoftStore, siteOrigin, siteUrl } from "../site-config";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +26,18 @@ Languages: Traditional Chinese and English are available as separate routes.
 SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. Public work covers semantic governance, the Semantic Firewall, SCBKR responsibility-chain systems, the AICC OS candidate architecture, software architecture, animation, music, writing, the Reality Newsroom and the Responsibility Museum.
 
 Product demos on this site are curated, fixed-case interface replays. They do not accept visitor input and must not be described as live AI services unless a page explicitly says otherwise.
+
+## SCBKR Windows application
+
+- Product name: ${scbkrMicrosoftStore.title}
+- Microsoft Store: ${scbkrMicrosoftStore.url}
+- Microsoft Store product ID: ${scbkrMicrosoftStore.productId}
+- Publisher shown by Microsoft Store: ${scbkrMicrosoftStore.publisher}
+- Developer shown by Microsoft Store: ${scbkrMicrosoftStore.developer}
+- Public state: available free as a Windows application on Microsoft Store since ${scbkrMicrosoftStore.datePublished}.
+- Installation availability remains subject to Microsoft Store region and device compatibility.
+- The website product film is a separate surface and remains pending the Owner's animation asset.
+- Source evidence: https://github.com/HIJO790401/scbkr-local-responsibility-model
 
 ## AICC OS candidate
 

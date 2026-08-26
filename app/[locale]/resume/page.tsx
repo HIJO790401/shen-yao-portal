@@ -7,8 +7,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: { absolute: isEnglish ? "Public Resume | Wen-Yao Hsu / Shen-Yao 888π | SERENE SCHOOL STUDIO" : "公開履歷｜許文耀／沈耀888π｜沉靜流派工作室" },
     description: isEnglish
-      ? "A source-labelled public resume covering Wen-Yao Hsu's independent systems architecture, Semantic Firewall, SCBKR, the AICC OS v0.2.CANDIDATE architecture, public records, writing, animation and music."
-      : "許文耀／沈耀888π的可查證公開履歷：獨立系統架構、語意防火牆、SCBKR、AICC OS v0.2.CANDIDATE 候選架構、公開紀錄、文章、動畫與音樂。",
+      ? "A source-labelled public resume covering Wen-Yao Hsu's SCBKR Windows application on Microsoft Store, independent systems architecture, Semantic Firewall, the AICC OS v0.2.CANDIDATE architecture, writing, animation and music."
+      : "許文耀／沈耀888π的可查證公開履歷：Microsoft Store 上架的 SCBKR Windows 應用、獨立系統架構、語意防火牆、AICC OS v0.2.CANDIDATE 候選架構、文章、動畫與音樂。",
     alternates: {
       canonical: isEnglish ? "/en/resume" : "/zh/resume",
       languages: { "zh-Hant": "/zh/resume", en: "/en/resume", "x-default": "/zh/resume" },

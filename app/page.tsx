@@ -6,7 +6,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { ContactComposer } from "./components/ContactComposer";
 import { products } from "./site-data";
-import { introVideoSource } from "./site-config";
+import { introVideoSource, scbkrMicrosoftStore } from "./site-config";
 import styles from "./serene-home.module.css";
 
 const quickLinks = [
@@ -45,6 +45,7 @@ const featuredWorks = [
 ];
 
 const publicRecords = [
+  { label: "MICROSOFT STORE · OFFICIAL DISTRIBUTION · 2026.08.25", zh: "SCBKR Windows 應用免費取得", en: "GET THE SCBKR WINDOWS APPLICATION FREE", href: scbkrMicrosoftStore.url },
   { label: "GITHUB", zh: "官方工程作品總入口", en: "Official Engineering Archive", href: "https://github.com/HIJO790401" },
   { label: "VOCS", zh: "沈耀公開文章與研究", en: "Public Writing and Research", href: "https://vocus.cc/salon/hijo19900401/room/hijo1990" },
   { label: "NVIDIA COMMUNITY", zh: "SCBKR 技術文章", en: "SCBKR Technical Post", href: "https://forums.developer.nvidia.com/t/scbkr-a-local-responsibility-chain-workbench-for-llms-with-human-confirmed-generation-storage-replay-and-retrieval-gates/373910" },

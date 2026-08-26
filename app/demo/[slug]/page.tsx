@@ -42,7 +42,8 @@ export default async function ProductFilmPage({ params }: { params: Promise<{ sl
       <div className="steps">{film.steps.map(step=><article key={step.key}><span>{step.key}</span><h2><Lang zh={step.zh} en={step.en}/></h2></article>)}</div>
       <div className="formula">{film.formula}</div>
       <div className="actions">
-        {film.sourceRepo && <a className="button primary" href={film.sourceRepo} target="_blank" rel="noreferrer"><Lang zh="查看原始碼證據" en="OPEN SOURCE EVIDENCE"/> ↗</a>}
+        {film.storeUrl && <a className="button primary" href={film.storeUrl} target="_blank" rel="noreferrer"><Lang zh="從 Microsoft Store 免費取得" en="GET FREE FROM MICROSOFT STORE" /> ↗</a>}
+        {film.sourceRepo && <a className={`button ${film.storeUrl ? "ghost" : "primary"}`} href={film.sourceRepo} target="_blank" rel="noreferrer"><Lang zh="查看原始碼證據" en="OPEN SOURCE EVIDENCE"/> ↗</a>}
         <LocalizedLink className="button ghost" href="/products"><Lang zh="返回產品中心" en="BACK TO PRODUCTS"/></LocalizedLink>
       </div>
     </section>

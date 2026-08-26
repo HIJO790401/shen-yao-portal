@@ -1,3 +1,5 @@
+import { scbkrMicrosoftStore } from "./site-config";
+
 export type DemoStatus = "ready" | "repair" | "deferred";
 
 export type ProductFilm = {
@@ -16,6 +18,7 @@ export type ProductFilm = {
   introEn: string;
   formula: string;
   sourceRepo?: string;
+  storeUrl?: string;
   presentation?: "architecture";
   steps: Array<{ key: string; zh: string; en: string }>;
 };
@@ -72,10 +75,10 @@ export const productFilms: ProductFilm[] = [
     steps: [{ key: "01", zh: "鎖定授權情境", en: "Lock license case" }, { key: "02", zh: "逐用途判定", en: "Judge each use" }, { key: "03", zh: "保留失敗條件", en: "Preserve failure conditions" }],
   },
   {
-    code: "RG-01", slug: "scbkr", index: "RG-01", name: "SCBKR 本地責任鏈模型", nameEn: "SCBKR Local Responsibility Model", label: "OWNER-DEFERRED", status: "deferred", statusZh: "依指示暫緩動畫", statusEn: "MOTION DEFERRED BY OWNER",
-    headlineZh: "責任鏈模型保留驗證優先，不用動畫假裝自動理解。", headlineEn: "The responsibility-chain model remains evidence-first, without fake automation.",
-    introZh: "真實流程需要使用者簽名、生成、驗收與二次確認；依 Owner 指示，本階段不轉成自動動畫。", introEn: "The real flow requires signature, generation, acceptance and reconfirmation; per the Owner, motion is deferred in this phase.",
-    formula: "DRAFT → OWNER SIGNATURE → ACCEPTANCE → RECONFIRMATION", sourceRepo: "https://github.com/HIJO790401/scbkr-local-responsibility-model",
+    code: "RG-01", slug: "scbkr", index: "RG-01", name: "SCBKR 本地責任鏈模型", nameEn: "SCBKR Local Responsibility Model", label: "MICROSOFT STORE RELEASE · MOTION PENDING", status: "deferred", statusZh: "Microsoft Store 已上架／動畫待提供", statusEn: "MICROSOFT STORE LIVE · MOTION PENDING",
+    headlineZh: "正式應用已上架；官網動畫素材將於後續補上。", headlineEn: "The application is live; the website film will follow after its final asset is supplied.",
+    introZh: "SCBKR Windows 應用已在 Microsoft Store 免費提供。真實流程仍需要使用者簽名、生成、驗收與二次確認；官網動畫依 Owner 指示暫緩，不用假動畫取代產品證據。", introEn: "The SCBKR Windows application is now available free on Microsoft Store. Its real flow still requires signature, generation, acceptance and reconfirmation; the website film remains deferred rather than replacing product evidence with fake motion.",
+    formula: "DRAFT → OWNER SIGNATURE → ACCEPTANCE → RECONFIRMATION", sourceRepo: "https://github.com/HIJO790401/scbkr-local-responsibility-model", storeUrl: scbkrMicrosoftStore.url,
     steps: [{ key: "S", zh: "需要人類簽名", en: "Human signature required" }, { key: "A", zh: "需要人類驗收", en: "Human acceptance required" }, { key: "R", zh: "自動動畫暫緩", en: "Automatic film deferred" }],
   },
   {

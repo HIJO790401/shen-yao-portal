@@ -1,3 +1,5 @@
+import { scbkrMicrosoftStore } from "./site-config";
+
 export type ProductStatus = "verified" | "prototype" | "fixed" | "repair" | "deferred";
 
 export type AuditedProduct = {
@@ -14,6 +16,7 @@ export type AuditedProduct = {
   motionZh: string;
   motionEn: string;
   repo: string;
+  storeUrl?: string;
 };
 
 export type ProductFamily = {
@@ -140,15 +143,16 @@ export const productFamilies: ProductFamily[] = [
         titleZh: "SCBKR 本地責任鏈模型",
         titleEn: "SCBKR Local Responsibility Model",
         status: "deferred",
-        statusZh: "核實完成／動畫暫緩",
-        statusEn: "VERIFIED · MOTION DEFERRED",
-        actualZh: "把原始需求編成 SCBKR 草稿，經使用者簽名、生成、驗收與二次確認後才寫入四庫；VECTOR 只負責召回。",
-        actualEn: "Raw requests become SCBKR drafts and enter four stores only after user signature, generation, acceptance and reconfirmation; VECTOR is recall-only.",
+        statusZh: "Microsoft Store 已上架／動畫待提供",
+        statusEn: "MICROSOFT STORE LIVE · MOTION PENDING",
+        actualZh: "Windows 應用已於 Microsoft Store 免費上架；系統把原始需求編成 SCBKR 草稿，經使用者簽名、生成、驗收與二次確認後才寫入四庫，VECTOR 只負責召回。",
+        actualEn: "The Windows application is now available free on Microsoft Store. Raw requests become SCBKR drafts and enter four stores only after user signature, generation, acceptance and reconfirmation; VECTOR is recall-only.",
         boundaryZh: "不是底層模型、自動理解、自動終裁或自動入庫；97.9% 是字數換算估計，且低於程式 98.06% 門檻。",
         boundaryEn: "Not a base model, automatic understanding, autonomous judge or auto-storage system; 97.9% is a character-derived estimate below the code's 98.06% gate.",
-        motionZh: "依 Owner 指示，責任鏈模型動畫本階段暫緩；先保留可驗證的系統說明。",
-        motionEn: "Per the Owner's instruction, motion is deferred in this phase while the verified system explanation remains visible.",
+        motionZh: "正式應用與官網動畫分開：Store 入口已啟用，動畫待 Owner 後續提供素材。",
+        motionEn: "The released application and website film remain separate: the Store entry is live, while motion awaits the Owner's later asset.",
         repo: "https://github.com/HIJO790401/scbkr-local-responsibility-model",
+        storeUrl: scbkrMicrosoftStore.url,
       },
       {
         code: "RG-02",
