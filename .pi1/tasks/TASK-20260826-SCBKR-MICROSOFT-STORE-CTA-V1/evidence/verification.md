@@ -1,7 +1,7 @@
 # SCBKR Microsoft Store 官網入口｜驗收證據
 
 驗收時間：2026-08-26T16:43:15+08:00
-驗收狀態：READY_FOR_OWNER_REVIEW
+驗收狀態：SOURCE_COMPLETE_NOT_LIVE
 
 ## 官方外部證據
 
@@ -52,3 +52,10 @@
 - 官網正式部署：未執行。
 - 網域／DNS：未變更。
 - 本紀錄證明目前原始碼候選與本機驗收，不冒充正式網域上線證據。
+
+## GitHub 原始碼狀態
+
+- 原始碼提交：`a76b98b1ed39bc87878a83f86d4b7c440aeb741e`
+- 推送目標：`origin/main`
+- 本地 HEAD 與 `origin/main`：一致
+- Pull Request：未建立；依 Owner 授權直接更新 `main`

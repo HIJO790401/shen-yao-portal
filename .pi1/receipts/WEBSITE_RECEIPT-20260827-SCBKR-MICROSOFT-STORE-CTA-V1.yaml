@@ -1,0 +1,73 @@
+receipt_id: WEBSITE_RECEIPT-20260827-SCBKR-MICROSOFT-STORE-CTA-V1
+task_id: TASK-20260826-SCBKR-MICROSOFT-STORE-CTA-V1
+issued_at: "2026-08-27T01:27:47+08:00"
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室官方網站
+brand_en: SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 4c75b38a6fe5fabd303d7d7156dd3b7c93d0b66f
+candidate_commit: a76b98b1ed39bc87878a83f86d4b7c440aeb741e
+github_push:
+  state: VERIFIED_CANDIDATE_ON_ORIGIN_MAIN
+  target: origin/main
+  local_equals_remote: 1
+  pull_request: 0
+external_evidence:
+  source_type: OFFICIAL_MICROSOFT_STORE_LISTING
+  official_store_url: https://apps.microsoft.com/detail/9n1smmbl6j4d
+  product_id: 9N1SMMBL6J4D
+  listing_title: SCBKR Responsibility Chain Language Model
+  publisher: shenyao888pi
+  developer: Wen-Yao Hsu / 許文耀
+  price: FREE
+  published_at: "2026-08-25T06:18:33Z"
+  verified_at: "2026-08-26T02:45:57+08:00"
+  scope: STORE_LISTING_ONLY
+states:
+  homepage_store_entry: PASS
+  scbkr_detail_store_cta_zh: PASS
+  scbkr_detail_store_cta_en: PASS
+  products_store_cta_zh: PASS
+  products_store_cta_en: PASS
+  resume_official_distribution_evidence: PASS
+  metadata_software_application: PASS
+  llms_txt_store_record: PASS
+  scbkr_animation_deferred: PASS
+  aicc_v0_2_candidate_boundary_preserved: PASS
+  website_deployment_claim: 0
+verification:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  tests:
+    passed: 33
+    failed: 0
+  drizzle_check: PASS
+  git_diff_check: PASS
+  secret_candidate_scan:
+    state: PASS
+    hits: 0
+  tracking_parameter_scan:
+    state: PASS
+    hits: 0
+  browser:
+    desktop_1280x720: PASS
+    mobile_390x844: PASS
+    zh_en_routes: PASS
+    page_horizontal_overflow: 0
+    console_errors: 0
+    console_warnings: 0
+    final_route: http://localhost:4173/zh/demo/scbkr
+preserved:
+  aicc_candidate: v0.2.CANDIDATE
+  cms_and_auth: UNCHANGED
+  owner_assets: UNCHANGED
+  rollback_files: LOCAL_ONLY_UNCOMMITTED
+  intro_video: PENDING_OWNER_ASSET
+formal_deployment: 0
+sites_version_saved: 0
+domain_change: 0
+paid_service_change: 0
+final_state: OWNER_REVIEW
+detail_state: SOURCE_COMPLETE_NOT_LIVE

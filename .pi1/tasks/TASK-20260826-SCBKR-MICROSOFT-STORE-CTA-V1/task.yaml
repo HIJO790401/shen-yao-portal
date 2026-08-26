@@ -34,5 +34,5 @@ excluded:
   - sites_version_or_deployment
   - domain_or_dns_change
   - paid_service
-state: READY_FOR_OWNER_REVIEW
+state: SOURCE_COMPLETE_NOT_LIVE
 final_gate: OWNER_REVIEW
