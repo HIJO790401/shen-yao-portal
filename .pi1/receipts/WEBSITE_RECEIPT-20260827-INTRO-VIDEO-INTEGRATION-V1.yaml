@@ -1,0 +1,81 @@
+receipt_id: WEBSITE_RECEIPT-20260827-INTRO-VIDEO-INTEGRATION-V1
+task_id: TASK-20260827-INTRO-VIDEO-INTEGRATION-V1
+issued_at: "2026-08-27T23:43:41+08:00"
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室官方網站
+brand_en: SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 42bb213ca3435c69c2c6fccfd532075533f0aee2
+candidate_commit: 082ef5fdddc6541fe2ab749c58d1243dd42991ea
+github_push:
+  state: VERIFIED_CANDIDATE_ON_ORIGIN_MAIN
+  target: origin/main
+  local_equals_remote: 1
+  pull_request: 0
+owner_asset:
+  target: public/media/intro/serene-school-intro.mp4
+  sha256: C228E1682778C0C01D9A75C6C4156CE77B7D3AAC891E2CA44838043A8D54682C
+  original_preserved_byte_for_byte: 1
+  bytes: 1953507
+  duration_seconds: 8
+  dimensions: 1280x720
+  aspect_ratio: "16:9"
+  video_codec: H.264 High / yuv420p
+  audio_codec: AAC-LC / 48kHz / stereo
+  faststart: PASS
+states:
+  local_owner_video_default: PASS
+  valid_environment_override: PASS
+  invalid_environment_fallback: PASS
+  ordinary_motion_muted_autoplay: PASS
+  ordinary_motion_loop: PASS
+  native_playback_controls: PASS
+  reduced_motion_no_forced_autoplay: PASS
+  reduced_motion_no_loop: PASS
+  explicit_enter_action: PASS
+  no_automatic_entry_on_end_or_error: PASS
+  approved_poster_fallback: PASS
+  portrait_mobile_full_composition: PASS
+  zh_en_intro_separation: PASS
+  duplicate_brand_overlay_removed: PASS
+verification:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  tests:
+    passed: 34
+    failed: 0
+  drizzle_check: PASS
+  git_diff_check: PASS
+  secret_candidate_scan:
+    state: PASS
+    hits: 0
+  tracking_parameter_scan:
+    state: PASS
+    hits: 0
+  local_user_path_scan:
+    state: PASS
+    hits: 0
+  browser:
+    desktop_1440x900_zh: PASS
+    mobile_390x844_en: PASS
+    video_http_200: PASS
+    content_type_video_mp4: PASS
+    explicit_enter_click: PASS
+    page_horizontal_overflow: 0
+    console_errors: 0
+    console_warnings: 0
+    final_route: http://localhost:4173/zh
+preserved:
+  owner_video_pixels_and_audio: UNCHANGED
+  owner_assets: UNCHANGED
+  cms_and_auth: UNCHANGED
+  aicc_and_scbkr_boundaries: UNCHANGED
+  rollback_files: LOCAL_ONLY_UNCOMMITTED
+formal_deployment: 0
+sites_version_saved: 0
+domain_change: 0
+paid_service_change: 0
+final_state: OWNER_REVIEW
+detail_state: SOURCE_COMPLETE_NOT_LIVE

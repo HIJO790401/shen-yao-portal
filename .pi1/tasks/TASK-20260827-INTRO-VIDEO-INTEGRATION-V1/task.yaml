@@ -35,5 +35,5 @@ excluded:
   - domain_or_dns_change
   - video_content_regeneration
   - paid_service
-state: READY_FOR_OWNER_REVIEW
+state: SOURCE_COMPLETE_NOT_LIVE
 final_gate: OWNER_REVIEW

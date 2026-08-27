@@ -1,7 +1,7 @@
 # 沉靜流派 Intro 正式影片｜驗收證據
 
 驗收時間：2026-08-27T18:54:27+08:00
-驗收狀態：READY_FOR_OWNER_REVIEW
+驗收狀態：SOURCE_COMPLETE_NOT_LIVE
 
 ## 站主素材
 
@@ -50,3 +50,11 @@
 - 网域／DNS：未变更。
 - 正式网域影音 Range／CDN 行为：待日后部署后复验。
 - 本记录证明 GitHub source 候选与本机 UI，不冒充正式网域上线证据。
+
+## GitHub 原始碼狀態
+
+- 來源提交：`082ef5fdddc6541fe2ab749c58d1243dd42991ea`
+- 目標：`origin/main`
+- 本機 `main` 與遠端 `main`：已核對一致。
+- Pull Request：未建立；依站主對本專案的明確授權直接更新 `main`。
+- 此狀態僅代表原始碼完成並已推送，不代表 Sites version、部署或正式網域已成立。
