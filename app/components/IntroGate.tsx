@@ -1,12 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Lang } from "./LanguageControl";
 import styles from "../serene-home.module.css";
 
-const SESSION_KEY = "serene-school-intro-seen-v1";
+const SESSION_KEY = "serene-school-intro-seen-v2";
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const subscribeToNothing = () => () => {};
+const subscribeToReducedMotion = (onStoreChange: () => void) => {
+  const query = window.matchMedia(REDUCED_MOTION_QUERY);
+  query.addEventListener("change", onStoreChange);
+  return () => query.removeEventListener("change", onStoreChange);
+};
+const getReducedMotionSnapshot = () => window.matchMedia(REDUCED_MOTION_QUERY).matches;
 
 type IntroGateProps = {
   src?: string;
@@ -14,6 +21,7 @@ type IntroGateProps = {
 };
 
 export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: IntroGateProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [dismissed, setDismissed] = useState(false);
   const [playbackFailed, setPlaybackFailed] = useState(false);
   const sessionEligible = useSyncExternalStore(
@@ -27,6 +35,11 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
     },
     () => true,
   );
+  const reducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionSnapshot,
+    () => true,
+  );
   const visible = sessionEligible && !dismissed;
   const videoReady = Boolean(src) && !playbackFailed;
 
@@ -38,6 +51,18 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
       document.body.style.overflow = previousOverflow;
     };
   }, [visible]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !videoReady) return;
+    if (reducedMotion) {
+      video.pause();
+      return;
+    }
+    void video.play().catch(() => {
+      // Native controls remain available when a browser declines autoplay.
+    });
+  }, [reducedMotion, videoReady]);
 
   const enterSite = () => {
     try {
@@ -61,11 +86,13 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
       <div className={styles.introMedia}>
         {videoReady ? (
           <video
+            ref={videoRef}
             className={styles.introVideo}
             src={src}
             poster={poster}
             muted
-            autoPlay
+            autoPlay={!reducedMotion}
+            loop={!reducedMotion}
             controls
             playsInline
             preload="auto"
@@ -76,28 +103,28 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
             <Image src={poster} alt="" fill priority unoptimized sizes="100vw" />
           </div>
         )}
-        <div className={styles.introShade} aria-hidden="true" />
-        <div className={styles.introBrand}>
-          <p>SERENE SCHOOL STUDIO</p>
-          <h2 id="serene-intro-title">
-            <Lang
-              zh={
-                videoReady
-                  ? "沉靜流派工作室・開場"
-                  : src && playbackFailed
+        <div className={`${styles.introShade} ${videoReady ? styles.introShadeVideo : ""}`} aria-hidden="true" />
+        {videoReady ? (
+          <h2 id="serene-intro-title" className={styles.introSrOnly}>
+            <Lang zh="沉靜流派工作室・開場" en="SERENE SCHOOL STUDIO · INTRO" />
+          </h2>
+        ) : (
+          <div className={styles.introBrand}>
+            <p>SERENE SCHOOL STUDIO</p>
+            <h2 id="serene-intro-title">
+              <Lang
+                zh={
+                  src && playbackFailed
                     ? "開場影片暫時無法播放"
                     : "正式開場影片待提供"
-              }
-              en={
-                videoReady
-                  ? "SERENE SCHOOL STUDIO · INTRO"
-                  : src && playbackFailed
+                }
+                en={
+                  src && playbackFailed
                     ? "INTRO VIDEO UNAVAILABLE"
                     : "FINAL INTRO VIDEO PENDING"
-              }
-            />
-          </h2>
-          {!videoReady && (
+                }
+              />
+            </h2>
             <span>
               <Lang
                 zh={
@@ -112,8 +139,8 @@ export function IntroGate({ src, poster = "/media/serene-water-16x9.jpg" }: Intr
                 }
               />
             </span>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       <div className={styles.introActions}>
         <button className={styles.introEnter} type="button" onClick={enterSite}>

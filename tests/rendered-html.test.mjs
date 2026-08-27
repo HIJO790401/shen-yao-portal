@@ -110,16 +110,19 @@ test("serves curated local raster assets directly in the browser runtime", async
   assert.match(museumDetail, /src=\{item\.cover\}[\s\S]*?\bunoptimized\b/);
 });
 
-test("renders a legal Intro Gate placeholder and enters only on owner action", async () => {
-  const [home, intro, siteConfig] = await Promise.all([
+test("renders the owner intro video with safe fallback and enters only on owner action", async () => {
+  const [home, intro, siteConfig, css, video] = await Promise.all([
     source("app/page.tsx"),
     source("app/components/IntroGate.tsx"),
     source("app/site-config.ts"),
+    source("app/serene-home.module.css"),
+    readFile(new URL("public/media/intro/serene-school-intro.mp4", projectRoot)),
   ]);
   assert.match(home, /introVideoSource/);
   assert.match(home, /<IntroGate src=\{introVideoSource\}\s*\/>/);
   assert.match(siteConfig, /NEXT_PUBLIC_INTRO_VIDEO_URL/);
   assert.match(siteConfig, /normalizeIntroVideoSource/);
+  assert.match(siteConfig, /defaultIntroVideoSource\s*=\s*"\/media\/intro\/serene-school-intro\.mp4"/);
   assert.match(intro, /正式開場影片待提供/);
   assert.match(intro, /不生成替代影片/);
   assert.match(intro, /進入官網/);
@@ -128,9 +131,21 @@ test("renders a legal Intro Gate placeholder and enters only on owner action", a
   assert.match(intro, /Boolean\(src\)\s*&&\s*!playbackFailed/);
   assert.match(intro, /onError=\{\(\) => setPlaybackFailed\(true\)\}/);
   assert.match(intro, /\bautoPlay\b/);
+  assert.match(intro, /loop=\{!reducedMotion\}/);
   assert.match(intro, /\bmuted\b/);
   assert.match(intro, /\bplaysInline\b/);
+  assert.match(intro, /prefers-reduced-motion: reduce/);
+  assert.match(intro, /video\.pause\(\)/);
+  assert.match(intro, /styles\.introSrOnly/);
+  assert.match(css, /\.introVideo\s*\{\s*object-fit:\s*contain;/);
   assert.doesNotMatch(intro, /onEnded=\{enterSite\}|onError=\{enterSite\}/);
+  assert.equal(video.subarray(4, 8).toString("ascii"), "ftyp");
+  assert.ok(video.length < 15 * 1024 * 1024);
+  assert.ok(video.indexOf(Buffer.from("moov")) < video.indexOf(Buffer.from("mdat")), "MP4 must keep faststart metadata before media data");
+  assert.equal(
+    createHash("sha256").update(video).digest("hex").toUpperCase(),
+    "C228E1682778C0C01D9A75C6C4156CE77B7D3AAC891E2CA44838043A8D54682C",
+  );
   const actions = intro.slice(intro.indexOf("styles.introActions"));
   assert.ok(
     actions.indexOf("styles.introEnter") < actions.indexOf('id="serene-intro-note"'),

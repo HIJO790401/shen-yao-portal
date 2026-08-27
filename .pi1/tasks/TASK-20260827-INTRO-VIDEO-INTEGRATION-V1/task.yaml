@@ -1,0 +1,39 @@
+task_id: TASK-20260827-INTRO-VIDEO-INTEGRATION-V1
+parent_task: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+license: .pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md
+goal: 將站主提供的 16:9 循環動畫接入沉靜流派工作室中英文 Intro Gate
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 42bb213ca3435c69c2c6fccfd532075533f0aee2
+owner_asset:
+  source: OWNER_PROVIDED_LOCAL_FILE/沉靜流派16：9 循環動畫.mp4
+  target: public/media/intro/serene-school-intro.mp4
+  sha256: C228E1682778C0C01D9A75C6C4156CE77B7D3AAC891E2CA44838043A8D54682C
+  bytes: 1953507
+  duration_seconds: 8
+  dimensions: 1280x720
+  codec: H.264 High / yuv420p / AAC-LC
+scope:
+  - owner_intro_video_asset
+  - local_default_intro_source
+  - intro_loop_and_explicit_enter
+  - reduced_motion_behavior
+  - mobile_safe_framing
+  - bilingual_browser_qa
+  - github_main_update
+preserved:
+  - owner_video_pixels_and_audio
+  - approved_water_poster_fallback
+  - explicit_enter_action
+  - no_automatic_site_entry
+  - cms_and_auth
+  - aicc_and_scbkr_product_boundaries
+  - existing_rollback_files
+excluded:
+  - sites_version_or_deployment
+  - domain_or_dns_change
+  - video_content_regeneration
+  - paid_service
+state: READY_FOR_OWNER_REVIEW
+final_gate: OWNER_REVIEW

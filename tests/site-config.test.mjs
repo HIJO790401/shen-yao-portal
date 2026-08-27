@@ -2,14 +2,23 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  defaultIntroVideoSource,
   localizedAlternates,
   normalizeIntroVideoSource,
   normalizeSiteOrigin,
+  resolveIntroVideoSource,
   siteOrigin,
   siteUrl,
 } from "../app/site-config.ts";
 
 const canonicalFallback = "https://silentschool.studio";
+
+test("uses the owner-provided local intro video as the default public source", () => {
+  assert.equal(defaultIntroVideoSource, "/media/intro/serene-school-intro.mp4");
+  assert.equal(resolveIntroVideoSource(undefined), defaultIntroVideoSource);
+  assert.equal(resolveIntroVideoSource("/media/intro/alternate.webm"), "/media/intro/alternate.webm");
+  assert.equal(resolveIntroVideoSource("javascript:alert(1)"), defaultIntroVideoSource);
+});
 
 test("normalizeSiteOrigin accepts HTTPS origins and strips paths", () => {
   assert.equal(

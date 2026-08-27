@@ -1,0 +1,33 @@
+task_id: TASK-20260827-INTRO-VIDEO-INTEGRATION-V1
+must_have:
+  - the exact owner-provided MP4 is preserved under a safe public ASCII filename
+  - the intro uses the local owner video by default without depending on an untracked env file
+  - a valid NEXT_PUBLIC_INTRO_VIDEO_URL may still override the local default
+  - the video autoplays muted and loops for ordinary motion settings
+  - native controls allow a visitor to play pause and enable audio
+  - reduced-motion visitors are not forced into autoplay or looping
+  - the explicit enter-site action remains available before during and after playback
+  - video completion or playback error never enters the site automatically
+  - playback failure returns to the approved water poster
+  - the full 16:9 composition remains visible on portrait mobile without stretching
+  - Chinese and English intro labels remain separate
+must_not_have:
+  - generated replacement video
+  - duplicated visual brand overlay covering the supplied video
+  - secret URL credentials or tracking parameters
+  - Sites deployment domain DNS or paid-service changes
+verification:
+  - ffprobe_media_contract
+  - owner_asset_sha256
+  - npx_tsc_noEmit
+  - npm_run_lint
+  - npm_test
+  - npx_drizzle_kit_check
+  - git_diff_check
+  - scoped_secret_candidate_scan
+  - desktop_browser_1440x900
+  - mobile_browser_390x844
+  - zh_en_intro_review
+  - reduced_motion_review
+  - browser_console_review
+final_gate: OWNER_REVIEW

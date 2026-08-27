@@ -1024,6 +1024,7 @@
   position: relative;
   min-height: 0;
   overflow: hidden;
+  background: #eaf4ff;
 }
 
 .introVideo {
@@ -1051,6 +1052,22 @@
     linear-gradient(90deg, rgba(2, 20, 45, 0.5), transparent 55%),
     linear-gradient(180deg, rgba(2, 20, 45, 0.05), rgba(2, 18, 42, 0.12) 55%, rgba(2, 16, 37, 0.56));
   pointer-events: none;
+}
+
+.introShadeVideo {
+  background: linear-gradient(180deg, transparent 72%, rgba(2, 16, 37, 0.12));
+}
+
+.introSrOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .introBrand {
@@ -1600,6 +1617,8 @@
   }
 
   .introBrand h2 { font-size: 34px; }
+
+  .introVideo { object-fit: contain; }
 
   .introActions {
     display: block;

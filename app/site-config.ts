@@ -1,4 +1,5 @@
 const INTENDED_CANONICAL_FALLBACK = "https://silentschool.studio";
+export const defaultIntroVideoSource = "/media/intro/serene-school-intro.mp4";
 
 export const scbkrMicrosoftStore = {
   productId: "9N1SMMBL6J4D",
@@ -63,7 +64,11 @@ export const siteOrigin = normalizeSiteOrigin(
   process.env.NEXT_PUBLIC_SITE_URL,
 );
 
-export const introVideoSource = normalizeIntroVideoSource(
+export function resolveIntroVideoSource(value?: string) {
+  return normalizeIntroVideoSource(value) ?? defaultIntroVideoSource;
+}
+
+export const introVideoSource = resolveIntroVideoSource(
   process.env.NEXT_PUBLIC_INTRO_VIDEO_URL,
 );
 
