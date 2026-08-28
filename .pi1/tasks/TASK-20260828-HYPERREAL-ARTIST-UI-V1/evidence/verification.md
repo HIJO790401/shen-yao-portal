@@ -5,6 +5,7 @@
 - Repository: `HIJO790401/shen-yao-portal`
 - Branch: `main`
 - Baseline HEAD: `0de2fe2c0abae34640b4e06ccafaab34cca3b2ff`
+- Source commit: `12c7053819f973a8d39763c801eef2da76290c66`
 - Verified at: `2026-08-28T23:16:39+08:00`
 - Source state: `SOURCE_COMPLETE_NOT_LIVE`
 - Final visual gate: `OWNER_REVIEW`
