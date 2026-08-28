@@ -1,0 +1,44 @@
+task_id: TASK-20260828-HYPERREAL-ARTIST-UI-V1
+parent_task: TASK-20260726-OFFICIAL-WEBSITE-LICENSE-V1
+license: .pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md
+goal: 保留首頁現有資訊結構與排版骨架，將 UI 材質、光線、折射、動態與細節升級為超寫實藝術家工作室質感
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: 0de2fe2c0abae34640b4e06ccafaab34cca3b2ff
+visual_standard:
+  - photoreal_water_light_refraction
+  - cinematic_artist_exhibition
+  - porcelain_white_ice_blue_cobalt_depth
+  - ancient_symbols_math_and_architecture_as_editorial_marks
+  - no_generic_saas_card_wall
+scope:
+  - homepage_surface_and_material_system
+  - hero_water_light_and_refraction
+  - founder_surface_without_portrait_motion
+  - existing_product_and_work_card_finish
+  - existing_newsroom_museum_finish
+  - existing_public_record_finish
+  - accessible_scroll_reveal
+  - licensed_github_liquid_glass_material
+  - bilingual_visual_qa
+  - github_main_update
+preserved:
+  - homepage_section_order_and_layout_structure
+  - approved_intro_video_and_enter_gate
+  - owner_portrait_pixels
+  - brand_name_owner_name_and_fixed_quote
+  - product_work_news_and_museum_routes
+  - owner_cms_auth_d1_and_r2
+  - youtube_and_external_source_links
+  - structured_data_and_language_separation
+  - existing_rollback_files
+excluded:
+  - sites_version_or_deployment
+  - domain_or_dns_change
+  - cms_schema_or_auth_change
+  - generated_owner_face
+  - paid_asset_or_paid_service
+  - full_site_route_redesign
+state: SOURCE_COMPLETE_NOT_LIVE
+final_gate: OWNER_REVIEW

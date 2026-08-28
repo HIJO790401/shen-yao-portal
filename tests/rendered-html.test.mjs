@@ -87,6 +87,25 @@ test("keeps the supplied image static while animating only the water treatment",
   ]);
 });
 
+test("loads hyperreal materials progressively and re-registers reveals after route changes", async () => {
+  const [home, motionExperience, liquidGlass, css] = await Promise.all([
+    source("app/page.tsx"),
+    source("app/components/MotionExperience.tsx"),
+    source("app/components/LiquidGlassLens.tsx"),
+    source("app/serene-home.module.css"),
+  ]);
+  assert.match(home, /data-serene-reveal/);
+  assert.match(motionExperience, /usePathname/);
+  assert.match(motionExperience, /\[pathname,\s*reduceMotion\]/);
+  assert.match(motionExperience, /IntersectionObserver/);
+  assert.match(motionExperience, /data-serene-visible/);
+  assert.match(liquidGlass, /import\("liquid-glass-react"\)/);
+  assert.match(liquidGlass, /if \(!Glass\)[\s\S]*fallbackStyle/);
+  assert.match(liquidGlass, /prefers-reduced-motion: reduce/);
+  assert.match(css, /html\[data-serene-motion="ready"\]/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+});
+
 test("serves curated local raster assets directly in the browser runtime", async () => {
   const [intro, hero, home, works, about, news, reportDetail, museumDetail] = await Promise.all([
     source("app/components/IntroGate.tsx"),

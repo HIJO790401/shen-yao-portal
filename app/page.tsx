@@ -78,14 +78,14 @@ export default function Home() {
         </nav>
 
         <section className={styles.overview} id="about">
-          <div className={styles.aboutPanel}>
+          <div className={styles.aboutPanel} data-serene-reveal="rise">
             <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="關於沉靜流派" en="ABOUT THE STUDIO" /></p>
             <h2><Lang zh="古文明符號 × 數學公式 × 系統架構。" en="ANCIENT SYMBOLS × FORMULAS × SYSTEMS." /></h2>
             <p><Lang zh="沉靜流派把符號做成語言、把公式做成責任結構，再把責任結構落成語意防火牆、固定案例 Demo、動畫與音樂作品。" en="SERENE SCHOOL turns symbols into language, formulas into responsibility structures, and those structures into the Semantic Firewall, fixed-case demos, animation and music." /></p>
             <LocalizedLink href="/#founder"><Lang zh="了解更多" en="DISCOVER MORE" /> <span aria-hidden="true">›</span></LocalizedLink>
           </div>
 
-          <div className={styles.productPreview}>
+          <div className={styles.productPreview} data-serene-reveal="rise">
             <div className={styles.panelHeading}>
               <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="核心產品" en="CORE PRODUCTS" /></p>
               <LocalizedLink href="/products"><Lang zh="查看全部" en="VIEW ALL" /> <span aria-hidden="true">›</span></LocalizedLink>
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={styles.worksPreview} id="works">
+          <div className={styles.worksPreview} id="works" data-serene-reveal="rise">
             <div className={styles.panelHeading}>
               <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="精選作品" en="FEATURED WORKS" /></p>
               <LocalizedLink href="/works"><Lang zh="瀏覽更多作品" en="VIEW MORE" /> <span aria-hidden="true">›</span></LocalizedLink>
@@ -142,7 +142,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.newsMuseum} aria-labelledby="news-museum-title">
+        <section className={styles.newsMuseum} aria-labelledby="news-museum-title" data-serene-reveal="focus">
           <div className={styles.newsIntro}>
             <p className={styles.sectionKicker}><i aria-hidden="true" /> ARCHIVE / NEWSROOM</p>
             <h2 id="news-museum-title"><Lang zh="實相新聞台 × 責任博物館" en="REALITY NEWSROOM × RESPONSIBILITY MUSEUM" /></h2>
@@ -165,7 +165,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.publicRecord} id="public-record">
+        <section className={styles.publicRecord} id="public-record" data-serene-reveal="rise">
           <div>
             <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="公開紀錄" en="PUBLIC RECORD" /></p>
             <h2><Lang zh="讓外部世界能查到、讀懂、回放。" en="SEARCHABLE. READABLE. REPLAYABLE." /></h2>
@@ -182,7 +182,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.contactBand} id="contact" aria-labelledby="contact-title">
+        <section className={styles.contactBand} id="contact" aria-labelledby="contact-title" data-serene-reveal="rise">
           <div>
             <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="合作聯絡" en="COLLABORATION" /></p>
             <h2 id="contact-title"><Lang zh="讓合作先有清楚的主體、範圍與責任。" en="BEGIN WITH A CLEAR SUBJECT, SCOPE AND RESPONSIBILITY." /></h2>

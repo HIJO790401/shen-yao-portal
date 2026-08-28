@@ -7,6 +7,9 @@
   --serene-mist: #f9fcff;
   --serene-line: rgba(13, 76, 155, 0.16);
   --serene-soft: #53709b;
+  --serene-glass: rgba(238, 249, 255, 0.48);
+  --serene-crystal-edge: rgba(255, 255, 255, 0.86);
+  --serene-caustic: rgba(113, 203, 255, 0.4);
   min-height: 100vh;
   overflow: hidden;
   background: var(--serene-mist);
@@ -16,16 +19,43 @@
 
 .site main {
   position: relative;
-  background: var(--serene-mist);
+  background:
+    radial-gradient(ellipse at 12% 4%, rgba(255, 255, 255, 0.98), transparent 28%),
+    radial-gradient(ellipse at 88% 30%, rgba(113, 190, 240, 0.13), transparent 31%),
+    linear-gradient(180deg, #fafdff 0%, #edf7ff 54%, #f9fcff 100%);
+}
+
+:global(html[data-serene-motion="ready"]) .site [data-serene-reveal] {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translate3d(0, 34px, 0) scale(0.992);
+  transition:
+    opacity 850ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:global(html[data-serene-motion="ready"]) .site [data-serene-reveal="focus"] {
+  transform: translate3d(0, 26px, 0) scale(0.985);
+}
+
+:global(html[data-serene-motion="ready"]) .site [data-serene-visible="true"] {
+  opacity: 1;
+  filter: none;
+  transform: none;
 }
 
 .site :global(.site-header) {
   height: 72px;
   padding: 0 clamp(24px, 5vw, 72px);
-  background: rgba(250, 253, 255, 0.84) !important;
-  border-color: rgba(16, 78, 157, 0.11) !important;
-  box-shadow: 0 10px 30px rgba(27, 83, 151, 0.055);
-  backdrop-filter: blur(20px) saturate(135%);
+  background:
+    linear-gradient(112deg, rgba(255, 255, 255, 0.86), rgba(218, 239, 255, 0.56) 48%, rgba(255, 255, 255, 0.78)) !important;
+  border-color: rgba(255, 255, 255, 0.72) !important;
+  box-shadow:
+    inset 0 -1px 0 rgba(15, 91, 177, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    0 14px 42px rgba(16, 74, 145, 0.08);
+  backdrop-filter: blur(24px) saturate(148%);
 }
 
 .site :global(.site-header.is-scrolled) {
@@ -64,12 +94,41 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(circle at 11% 10%, rgba(255, 255, 255, 0.96), transparent 30%),
-    linear-gradient(135deg, #fbfdff 0%, #dceeff 55%, #99c7ef 100%);
+    radial-gradient(circle at 8% 5%, rgba(255, 255, 255, 0.98), transparent 28%),
+    linear-gradient(132deg, #fbfdff 0%, #ddecfa 47%, #8abce7 100%);
+  box-shadow: inset 0 -46px 110px rgba(4, 66, 148, 0.1);
+}
+
+.hero::before,
+.hero::after {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+}
+
+.hero::before {
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 53% 74%, rgba(255, 255, 255, 0.26), transparent 22%),
+    linear-gradient(104deg, rgba(255, 255, 255, 0.44) 0%, transparent 18% 70%, rgba(20, 102, 181, 0.1) 100%);
+  mix-blend-mode: screen;
+}
+
+.hero::after {
+  inset: 19px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 36px 36px 28px 28px;
+  box-shadow:
+    inset 0 0 0 1px rgba(14, 81, 160, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  opacity: 0.78;
 }
 
 .waterBase,
 .waterRefraction,
+.waterCaustics,
+.prismaticAir,
 .heroLight,
 .rippleField {
   position: absolute;
@@ -78,7 +137,7 @@
 }
 
 .waterBase {
-  z-index: -5;
+  z-index: -7;
   right: auto;
   width: 68%;
   background-image:
@@ -87,10 +146,11 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  filter: saturate(1.04) contrast(1.035) brightness(1.035);
 }
 
 .waterRefraction {
-  z-index: -4;
+  z-index: -6;
   top: -2.5%;
   right: auto;
   bottom: -2.5%;
@@ -100,13 +160,41 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.44;
-  filter: saturate(1.13) contrast(1.045) brightness(1.025);
+  opacity: 0.52;
+  filter: saturate(1.2) contrast(1.06) brightness(1.045);
   transform: scale(1.016) translate3d(-0.18%, 0.08%, 0);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0 43%, #000 56% 100%);
   mask-image: linear-gradient(to bottom, transparent 0 43%, #000 56% 100%);
   animation: waterRefraction 9s ease-in-out infinite alternate;
   will-change: transform, background-position;
+}
+
+.waterCaustics {
+  z-index: -5;
+  right: auto;
+  width: 72%;
+  background:
+    linear-gradient(116deg, transparent 9%, rgba(255, 255, 255, 0.48) 18%, transparent 28% 63%, rgba(117, 207, 255, 0.21) 76%, transparent 89%),
+    url("/media/serene-water-16x9.jpg") center 63% / 112% auto no-repeat;
+  opacity: 0.34;
+  filter: contrast(1.3) brightness(1.16) saturate(0.82) blur(0.55px);
+  mix-blend-mode: screen;
+  transform: scale(1.035);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0 39%, #000 53% 100%);
+  mask-image: linear-gradient(to bottom, transparent 0 39%, #000 53% 100%);
+  animation: causticDrift 13s ease-in-out infinite alternate;
+  will-change: transform, background-position, opacity;
+}
+
+.prismaticAir {
+  z-index: -4;
+  background:
+    radial-gradient(ellipse at 58% 18%, rgba(255, 255, 255, 0.44), transparent 21%),
+    conic-gradient(from 212deg at 61% 43%, transparent 0 25%, rgba(92, 202, 255, 0.08) 31%, rgba(255, 255, 255, 0.3) 36%, rgba(117, 121, 255, 0.06) 42%, transparent 48% 100%);
+  filter: blur(9px);
+  mix-blend-mode: screen;
+  opacity: 0.72;
+  animation: prismBreathe 11s ease-in-out infinite alternate;
 }
 
 .heroLight {
@@ -176,13 +264,17 @@
 .brandLockup h1 {
   margin: 0;
   color: #07347f;
-  font-family: "Noto Serif TC", "PMingLiU", "Times New Roman", serif;
+  font-family: var(--font-serif), "PMingLiU", "Times New Roman", serif;
   font-size: clamp(45px, 4.35vw, 70px);
   font-weight: 600;
   line-height: 1.14;
   letter-spacing: 0.17em;
   text-indent: 0.17em;
-  filter: drop-shadow(0 2px 1px rgba(255, 255, 255, 0.9));
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.96),
+    0 4px 14px rgba(9, 74, 157, 0.13),
+    0 18px 38px rgba(8, 62, 135, 0.08);
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.75));
 }
 
 .brandRoman {
@@ -225,7 +317,7 @@
 .ownerName {
   margin: 0;
   color: #093d88;
-  font-family: "Noto Serif TC", "PMingLiU", serif;
+  font-family: var(--font-serif), "PMingLiU", serif;
   font-size: clamp(14px, 1.35vw, 19px);
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -244,14 +336,30 @@
   position: relative;
   min-height: 500px;
   overflow: visible;
-  border: 1px solid rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px;
-  background: rgba(238, 249, 255, 0.22);
+  background:
+    linear-gradient(138deg, rgba(255, 255, 255, 0.42), rgba(188, 225, 249, 0.13) 44%, rgba(255, 255, 255, 0.26)),
+    rgba(226, 244, 255, 0.14);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.96),
-    0 28px 70px rgba(15, 77, 154, 0.14),
-    0 0 0 1px rgba(24, 105, 192, 0.1);
-  backdrop-filter: blur(6px) saturate(110%);
+    inset 0 -1px 0 rgba(22, 95, 178, 0.1),
+    0 38px 94px rgba(7, 58, 128, 0.18),
+    0 8px 22px rgba(255, 255, 255, 0.38),
+    0 0 0 1px rgba(24, 105, 192, 0.08);
+  backdrop-filter: blur(8px) saturate(118%);
+}
+
+.founderCard::before {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.48), transparent 19% 74%, rgba(91, 181, 236, 0.1)),
+    radial-gradient(ellipse at 73% 14%, rgba(255, 255, 255, 0.36), transparent 24%);
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 .founderPhoto {
@@ -269,7 +377,7 @@
 .founderPhoto img {
   object-fit: cover;
   object-position: 54% 27%;
-  filter: saturate(0.9) contrast(1) brightness(1.045);
+  filter: saturate(0.92) contrast(1.025) brightness(1.04);
 }
 
 .founderPhoto::after {
@@ -313,7 +421,7 @@
 .founderIdentity h2 {
   margin: 0;
   color: var(--serene-navy);
-  font: 700 clamp(21px, 2.1vw, 31px)/1.25 var(--font-tc);
+  font: 700 clamp(21px, 2.1vw, 31px)/1.25 var(--font-serif), var(--font-tc), serif;
   letter-spacing: 0.02em;
 }
 
@@ -327,7 +435,7 @@
 .founderStudio {
   margin: 9px 0 4px;
   color: #123f7b !important;
-  font-family: "Noto Serif TC", "PMingLiU", serif;
+  font-family: var(--font-serif), "PMingLiU", serif;
 }
 
 .founderTitle {
@@ -385,28 +493,48 @@
   background: rgba(255, 255, 255, 0.7);
 }
 
-.founderQuote {
+.founderQuoteMount {
   position: absolute;
-  z-index: 3;
+  z-index: 6;
   right: -7%;
   bottom: 32px;
   width: min(255px, 42%);
+  min-height: 154px;
+}
+
+.founderQuoteLens {
+  z-index: 2;
+}
+
+.founderQuoteLens :global(.glass) {
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  background: linear-gradient(132deg, rgba(255, 255, 255, 0.28), rgba(172, 218, 248, 0.12));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(16, 87, 166, 0.12),
+    0 22px 64px rgba(7, 53, 120, 0.2) !important;
+}
+
+.founderQuote {
+  width: min(255px, calc(100vw - 66px));
   margin: 0;
   padding: 23px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 20px;
-  background: rgba(243, 250, 255, 0.76);
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(255, 255, 255, 0.58), transparent 31%),
+    rgba(232, 246, 255, 0.48);
   box-shadow:
     inset 0 1px 0 white,
-    0 18px 52px rgba(16, 71, 141, 0.16),
-    0 0 0 1px rgba(18, 93, 179, 0.1);
-  backdrop-filter: blur(17px) saturate(130%);
+    0 18px 52px rgba(16, 71, 141, 0.12),
+    0 0 0 1px rgba(18, 93, 179, 0.07);
+  backdrop-filter: blur(14px) saturate(132%);
 }
 
 .founderQuote p {
   margin: 0;
   color: #143d72;
-  font: 600 14px/1.85 "Noto Serif TC", "PMingLiU", serif;
+  font: 600 14px/1.85 var(--font-serif), "PMingLiU", serif;
 }
 
 .founderQuote cite {
@@ -440,7 +568,27 @@
   grid-template-columns: minmax(190px, 0.64fr) minmax(430px, 1.38fr) minmax(440px, 1.55fr);
   gap: 22px;
   padding: 42px clamp(28px, 5.2vw, 80px) 68px;
-  background: linear-gradient(180deg, #fafdff 0%, #edf7ff 100%);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(250, 253, 255, 0.98) 0%, rgba(231, 244, 254, 0.94) 100%),
+    url("/media/serene-water-16x9.jpg") center 82% / cover no-repeat;
+}
+
+.overview::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 73% 16%, rgba(255, 255, 255, 0.72), transparent 27%),
+    repeating-linear-gradient(116deg, transparent 0 86px, rgba(38, 113, 188, 0.035) 87px 88px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  content: "";
+}
+
+.overview > * {
+  position: relative;
+  z-index: 1;
 }
 
 .aboutPanel,
@@ -450,7 +598,26 @@
 }
 
 .aboutPanel {
-  padding: 7px 18px 7px 0;
+  overflow: hidden;
+  padding: 22px 20px 20px 0;
+  border-top: 1px solid rgba(24, 94, 172, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.aboutPanel::after {
+  position: absolute;
+  right: -128px;
+  bottom: -176px;
+  width: 280px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(52, 136, 207, 0.1);
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.64), rgba(114, 190, 235, 0.08) 34%, transparent 68%);
+  box-shadow:
+    inset 18px 14px 42px rgba(255, 255, 255, 0.34),
+    0 0 0 46px rgba(62, 145, 210, 0.018);
+  pointer-events: none;
+  content: "";
 }
 
 .sectionKicker {
@@ -475,7 +642,7 @@
 .aboutPanel h2 {
   margin: 19px 0 10px;
   color: #0a397d;
-  font: 700 clamp(21px, 2vw, 31px)/1.25 "Noto Serif TC", "PMingLiU", serif;
+  font: 700 clamp(21px, 2vw, 31px)/1.25 var(--font-serif), "PMingLiU", serif;
 }
 
 .aboutPanel > p:not(.sectionKicker) {
@@ -500,7 +667,11 @@
   padding: 10px 15px;
   border: 1px solid var(--serene-line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.58);
+  background: linear-gradient(128deg, rgba(255, 255, 255, 0.82), rgba(205, 232, 250, 0.44));
+  box-shadow:
+    inset 0 1px 0 white,
+    0 10px 28px rgba(11, 70, 144, 0.08);
+  backdrop-filter: blur(12px) saturate(135%);
 }
 
 .panelHeading {
@@ -520,20 +691,60 @@
 }
 
 .miniProductCard {
+  position: relative;
   display: flex;
   min-width: 0;
   min-height: 155px;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
   padding: 16px 9px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.92);
   border-radius: 13px;
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.88), rgba(222, 239, 252, 0.58));
+  background:
+    radial-gradient(ellipse at 16% 6%, rgba(255, 255, 255, 0.92), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(180, 221, 249, 0.36) 56%, rgba(245, 251, 255, 0.62));
   box-shadow:
-    inset 0 1px 0 white,
-    0 8px 24px rgba(22, 84, 155, 0.09),
-    0 0 0 1px rgba(28, 103, 183, 0.07);
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 rgba(16, 92, 174, 0.1),
+    0 14px 34px rgba(11, 66, 136, 0.11),
+    0 0 0 1px rgba(28, 103, 183, 0.055);
   text-align: center;
+  backdrop-filter: blur(13px) saturate(134%);
+  transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 320ms ease, border-color 320ms ease;
+}
+
+.miniProductCard::before,
+.miniProductCard::after {
+  position: absolute;
+  pointer-events: none;
+  content: "";
+}
+
+.miniProductCard::before {
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.5), transparent 26% 66%, rgba(66, 163, 225, 0.1)),
+    radial-gradient(ellipse at 75% 14%, rgba(255, 255, 255, 0.58), transparent 30%);
+  mix-blend-mode: screen;
+}
+
+.miniProductCard::after {
+  top: -72%;
+  left: -54%;
+  width: 84%;
+  height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.48), transparent);
+  filter: blur(4px);
+  opacity: 0;
+  transform: rotate(18deg) translateX(-40%);
+  transition: opacity 280ms ease, transform 650ms cubic-bezier(0.18, 0.7, 0.25, 1);
+}
+
+.miniProductCard > * {
+  position: relative;
+  z-index: 1;
 }
 
 .productPending {
@@ -585,11 +796,16 @@
   height: 36px;
   place-items: center;
   margin-bottom: 10px;
-  border: 1px solid rgba(21, 101, 193, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 11px;
   color: #0e65bb;
-  background: linear-gradient(145deg, white, #d5ecff);
-  box-shadow: 0 7px 16px rgba(25, 101, 185, 0.11);
+  background:
+    radial-gradient(circle at 32% 24%, white, transparent 24%),
+    linear-gradient(145deg, rgba(245, 253, 255, 0.96), rgba(116, 190, 237, 0.5));
+  box-shadow:
+    inset 0 1px 0 white,
+    inset 0 -1px 0 rgba(17, 93, 178, 0.2),
+    0 9px 20px rgba(16, 83, 161, 0.14);
   font: 800 10px/1 var(--font-sans);
 }
 
@@ -597,14 +813,14 @@
   margin: 0;
   overflow-wrap: anywhere;
   color: #123e76;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1.45;
 }
 
 .miniProductGrid p {
   margin: 4px 0 0;
   color: #7290b1;
-  font-size: 7px;
+  font-size: 8px;
   line-height: 1.45;
 }
 
@@ -626,12 +842,30 @@
 }
 
 .workGrid > a {
+  position: relative;
   min-width: 0;
+  overflow: hidden;
   padding: 6px 6px 11px;
   border: 1px solid rgba(255, 255, 255, 0.88);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.57);
-  box-shadow: 0 9px 25px rgba(22, 84, 155, 0.08);
+  background:
+    radial-gradient(ellipse at 14% 4%, rgba(255, 255, 255, 0.82), transparent 38%),
+    rgba(226, 243, 255, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    0 15px 40px rgba(9, 59, 126, 0.12);
+  backdrop-filter: blur(12px) saturate(128%);
+  transition: transform 380ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 380ms ease;
+}
+
+.workGrid > a::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(128deg, rgba(255, 255, 255, 0.24), transparent 29% 62%, rgba(89, 179, 232, 0.11));
+  mix-blend-mode: screen;
+  pointer-events: none;
+  content: "";
 }
 
 .workImage {
@@ -640,57 +874,121 @@
   aspect-ratio: 16 / 8.7;
   overflow: hidden;
   border-radius: 8px;
-  background: #dceeff;
+  background: #0a2147;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 12px 30px rgba(5, 38, 83, 0.18);
+}
+
+.workImage::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 50%, rgba(2, 21, 48, 0.26)),
+    radial-gradient(ellipse at 28% 15%, rgba(255, 255, 255, 0.24), transparent 27%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  content: "";
 }
 
 .workImage img {
   object-fit: cover;
   object-position: center;
+  filter: saturate(1.06) contrast(1.045);
+  transition: filter 650ms ease, transform 850ms cubic-bezier(0.18, 0.7, 0.2, 1);
 }
 
 .workGrid h3 {
   margin: 9px 4px 2px;
   color: #0e3d78;
-  font-size: 10px;
+  font-family: var(--font-serif), var(--font-tc), serif;
+  font-size: 11px;
   line-height: 1.4;
 }
 
 .workGrid p {
   margin: 0 4px;
   color: #6c8aac;
-  font-size: 7px;
+  font-size: 8px;
   line-height: 1.4;
 }
 
 .newsMuseum {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: 0.78fr 1.22fr;
   gap: clamp(30px, 5vw, 78px);
+  overflow: hidden;
   margin: 0 clamp(28px, 5.2vw, 80px) 78px;
   padding: clamp(34px, 4.2vw, 62px);
-  border: 1px solid rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(149, 210, 255, 0.28);
   border-radius: 24px;
   background:
-    linear-gradient(112deg, rgba(255, 255, 255, 0.9), rgba(214, 235, 252, 0.7)),
-    url("/media/serene-water-16x9.jpg") center 72% / cover;
+    linear-gradient(104deg, rgba(3, 20, 51, 0.97) 0%, rgba(4, 34, 77, 0.9) 42%, rgba(3, 30, 66, 0.52) 69%, rgba(2, 18, 43, 0.82) 100%),
+    url("/media/works/reality-goes-live-16x9.png") right center / cover no-repeat;
   box-shadow:
-    inset 0 1px 0 white,
-    0 28px 75px rgba(13, 77, 154, 0.12),
-    0 0 0 1px rgba(15, 81, 163, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(111, 192, 255, 0.12),
+    0 38px 96px rgba(1, 25, 64, 0.28),
+    0 0 0 1px rgba(20, 107, 204, 0.06);
+}
+
+.newsMuseum::before,
+.newsMuseum::after {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+}
+
+.newsMuseum::before {
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 74% 33%, rgba(104, 220, 255, 0.18), transparent 27%),
+    linear-gradient(118deg, rgba(255, 255, 255, 0.08), transparent 21% 72%, rgba(49, 160, 238, 0.12));
+  mix-blend-mode: screen;
+}
+
+.newsMuseum::after {
+  width: 420px;
+  height: 420px;
+  right: -120px;
+  bottom: -210px;
+  border: 1px solid rgba(128, 205, 255, 0.18);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 58px rgba(91, 180, 243, 0.025),
+    0 0 0 116px rgba(91, 180, 243, 0.018),
+    0 0 90px rgba(63, 167, 238, 0.12);
 }
 
 .newsIntro h2,
 .publicRecord h2 {
   margin: 18px 0 14px;
   color: #073878;
-  font: 700 clamp(30px, 3.6vw, 53px)/1.12 "Noto Serif TC", "PMingLiU", serif;
+  font: 700 clamp(30px, 3.6vw, 53px)/1.12 var(--font-serif), "PMingLiU", serif;
   letter-spacing: -0.03em;
+}
+
+.newsMuseum .sectionKicker {
+  color: #9bd5ff;
+}
+
+.newsMuseum .sectionKicker i {
+  box-shadow: 0 0 18px rgba(76, 193, 255, 0.64);
+}
+
+.newsMuseum .newsIntro h2 {
+  color: #f3f9ff;
+  text-shadow: 0 10px 36px rgba(0, 0, 0, 0.26);
 }
 
 .newsIntro > p:not(.sectionKicker) {
   max-width: 570px;
   margin: 0;
-  color: #547498;
+  color: rgba(220, 238, 255, 0.77);
   font-size: 12px;
   line-height: 1.85;
 }
@@ -702,10 +1000,14 @@
   gap: 30px;
   margin-top: 25px;
   padding: 12px 17px;
-  border: 1px solid var(--serene-line);
+  border: 1px solid rgba(166, 218, 255, 0.29);
   border-radius: 999px;
-  color: #1d5fa7;
-  background: rgba(255, 255, 255, 0.58);
+  color: #ecf7ff;
+  background: linear-gradient(128deg, rgba(255, 255, 255, 0.14), rgba(61, 145, 211, 0.08));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 14px 36px rgba(0, 10, 36, 0.2);
+  backdrop-filter: blur(16px) saturate(135%);
   font-size: 9px;
   font-weight: 800;
 }
@@ -720,10 +1022,15 @@
 .newsPillars > a {
   min-height: 168px;
   padding: 20px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(170, 222, 255, 0.2);
   border-radius: 16px;
-  background: rgba(250, 253, 255, 0.68);
-  box-shadow: 0 12px 36px rgba(14, 73, 145, 0.09);
+  background:
+    radial-gradient(ellipse at 20% 4%, rgba(255, 255, 255, 0.16), transparent 36%),
+    rgba(7, 35, 75, 0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 18px 42px rgba(0, 13, 42, 0.3);
+  backdrop-filter: blur(17px) saturate(138%);
 }
 
 .newsPillars > a > span {
@@ -732,33 +1039,55 @@
   height: 40px;
   place-items: center;
   border-radius: 50%;
-  color: #1166b7;
-  background: linear-gradient(145deg, white, #d5ebfc);
-  box-shadow: 0 8px 18px rgba(17, 92, 172, 0.12);
+  border: 1px solid rgba(188, 229, 255, 0.28);
+  color: #bce7ff;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(76, 164, 226, 0.12));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    0 10px 24px rgba(0, 17, 51, 0.28);
 }
 
 .newsPillars h3 {
   margin: 17px 0 7px;
-  color: #123f78;
+  color: #f2f8ff;
   font-size: 12px;
 }
 
 .newsPillars p {
   margin: 0;
-  color: #6682a3;
+  color: rgba(214, 234, 251, 0.69);
   font-size: 9px;
   line-height: 1.65;
 }
 
 .publicRecord {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1.35fr);
   gap: clamp(34px, 7vw, 105px);
   padding: clamp(80px, 9vw, 135px) clamp(28px, 6vw, 92px);
-  background: linear-gradient(145deg, #eaf6ff 0%, #fafdff 62%, #dceeff 100%);
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(231, 246, 255, 0.95) 0%, rgba(250, 253, 255, 0.97) 57%, rgba(207, 233, 251, 0.92) 100%),
+    url("/media/serene-water-16x9.jpg") center 78% / cover no-repeat;
+}
+
+.publicRecord::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 84% 10%, rgba(255, 255, 255, 0.84), transparent 25%),
+    linear-gradient(104deg, transparent 50%, rgba(65, 159, 224, 0.08));
+  mix-blend-mode: screen;
+  pointer-events: none;
+  content: "";
 }
 
 .contactBand {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(280px, 1.05fr) minmax(280px, 0.95fr);
   gap: clamp(36px, 8vw, 120px);
@@ -766,15 +1095,32 @@
   padding: clamp(72px, 8vw, 118px) clamp(28px, 6vw, 92px);
   border-top: 1px solid rgba(14, 78, 157, 0.1);
   background:
-    radial-gradient(circle at 88% 16%, rgba(103, 181, 236, 0.18), transparent 28%),
-    linear-gradient(145deg, #f9fcff, #e5f3ff);
+    radial-gradient(circle at 88% 16%, rgba(103, 181, 236, 0.24), transparent 28%),
+    radial-gradient(ellipse at 12% 88%, rgba(255, 255, 255, 0.86), transparent 35%),
+    linear-gradient(145deg, #f9fcff, #dcefff);
+}
+
+.contactBand::before {
+  position: absolute;
+  z-index: -1;
+  right: -10vw;
+  bottom: -25vw;
+  width: min(68vw, 980px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(36, 120, 198, 0.09);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 74px rgba(31, 119, 196, 0.025),
+    0 0 0 148px rgba(31, 119, 196, 0.018);
+  pointer-events: none;
+  content: "";
 }
 
 .contactBand h2 {
   max-width: 780px;
   margin: 18px 0 0;
   color: #073878;
-  font: 700 clamp(32px, 4.4vw, 64px)/1.08 "Noto Serif TC", "PMingLiU", serif;
+  font: 700 clamp(32px, 4.4vw, 64px)/1.08 var(--font-serif), "PMingLiU", serif;
   letter-spacing: -0.04em;
 }
 
@@ -807,11 +1153,16 @@
   display: grid;
   gap: 18px;
   padding: clamp(22px, 3vw, 34px);
-  border: 1px solid rgba(15, 86, 170, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.62);
-  box-shadow: 0 24px 70px rgba(10, 75, 150, 0.1);
-  backdrop-filter: blur(20px);
+  background:
+    radial-gradient(ellipse at 12% 2%, rgba(255, 255, 255, 0.92), transparent 30%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(188, 226, 251, 0.36));
+  box-shadow:
+    inset 0 1px 0 white,
+    inset 0 -1px 0 rgba(18, 92, 174, 0.1),
+    0 30px 82px rgba(5, 57, 126, 0.14);
+  backdrop-filter: blur(24px) saturate(142%);
 }
 
 .contactRecipient {
@@ -962,7 +1313,12 @@
   padding: 24px;
   border-right: 1px solid var(--serene-line);
   border-bottom: 1px solid var(--serene-line);
-  background: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(255, 255, 255, 0.82), transparent 40%),
+    rgba(255, 255, 255, 0.29);
+  backdrop-filter: blur(9px) saturate(128%);
+  transition: padding 320ms ease, background 320ms ease, box-shadow 320ms ease;
 }
 
 .recordGrid > a:last-child {
@@ -970,7 +1326,7 @@
   min-height: 176px;
   background:
     radial-gradient(circle at 86% 24%, rgba(69, 158, 222, 0.16), transparent 28%),
-    rgba(255, 255, 255, 0.52);
+    rgba(255, 255, 255, 0.58);
 }
 
 .recordGrid span {
@@ -1001,8 +1357,13 @@
 }
 
 .site :global(.site-footer) {
-  background: #062b68 !important;
+  background:
+    linear-gradient(104deg, rgba(2, 19, 48, 0.96), rgba(3, 45, 92, 0.88)),
+    url("/media/serene-water-16x9.jpg") center 76% / cover no-repeat !important;
   border-color: rgba(255, 255, 255, 0.13);
+  box-shadow:
+    inset 0 1px 0 rgba(174, 222, 255, 0.16),
+    0 -26px 70px rgba(4, 43, 96, 0.12);
 }
 
 .site :global(.site-footer p),
@@ -1088,7 +1449,7 @@
 
 .introBrand h2 {
   margin: 0;
-  font: 700 clamp(31px, 4.7vw, 70px)/1.08 "Noto Serif TC", "PMingLiU", serif;
+  font: 700 clamp(31px, 4.7vw, 70px)/1.08 var(--font-serif), "PMingLiU", serif;
   letter-spacing: -0.03em;
 }
 
@@ -1153,11 +1514,38 @@
 
 .miniProductGrid > a:hover,
 .workGrid > a:hover,
-.newsPillars > a:hover,
 .recordGrid > a:hover {
   border-color: rgba(20, 102, 190, 0.3);
   background-color: rgba(255, 255, 255, 0.82);
   box-shadow: 0 16px 38px rgba(18, 79, 153, 0.12);
+}
+
+.miniProductGrid > a:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    inset 0 1px 0 white,
+    0 24px 54px rgba(7, 58, 128, 0.17);
+}
+
+.miniProductGrid > a:hover::after {
+  opacity: 0.8;
+  transform: rotate(18deg) translateX(210%);
+}
+
+.workGrid > a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 26px 64px rgba(4, 45, 103, 0.18);
+}
+
+.workGrid > a:hover .workImage img {
+  filter: saturate(1.14) contrast(1.06);
+  transform: scale(1.045);
+}
+
+.newsPillars > a:hover {
+  border-color: rgba(163, 221, 255, 0.42);
+  background-color: rgba(18, 67, 115, 0.64);
+  box-shadow: 0 24px 58px rgba(0, 10, 36, 0.38);
 }
 
 @keyframes waterRefraction {
@@ -1173,6 +1561,29 @@
     transform: scale(1.017) translate3d(-0.05%, 0.12%, 0);
     background-position: 49.92% 50.08%;
   }
+}
+
+@keyframes causticDrift {
+  0% {
+    opacity: 0.26;
+    transform: scale(1.035) translate3d(-0.45%, 0.1%, 0);
+    background-position: center 63%;
+  }
+  52% {
+    opacity: 0.4;
+    transform: scale(1.052) translate3d(0.38%, -0.22%, 0);
+    background-position: 50.5% 62.2%;
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1.04) translate3d(-0.14%, 0.28%, 0);
+    background-position: 49.6% 63.6%;
+  }
+}
+
+@keyframes prismBreathe {
+  from { opacity: 0.48; transform: translate3d(-0.3%, -0.2%, 0) scale(0.995); }
+  to { opacity: 0.78; transform: translate3d(0.35%, 0.25%, 0) scale(1.012); }
 }
 
 @keyframes rippleTrace {
@@ -1194,7 +1605,7 @@
     gap: 30px;
   }
 
-  .founderQuote { right: -2%; }
+  .founderQuoteMount { right: -2%; }
 
   .overview {
     grid-template-columns: minmax(210px, 0.55fr) minmax(0, 1.45fr);
@@ -1283,7 +1694,8 @@
   }
 
   .waterBase,
-  .waterRefraction {
+  .waterRefraction,
+  .waterCaustics {
     width: 100%;
     background-position: 37% center;
   }
@@ -1295,6 +1707,13 @@
   .waterRefraction {
     inset: -2.5%;
     width: 105%;
+  }
+
+  .waterCaustics {
+    inset: -2.5%;
+    width: 105%;
+    opacity: 0.28;
+    background-position: 37% 64%;
   }
 
   .waterBase {
@@ -1418,11 +1837,16 @@
     min-width: 0;
   }
 
-  .founderQuote {
+  .founderQuoteMount {
     right: 17px;
     bottom: 18px;
     left: 17px;
     width: auto;
+    min-height: 142px;
+  }
+
+  .founderQuote {
+    width: calc(100vw - 66px);
     padding: 18px;
   }
 
@@ -1443,7 +1867,9 @@
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 6px;
     padding: 12px 14px 28px;
-    background: #f9fcff;
+    background:
+      linear-gradient(180deg, rgba(249, 252, 255, 0.98), rgba(227, 242, 253, 0.95)),
+      url("/media/serene-water-16x9.jpg") center bottom / cover no-repeat;
   }
 
   .quickNav a {
@@ -1455,10 +1881,18 @@
     justify-content: center;
     gap: 8px;
     padding: 8px 4px;
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.94);
     border-radius: 14px;
-    background: linear-gradient(145deg, white, #e4f2ff);
-    box-shadow: 0 8px 23px rgba(18, 79, 153, 0.11), 0 0 0 1px rgba(20, 96, 184, 0.07);
+    background:
+      radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.96), transparent 34%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.74), rgba(176, 219, 248, 0.38));
+    box-shadow:
+      inset 0 1px 0 white,
+      inset 0 -1px 0 rgba(18, 92, 174, 0.1),
+      0 11px 28px rgba(9, 61, 133, 0.13);
+    backdrop-filter: blur(14px) saturate(138%);
     text-align: center;
   }
 
@@ -1541,7 +1975,7 @@
 
   .workImage { aspect-ratio: 1.08; }
   .workGrid h3 { margin: 8px 2px 2px; font-size: 9px; }
-  .workGrid p { margin: 0 2px; font-size: 6px; }
+  .workGrid p { margin: 0 2px; font-size: 8px; }
 
   .newsMuseum {
     display: block;
@@ -1634,11 +2068,34 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  :global(html[data-serene-motion="ready"]) .site [data-serene-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+
   .waterRefraction,
+  .waterCaustics,
+  .prismaticAir,
   .rippleField i {
     animation: none !important;
   }
 
   .waterRefraction { transform: none; }
+  .waterCaustics { transform: none; }
   .rippleField { display: none; }
+
+  .miniProductCard,
+  .miniProductCard::after,
+  .workGrid > a,
+  .workImage img {
+    transition: none !important;
+  }
+
+  .miniProductGrid > a:hover,
+  .workGrid > a:hover,
+  .workGrid > a:hover .workImage img {
+    transform: none;
+  }
 }

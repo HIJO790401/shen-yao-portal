@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Lang, LocalizedLink } from "./LanguageControl";
+import { LiquidGlassLens } from "./LiquidGlassLens";
 import styles from "../serene-home.module.css";
 
 const founderRoles = [
@@ -13,6 +14,8 @@ export function SereneWaterHero() {
     <section className={styles.hero} aria-labelledby="serene-home-title">
       <div className={styles.waterBase} aria-hidden="true" />
       <div className={styles.waterRefraction} aria-hidden="true" />
+      <div className={styles.waterCaustics} aria-hidden="true" />
+      <div className={styles.prismaticAir} aria-hidden="true" />
       <div className={styles.rippleField} aria-hidden="true">
         <i />
         <i />
@@ -71,10 +74,26 @@ export function SereneWaterHero() {
               </LocalizedLink>
             </div>
           </div>
-          <blockquote className={styles.founderQuote}>
-            <p><Lang zh="沉靜不是終止，而是讓一切回到本質。" en="Stillness is not an ending. It lets everything return to its essence." /></p>
-            <cite><Lang zh="許文耀／沈耀888π" en="WEN-YAO HSU / SHEN-YAO 888π" /></cite>
-          </blockquote>
+          <div className={styles.founderQuoteMount}>
+            <LiquidGlassLens
+              className={styles.founderQuoteLens}
+              displacementScale={38}
+              blurAmount={0.04}
+              saturation={132}
+              aberrationIntensity={1.2}
+              elasticity={0.055}
+              cornerRadius={22}
+              padding="0"
+              overLight
+              style={{ position: "absolute", top: "50%", left: "50%" }}
+              fallbackStyle={{ position: "absolute", top: 0, left: 0 }}
+            >
+              <blockquote className={styles.founderQuote}>
+                <p><Lang zh="沉靜不是終止，而是讓一切回到本質。" en="Stillness is not an ending. It lets everything return to its essence." /></p>
+                <cite><Lang zh="許文耀／沈耀888π" en="WEN-YAO HSU / SHEN-YAO 888π" /></cite>
+              </blockquote>
+            </LiquidGlassLens>
+          </div>
         </article>
       </div>
 

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Noto_Sans_TC, Space_Grotesk } from "next/font/google";
+import { Noto_Sans_TC, Noto_Serif_TC, Space_Grotesk } from "next/font/google";
 import { MotionExperience } from "./components/MotionExperience";
 import { scbkrMicrosoftStore, siteOrigin, siteUrl } from "./site-config";
 import "./globals.css";
 
 const sans = Space_Grotesk({ variable: "--font-sans", subsets: ["latin"] });
 const tc = Noto_Sans_TC({ variable: "--font-tc", subsets: ["latin"], weight: ["400", "500", "700", "900"] });
+const serif = Noto_Serif_TC({ variable: "--font-serif", subsets: ["latin"], weight: ["600", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
@@ -31,5 +32,5 @@ const structuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-Hant" suppressHydrationWarning><body className={`${sans.variable} ${tc.variable}`}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><MotionExperience />{children}</body></html>;
+  return <html lang="zh-Hant" suppressHydrationWarning><body className={`${sans.variable} ${tc.variable} ${serif.variable}`}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><MotionExperience />{children}</body></html>;
 }

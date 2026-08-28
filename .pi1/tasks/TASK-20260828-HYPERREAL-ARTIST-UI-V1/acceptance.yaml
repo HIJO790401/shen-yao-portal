@@ -1,0 +1,34 @@
+task_id: TASK-20260828-HYPERREAL-ARTIST-UI-V1
+must_have:
+  - the existing homepage structure remains recognizable while its surfaces read as a coherent hyperreal artist exhibition
+  - the water hero uses the existing photoreal owner assets and preserves the fixed bilingual identity copy
+  - verified work images retain their current placement and gain cinematic depth without invented content
+  - every existing homepage product remains in its current information position and stays reachable
+  - Reality Newsroom and Responsibility Museum remain one combined portal with distinct internal paths
+  - public records remain attributed and externally reachable
+  - Chinese and English render separately with equivalent hierarchy
+  - motion reveals support prefers-reduced-motion and never carry the only copy or link
+  - liquid-glass-react is used only as a restrained light/refraction material with a readable fallback
+  - the approved intro video CMS authentication D1 R2 routes and SEO data remain unchanged
+must_not_have:
+  - homepage section reordering or replacement of the approved information architecture
+  - replacement or regeneration of the owner portrait
+  - generic black technology template or HUD interface
+  - repeated equal-size rounded cards across every section
+  - animation that moves or deforms the owner portrait
+  - shader-only content or navigation
+  - invented product status external endorsement or published fact
+  - Sites deployment domain DNS or paid-service changes
+verification:
+  - npx_tsc_noEmit
+  - npm_run_lint
+  - npm_test
+  - npx_drizzle_kit_check
+  - desktop_browser_1440x900
+  - tablet_browser_768x1024
+  - mobile_browser_390x844
+  - zh_en_home_review
+  - reduced_motion_review
+  - browser_console_review
+  - named_file_git_diff_and_secret_scan
+final_gate: OWNER_REVIEW
