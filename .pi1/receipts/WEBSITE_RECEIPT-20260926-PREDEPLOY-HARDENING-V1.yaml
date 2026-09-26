@@ -1,0 +1,28 @@
+receipt_id: WEBSITE_RECEIPT-20260926-PREDEPLOY-HARDENING-V1
+task_id: TASK-20260926-PREDEPLOY-HARDENING-V1
+owner: 許文耀／沈耀888π
+project: SERENE SCHOOL STUDIO official website
+result: SOURCE_READY_NOT_DEPLOYED
+source_commit: 2b6470f49a121de34498f78411fccd8bede8d5a8
+source_push:
+  branch: main
+  remote: https://github.com/HIJO790401/shen-yao-portal.git
+  verified_remote_sha: 2b6470f49a121de34498f78411fccd8bede8d5a8
+verification:
+  typescript: PASS
+  lint: PASS
+  build_and_tests: PASS_37_OF_37
+  dependency_audit: PASS_0_VULNERABILITIES
+  drizzle_migration_check: PASS
+  browser_desktop_and_mobile: PASS_WITH_DEV_RSC_OPTIMIZATION_WARNING_RECORDED
+  crawler_routes_http: PASS_200
+  staged_diff_check: PASS
+  staged_common_secret_pattern_scan: PASS_NO_MATCH
+not_performed:
+  - domain_purchase
+  - Sites_version_or_deployment
+  - public_access_change
+  - DNS_or_TLS_change
+  - production_owner_login_D1_R2_CRUD
+  - search_engine_index_confirmation
+final_gate: OWNER_REVIEW_FOR_PURCHASE_AND_PRODUCTION_DEPLOYMENT
