@@ -1,0 +1,32 @@
+task_id: TASK-20260831-HYPERREAL-HERO-V2
+must_have:
+  - the existing hero content structure remains recognizable and all links remain reachable
+  - the background reads as one coherent photoreal water crystal environment rather than duplicated css layers
+  - the founder portrait remains the supplied real photograph and is never animated or regenerated
+  - founder lighting edges mist contact shadow and depth visually belong to the water environment
+  - fixed Chinese and English identity copy and quote remain unchanged
+  - desktop tablet and mobile compositions preserve face safe area and readable actions
+  - motion is atmospheric only and supports prefers-reduced-motion
+  - generated scene contains no person text logo watermark or unrelated technology motif
+  - original water asset and all prior rollback files remain preserved
+must_not_have:
+  - homepage section reordering
+  - generated owner face or altered facial identity
+  - generic black technology hud
+  - text baked into the generated background
+  - shader-only copy links or navigation
+  - sites deployment domain dns or paid-service changes
+verification:
+  - asset_visual_inspection
+  - npx_tsc_noEmit
+  - npm_run_lint
+  - npm_test
+  - npx_drizzle_kit_check
+  - desktop_browser_1440x900
+  - tablet_browser_768x1024
+  - mobile_browser_390x844
+  - zh_en_home_review
+  - reduced_motion_review
+  - browser_console_review
+  - named_file_git_diff_and_secret_scan
+final_gate: OWNER_REVIEW

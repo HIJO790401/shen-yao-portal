@@ -1,0 +1,20 @@
+task_id: TASK-20260926-ICAISG-ACCEPTANCE-V1
+must_have:
+  - official acceptance document page one is visibly presented on the website
+  - original acceptance PDF is reachable from the visible evidence card
+  - paper id title author conference date and location match the official acceptance notice
+  - Chinese and English descriptions remain separate through the existing language control
+  - claim is limited to formal acceptance for presentation and publication
+  - IEEE proceedings publication and indexing remain conditional on registration presentation and later submission
+  - reviewer comments and re-review form are not published
+  - desktop and mobile layouts remain usable
+verification:
+  - pdf_visual_review
+  - npx_tsc_noEmit
+  - npm_run_lint
+  - npm_test
+  - desktop_browser_review
+  - mobile_browser_review
+  - console_review
+  - git_diff_and_secret_scan
+final_gate: OWNER_REVIEW

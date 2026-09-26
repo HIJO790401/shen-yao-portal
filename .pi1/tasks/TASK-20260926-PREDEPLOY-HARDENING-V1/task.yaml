@@ -1,0 +1,19 @@
+task_id: TASK-20260926-PREDEPLOY-HARDENING-V1
+owner: 沈耀888π／許文耀
+state: READY_FOR_OWNER_REVIEW
+scope:
+  - resolve production dependency advisories without discarding existing site changes
+  - verify typecheck lint build tests and local browser routes
+  - inspect visual polish and make only evidence-backed scoped improvements
+  - maintain purchase estimate and predeployment readiness evidence
+  - strengthen the existing SCBKR page as a bilingual indexable AI responsibility chain explainer
+out_of_scope:
+  - domain purchase or card entry
+  - Sites version or deployment
+  - DNS or public access mutation
+acceptance:
+  - npm_audit_production_no_high_or_critical
+  - typecheck_lint_build_tests_pass
+  - desktop_and_mobile_browser_routes_reviewed
+  - original_home_structure_and_brand_identity_preserved
+  - no_secret_or_unrelated_user_change_lost

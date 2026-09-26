@@ -326,14 +326,14 @@ test("publishes the verified SCBKR Microsoft Store entry without changing AICC o
   assert.equal((films.match(/storeUrl:/g) ?? []).length, 1, "SCBKR is the only film record with a Store value");
   assert.equal((films.match(/status: "deferred"/g) ?? []).length, 1);
   assert.match(resume, /OFFICIAL DISTRIBUTION · MICROSOFT STORE/);
-  assert.match(resume, /dateModified: "2026-08-26"/);
+  assert.match(resume, /dateModified: "2026-09-26"/);
   assert.match(localizedResume, /SCBKR Windows application on Microsoft Store/);
   assert.match(localeLayout, /SCBKR Windows application on Microsoft Store/);
   assert.match(llms, /SCBKR Windows application/);
   assert.match(llms, /Installation availability remains subject to Microsoft Store region and device compatibility/);
   assert.match(layout, /SoftwareApplication/);
   assert.match(layout, /downloadUrl: scbkrMicrosoftStore\.url/);
-  assert.match(sitemap, /2026-08-26/);
+  assert.match(sitemap, /2026-09-26/);
   assert.match(home + homeData + products + films + llms, /v0\.2\.CANDIDATE/);
 });
 
@@ -411,7 +411,7 @@ test("publishes a bilingual source-labelled living resume and removes the legacy
   assert.match(resume, /不虛構公司登記、團隊規模、學位、專利、獎項、客戶、採用或合作關係/);
   assert.match(resume, /getProfileSchema/);
   assert.match(resume, /inLanguage: language/);
-  assert.match(resume, /dateModified: "2026-08-26"/);
+  assert.match(resume, /dateModified: "2026-09-26"/);
   assert.match(localizedResume, /\/zh\/resume/);
   assert.match(localizedResume, /\/en\/resume/);
   assert.match(localizedResume, /title: \{ absolute:/);
@@ -436,6 +436,34 @@ test("publishes a bilingual source-labelled living resume and removes the legacy
   assert.match(llms, /Evidence labels on the public resume are deliberate/);
 
   await assert.rejects(access(new URL("public/Wen-Yao-Hsu-Resume.pdf", projectRoot)));
+});
+
+test("publishes the ICAISG 2026 HF2007 acceptance proof without overstating publication or indexing", async () => {
+  const [home, homeCss, resume, resumeCss, llms] = await Promise.all([
+    source("app/page.tsx"),
+    source("app/serene-home.module.css"),
+    source("app/resume/page.tsx"),
+    source("app/resume/resume.module.css"),
+    source("app/llms.txt/route.ts"),
+  ]);
+
+  const combined = home + resume + llms;
+  assert.match(combined, /HF2007/);
+  assert.match(combined, /From Sample Safety to Path Legitimacy/);
+  assert.match(combined, /Wen-Yao Hsu/);
+  assert.match(combined, /20–22 November 2026/);
+  assert.match(combined, /Hangzhou, China/);
+  assert.match(combined, /HF2007-ICAISG-2026-Acceptance-Notification\.pdf/);
+  assert.match(home + resume, /HF2007-ICAISG-2026-Acceptance-Notification-page-1\.png/);
+  assert.match(resume, /不宣稱已出版或已收錄/);
+  assert.match(llms, /Do not describe the paper as already published or indexed/);
+  assert.match(homeCss, /\.recordFeatured/);
+  assert.match(resumeCss, /\.evidenceDocument/);
+  assert.doesNotMatch(combined, /Re-ReviewForm|reviewer comments/i);
+
+  await access(new URL("public/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf", projectRoot));
+  await access(new URL("public/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification-page-1.png", projectRoot));
+  await assert.rejects(access(new URL("public/media/icaisg/HF2007-ICAISG-2027-Re-ReviewForm.pdf", projectRoot)));
 });
 
 test("labels SecurityBrief Asia as dated third-party coverage with claim boundaries", async () => {
@@ -594,4 +622,20 @@ test("publishes crawler, AI discovery and structured-search surfaces", async () 
   assert.match(llms, /NVIDIA links are community posts/);
   assert.match(llms, /AICC OS candidate/);
   assert.match(llms, /v0\.2\.CANDIDATE/);
+});
+
+test("keeps the AI responsibility-chain explainer indexable and the mobile newsroom kicker readable", async () => {
+  const [demo, localizedMeta, newsCss] = await Promise.all([
+    source("app/demo/[slug]/page.tsx"),
+    source("app/[locale]/demo/[slug]/page.tsx"),
+    source("app/news/newsroom.module.css"),
+  ]);
+  assert.match(demo, /AI 責任鏈是什麼？/);
+  assert.match(demo, /What is an AI responsibility chain\?/);
+  assert.match(demo, /Microsoft Store 頁面證明應用已公開提供/);
+  assert.match(demo, /不等於第三方安全認證/);
+  assert.match(localizedMeta, /What Is an AI Responsibility Chain\?/);
+  assert.match(localizedMeta, /localizedAlternates\(locale, path\)/);
+  assert.match(newsCss, /\.kicker > span:first-child \{/);
+  assert.doesNotMatch(newsCss, /\.kicker > span \{/);
 });

@@ -1,4 +1,15 @@
 import Image from "next/image";
+import {
+  Boxes,
+  Fingerprint,
+  Home as HomeIcon,
+  Images,
+  Landmark,
+  LibraryBig,
+  RadioTower,
+  ShieldCheck,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { IntroGate } from "./components/IntroGate";
 import { Lang, LocalizedLink } from "./components/LanguageControl";
 import { SereneWaterHero } from "./components/SereneWaterHero";
@@ -9,12 +20,12 @@ import { products } from "./site-data";
 import { introVideoSource, scbkrMicrosoftStore } from "./site-config";
 import styles from "./serene-home.module.css";
 
-const quickLinks = [
-  { href: "/", glyph: "⌂", zh: "首頁", en: "HOME" },
-  { href: "/products", glyph: "◌", zh: "產品", en: "PRODUCTS" },
-  { href: "/#works", glyph: "✦", zh: "作品", en: "WORKS" },
-  { href: "/news", glyph: "▥", zh: "新聞台 × 博物館", en: "NEWS × MUSEUM" },
-  { href: "/#founder", glyph: "●", zh: "自介", en: "ABOUT" },
+const quickLinks: Array<{ href: string; icon: LucideIcon; zh: string; en: string }> = [
+  { href: "/", icon: HomeIcon, zh: "首頁", en: "HOME" },
+  { href: "/products", icon: Boxes, zh: "產品", en: "PRODUCTS" },
+  { href: "/#works", icon: Images, zh: "作品", en: "WORKS" },
+  { href: "/news", icon: LibraryBig, zh: "新聞台 × 博物館", en: "NEWS × MUSEUM" },
+  { href: "/#founder", icon: Fingerprint, zh: "自介", en: "ABOUT" },
 ];
 
 const featuredWorks = [
@@ -44,10 +55,33 @@ const featuredWorks = [
   },
 ];
 
-const publicRecords = [
+type PublicRecord = {
+  label: string;
+  zh: string;
+  en: string;
+  href: string;
+  textZh?: string;
+  textEn?: string;
+  image?: string;
+  featured?: boolean;
+};
+
+const publicRecords: PublicRecord[] = [
+  {
+    label: "ICAISG 2026 · OFFICIAL ACCEPTANCE · 2026.09.09",
+    zh: "HF2007 國際論文正式錄取",
+    en: "HF2007 FORMALLY ACCEPTED BY ICAISG 2026",
+    textZh:
+      "〈From Sample Safety to Path Legitimacy〉經雙盲審查正式錄取發表與會議論文集出版。IEEE 論文集出版及後續資料庫提交，仍以完成註冊、會議發表與主辦方處理為前提。",
+    textEn:
+      "From Sample Safety to Path Legitimacy was formally accepted after double-blind review for presentation and conference-proceedings publication. IEEE proceedings publication and subsequent database submission remain conditional on registration, presentation and organizer processing.",
+    href: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf",
+    image: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification-page-1.png",
+    featured: true,
+  },
   { label: "MICROSOFT STORE · OFFICIAL DISTRIBUTION · 2026.08.25", zh: "SCBKR Windows 應用免費取得", en: "GET THE SCBKR WINDOWS APPLICATION FREE", href: scbkrMicrosoftStore.url },
   { label: "GITHUB", zh: "官方工程作品總入口", en: "Official Engineering Archive", href: "https://github.com/HIJO790401" },
-  { label: "VOCS", zh: "沈耀公開文章與研究", en: "Public Writing and Research", href: "https://vocus.cc/salon/hijo19900401/room/hijo1990" },
+  { label: "VOCUS", zh: "沈耀公開文章與研究", en: "Public Writing and Research", href: "https://vocus.cc/salon/hijo19900401/room/hijo1990" },
   { label: "NVIDIA COMMUNITY", zh: "SCBKR 技術文章", en: "SCBKR Technical Post", href: "https://forums.developer.nvidia.com/t/scbkr-a-local-responsibility-chain-workbench-for-llms-with-human-confirmed-generation-storage-replay-and-retrieval-gates/373910" },
   { label: "AI-ARTS", zh: "動畫、音樂與跨域創作", en: "Animation, Music and Cross-disciplinary Work", href: "https://ai-arts.org/author/shen-yao/" },
   {
@@ -71,7 +105,7 @@ export default function Home() {
         <nav className={styles.quickNav} aria-label="首頁快速導覽">
           {quickLinks.map((item) => (
             <LocalizedLink href={item.href} key={item.href + item.en}>
-              <span aria-hidden="true">{item.glyph}</span>
+              <span aria-hidden="true"><item.icon strokeWidth={1.55} /></span>
               <b><Lang zh={item.zh} en={item.en} /></b>
             </LocalizedLink>
           ))}
@@ -151,15 +185,15 @@ export default function Home() {
           </div>
           <div className={styles.newsPillars}>
             <LocalizedLink href="/news">
-              <span aria-hidden="true">◎</span>
+              <span aria-hidden="true"><RadioTower strokeWidth={1.45} /></span>
               <div><h3><Lang zh="實相新聞台" en="REALITY NEWSROOM" /></h3><p><Lang zh="即時、真實、深度報導世界正在發生的事。" en="Timely, grounded reporting on the world in motion." /></p></div>
             </LocalizedLink>
             <LocalizedLink href="/news#museum">
-              <span aria-hidden="true">▥</span>
+              <span aria-hidden="true"><Landmark strokeWidth={1.45} /></span>
               <div><h3><Lang zh="責任博物館" en="RESPONSIBILITY MUSEUM" /></h3><p><Lang zh="保存記憶、啟動反思，讓責任成為未來的指南針。" en="Preserve memory and turn responsibility into a compass." /></p></div>
             </LocalizedLink>
             <LocalizedLink href="/news">
-              <span aria-hidden="true">♥</span>
+              <span aria-hidden="true"><ShieldCheck strokeWidth={1.45} /></span>
               <div><h3><Lang zh="共同守護未來" en="GUARDING THE FUTURE" /></h3><p><Lang zh="每一次閱讀、每一段參與，都是改變。" en="Every reading and every act of participation matters." /></p></div>
             </LocalizedLink>
           </div>
@@ -172,10 +206,27 @@ export default function Home() {
           </div>
           <div className={styles.recordGrid}>
             {publicRecords.map((record) => (
-              <a href={record.href} key={record.href} target="_blank" rel="noreferrer">
+              <a
+                className={record.featured ? styles.recordFeatured : undefined}
+                href={record.href}
+                key={record.href}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span>{record.label}</span>
                 <h3><Lang zh={record.zh} en={record.en} /></h3>
-                {"textZh" in record && <p><Lang zh={record.textZh ?? ""} en={record.textEn ?? ""} /></p>}
+                {record.textZh && <p><Lang zh={record.textZh} en={record.textEn ?? ""} /></p>}
+                {record.image && (
+                  <figure className={styles.recordDocumentPreview}>
+                    <Image
+                      src={record.image}
+                      alt="ICAISG 2026 HF2007 official acceptance notification"
+                      fill
+                      unoptimized
+                      sizes="(max-width: 760px) 86vw, 31vw"
+                    />
+                  </figure>
+                )}
                 <b aria-hidden="true">↗</b>
               </a>
             ))}

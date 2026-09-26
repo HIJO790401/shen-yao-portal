@@ -1,0 +1,23 @@
+task_id: TASK-20260831-HOME-ICONS-SCBKR-V1
+owner: 許文耀／沈耀888π
+goal: 統一首頁入口與新聞台博物館按鈕的專業圖示語言，並依最新公開 Repo 校準 SCBKR 產品定位
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: fac5dd8633b72445a68ad3d57228c693242430b9
+source_repo: HIJO790401/scbkr-local-responsibility-model
+source_commit: 53adf7834d3b8d289a8a1be5bd1ab7b4a91b814b
+scope:
+  - homepage_quick_navigation_icons
+  - newsroom_museum_pillar_icons
+  - button_material_hover_focus_press_states
+  - scbkr_bilingual_product_positioning
+preserved:
+  - homepage_information_architecture
+  - all_link_destinations_and_labels
+  - intro_gate_hero_products_works_news_museum_and_cms
+excluded:
+  - deployment_domain_dns_or_sites_version
+  - cms_schema_auth_or_storage_changes
+  - scbkr_runtime_or_repo_writes
+state: READY_FOR_OWNER_REVIEW
+final_gate: OWNER_REVIEW

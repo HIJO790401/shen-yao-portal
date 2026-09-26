@@ -1,0 +1,38 @@
+task_id: TASK-20260926-PRODUCTION-LAUNCH-PLAN-V1
+owner: 沈耀888π／許文耀
+state: PLAN_SELECTED_PURCHASE_PENDING
+selected_stack:
+  domain: silentschool.studio
+  registrar: Porkbun
+  hosting: existing ChatGPT Sites project
+  database: Sites-bound Cloudflare D1
+  media: Sites-bound Cloudflare R2
+  dns: Porkbun
+  tls_cdn: Sites runtime
+  github_pages: false
+owner_actions:
+  - purchase_domain
+  - complete_domain_login_payment_and_3ds
+codex_actions_after_owner_gate:
+  - clear_high_and_critical_dependency_blockers
+  - preserve_sites_auth_and_verify_d1_r2_bindings
+  - migrate_database
+  - configure_dns_tls_and_canonical
+  - deploy_and_run_full_browser_and_crud_verification
+  - verify_google_search_console_and_bing_webmaster
+acceptance:
+  - public_https_domain_returns_200
+  - www_redirects_to_canonical_root
+  - bilingual_routes_and_demos_work
+  - owner_login_and_d1_r2_crud_pass
+  - robots_sitemap_llms_canonical_hreflang_and_structured_data_pass
+  - search_console_and_bing_sitemap_submission_recorded
+  - stable_indexable_topic_pages_cover_each_real_domain
+  - published_news_and_museum_entries_expand_sitemap
+  - deployment_and_rollback_receipts_written
+forbidden:
+  - store_password_card_otp_or_token_in_repo
+  - claim_search_ranking_guarantee
+  - claim_live_before_production_verification
+  - use_github_pages_as_runtime
+  - deploy_with_unresolved_critical_or_high_security_blocker

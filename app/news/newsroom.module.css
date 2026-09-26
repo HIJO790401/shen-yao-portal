@@ -89,7 +89,7 @@
   color: #1763a9;
 }
 
-.kicker > span {
+.kicker > span:first-child {
   width: .55rem;
   height: .55rem;
   border-radius: 50%;
@@ -580,7 +580,8 @@
   .hero { min-height: 0; padding: 7.5rem 1rem 2rem; }
   .heroTopline span:last-child { display: none; }
   .heroGrid { min-height: 0; padding-top: 3rem; }
-  .hero h1 { font-size: clamp(2.8rem, 13vw, 4.5rem); }
+  .kicker { margin-bottom: 1.85rem; }
+  .hero h1 { font-size: clamp(2.6rem, 11vw, 3.65rem); line-height: 1.08; }
   .guide { grid-template-columns: 1fr; border-radius: .7rem; }
   .guide a { min-height: 58px; border-right: 0; }
   .section { width: calc(100% - 2rem); padding: 5rem 0; }

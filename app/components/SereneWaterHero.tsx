@@ -44,6 +44,7 @@ export function SereneWaterHero() {
         </div>
 
         <article className={styles.founderCard} id="founder">
+          <div className={styles.founderAtmosphere} aria-hidden="true" />
           <div className={styles.founderPhoto}>
             <Image
               src="/media/founder-v2.jpg"

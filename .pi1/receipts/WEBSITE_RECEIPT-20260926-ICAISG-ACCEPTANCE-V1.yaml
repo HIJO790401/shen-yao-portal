@@ -1,0 +1,38 @@
+receipt_id: WEBSITE_RECEIPT-20260926-ICAISG-ACCEPTANCE-V1
+task_id: TASK-20260926-ICAISG-ACCEPTANCE-V1
+owner: 許文耀／沈耀888π
+project: SERENE SCHOOL STUDIO official website
+result: READY_FOR_OWNER_REVIEW
+implemented:
+  - homepage_featured_acceptance_record
+  - bilingual_resume_academic_evidence
+  - official_pdf_and_page_one_preview
+  - localized_metadata_sitemap_and_llms_discovery
+evidence:
+  pdf: public/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf
+  preview: public/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification-page-1.png
+  pdf_sha256: 089E85D67C490C9D791F8DFFE7429B04679DBC509F01616270A3275458C52D08
+  http_status: 200
+  content_type: application/pdf
+verification:
+  typescript: PASS
+  lint: PASS
+  build_and_tests: PASS_36_OF_36
+  desktop_browser: PASS
+  mobile_390x844: PASS
+  browser_console: PASS_NO_WARNINGS_OR_ERRORS
+  git_diff_check: PASS
+  excluded_review_material: NOT_PUBLISHED
+security_audit:
+  status: FAIL_PREEXISTING_DEPENDENCY_ADVISORIES
+  packages:
+    - next_16.2.12
+    - sharp_0.35.3
+    - baseline-browser-mapping_2.10.30
+  action: separate_compatibility_tested_upgrade_required_before_production
+not_performed:
+  - git_commit
+  - github_push
+  - production_deployment
+  - domain_or_dns_change
+final_gate: OWNER_REVIEW

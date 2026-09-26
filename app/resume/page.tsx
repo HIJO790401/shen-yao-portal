@@ -10,7 +10,7 @@ import styles from "./resume.module.css";
 export const metadata: Metadata = {
   title: "公開履歷｜許文耀／沈耀888π",
   description:
-    "許文耀／沈耀888π的中英雙語公開履歷：沉靜流派工作室、語意防火牆、SCBKR、AICC OS v0.2.CANDIDATE 候選架構、公開工程、外部媒體紀錄、文章、動畫與音樂。",
+    "許文耀／沈耀888π的中英雙語公開履歷：ICAISG 2026 HF2007 正式錄取、沉靜流派工作室、語意防火牆、SCBKR、AICC OS 候選架構、公開工程、文章、動畫與音樂。",
   keywords: [
     "許文耀履歷",
     "沈耀888π",
@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "SCBKR",
     "AICC OS",
     "AI Capability Compiler",
+    "ICAISG 2026",
+    "HF2007",
+    "T0 Admission Gating",
     "獨立系統架構師",
   ],
   alternates: localizedAlternates("zh", "/resume"),
@@ -95,7 +98,36 @@ const engineeringWorks = [
   },
 ];
 
-const publicEvidence = [
+type PublicEvidenceRecord = {
+  kind: string;
+  date: string;
+  titleZh: string;
+  titleEn: string;
+  textZh: string;
+  textEn: string;
+  noteZh: string;
+  noteEn: string;
+  href: string;
+  image?: string;
+};
+
+const publicEvidence: PublicEvidenceRecord[] = [
+  {
+    kind: "OFFICIAL ACADEMIC ACCEPTANCE · ICAISG 2026",
+    date: "2026.09.09",
+    titleZh: "HF2007 國際論文正式錄取",
+    titleEn: "HF2007 FORMALLY ACCEPTED BY ICAISG 2026",
+    textZh:
+      "論文〈From Sample Safety to Path Legitimacy: T0 Admission Gating for Unauthorized Reasoning Transitions in LLM-Integrated Systems〉，作者 Wen-Yao Hsu，經雙盲審查正式錄取於 2026 年 11 月 20–22 日在中國杭州舉行的第二屆人工智慧安全與治理國際會議發表，並獲會議論文集出版資格。",
+    textEn:
+      "Paper HF2007, From Sample Safety to Path Legitimacy: T0 Admission Gating for Unauthorized Reasoning Transitions in LLM-Integrated Systems, by Wen-Yao Hsu, was formally accepted after double-blind review for presentation at the 2nd International Conference on Artificial Intelligence Security and Governance in Hangzhou, China, 20–22 November 2026, and for conference-proceedings publication.",
+    noteZh:
+      "目前可證明的是正式錄取。IEEE 論文集出版，以及後續提交 IEEE Xplore、EI Compendex、Scopus，仍以完成註冊、會議發表與主辦方後續處理為前提；不宣稱已出版或已收錄。",
+    noteEn:
+      "THE VERIFIED CURRENT STATE IS FORMAL ACCEPTANCE. IEEE PROCEEDINGS PUBLICATION AND SUBSEQUENT SUBMISSION TO IEEE XPLORE, EI COMPENDEX AND SCOPUS REMAIN CONDITIONAL ON REGISTRATION, PRESENTATION AND LATER ORGANIZER PROCESSING; NO PUBLICATION OR INDEXING CLAIM IS MADE YET.",
+    href: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf",
+    image: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification-page-1.png",
+  },
   {
     kind: "OFFICIAL DISTRIBUTION · MICROSOFT STORE",
     date: "2026.08.25",
@@ -226,7 +258,7 @@ function getProfileSchema(locale: "zh" | "en") {
     "@id": `${url}#profile`,
     url,
     inLanguage: language,
-    dateModified: "2026-08-26",
+    dateModified: "2026-09-26",
     mainEntity: {
       "@type": "Person",
       "@id": siteUrl("/#person"),
@@ -277,7 +309,7 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>
               <span>VERIFIED PUBLIC PROFILE</span>
-              <Lang zh="可查證公開履歷・2026.07" en="SOURCE-LABELLED RESUME · 2026.07" />
+              <Lang zh="可查證公開履歷・2026.09" en="SOURCE-LABELLED RESUME · 2026.09" />
             </p>
             <h1 id="resume-title">
               <Lang zh="許文耀" en="WEN-YAO HSU" />
@@ -398,6 +430,20 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
                   <h3><Lang zh={record.titleZh} en={record.titleEn} /></h3>
                   <p><Lang zh={record.textZh} en={record.textEn} /></p>
                   <aside><Lang zh={record.noteZh} en={record.noteEn} /></aside>
+                  {record.image && (
+                    <a className={styles.evidenceDocument} href={record.href} target="_blank" rel="noreferrer">
+                      <span className={styles.evidenceDocumentImage}>
+                        <Image
+                          src={record.image}
+                          alt="ICAISG 2026 HF2007 official acceptance notification"
+                          fill
+                          unoptimized
+                          sizes="(max-width: 720px) 80vw, 340px"
+                        />
+                      </span>
+                      <b><Lang zh="查看 ICAISG 官方錄取通知" en="VIEW THE OFFICIAL ICAISG ACCEPTANCE NOTICE" /></b>
+                    </a>
+                  )}
                 </div>
                 <a href={record.href} target="_blank" rel="noreferrer" aria-label={`${record.kind} source`}>↗</a>
               </article>
@@ -455,7 +501,7 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
               zh="本站不虛構公司登記、團隊規模、學位、專利、獎項、客戶、採用或合作關係。GitHub Repo 用來證明公開工程；第一方文章用來證明本人主張；第三方媒體與平台紀錄則保留它們原本能證明的範圍。DeepSeek、OpenAI、LinkedIn、NVIDIA 等平台上的留言或社群文章，不會被改寫成官方合作。"
               en="This site does not invent company registration, team size, degrees, patents, awards, clients, adoption or partnerships. GitHub repositories evidence public engineering; first-party writing evidences the founder's own positions; media and platform records retain only what their sources can support. Comments or community posts on platforms such as DeepSeek, OpenAI, LinkedIn or NVIDIA are never recast as official collaboration."
             /></p>
-            <p className={styles.updated}><Lang zh="公開資料校準日期：2026 年 7 月 28 日" en="PUBLIC-SOURCE REVIEWED: 28 JULY 2026" /></p>
+            <p className={styles.updated}><Lang zh="公開資料校準日期：2026 年 9 月 26 日" en="PUBLIC-SOURCE REVIEWED: 26 SEPTEMBER 2026" /></p>
           </div>
         </section>
 

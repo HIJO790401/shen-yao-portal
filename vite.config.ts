@@ -44,7 +44,7 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
-    optimizeDeps: { exclude: ["lenis"] },
+    optimizeDeps: { exclude: ["lenis", "lucide-react"] },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,

@@ -109,7 +109,7 @@ export default function ProductsPage() {
       <section className="product-next-gate-v3">
         <p className="brand-section-label">NEXT CONSTRUCTION GATE</p>
         <h2><Lang zh={<>動畫不是裝飾。<br/>它必須重播真實運算。</>} en={<>MOTION IS NOT DECORATION.<br/>IT MUST REPLAY REAL COMPUTATION.</>} /></h2>
-        <p><Lang zh="十四套作品已接上各自的固定案例或架構時間軸；其中包含 AICC v0.2.CANDIDATE 架構、規則掃描、六案反詐、metadata-only 記憶索引、安全合成文件、非醫療支持案例、確定性哨兵與真實 2D Canvas。僅 SCBKR 本地責任鏈模型依 Owner 指示暫緩動畫。" en="Fourteen works now have dedicated fixed-case or architecture timelines, including the AICC v0.2.CANDIDATE architecture, rule scanning, six anti-scam cases, a metadata-only memory index, a safe synthetic document, non-medical support cases, a deterministic sentinel and a real 2D Canvas. Only the SCBKR Local Responsibility Model remains motion-deferred by the owner." /></p>
+        <p><Lang zh="十四套作品已接上各自的固定案例或架構時間軸；其中包含 AICC v0.2.CANDIDATE 架構、規則掃描、六案反詐、metadata-only 記憶索引、安全合成文件、非醫療支持案例、確定性哨兵與真實 2D Canvas。僅 SCBKR 責任鏈語言模型依 Owner 指示暫緩動畫。" en="Fourteen works now have dedicated fixed-case or architecture timelines, including the AICC v0.2.CANDIDATE architecture, rule scanning, six anti-scam cases, a metadata-only memory index, a safe synthetic document, non-medical support cases, a deterministic sentinel and a real 2D Canvas. Only the SCBKR Responsibility Chain Language Model remains motion-deferred by the owner." /></p>
         <div><LocalizedLink href="/news"><Lang zh="進入新聞台" en="OPEN NEWSROOM" /> <span>↗</span></LocalizedLink><LocalizedLink href="/"><Lang zh="回到官網" en="BACK TO STUDIO" /> <span>↗</span></LocalizedLink></div>
       </section>
     </main>

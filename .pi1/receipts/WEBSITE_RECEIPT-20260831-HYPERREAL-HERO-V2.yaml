@@ -1,0 +1,37 @@
+receipt_id: WEBSITE_RECEIPT-20260831-HYPERREAL-HERO-V2
+task_id: TASK-20260831-HYPERREAL-HERO-V2
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室／SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+baseline_head: fac5dd8633b72445a68ad3d57228c693242430b9
+result: READY_FOR_OWNER_REVIEW
+implemented:
+  - hyperreal_water_master_desktop_and_mobile
+  - avif_webp_progressive_derivatives
+  - coherent_water_refraction_caustics_and_atmosphere
+  - static_founder_environment_composite
+  - responsive_zh_en_home_hero
+verified:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  automated_tests: 35_PASS_0_FAIL
+  drizzle_check: PASS
+  production_dependency_audit: 0_VULNERABILITIES
+  secret_scan: PASS
+  browser_zh: PASS
+  browser_en: PASS
+  browser_mobile: PASS
+  console: CLEAN
+preserved:
+  - homepage_information_architecture
+  - owner_portrait_pixels
+  - intro_video_gate
+  - cms_auth_d1_r2_routes
+  - original_water_asset
+  - rollback_history
+not_performed:
+  - github_commit_or_push
+  - sites_version_or_deployment
+  - domain_or_dns_change
+final_gate: OWNER_REVIEW

@@ -1,0 +1,41 @@
+receipt_id: WEBSITE_RECEIPT-20260901-HOME-ICONS-SCBKR-V1
+task_id: TASK-20260831-HOME-ICONS-SCBKR-V1
+owner: 許文耀／沈耀888π
+project: 沉靜流派工作室／SERENE SCHOOL STUDIO
+repository: HIJO790401/shen-yao-portal
+baseline_head: fac5dd8633b72445a68ad3d57228c693242430b9
+result: READY_FOR_OWNER_REVIEW
+source:
+  scbkr_repository: HIJO790401/scbkr-local-responsibility-model
+  scbkr_commit: 53adf7834d3b8d289a8a1be5bd1ab7b4a91b814b
+  icon_library: lucide-react@1.38.0
+  icon_license: ISC
+implemented:
+  - five_home_quick_navigation_line_icons
+  - newsroom_museum_future_guard_line_icons
+  - crystal_lens_button_materials
+  - hover_focus_visible_and_active_feedback
+  - scbkr_2_3_0_free_bilingual_positioning
+verified:
+  typecheck: PASS
+  lint: PASS
+  production_build: PASS
+  automated_tests: 35_PASS_0_FAIL
+  production_dependency_audit: 0_VULNERABILITIES
+  diff_check: PASS
+  secret_scan: PASS
+  browser_desktop: PASS
+  browser_mobile_390x844: PASS
+  browser_console: CLEAN
+  old_target_glyphs: 0
+preserved:
+  - homepage_information_architecture
+  - all_destinations_and_bilingual_labels
+  - intro_gate_and_hyperreal_hero
+  - product_work_news_museum_and_cms_boundaries
+  - scbkr_owner_deferred_motion_status
+not_performed:
+  - github_commit_or_push
+  - sites_version_or_deployment
+  - domain_or_dns_change
+final_gate: OWNER_REVIEW

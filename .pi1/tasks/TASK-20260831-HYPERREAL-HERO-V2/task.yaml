@@ -1,0 +1,29 @@
+task_id: TASK-20260831-HYPERREAL-HERO-V2
+parent_task: TASK-20260828-HYPERREAL-ARTIST-UI-V1
+license: .pi1/licenses/SERENE-SCHOOL-STUDIO-WEBSITE-CMS-v1/LICENSE.md
+goal: 在不改首頁資訊架構的前提下，完成一個可瀏覽的冠軍品質超寫實 Hero 樣板
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+branch: main
+baseline_head: fac5dd8633b72445a68ad3d57228c693242430b9
+scope:
+  - generate_textless_peopleless_hyperreal_water_master
+  - hero_optical_material_system
+  - static_founder_environment_composite
+  - desktop_tablet_mobile_composition
+  - reduced_motion_and_readable_fallback
+preserved:
+  - homepage_information_architecture_and_section_order
+  - owner_portrait_identity_and_pixels
+  - intro_video_and_enter_gate
+  - bilingual_copy_and_fixed_quote
+  - cms_auth_d1_r2_and_routes
+  - existing_products_works_news_museum_and_public_records
+excluded:
+  - owner_face_generation_or_replacement
+  - full_site_redesign
+  - cms_schema_or_auth_change
+  - sites_version_deployment_domain_or_dns
+  - paid_assets_or_paid_services
+state: READY_FOR_OWNER_REVIEW
+final_gate: OWNER_REVIEW

@@ -1,0 +1,19 @@
+task_id: TASK-20260831-HOME-ICONS-SCBKR-V1
+must_have:
+  - no unicode heart star target grid or filled circle is used as the homepage navigation or newsroom pillar icon
+  - homepage quick navigation keeps the same five destinations and bilingual labels
+  - newsroom museum and future-guard routes keep their destinations and copy
+  - icons come from one open-source line family with consistent optical size stroke and motion
+  - controls have visible hover focus-visible and active feedback without becoming dark tech HUD
+  - SCBKR copy reflects the public 2.3.0 FREE framework experience and its user-owned rule-chain flow
+  - Store availability stays sourced from the verified Microsoft Store link rather than the older Repo status paragraph
+  - public FREE edition boundaries remain explicit
+verification:
+  - npx_tsc_noEmit
+  - npm_run_lint
+  - npm_test
+  - desktop_browser_review
+  - mobile_browser_review
+  - console_review
+  - git_diff_and_secret_scan
+final_gate: OWNER_REVIEW

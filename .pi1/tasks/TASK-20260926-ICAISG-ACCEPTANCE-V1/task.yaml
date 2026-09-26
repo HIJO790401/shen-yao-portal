@@ -1,0 +1,26 @@
+task_id: TASK-20260926-ICAISG-ACCEPTANCE-V1
+owner: 許文耀／沈耀888π
+goal: 將 ICAISG 2026 HF2007 正式錄取證明整合至沉靜流派工作室官網與公開履歷
+repository: HIJO790401/shen-yao-portal
+branch: main
+source:
+  type: official_acceptance_email_and_attachment
+  received_at: 2026-09-09
+  paper_id: HF2007
+scope:
+  - homepage_public_record_feature
+  - bilingual_resume_public_evidence
+  - acceptance_pdf_and_page_one_preview
+  - crawler_and_ai_discovery_text
+preserved:
+  - homepage_information_architecture
+  - intro_gate_hero_products_works_news_museum_and_cms
+  - existing_public_record_destinations
+excluded:
+  - reviewer_comments
+  - re_review_form
+  - registration_or_payment_claims
+  - publication_or_indexing_claim_before_completion
+  - github_push_deployment_domain_or_dns
+state: READY_FOR_OWNER_REVIEW
+final_gate: OWNER_REVIEW

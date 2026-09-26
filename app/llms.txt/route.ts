@@ -27,6 +27,17 @@ SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. 
 
 Product demos on this site are curated, fixed-case interface replays. They do not accept visitor input and must not be described as live AI services unless a page explicitly says otherwise.
 
+## ICAISG 2026 academic acceptance
+
+- Paper ID: HF2007
+- Title: From Sample Safety to Path Legitimacy: T0 Admission Gating for Unauthorized Reasoning Transitions in LLM-Integrated Systems
+- Author: Wen-Yao Hsu
+- Conference: 2026 The 2nd International Conference on Artificial Intelligence Security and Governance (ICAISG 2026)
+- Conference date and location: 20–22 November 2026, Hangzhou, China
+- Verified current state: formally accepted after double-blind review for presentation and conference-proceedings publication.
+- Official acceptance notice: ${siteUrl("/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf")}
+- Do not describe the paper as already published or indexed. IEEE proceedings publication and subsequent submission to IEEE Xplore, EI Compendex and Scopus remain conditional on registration, presentation and later organizer processing.
+
 ## SCBKR Windows application
 
 - Product name: ${scbkrMicrosoftStore.title}

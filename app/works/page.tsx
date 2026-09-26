@@ -66,7 +66,7 @@ export default function WorksPage() {
     </section>
 
     <section className={styles.worksSection}>
-      <header><span>01</span><div><h2><Lang zh="系統、架構與固定案例" en="SYSTEMS, ARCHITECTURE & FIXED CASES" /></h2><p><Lang zh="以下十四套展示不收訪客輸入；畫面只重播母規格架構、Repo 內建案例、原公式或策展資料。SCBKR 本地責任鏈模型依指示暫緩動畫。" en="These fourteen displays accept no visitor input; they replay only the owner specification architecture, repository fixtures, source formulas or curated case data. Motion for the SCBKR Local Responsibility Model remains deferred by the owner." /></p></div></header>
+      <header><span>01</span><div><h2><Lang zh="系統、架構與固定案例" en="SYSTEMS, ARCHITECTURE & FIXED CASES" /></h2><p><Lang zh="以下十四套展示不收訪客輸入；畫面只重播母規格架構、Repo 內建案例、原公式或策展資料。SCBKR 責任鏈語言模型依指示暫緩動畫。" en="These fourteen displays accept no visitor input; they replay only the owner specification architecture, repository fixtures, source formulas or curated case data. Motion for the SCBKR Responsibility Chain Language Model remains deferred by the owner." /></p></div></header>
       <div className={styles.worksGrid}>{readyDemos.map((film) => <LocalizedLink className={styles.workCard} href={`/demo/${film.slug}`} key={film.slug}>
         <div><small>{film.index} · {film.label}</small><h3><Lang zh={film.name} en={film.nameEn} /></h3><p><Lang zh={film.introZh} en={film.introEn} /></p></div>
         <span><Lang zh="播放展示" en="PLAY DEMO" /> →</span>

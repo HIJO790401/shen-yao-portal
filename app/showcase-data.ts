@@ -75,11 +75,11 @@ export const productFilms: ProductFilm[] = [
     steps: [{ key: "01", zh: "鎖定授權情境", en: "Lock license case" }, { key: "02", zh: "逐用途判定", en: "Judge each use" }, { key: "03", zh: "保留失敗條件", en: "Preserve failure conditions" }],
   },
   {
-    code: "RG-01", slug: "scbkr", index: "RG-01", name: "SCBKR 本地責任鏈模型", nameEn: "SCBKR Local Responsibility Model", label: "MICROSOFT STORE RELEASE · MOTION PENDING", status: "deferred", statusZh: "Microsoft Store 已上架／動畫待提供", statusEn: "MICROSOFT STORE LIVE · MOTION PENDING",
-    headlineZh: "正式應用已上架；官網動畫素材將於後續補上。", headlineEn: "The application is live; the website film will follow after its final asset is supplied.",
-    introZh: "SCBKR Windows 應用已在 Microsoft Store 免費提供。真實流程仍需要使用者簽名、生成、驗收與二次確認；官網動畫依 Owner 指示暫緩，不用假動畫取代產品證據。", introEn: "The SCBKR Windows application is now available free on Microsoft Store. Its real flow still requires signature, generation, acceptance and reconfirmation; the website film remains deferred rather than replacing product evidence with fake motion.",
-    formula: "DRAFT → OWNER SIGNATURE → ACCEPTANCE → RECONFIRMATION", sourceRepo: "https://github.com/HIJO790401/scbkr-local-responsibility-model", storeUrl: scbkrMicrosoftStore.url,
-    steps: [{ key: "S", zh: "需要人類簽名", en: "Human signature required" }, { key: "A", zh: "需要人類驗收", en: "Human acceptance required" }, { key: "R", zh: "自動動畫暫緩", en: "Automatic film deferred" }],
+    code: "RG-01", slug: "scbkr", index: "RG-01", name: "SCBKR 責任鏈語言模型", nameEn: "SCBKR Responsibility Chain Language Model", label: "2.3.0 FREE · MICROSOFT STORE · MOTION DEFERRED", status: "deferred", statusZh: "2.3.0 FREE 已上架／動畫暫緩", statusEn: "2.3.0 FREE LIVE · MOTION DEFERRED",
+    headlineZh: "一般 AI 聊天，加上由使用者建立、修改、簽名與承擔的責任規則鏈。", headlineEn: "General AI chat plus a responsibility-rule chain authored, edited, signed and owned by the user.",
+    introZh: "公開 FREE 版以硬路由分類輸入，再由已連線模型草擬 S／C／B／K／R，交 Kernel Validator 檢查。只有使用者能修改與簽名；確認後才進入四庫與回放。Store 與 Repo 提供真實產品證據，官網動畫依 Owner 指示暫緩。", introEn: "The public FREE edition hard-routes each input, asks the connected model to draft S/C/B/K/R and validates it with Kernel Validator. Only the user may edit and sign before four-store compilation and replay. Store and repository links provide real product evidence while the website film remains Owner-deferred.",
+    formula: "INPUT → HARD ROUTER → MODEL DRAFT S/C/B/K/R → KERNEL VALIDATOR → USER EDIT + SIGN → FOUR STORES → REPLAY", sourceRepo: "https://github.com/HIJO790401/scbkr-local-responsibility-model", storeUrl: scbkrMicrosoftStore.url,
+    steps: [{ key: "R", zh: "硬路由先分類輸入", en: "Hard-route the input" }, { key: "K", zh: "模型草擬、核心檢查", en: "Model drafts, kernel validates" }, { key: "S", zh: "只有使用者能修改與簽名", en: "Only the user edits and signs" }, { key: "4", zh: "四庫編譯與回放", en: "Compile four stores and replay" }],
   },
   {
     code: "RG-02", slug: "memory-index", index: "RG-02", name: "SCBKR Memory Index", nameEn: "SCBKR Memory Index", label: "METADATA-ONLY INDEX", status: "ready", statusZh: "索引邊界動畫可播放", statusEn: "INDEX-BOUNDARY FILM READY",
