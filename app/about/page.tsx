@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Lang, LocalizedLink } from "../components/LanguageControl";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { studioManifesto } from "../manifesto-data";
 import { localizedAlternates, siteUrl } from "../site-config";
 import styles from "./about.module.css";
 
@@ -148,6 +149,22 @@ export default function AboutPage() {
           <div><span>02</span><small><Lang zh="架構方式" en="STRUCTURE" /></small><b><Lang zh="獨立／一人研發" en="INDEPENDENT / ONE-PERSON" /></b></div>
           <div><span>03</span><small><Lang zh="所在地" en="BASE" /></small><b><Lang zh="台灣・台中" en="TAICHUNG, TAIWAN" /></b></div>
           <div><span>04</span><small><Lang zh="核心組成" en="CORE SYNTHESIS" /></small><b><Lang zh="符號・公式・系統" en="SYMBOLS · FORMULAS · SYSTEMS" /></b></div>
+        </section>
+
+        <section className={styles.manifesto} id="manifesto" aria-labelledby="manifesto-title">
+          <div className={styles.manifestoHeading}>
+            <p><Lang zh="創辦人・核心宣言" en="FOUNDER · CORE MANIFESTO" /></p>
+            <h2 id="manifesto-title"><Lang zh="先定義判斷路徑，再決定何時使用算力。" en="DEFINE THE PATH OF JUDGMENT BEFORE APPLYING COMPUTE." /></h2>
+          </div>
+          <figure className={styles.manifestoStatement}>
+            <blockquote>
+              <p className={styles.manifestoLead}><Lang zh={studioManifesto.zh.lead} en={studioManifesto.en.lead} /></p>
+              <p><Lang zh={studioManifesto.zh.reason} en={studioManifesto.en.reason} /></p>
+              <p><Lang zh={studioManifesto.zh.method} en={studioManifesto.en.method} /></p>
+              <p><Lang zh={studioManifesto.zh.analogy} en={studioManifesto.en.analogy} /></p>
+            </blockquote>
+            <figcaption><Lang zh="許文耀／沈耀888π・沉靜流派工作室" en="WEN-YAO HSU / SHEN-YAO 888π · SERENE SCHOOL STUDIO" /></figcaption>
+          </figure>
         </section>
 
         <section className={styles.practice} aria-labelledby="practice-title">

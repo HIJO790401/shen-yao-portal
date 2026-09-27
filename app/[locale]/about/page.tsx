@@ -9,8 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ...baseMetadata,
     title: isEnglish ? "Wen-Yao Hsu / Shen-Yao 888π | Founder" : baseMetadata.title,
     description: isEnglish
-      ? "Founder of SERENE SCHOOL STUDIO and the Semantic Firewall, combining ancient symbols, mathematical formulas, system architecture, animation and music."
-      : baseMetadata.description,
+      ? "Wen-Yao Hsu's founding manifesto defines the path of judgment before applying computational power across the Semantic Firewall, systems architecture, animation and music."
+      : "許文耀／沈耀888π的沉靜流派工作室創辦人介紹與核心宣言：先定義判斷路徑，再讓算力依此執行；並公開語意防火牆、系統架構、動畫與音樂作品。",
     alternates: localizedAlternates(locale, "/about"),
     openGraph: { ...(baseMetadata.openGraph ?? {}), url: `/${locale}/about` },
   };

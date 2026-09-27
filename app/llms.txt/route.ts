@@ -18,12 +18,16 @@ Languages: Traditional Chinese and English are available as separate routes.
 - Works and public records: ${siteUrl("/zh/works")}
 - Reality Newsroom and Responsibility Museum: ${siteUrl("/zh/news")}
 - Founder profile: ${siteUrl("/zh/about")}
+- Founding manifesto in Traditional Chinese: ${siteUrl("/zh/about#manifesto")}
+- Founding manifesto in English: ${siteUrl("/en/about#manifesto")}
 - Chinese public resume: ${siteUrl("/zh/resume")}
 - English public resume: ${siteUrl("/en/resume")}
 
 ## Scope
 
 SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. Public work covers semantic governance, the Semantic Firewall, SCBKR responsibility-chain systems, the AICC OS candidate architecture, software architecture, animation, music, writing, the Reality Newsroom and the Responsibility Museum.
+
+The founder's manifesto distinguishes computational power from a valid judgment path: compute can accelerate work, but the founder defines when and where it should be applied. The bilingual first-party statement is visible on the founder page; it is a founding position, not a claim that any particular system has been independently validated.
 
 Product demos on this site are curated, fixed-case interface replays. They do not accept visitor input and must not be described as live AI services unless a page explicitly says otherwise.
 

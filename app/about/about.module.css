@@ -328,6 +328,79 @@
   font: 700 13px/1.4 var(--font-tc);
 }
 
+.manifesto {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(270px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(44px, 8vw, 128px);
+  padding: clamp(100px, 11vw, 160px) clamp(28px, 6vw, 96px);
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(125deg, #e7f5ff 0%, #fafdff 56%, #e2f1fc 100%);
+  scroll-margin-top: 80px;
+}
+
+.manifesto::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: url("/media/serene-water-16x9.jpg") center 60% / cover no-repeat;
+  opacity: 0.11;
+  filter: saturate(0.75) brightness(1.22);
+  content: "";
+}
+
+.manifestoHeading {
+  border-top: 1px solid rgba(13, 82, 162, 0.24);
+  padding-top: 20px;
+}
+
+.manifestoHeading p {
+  margin: 0 0 25px;
+  color: #0b65b7;
+  font: 800 10px/1.4 var(--font-tc);
+  letter-spacing: 0.12em;
+}
+
+.manifestoHeading h2 {
+  max-width: 570px;
+  margin: 0;
+  color: #082f6d;
+  font: 700 clamp(34px, 4vw, 60px)/1.2 var(--font-serif), "PMingLiU", serif;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.manifestoStatement {
+  margin: 0;
+  border-top: 1px solid rgba(13, 82, 162, 0.24);
+  padding-top: 20px;
+}
+
+.manifestoStatement blockquote { margin: 0; }
+
+.manifestoStatement p {
+  max-width: 780px;
+  margin: 0 0 22px;
+  color: #365f8d;
+  font: 500 clamp(14px, 1.17vw, 17px)/2 var(--font-tc);
+}
+
+.manifestoStatement .manifestoLead {
+  margin-bottom: 35px;
+  color: #0c468c;
+  font: 700 clamp(22px, 2.2vw, 32px)/1.65 var(--font-serif), "PMingLiU", serif;
+}
+
+.manifestoStatement figcaption {
+  margin-top: 35px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(13, 82, 162, 0.18);
+  color: #32649d;
+  font: 800 10px/1.6 var(--font-tc);
+  letter-spacing: 0.06em;
+}
+
 .practice,
 .publicRecord {
   padding: clamp(95px, 10vw, 155px) clamp(28px, 6vw, 96px);
@@ -941,6 +1014,7 @@
 
   .visual { min-height: 610px; }
   .brandSeal { right: -2%; min-width: 235px; }
+  .manifesto { grid-template-columns: 1fr; gap: 38px; }
   .practice, .publicRecord { grid-template-columns: 1fr; }
   .disciplineGrid { margin-top: 10px; }
   .activityHeading { grid-template-columns: 1fr; }
@@ -1035,6 +1109,11 @@
 
   .profileFacts { grid-template-columns: 1fr; }
   .profileFacts > div { min-height: 132px; border-right: 0; border-bottom: 1px solid var(--line); }
+
+  .manifesto { padding: 82px 20px 90px; gap: 42px; }
+  .manifestoHeading h2 { font-size: 38px; }
+  .manifestoStatement .manifestoLead { font-size: 25px; }
+  .manifestoStatement p { font-size: 14px; }
 
   .practice, .publicRecord, .publicActivity { padding: 78px 18px; }
   .sectionIntro h2 { font-size: 40px; }

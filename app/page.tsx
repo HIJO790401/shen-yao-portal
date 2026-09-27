@@ -17,6 +17,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { ContactComposer } from "./components/ContactComposer";
 import { products } from "./site-data";
+import { studioManifesto } from "./manifesto-data";
 import { introVideoSource, scbkrMicrosoftStore } from "./site-config";
 import styles from "./serene-home.module.css";
 
@@ -110,6 +111,19 @@ export default function Home() {
             </LocalizedLink>
           ))}
         </nav>
+
+        <section className={styles.manifestoPreview} id="manifesto" aria-labelledby="manifesto-preview-title" data-serene-reveal="rise">
+          <div className={styles.manifestoIndex}>
+            <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="工作室核心宣言" en="THE STUDIO MANIFESTO" /></p>
+            <span><Lang zh="許文耀／沈耀888π・創辦人" en="WEN-YAO HSU / SHEN-YAO 888π · FOUNDER" /></span>
+          </div>
+          <div className={styles.manifestoPreviewBody}>
+            <h2 id="manifesto-preview-title"><Lang zh={studioManifesto.zh.lead} en={studioManifesto.en.lead} /></h2>
+            <p><Lang zh={studioManifesto.zh.reason} en={studioManifesto.en.reason} /></p>
+            <p><Lang zh={studioManifesto.zh.method} en={studioManifesto.en.method} /></p>
+            <LocalizedLink href="/about#manifesto"><Lang zh="閱讀完整宣言" en="READ THE FULL MANIFESTO" /> <span aria-hidden="true">↗</span></LocalizedLink>
+          </div>
+        </section>
 
         <section className={styles.overview} id="about">
           <div className={styles.aboutPanel} data-serene-reveal="rise">

@@ -1,0 +1,24 @@
+task_id: TASK-20260928-CORE-MANIFESTO-DEPLOY-V1
+owner: 許文耀／沈耀888π
+state: IN_PROGRESS
+source: owner_direct_statement_2026-09-28
+original_owner_words: |
+  我反对的不是算力，我反对的是把算力当成确定性工具的做法。算力只是让你把一件事情做得更快，但它并不代表可以把一件事情做成有效的判断路径。 而我這套系統做的就是把我判斷的路徑定義清楚，讓算力去依據我這個路徑去做。這就像我在做一台計算機一樣，計算機可以做到一加一等於二，但計算機沒有辦法做到什麼時候我要應用這個計算機。我在決定的事情是，我把計算機放在可以應用的位置。
+scope:
+  - add a bilingual founding manifesto to the public studio site
+  - keep the existing homepage section order, hero, products, works, and newsroom intact
+  - preserve the owner's reasoning without claiming that compute itself validates judgments
+  - verify local source and browser output before source publication
+  - after owner-reported domain purchase, pursue authorized production deployment and domain connection
+acceptance:
+  - traditional_chinese_and_english_render_as_separate_locale_modes
+  - homepage_introduces_the_manifesto_and_links_to_the_full_founder_page_text
+  - full_manifesto_is_visible_and_indexable_on_the_founder_page
+  - typecheck_lint_build_tests_and_desktop_mobile_browser_review_pass
+  - source_changes_are_scoped_and_secret_free
+  - production_requires_real_public_url_domain_dns_tls_and_owner_cms_verification
+stop_conditions:
+  - purchased_domain_cannot_be_verified_or_connected
+  - public_sites_access_or_custom_domain_feature_unavailable
+  - runtime_binding_authentication_or_owner_cms_fails
+  - any_new_charge_requires_owner_payment_choice

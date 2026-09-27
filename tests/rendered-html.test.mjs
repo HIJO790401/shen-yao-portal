@@ -333,7 +333,7 @@ test("publishes the verified SCBKR Microsoft Store entry without changing AICC o
   assert.match(llms, /Installation availability remains subject to Microsoft Store region and device compatibility/);
   assert.match(layout, /SoftwareApplication/);
   assert.match(layout, /downloadUrl: scbkrMicrosoftStore\.url/);
-  assert.match(sitemap, /2026-09-26/);
+  assert.match(sitemap, /2026-09-28/);
   assert.match(home + homeData + products + films + llms, /v0\.2\.CANDIDATE/);
 });
 
@@ -638,4 +638,30 @@ test("keeps the AI responsibility-chain explainer indexable and the mobile newsr
   assert.match(localizedMeta, /localizedAlternates\(locale, path\)/);
   assert.match(newsCss, /\.kicker > span:first-child \{/);
   assert.doesNotMatch(newsCss, /\.kicker > span \{/);
+});
+
+test("renders the Owner's founding manifesto in separate Chinese and English routes", async () => {
+  const [manifesto, home, about, homeCss, aboutCss, localizedAbout, llms] = await Promise.all([
+    source("app/manifesto-data.ts"),
+    source("app/page.tsx"),
+    source("app/about/page.tsx"),
+    source("app/serene-home.module.css"),
+    source("app/about/about.module.css"),
+    source("app/[locale]/about/page.tsx"),
+    source("app/llms.txt/route.ts"),
+  ]);
+  assert.match(manifesto, /我反對的不是算力/);
+  assert.match(manifesto, /把我判斷的路徑定義清楚/);
+  assert.match(manifesto, /計算機可以做到一加一等於二/);
+  assert.match(manifesto, /I do not oppose computational power/);
+  assert.match(manifesto, /I place the calculator where it is appropriate/);
+  assert.match(home, /id="manifesto"/);
+  assert.match(home, /href="\/about#manifesto"/);
+  assert.match(about, /id="manifesto"/);
+  assert.match(about, /studioManifesto\.zh\.analogy/);
+  assert.match(about, /studioManifesto\.en\.analogy/);
+  assert.match(homeCss, /\.manifestoPreview/);
+  assert.match(aboutCss, /\.manifestoStatement/);
+  assert.match(localizedAbout, /localizedAlternates\(locale, "\/about"\)/);
+  assert.match(llms, /Founding manifesto in Traditional Chinese/);
 });
