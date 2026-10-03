@@ -21,19 +21,19 @@ export async function generateMetadata({
 
   const architecture = film.presentation === "architecture";
   const title = slug === "scbkr"
-    ? locale === "en" ? "SCBKR 2.3.1 | AI Responsibility Chain & Local Governance" : "SCBKR 2.3.1｜AI 責任鏈與本地規則治理"
+    ? locale === "en" ? "SCBKR 2.3.1 | AI Safety & Responsibility Governance" : "SCBKR 2.3.1｜AI 安全與責任鏈治理"
     : locale === "en"
       ? `${film.nameEn} | ${architecture ? "Candidate architecture film" : film.status === "ready" ? "Fixed-case demo" : "Demo status"}`
       : `${film.name}｜${architecture ? "候選架構動畫" : film.status === "ready" ? "固定案例 DEMO" : "展示狀態"}`;
   const description = slug === "scbkr"
     ? locale === "en"
-      ? "Wen-Yao Hsu's SCBKR 2.3.1 local AI accountability app: human-signed rules, deterministic applicability, candidate-only retrieval and evidence rechecks before storage."
-      : "許文耀／沈耀888π 的 SCBKR 責任鏈語言模型 2.3.1：使用者簽名規則、明確適用條件、候選召回與確認時證據重查的本地 AI 治理流程。"
+      ? "Wen-Yao Hsu's SCBKR 2.3.1 for AI safety and governance: a local responsibility-chain app with human-signed rules, deterministic applicability and evidence rechecks before storage."
+      : "許文耀／沈耀888π 的 SCBKR 責任鏈語言模型 2.3.1：以使用者簽名規則、明確適用條件與證據重查支援本地 AI 安全與治理。"
     : locale === "en" ? film.introEn : film.introZh;
   const path = `/demo/${slug}`;
 
   return {
-    title,
+    title: locale === "en" ? { absolute: `${title} | SERENE SCHOOL STUDIO` } : title,
     description,
     alternates: localizedAlternates(locale, path),
     openGraph: {

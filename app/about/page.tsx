@@ -126,8 +126,8 @@ export default function AboutPage() {
             </div>
             <p className={styles.introduction}>
               <Lang
-                zh="我是古文明符號、數學公式與系統架構的混合型創作者，也是一人工作室的獨立架構師。我把符號做成語言，把公式做成責任結構，再把責任結構落成可執行、可回放的系統；動畫、音樂、程式碼、文章與公開工程是同一套方法的不同輸出。"
-                en="I work at the intersection of ancient symbols, mathematical formulas and system architecture as an independent one-person studio. Symbols become language, formulas become responsibility structures, and those structures become executable, replayable systems; animation, music, code, writing and public engineering are different outputs of the same method."
+                zh="我是古文明符號、數學公式與系統架構的混合型創作者，也是一人工作室的獨立架構師。我把符號做成語言，把公式做成責任結構，再用語意防火牆與 SCBKR 探索 AI 安全、AI 治理中可執行、可回放的責任路徑；動畫、音樂、程式碼與文章是同一套方法的不同輸出。"
+                en="I work at the intersection of ancient symbols, mathematical formulas and system architecture as an independent one-person studio. Symbols become language and formulas become responsibility structures; the Semantic Firewall and SCBKR explore executable, replayable accountability paths for AI safety and AI governance. Animation, music, code and writing are different outputs of the same method."
               />
             </p>
 

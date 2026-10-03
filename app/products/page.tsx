@@ -10,7 +10,7 @@ import demoStyles from "../demo-system.module.css";
 
 export const metadata: Metadata = {
   title: "產品與工程作品",
-  description: "沉靜流派工作室的產品與工程作品：已於 Microsoft Store 免費上架的 SCBKR、AICC OS v0.2.CANDIDATE 候選架構、語意防火牆、WIF、TIRC 與固定案例展示。",
+  description: "沉靜流派工作室的 AI 安全與治理產品：已於 Microsoft Store 免費上架的 SCBKR 責任鏈語言模型、AICC OS v0.2.CANDIDATE 候選架構、語意防火牆、WIF、TIRC 與固定案例展示。",
   alternates: localizedAlternates("zh", "/products"),
   openGraph: { url: "/zh/products" },
 };
@@ -25,7 +25,7 @@ export default function ProductsPage() {
         <div className="products-hero-copy-v3">
           <p className="brand-section-label">CODE-AUDITED SYSTEM ARCHIVE · 2026</p>
           <h1><Lang zh={<>不是把 Repo<br/>包裝成產品。</>} en={<>NOT REPACKAGING<br/>REPOSITORIES.</>} /></h1>
-          <p className="products-hero-decree-v3"><Lang zh="是先讀懂每一段輸入、運算、輸出與失敗邊界，再決定它應該如何被看見。" en="Every input, computation, output and failure boundary is read before deciding how a system should be seen." /></p>
+          <p className="products-hero-decree-v3"><Lang zh="AI 安全與 AI 治理不是替產品貼標籤；先讀懂每段輸入、運算、輸出與失敗邊界，再決定它應該如何被看見。" en="AI safety and AI governance are not product labels. We first examine each input, computation, output and failure boundary before deciding how a system should be shown." /></p>
           <div className="products-audit-metrics-v3">
             <div><b>{count}</b><span><Lang zh="已盤點作品" en="AUDITED WORKS" /></span></div>
             <div><b>3</b><span><Lang zh="正確系統族" en="SYSTEM FAMILIES" /></span></div>

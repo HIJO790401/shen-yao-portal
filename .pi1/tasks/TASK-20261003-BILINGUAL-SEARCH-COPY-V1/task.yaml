@@ -1,0 +1,25 @@
+task_id: TASK-20261003-BILINGUAL-SEARCH-COPY-V1
+owner: 許文耀／沈耀888π
+goal: 讓官方網站以繁體中文及英文清楚說明站主姓名、AI 安全與 AI 治理工作，改善搜尋可理解性。
+scope:
+  - localized_home_titles_descriptions_and_open_graph
+  - homepage_existing_overview_copy
+  - product_work_news_founder_and_scbkr_search_copy
+  - accurate_lastmod_for_changed_routes
+preserved:
+  - visual_layout_navigation_intro_and_cms
+  - separate_zh_and_en_urls
+  - published_content_evidence_boundaries
+excluded:
+  - extra_language_routes_without_translated_content
+  - paid_ad_activation_or_billing
+  - google_ranking_or_indexing_guarantee
+  - github_push_or_sites_deployment_without_separate_authorization
+acceptance:
+  - natural_chinese_and_english_terms_appear_in_visible_copy_and_page_metadata
+  - home_product_and_scbkr_search_titles_have_no_duplicate_brand_suffix
+  - canonical_hreflang_and_sitemap_remain_valid
+  - typecheck_lint_build_tests_and_local_http_checks_pass
+release_authorization: 2026-10-03｜站主明確指示「正式發布中英文搜尋優化」；准許本次 GitHub main 更新、Sites 版本儲存與正式站部署。
+state: AUTHORIZED_FOR_PUBLICATION
+final_gate: OWNER_REVIEW

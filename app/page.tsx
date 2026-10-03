@@ -129,7 +129,7 @@ export default function Home() {
           <div className={styles.aboutPanel} data-serene-reveal="rise">
             <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="關於沉靜流派" en="ABOUT THE STUDIO" /></p>
             <h2><Lang zh="古文明符號 × 數學公式 × 系統架構。" en="ANCIENT SYMBOLS × FORMULAS × SYSTEMS." /></h2>
-            <p><Lang zh="沉靜流派把符號做成語言、把公式做成責任結構，再把責任結構落成語意防火牆、固定案例 Demo、動畫與音樂作品。" en="SERENE SCHOOL turns symbols into language, formulas into responsibility structures, and those structures into the Semantic Firewall, fixed-case demos, animation and music." /></p>
+            <p><Lang zh="沉靜流派把符號做成語言、把公式做成責任結構，並以 SCBKR 責任鏈與語意防火牆探索 AI 安全、AI 治理；固定案例 Demo、動畫與音樂則呈現工程和創作的不同面向。" en="SERENE SCHOOL turns symbols into language and formulas into responsibility structures. SCBKR and the Semantic Firewall explore AI safety and AI governance; fixed-case demos, animation and music show the studio's engineering and creative work." /></p>
             <LocalizedLink href="/#founder"><Lang zh="了解更多" en="DISCOVER MORE" /> <span aria-hidden="true">›</span></LocalizedLink>
           </div>
 

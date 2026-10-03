@@ -624,6 +624,32 @@ test("publishes crawler, AI discovery and structured-search surfaces", async () 
   assert.match(llms, /v0\.2\.CANDIDATE/);
 });
 
+test("keeps Chinese and English search copy distinct without changing site structure", async () => {
+  const [home, localizedHome, products, localizedProducts, localizedWorks, localizedNews, localizedAbout, localizedDemo, sitemap] = await Promise.all([
+    source("app/page.tsx"),
+    source("app/[locale]/layout.tsx"),
+    source("app/products/page.tsx"),
+    source("app/[locale]/products/page.tsx"),
+    source("app/[locale]/works/page.tsx"),
+    source("app/[locale]/news/page.tsx"),
+    source("app/[locale]/about/page.tsx"),
+    source("app/[locale]/demo/[slug]/page.tsx"),
+    source("app/sitemap.ts"),
+  ]);
+  assert.match(home, /AI 安全、AI 治理/);
+  assert.match(home, /AI safety and AI governance/);
+  assert.match(localizedHome, /AI Safety & Governance/);
+  assert.match(localizedHome, /AI 安全與治理/);
+  assert.match(localizedHome, /title: \{ absolute: title \}/);
+  assert.match(products, /AI 安全與治理產品/);
+  for (const page of [localizedProducts, localizedWorks, localizedNews, localizedAbout]) {
+    assert.match(page, /title: isEnglish \? \{ absolute:/);
+    assert.match(page, /openGraph: .*title: title as string/);
+  }
+  assert.match(localizedDemo, /SCBKR 2\.3\.1 \| AI Safety & Responsibility Governance/);
+  assert.match(sitemap, /bilingualSearchCopyUpdated/);
+});
+
 test("keeps the AI responsibility-chain explainer indexable and the mobile newsroom kicker readable", async () => {
   const [demo, localizedMeta, newsCss] = await Promise.all([
     source("app/demo/[slug]/page.tsx"),
@@ -634,8 +660,8 @@ test("keeps the AI responsibility-chain explainer indexable and the mobile newsr
   assert.match(demo, /What is an AI responsibility chain\?/);
   assert.match(demo, /Microsoft Store 頁面證明應用已公開提供/);
   assert.match(demo, /不等於第三方安全認證/);
-  assert.match(localizedMeta, /SCBKR 2\.3\.1 \| AI Responsibility Chain & Local Governance/);
-  assert.match(localizedMeta, /SCBKR 2\.3\.1｜AI 責任鏈與本地規則治理/);
+  assert.match(localizedMeta, /SCBKR 2\.3\.1 \| AI Safety & Responsibility Governance/);
+  assert.match(localizedMeta, /SCBKR 2\.3\.1｜AI 安全與責任鏈治理/);
   assert.match(localizedMeta, /localizedAlternates\(locale, path\)/);
   assert.match(newsCss, /\.kicker > span:first-child \{/);
   assert.doesNotMatch(newsCss, /\.kicker > span \{/);

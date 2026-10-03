@@ -7,14 +7,16 @@ export { dynamic } from "../../news/page";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const locale = (await params).locale === "en" ? "en" : "zh";
   const isEnglish = locale === "en";
+  const title = isEnglish ? "Reality Newsroom & Responsibility Museum | SERENE SCHOOL STUDIO" : baseMetadata.title;
+  const description = isEnglish
+    ? "Independent AI governance reporting, responsibility audits and museum accessions by Wen-Yao Hsu / Shen-Yao 888π, with published articles, videos and source records."
+    : baseMetadata.description;
   return {
     ...baseMetadata,
-    title: isEnglish ? "Reality Newsroom × Responsibility Museum" : baseMetadata.title,
-    description: isEnglish
-      ? "Independent reporting, responsibility audits, public accessions and a fourteen-axis editorial platform."
-      : baseMetadata.description,
+    title: isEnglish ? { absolute: title as string } : title,
+    description,
     alternates: localizedAlternates(locale, "/news"),
-    openGraph: { ...(baseMetadata.openGraph ?? {}), url: `/${locale}/news` },
+    openGraph: { ...(baseMetadata.openGraph ?? {}), url: `/${locale}/news`, title: title as string, description: description ?? undefined, locale: isEnglish ? "en_US" : "zh_TW" },
   };
 }
 

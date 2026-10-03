@@ -53,8 +53,8 @@ export default async function ProductFilmPage({ params }: { params: Promise<{ sl
         <p className={topicStyles.eyebrow}>SCBKR / AI RESPONSIBILITY CHAIN</p>
         <h2 id="ai-responsibility-chain-title"><Lang zh="AI 責任鏈是什麼？" en="What is an AI responsibility chain?" /></h2>
         <p className={topicStyles.lead}><Lang
-          zh="在許文耀提出的 SCBKR 架構中，AI 責任鏈不靠模型自行宣稱答案可信，而讓規則適用條件、來源證據與人類簽名各自留下可追溯的位置。公開的 2.3.1 FREE Windows 版可從 Microsoft Store 取得。"
-          en="In Wen-Yao Hsu's SCBKR architecture, AI accountability is not a model declaring its own answer trustworthy. Rule applicability, source evidence and human signature each have a traceable place. The public 2.3.1 FREE Windows edition is available from Microsoft Store."
+          zh="在許文耀提出的 SCBKR 架構中，AI 責任鏈不靠模型自行宣稱答案可信，而讓規則適用條件、來源證據與人類簽名各自留下可追溯的位置。這是 AI 安全與 AI 治理中的責任路徑設計，不是第三方安全認證。公開的 2.3.1 FREE Windows 版可從 Microsoft Store 取得。"
+          en="In Wen-Yao Hsu's SCBKR architecture, AI accountability is not a model declaring its own answer trustworthy. Rule applicability, source evidence and human signature each have a traceable place. This is an accountability approach to AI safety and AI governance, not a third-party safety certification. The public 2.3.1 FREE Windows edition is available from Microsoft Store."
         /></p>
         <div className={topicStyles.grid}>
           <article><span>01 / ROUTE & DRAFT</span><h3><Lang zh="輸入先分類，模型只草擬" en="Route first; the model only drafts" /></h3><p><Lang zh="硬路由選擇處理路徑；已連線模型草擬 S／C／B／K／R，再由 Kernel Validator 檢查結構。草稿不是有效規則。" en="A hard router selects the path; a connected model drafts S/C/B/K/R for Kernel validation. A draft is not an active rule." /></p></article>

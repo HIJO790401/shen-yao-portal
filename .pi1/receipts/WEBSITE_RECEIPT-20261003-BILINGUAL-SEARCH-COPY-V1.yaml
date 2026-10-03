@@ -1,0 +1,35 @@
+receipt_id: WEBSITE_RECEIPT-20261003-BILINGUAL-SEARCH-COPY-V1
+task_id: TASK-20261003-BILINGUAL-SEARCH-COPY-V1
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+baseline_head: 79f9efdca463c3ff8f4da6cbc932a3a6ca8e6f2e
+result: READY_FOR_OWNER_REVIEW
+observed_public_state:
+  - zh_and_en_pages_robots_and_sitemap_returned_http_200_before_this_change
+  - public_home_titles_had_duplicate_chinese_brand_suffix
+  - public_release_remains_sites_version_3
+candidate_changes:
+  - localized_home_titles_descriptions_and_open_graph
+  - natural_ai_safety_and_governance_copy_in_existing_home_products_founder_and_scbkr_surfaces
+  - localized_product_works_news_founder_and_scbkr_search_summaries
+  - sitemap_lastmod_adjusted_only_for_changed_routes
+verified_local:
+  typecheck: PASS
+  lint: PASS
+  build: PASS
+  automated_tests: 40_PASS_0_FAIL
+  chinese_english_http_titles_and_hreflang: PASS
+  sitemap_changed_routes: PASS
+  desktop_browser: PASS
+  mobile_browser_390px: PASS
+  mobile_horizontal_overflow: NONE
+  git_diff_check: PASS
+not_claimed:
+  - google_has_indexed_this_candidate
+  - broad_keywords_are_guaranteed_to_show_the_site
+  - paid_advertising_changes_organic_rankings
+not_performed:
+  - github_commit_or_push
+  - sites_version_or_deployment
+  - paid_ads_account_or_billing_change
+final_gate: OWNER_REVIEW

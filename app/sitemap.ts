@@ -6,6 +6,7 @@ import { productFilms } from "./showcase-data";
 import { siteOrigin } from "./site-config";
 
 const updated = new Date("2026-09-28T00:00:00+08:00");
+const bilingualSearchCopyUpdated = new Date("2026-10-03T00:00:00+08:00");
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type ChangeFrequency = NonNullable<SitemapEntry["changeFrequency"]>;
@@ -41,12 +42,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = new Map<string, RouteSpec>();
   const add = (entry: RouteSpec) => routes.set(entry.path, entry);
 
-  add(routeSpec("", updated, "monthly", 1));
+  add(routeSpec("", bilingualSearchCopyUpdated, "monthly", 1));
   for (const path of ["/products", "/works", "/news", "/about", "/resume"]) {
-    add(routeSpec(path));
+    add(routeSpec(path, path === "/resume" ? updated : bilingualSearchCopyUpdated));
   }
   for (const { slug } of productFilms) {
-    if (isPublicSlug(slug)) add(routeSpec(`/demo/${slug}`, updated, "monthly", 0.72));
+    if (isPublicSlug(slug)) add(routeSpec(`/demo/${slug}`, slug === "scbkr" ? bilingualSearchCopyUpdated : updated, "monthly", 0.72));
   }
   for (const report of archiveReports) {
     if (isPublicSlug(report.slug)) {
