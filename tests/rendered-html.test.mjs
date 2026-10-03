@@ -634,7 +634,8 @@ test("keeps the AI responsibility-chain explainer indexable and the mobile newsr
   assert.match(demo, /What is an AI responsibility chain\?/);
   assert.match(demo, /Microsoft Store 頁面證明應用已公開提供/);
   assert.match(demo, /不等於第三方安全認證/);
-  assert.match(localizedMeta, /What Is an AI Responsibility Chain\?/);
+  assert.match(localizedMeta, /SCBKR 2\.3\.1 \| AI Responsibility Chain & Local Governance/);
+  assert.match(localizedMeta, /SCBKR 2\.3\.1｜AI 責任鏈與本地規則治理/);
   assert.match(localizedMeta, /localizedAlternates\(locale, path\)/);
   assert.match(newsCss, /\.kicker > span:first-child \{/);
   assert.doesNotMatch(newsCss, /\.kicker > span \{/);

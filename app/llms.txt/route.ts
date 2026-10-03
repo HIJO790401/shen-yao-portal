@@ -50,6 +50,9 @@ Product demos on this site are curated, fixed-case interface replays. They do no
 - Publisher shown by Microsoft Store: ${scbkrMicrosoftStore.publisher}
 - Developer shown by Microsoft Store: ${scbkrMicrosoftStore.developer}
 - Public state: available free as a Windows application on Microsoft Store since ${scbkrMicrosoftStore.datePublished}.
+- Current public Windows version verified on 2026-10-03: 2.3.1.0 (FREE).
+- SCBKR is a local AI responsibility-chain and rule-governance application. Version 2.3.1 adds user-signed deterministic rule-applicability triggers and applicability receipts; similarity retrieval suggests candidates but does not activate a rule.
+- Rule revisions receive source and evidence rechecks at confirmation. Stale or untraceable drafts stop before storage. User signature remains required; VECTOR is recall-only, not formal authority.
 - Installation availability remains subject to Microsoft Store region and device compatibility.
 - The website product film is a separate surface and remains pending the Owner's animation asset.
 - Source evidence: https://github.com/HIJO790401/scbkr-local-responsibility-model

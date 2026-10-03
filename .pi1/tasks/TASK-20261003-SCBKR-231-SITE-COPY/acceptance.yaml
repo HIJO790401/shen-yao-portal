@@ -1,0 +1,16 @@
+task_id: TASK-20261003-SCBKR-231-SITE-COPY
+must_have:
+  - every visible SCBKR product-version claim says 2.3.1 FREE rather than 2.3.0 FREE
+  - Chinese and English product copy describe owner-signed deterministic rule applicability
+  - similarity retrieval is presented as candidate retrieval only, not automatic rule activation
+  - confirmation-time evidence recheck and stale-draft stop are explained without implying third-party certification
+  - Microsoft Store remains the verified installation link and the website film remains deferred
+  - useful search terms appear naturally in visible product copy, not as keyword stuffing
+verification:
+  - typecheck
+  - lint
+  - build
+  - tests
+  - desktop_and_mobile_browser_review
+  - git_diff_and_secret_scan
+final_gate: OWNER_REVIEW

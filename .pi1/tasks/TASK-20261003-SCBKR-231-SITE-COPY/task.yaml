@@ -1,0 +1,26 @@
+task_id: TASK-20261003-SCBKR-231-SITE-COPY
+owner: 許文耀／沈耀888π
+goal: 將官網 SCBKR 責任鏈語言模型的版本與中英文產品介紹對齊公開 2.3.1.0 Windows 版本
+repository: HIJO790401/shen-yao-portal
+branch: main
+source:
+  release_notes: https://github.com/HIJO790401/scbkr-local-responsibility-model/blob/main/RELEASE_NOTES.md
+  microsoft_store: https://apps.microsoft.com/detail/9n1smmbl6j4d
+  verified_version: 2.3.1.0
+scope:
+  - homepage_product_card
+  - products_audit_card
+  - scbkr_detail_page
+  - bilingual_showcase_copy
+  - llms_discovery_summary
+preserved:
+  - site_layout_and_navigation
+  - scbkr_motion_deferred
+  - store_and_source_links
+  - cms_and_runtime
+excluded:
+  - scbkr_runtime_changes
+  - site_version_or_deployment_without_separate_authorization
+  - domain_dns_or_payment_changes
+state: READY_FOR_OWNER_REVIEW
+final_gate: OWNER_REVIEW

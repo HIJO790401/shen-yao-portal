@@ -1,0 +1,26 @@
+receipt_id: WEBSITE_RECEIPT-20261003-SCBKR-231-SITE-COPY
+task_id: TASK-20261003-SCBKR-231-SITE-COPY
+owner: 許文耀／沈耀888π
+repository: HIJO790401/shen-yao-portal
+baseline_head: 7914f1af02fa16b39aba9d81c25b10480c447f60
+result: READY_FOR_OWNER_REVIEW
+implemented:
+  - scbkr_2_3_1_free_version_across_home_products_and_detail
+  - bilingual_rule_applicability_and_evidence_recheck_explanation
+  - localized_search_title_and_description
+  - llms_discovery_update
+verified:
+  typecheck: PASS
+  lint: PASS
+  build: PASS
+  automated_tests: 39_PASS_0_FAIL
+  browser_desktop: PASS
+  browser_mobile_390px: PASS
+  browser_console: CLEAN
+  git_diff_check: PASS
+  changed_source_secret_pattern_scan: CLEAR
+not_performed:
+  - github_commit_or_push
+  - sites_version_or_deployment
+  - domain_or_dns_change
+final_gate: OWNER_REVIEW
