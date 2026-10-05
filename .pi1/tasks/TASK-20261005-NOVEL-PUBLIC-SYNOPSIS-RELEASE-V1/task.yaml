@@ -1,0 +1,21 @@
+task_id: TASK-20261005-NOVEL-PUBLIC-SYNOPSIS-RELEASE-V1
+owner: 許文耀／沈耀888π
+depends_on: TASK-20261005-NOVEL-PREVIEW-WATER-INTRO-V1
+goal: 將中英文小說作品介紹與首頁靜態水滴視覺正式發布官網，不公開投稿中正文。
+owner_direction:
+  - 本輪先授權推送官網。
+  - 站主隨後授權若公開十頁有風險則改為作品描述。
+  - 公開註記出版或自行出版尚在評估，作品持續更新中。
+rights_rationale: 英文翻譯仍在投稿；Asymptote 規則要求投稿譯作未曾公開發表。為保留資格，正式站不公開原稿十頁。
+acceptance:
+  - bilingual_story_overview_and_publication_status_visible
+  - no_manuscript_excerpt_or_local_preview_endpoint_in_source_or_build
+  - canonical_and_bilingual_sitemap_include_novel_page
+  - typecheck_lint_build_tests_and_desktop_mobile_ui_pass
+  - github_main_and_sites_production_deployment_verified
+scope_excluded:
+  - manuscript_publication
+  - publisher_acceptance_claim
+  - payment_or_domain_change
+release_authorization: OWNER_GRANTED_FOR_PUBLIC_SYNOPSIS_AND_EXISTING_SITE_UPDATE
+state: IMPLEMENTING

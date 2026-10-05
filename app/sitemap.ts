@@ -46,6 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const path of ["/products", "/works", "/news", "/about", "/resume"]) {
     add(routeSpec(path, path === "/resume" ? updated : bilingualSearchCopyUpdated));
   }
+  add(routeSpec("/novel/interrogation-room", new Date("2026-10-05T00:00:00+08:00"), "monthly", 0.76));
   for (const { slug } of productFilms) {
     if (isPublicSlug(slug)) add(routeSpec(`/demo/${slug}`, slug === "scbkr" ? bilingualSearchCopyUpdated : updated, "monthly", 0.72));
   }

@@ -1,0 +1,29 @@
+task_id: TASK-20261005-NOVEL-PREVIEW-WATER-INTRO-V1
+owner: 許文耀／沈耀888π
+goal: 以官網既有架構加入《審訊室存在過的名字》獨立作品頁，並改善開場影片周圍的靜態水滴視覺。
+scope:
+  - bilingual_novel_works_entry_and_local_preview_page
+  - first_ten_pdf_pages_per_language_in_local_development_only
+  - cinematic_interrogation_room_visual_based_on_owner_cloud_asset
+  - intro_water_still_backdrop_and_refined_enter_bar_without_changing_video
+preserved:
+  - existing_home_navigation_and_newsroom_museum_separation
+  - owner_original_novel_text_and_language_separation
+  - current_intro_video_and_skip_behavior
+  - owner_as_creative_and_judging_subject_with_claim_and_responsibility
+  - world_response_as_causal_test_not_third_party_certification
+  - outside_refutation_targets_owner_supplied_grounds_not_a_fixed_external_frame
+  - owner_uses_responsibility_chain_to_force_truth_and_bears_own_claim
+excluded:
+  - public_exposure_of_submitted_english_translation_or_manuscript
+  - automatic_github_push_or_sites_publication
+  - claim_of_publisher_acceptance_or_safe_harbor
+acceptance:
+  - zh_and_en_pages_render_in_local_browser
+  - development_preview_displays_exactly_first_ten_source_pdf_pages_per_language
+  - production_build_contains_no_novel_excerpt_and_page_is_noindex
+  - intro_video_plays_and_enter_action_remains_accessible
+  - typecheck_lint_build_and_relevant_tests_pass
+release_authorization: NOT_GRANTED_FOR_PUBLICATION
+state: LOCAL_IMPLEMENTATION
+final_gate: OWNER_REVIEW_AND_PUBLISHING_RIGHTS_CHECK

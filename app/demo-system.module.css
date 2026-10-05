@@ -448,6 +448,15 @@
 .mediaFeatureVideo .mediaFeatureCopy > a { color: #d9f2ff; border-color: rgba(126,207,255,.34); background: rgba(255,255,255,.06); }
 .mediaIndexLabel { margin: 0 0 16px; color: #3471a9; font: 800 10px/1 ui-monospace, monospace; letter-spacing: .12em; }
 .worksGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.novelWork { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); min-height: 420px; overflow: hidden; background: #151920; color: #eeeae4; text-decoration: none; box-shadow: 0 24px 65px rgba(22, 43, 61, .16); }
+.novelWorkImage { position: relative; min-height: 420px; overflow: hidden; }
+.novelWorkImage img { object-fit: cover; transition: transform .7s ease; }
+.novelWork:hover .novelWorkImage img { transform: scale(1.035); }
+.novelWorkCopy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 65px); border-left: 1px solid rgba(255,255,255,.1); }
+.novelWorkCopy small { color: #bd8f88; font: 700 10px ui-monospace, monospace; letter-spacing: .18em; }
+.novelWorkCopy h3 { margin: 22px 0 18px; color: #f4f0e9; font: 500 clamp(30px, 3.4vw, 53px)/1.18 Georgia, "Noto Serif TC", serif; letter-spacing: -.045em; }
+.novelWorkCopy p { margin: 0; color: #c7c6c5; font: 400 16px/1.8 Georgia, "Noto Serif TC", serif; }
+.novelWorkCopy > span { margin-top: 45px; width: fit-content; padding-bottom: 10px; border-bottom: 1px solid #c3938b; color: #e9cfca; font-size: 12px; letter-spacing: .08em; }
 .workCard { display: grid; align-content: space-between; min-height: 250px; border: 1px solid rgba(31,104,175,.17); border-radius: 24px; padding: 22px; color: inherit; background: rgba(255,255,255,.76); box-shadow: 0 18px 45px rgba(28,82,135,.08); transition: transform .2s ease, box-shadow .2s ease; }
 .workCard:hover { transform: translateY(-3px); box-shadow: 0 24px 55px rgba(28,82,135,.14); }
 .workCard small { color: #2671b8; font: 800 9px/1.2 ui-monospace, monospace; letter-spacing: .08em; }
@@ -528,6 +537,9 @@
   .mediaFeatureVideo .mediaFeatureCopy { border-top: 1px solid rgba(149,211,255,.14); border-left: 0; }
   .mediaFeatureCopy { padding: 28px 22px 32px; }
   .worksGrid { grid-template-columns: 1fr; }
+  .novelWork { grid-template-columns: 1fr; }
+  .novelWorkImage { min-height: 300px; }
+  .novelWorkCopy { padding: 32px 26px 42px; }
   .worksSection > header { grid-template-columns: 1fr; }
 }
 

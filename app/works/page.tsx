@@ -128,8 +128,16 @@ export default function WorksPage() {
       <div className={styles.worksGrid}>{mediaWorks.map((item) => item.internal ? <LocalizedLink className={styles.workCard} href={item.href} key={item.href}><div><small>{item.meta}</small><h3><Lang zh={item.titleZh} en={item.titleEn} /></h3><p><Lang zh={item.textZh} en={item.textEn} /></p></div><span><Lang zh="在官網開啟" en="OPEN ON SITE" /> →</span></LocalizedLink> : <ExternalCard item={item} key={item.href}/>)}</div>
     </section>
 
+    <section className={styles.worksSection} id="novel" aria-labelledby="novel-work-title">
+      <header><span>03</span><div><h2 id="novel-work-title"><Lang zh="小說與世界運行敘事" en="FICTION & WORLD-RUN NARRATIVE" /></h2><p><Lang zh="《審訊室存在過的名字》不是讓作者進入固定框架；沈耀在未知中追問，以責任鏈定位依據與承擔，逼出真相。外部反證必須對準他的依據，不能取代創作主體。公開頁先呈現故事提要；出版或自行出版仍在評估，作品持續更新中。" en="The Name That Existed in the Interrogation Room does not place its author in a fixed frame. In the unknown, Shen-Yao inquires through the chain of responsibility, locating grounds and accountability to force the truth into view. Outside challenges must address his grounds, not replace the creative subject. The public page presents a story overview while publication options remain under consideration and the work continues to evolve." /></p></div></header>
+      <LocalizedLink className={styles.novelWork} href="/novel/interrogation-room">
+        <div className={styles.novelWorkImage}><Image src="/media/novel/interrogation-room-scene.png" alt="空審訊室、桌椅、單向玻璃與晨光" fill unoptimized sizes="(max-width: 760px) 100vw, 55vw" /></div>
+        <div className={styles.novelWorkCopy}><small>08:17 · FICTION · WORK IN PROGRESS</small><h3><Lang zh="審訊室存在過的名字" en="THE NAME THAT EXISTED IN THE INTERROGATION ROOM" /></h3><p><Lang zh="所有人都進過審訊室，只有一個名字留了下來。" en="Many entered the interrogation room. Only one name remained." /></p><span><Lang zh="進入作品頁" en="ENTER THE WORK" /> ↗</span></div>
+      </LocalizedLink>
+    </section>
+
     <section className={styles.worksSection}>
-      <header><span>03</span><div><h2><Lang zh="公開文章與外部紀錄" en="PUBLIC WRITING & EXTERNAL RECORDS" /></h2><p><Lang zh="連結直接回原始發布位置；NVIDIA 項目清楚標示為開發者社群文章，不冒充官方合作或背書。" en="Links return to original publication locations. NVIDIA items are explicitly developer-community posts, never presented as official collaboration or endorsement." /></p></div></header>
+      <header><span>04</span><div><h2><Lang zh="公開文章與外部紀錄" en="PUBLIC WRITING & EXTERNAL RECORDS" /></h2><p><Lang zh="連結直接回原始發布位置；NVIDIA 項目清楚標示為開發者社群文章，不冒充官方合作或背書。" en="Links return to original publication locations. NVIDIA items are explicitly developer-community posts, never presented as official collaboration or endorsement." /></p></div></header>
       <div className={styles.worksGrid}>{articleWorks.map((item) => <ExternalCard item={item} key={item.href}/>)}</div>
     </section>
 
