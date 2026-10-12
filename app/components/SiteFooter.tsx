@@ -28,6 +28,7 @@ export function SiteFooter() {
         <nav className={styles.footerNav} aria-label="頁尾導覽 / Footer navigation">
           <LocalizedLink href="/products"><Lang zh="產品" en="PRODUCTS" /></LocalizedLink>
           <LocalizedLink href="/works"><Lang zh="作品" en="WORKS" /></LocalizedLink>
+          <LocalizedLink href="/books"><Lang zh="書籍" en="BOOKS" /></LocalizedLink>
           <LocalizedLink href="/news"><Lang zh="新聞台 × 博物館" en="NEWS × MUSEUM" /></LocalizedLink>
           <LocalizedLink href="/about"><Lang zh="創辦人" en="FOUNDER" /></LocalizedLink>
           <LocalizedLink href="/resume"><Lang zh="履歷" en="RESUME" /></LocalizedLink>

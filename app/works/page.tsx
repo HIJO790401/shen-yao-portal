@@ -128,12 +128,25 @@ export default function WorksPage() {
       <div className={styles.worksGrid}>{mediaWorks.map((item) => item.internal ? <LocalizedLink className={styles.workCard} href={item.href} key={item.href}><div><small>{item.meta}</small><h3><Lang zh={item.titleZh} en={item.titleEn} /></h3><p><Lang zh={item.textZh} en={item.textEn} /></p></div><span><Lang zh="在官網開啟" en="OPEN ON SITE" /> →</span></LocalizedLink> : <ExternalCard item={item} key={item.href}/>)}</div>
     </section>
 
-    <section className={styles.worksSection} id="novel" aria-labelledby="novel-work-title">
-      <header><span>03</span><div><h2 id="novel-work-title"><Lang zh="小說與世界運行敘事" en="FICTION & WORLD-RUN NARRATIVE" /></h2><p><Lang zh="《審訊室存在過的名字》不是讓作者進入固定框架；沈耀在未知中追問，以責任鏈定位依據與承擔，逼出真相。外部反證必須對準他的依據，不能取代創作主體。公開頁先呈現故事提要；出版或自行出版仍在評估，作品持續更新中。" en="The Name That Existed in the Interrogation Room does not place its author in a fixed frame. In the unknown, Shen-Yao inquires through the chain of responsibility, locating grounds and accountability to force the truth into view. Outside challenges must address his grounds, not replace the creative subject. The public page presents a story overview while publication options remain under consideration and the work continues to evolve." /></p></div></header>
-      <LocalizedLink className={styles.novelWork} href="/novel/interrogation-room">
-        <div className={styles.novelWorkImage}><Image src="/media/novel/interrogation-room-scene.png" alt="空審訊室、桌椅、單向玻璃與晨光" fill unoptimized sizes="(max-width: 760px) 100vw, 55vw" /></div>
-        <div className={styles.novelWorkCopy}><small>08:17 · FICTION · WORK IN PROGRESS</small><h3><Lang zh="審訊室存在過的名字" en="THE NAME THAT EXISTED IN THE INTERROGATION ROOM" /></h3><p><Lang zh="所有人都進過審訊室，只有一個名字留了下來。" en="Many entered the interrogation room. Only one name remained." /></p><span><Lang zh="進入作品頁" en="ENTER THE WORK" /> ↗</span></div>
-      </LocalizedLink>
+    <section className={styles.worksSection} id="literature" aria-labelledby="literature-work-title">
+      <header><span>03</span><div><h2 id="literature-work-title"><Lang zh="文學與書籍" en="LITERATURE & BOOKS" /></h2><p><Lang zh="書籍不再混在一般作品清單裡。《沉靜是一種語言》提供正式第一部試讀與已核實的繁中購買入口；《審訊室存在過的名字》保留獨立審訊室世界，公開頁先呈現故事提要；作品持續更新中。" en="Books now have a dedicated editorial home. Stillness Is a Language offers a verified Part One preview and a confirmed Traditional Chinese storefront; The Name That Existed in the Interrogation Room retains its own interrogation-room world and public synopsis while the work continues to evolve." /></p></div></header>
+      <div className={styles.literatureGrid}>
+        <LocalizedLink className={`${styles.literatureCard} ${styles.stillnessWork}`} href="/books/stillness-is-a-language">
+          <div className={styles.literatureVisual}>
+            <Lang
+              zh={<Image src="/media/books/stillness-is-a-language/cover-zh.jpg" alt="《沉靜是一種語言》繁中版封面" fill unoptimized sizes="(max-width: 760px) 66vw, 22vw" />}
+              en={<Image src="/media/books/stillness-is-a-language/cover-en.jpg" alt="Stillness Is a Language English cover" fill unoptimized sizes="(max-width: 760px) 66vw, 22vw" />}
+            />
+          </div>
+          <div className={styles.literatureCopy}><small>2025 ORIGINAL · 2026 REVISED EDITION</small><h3><Lang zh="沉靜是一種語言" en="STILLNESS IS A LANGUAGE" /></h3><p><Lang zh="從尚未命名的語言，到把責任落地的起點。繁中第一部 17 頁與英文同內容邊界試讀，分開呈現。" en="From a language that had not yet been named to the beginning of responsibility made concrete. Part One is presented separately in Traditional Chinese and English." /></p><span><Lang zh="進入書籍頁" en="ENTER THE BOOK" /> ↗</span></div>
+        </LocalizedLink>
+
+        <LocalizedLink className={`${styles.literatureCard} ${styles.interrogationWork}`} href="/novel/interrogation-room">
+          <div className={styles.literatureScene}><Image src="/media/novel/interrogation-room-scene.png" alt="空審訊室、桌椅、單向玻璃與晨光" fill unoptimized sizes="(max-width: 760px) 100vw, 42vw" /></div>
+          <div className={styles.literatureCopy}><small>08:17 · FICTION · WORK IN PROGRESS</small><h3><Lang zh="審訊室存在過的名字" en="THE NAME THAT EXISTED IN THE INTERROGATION ROOM" /></h3><p><Lang zh="所有人都進過審訊室，只有一個名字留了下來。公開頁呈現故事提要；作品持續更新中。" en="Many entered the interrogation room. Only one name remained. The public page presents a synopsis while the work continues to evolve." /></p><span><Lang zh="進入作品頁" en="ENTER THE WORK" /> ↗</span></div>
+        </LocalizedLink>
+      </div>
+      <LocalizedLink className={styles.booksHubLink} href="/books"><Lang zh="瀏覽文學與書籍專區" en="EXPLORE LITERATURE & BOOKS" /> <span aria-hidden="true">→</span></LocalizedLink>
     </section>
 
     <section className={styles.worksSection}>

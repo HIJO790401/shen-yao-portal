@@ -1,0 +1,33 @@
+task_id: TASK-20261012-LITERARY-BOOKS-HUB-V1
+must_have:
+  - zh_and_en_books_hubs_use_separate_localized_routes
+  - both_books_have_distinct_visual_identity_and_truthful_publication_state
+  - stillness_pages_show_correct_cover_author_names_2025_origin_and_2026_revision
+  - chinese_preview_exposes_only_the_verified_17_page_pdf
+  - english_preview_exposes_only_part_one_and_not_the_complete_manuscript
+  - chinese_pubu_cta_uses_the_verified_public_product_url
+  - no_english_purchase_cta_until_a_working_public_store_url_exists
+  - interrogation_room_existing_urls_remain_valid_and_manuscript_stays_private
+  - header_footer_home_and_works_discovery_flow_is_clear
+  - sitemap_llms_metadata_hreflang_and_book_schema_cover_new_public_routes
+  - no_complete_pdf_epub_print_asset_or_private_source_enters_public
+verification:
+  - typecheck
+  - lint
+  - build
+  - full_tests
+  - desktop_and_mobile_browser_review
+  - public_asset_boundary_scan
+  - git_diff_and_secret_scan
+final_gate: OWNER_REVIEW
+result:
+  typecheck: PASS
+  lint: PASS
+  build: PASS
+  full_tests: PASS_47_OF_47
+  desktop_and_mobile_browser_review: PASS
+  public_asset_boundary_scan: PASS
+  git_diff_check: PASS
+  secret_literal_scan: PASS
+  github_push: NOT_PERFORMED
+  public_deployment: NOT_PERFORMED

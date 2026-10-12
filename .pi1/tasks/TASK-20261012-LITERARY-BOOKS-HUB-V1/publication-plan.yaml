@@ -1,0 +1,17 @@
+task_id: TASK-20261012-LITERARY-BOOKS-HUB-V1
+owner_authorization: DIRECT_GITHUB_PUSH
+authorized_at: 2026-10-12
+target:
+  remote: https://github.com/HIJO790401/shen-yao-portal.git
+  branch: main
+pre_push_state:
+  local_verification: PASS
+  full_tests: 47_PASS_0_FAIL
+  branch_divergence: 0_AHEAD_0_BEHIND
+  baseline_commit: 4e482ed4009a42d2e0a8bafa57eede86a4a222ce
+excluded:
+  - sites_version_save
+  - private_deployment
+  - production_deployment
+  - dns_or_domain_changes
+post_push_receipt_required: true

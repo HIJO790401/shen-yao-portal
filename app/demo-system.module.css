@@ -448,6 +448,29 @@
 .mediaFeatureVideo .mediaFeatureCopy > a { color: #d9f2ff; border-color: rgba(126,207,255,.34); background: rgba(255,255,255,.06); }
 .mediaIndexLabel { margin: 0 0 16px; color: #3471a9; font: 800 10px/1 ui-monospace, monospace; letter-spacing: .12em; }
 .worksGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.literatureGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.literatureCard { position: relative; display: grid; grid-template-columns: minmax(180px, .72fr) minmax(0, 1.28fr); min-height: 460px; overflow: hidden; border: 1px solid rgba(31,104,175,.18); border-radius: 30px; color: inherit; background: rgba(255,255,255,.82); box-shadow: 0 28px 75px rgba(20,76,132,.12); text-decoration: none; transition: transform .5s cubic-bezier(.18,.7,.2,1), box-shadow .5s ease; }
+.literatureCard:hover { transform: translateY(-5px); box-shadow: 0 36px 90px rgba(20,76,132,.2); }
+.literatureVisual { position: relative; display: grid; place-items: center; overflow: hidden; padding: 44px; background: radial-gradient(circle at 20% 10%, rgba(255,255,255,.94), transparent 34%), repeating-radial-gradient(ellipse at 60% 72%, transparent 0 31px, rgba(40,136,205,.09) 32px 34px, transparent 35px 56px), linear-gradient(145deg,#eaf8ff,#acdafa); }
+.literatureVisual > span { position: relative; display: block; width: min(230px,78%); aspect-ratio: 5/8; filter: drop-shadow(-16px 23px 26px rgba(4,55,108,.24)); transform: perspective(800px) rotateY(6deg); transition: transform .6s ease; }
+.literatureVisual img { object-fit: contain; }
+.literatureCard:hover .literatureVisual > span { transform: perspective(800px) rotateY(1deg) translateY(-4px); }
+.literatureScene { position: relative; min-height: 460px; overflow: hidden; }
+.literatureScene::after { position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(12,15,20,.55)); content: ""; }
+.literatureScene img { object-fit: cover; transition: transform .7s ease; }
+.literatureCard:hover .literatureScene img { transform: scale(1.03); }
+.literatureCopy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px,4vw,55px); }
+.literatureCopy small { color: #2a73b4; font: 800 9px/1.4 ui-monospace,monospace; letter-spacing: .13em; }
+.literatureCopy h3 { margin: 20px 0 15px; color: #0b3c6d; font: 600 clamp(29px,3vw,45px)/1.12 var(--font-serif),"Noto Serif TC",serif; letter-spacing: -.04em; }
+.literatureCopy p { margin: 0; color: #58758e; font-size: 13px; line-height: 1.8; }
+.literatureCopy > span { margin-top: 34px; width: fit-content; border-bottom: 1px solid currentColor; padding-bottom: 8px; color: #1767ac; font: 800 10px/1 ui-monospace,monospace; letter-spacing: .07em; }
+.interrogationWork { color: #f2eee8; border-color: rgba(210,170,157,.19); background: #15191f; box-shadow: 0 30px 80px rgba(11,18,27,.25); }
+.interrogationWork .literatureCopy { border-left: 1px solid rgba(255,255,255,.08); }
+.interrogationWork .literatureCopy small { color: #bd8f88; }
+.interrogationWork .literatureCopy h3 { color: #f4f0e9; }
+.interrogationWork .literatureCopy p { color: #c7c6c5; }
+.interrogationWork .literatureCopy > span { color: #e9cfca; }
+.booksHubLink { display: inline-flex; align-items: center; gap: 28px; margin-top: 24px; border-bottom: 1px solid #1765b7; padding: 11px 0; color: #1765b7; font: 800 10px/1.3 ui-monospace,monospace; letter-spacing: .09em; }
 .novelWork { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); min-height: 420px; overflow: hidden; background: #151920; color: #eeeae4; text-decoration: none; box-shadow: 0 24px 65px rgba(22, 43, 61, .16); }
 .novelWorkImage { position: relative; min-height: 420px; overflow: hidden; }
 .novelWorkImage img { object-fit: cover; transition: transform .7s ease; }
@@ -537,6 +560,11 @@
   .mediaFeatureVideo .mediaFeatureCopy { border-top: 1px solid rgba(149,211,255,.14); border-left: 0; }
   .mediaFeatureCopy { padding: 28px 22px 32px; }
   .worksGrid { grid-template-columns: 1fr; }
+  .literatureGrid { grid-template-columns: 1fr; }
+  .literatureCard { grid-template-columns: 1fr; min-height: 0; }
+  .literatureVisual { min-height: 430px; }
+  .literatureScene { min-height: 330px; }
+  .interrogationWork .literatureCopy { border-top: 1px solid rgba(255,255,255,.08); border-left: 0; }
   .novelWork { grid-template-columns: 1fr; }
   .novelWorkImage { min-height: 300px; }
   .novelWorkCopy { padding: 32px 26px 42px; }

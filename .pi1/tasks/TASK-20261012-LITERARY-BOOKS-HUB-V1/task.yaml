@@ -1,0 +1,30 @@
+task_id: TASK-20261012-LITERARY-BOOKS-HUB-V1
+owner: 許文耀／沈耀888π
+goal: 建立沉靜流派工作室中英文獨立文學與書籍區，納入《沉靜是一種語言》與《審訊室存在過的名字》，並提供受控試讀與真實商店狀態。
+owner_direction:
+  - 書籍要成為獨立分類，不埋在產品 Demo 或新聞台。
+  - 中文與英文採同等頁面規格與閱讀體驗，不做同段混排。
+  - 本輪先施工本機可瀏覽版本，正式發布另行授權。
+  - 2026-10-12 站主確認本機版本並明確授權直接推送 GitHub main。
+scope:
+  - bilingual_books_hub
+  - stillness_is_a_language_bilingual_detail_pages
+  - traditional_chinese_part_one_preview_pdf
+  - english_part_one_web_reader
+  - existing_interrogation_room_book_entry_without_url_migration
+  - header_footer_works_home_discovery_links
+  - book_metadata_json_ld_sitemap_and_llms
+preserved:
+  - existing_home_structure_and_intro_gate
+  - existing_interrogation_room_publication_boundary
+  - newsroom_and_museum_separation
+  - owner_authored_subject_boundary_and_responsibility_copy
+excluded:
+  - full_chinese_or_english_book_download
+  - public_english_store_link_before_live_verification
+  - readmoo_link_before_public_listing
+  - cms_schema_expansion
+  - sites_version_save_or_external_deployment
+release_authorization: GITHUB_MAIN_PUSH_AUTHORIZED
+state: GITHUB_MAIN_PUSH_AUTHORIZED
+final_gate: SOURCE_COMPLETE_NOT_LIVE_AFTER_PUSH

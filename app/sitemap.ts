@@ -7,6 +7,7 @@ import { siteOrigin } from "./site-config";
 
 const updated = new Date("2026-09-28T00:00:00+08:00");
 const bilingualSearchCopyUpdated = new Date("2026-10-03T00:00:00+08:00");
+const booksUpdated = new Date("2026-10-12T00:00:00+08:00");
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type ChangeFrequency = NonNullable<SitemapEntry["changeFrequency"]>;
@@ -46,6 +47,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const path of ["/products", "/works", "/news", "/about", "/resume"]) {
     add(routeSpec(path, path === "/resume" ? updated : bilingualSearchCopyUpdated));
   }
+  add(routeSpec("/books", booksUpdated, "weekly", 0.9));
+  add(routeSpec("/books/stillness-is-a-language", booksUpdated, "monthly", 0.88));
+  add(routeSpec("/books/stillness-is-a-language/preview", booksUpdated, "monthly", 0.78));
   add(routeSpec("/novel/interrogation-room", new Date("2026-10-05T00:00:00+08:00"), "monthly", 0.76));
   for (const { slug } of productFilms) {
     if (isPublicSlug(slug)) add(routeSpec(`/demo/${slug}`, slug === "scbkr" ? bilingualSearchCopyUpdated : updated, "monthly", 0.72));

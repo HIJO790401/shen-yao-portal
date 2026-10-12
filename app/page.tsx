@@ -190,6 +190,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.literatureBand} aria-labelledby="latest-book-title" data-serene-reveal="rise">
+          <div className={styles.literatureCover}>
+            <Lang
+              zh={<Image src="/media/books/stillness-is-a-language/cover-zh.jpg" alt="《沉靜是一種語言》繁中版封面" fill unoptimized sizes="(max-width: 760px) 58vw, 19vw" />}
+              en={<Image src="/media/books/stillness-is-a-language/cover-en.jpg" alt="Stillness Is a Language English cover" fill unoptimized sizes="(max-width: 760px) 58vw, 19vw" />}
+            />
+          </div>
+          <div className={styles.literatureBandCopy}>
+            <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="最新書籍" en="LATEST BOOK" /></p>
+            <span className={styles.literatureMeta}>2025 ORIGINAL · 2026 REVISED EDITION</span>
+            <h2 id="latest-book-title"><Lang zh="沉靜是一種語言" en="STILLNESS IS A LANGUAGE" /></h2>
+            <h3><Lang zh="在找不到語言之前" en="BEFORE WORDS ARE FOUND" /></h3>
+            <p><Lang zh="從理解、沉默、選擇到責任：這是作者在語言尚未命名以前寫下的起點，也是後來把責任落地的前身。繁中與英文試讀分開呈現。" en="From understanding, silence and choice to responsibility: these essays preserve the point before the language had a name, and the origin from which responsibility was later made concrete. Chinese and English previews remain separate." /></p>
+            <div className={styles.literatureActions}>
+              <LocalizedLink href="/books/stillness-is-a-language"><Lang zh="進入書籍頁" en="ENTER THE BOOK" /> <span aria-hidden="true">→</span></LocalizedLink>
+              <LocalizedLink href="/books"><Lang zh="瀏覽全部書籍" en="VIEW ALL BOOKS" /> <span aria-hidden="true">↗</span></LocalizedLink>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.newsMuseum} aria-labelledby="news-museum-title" data-serene-reveal="focus">
           <div className={styles.newsIntro}>
             <p className={styles.sectionKicker}><i aria-hidden="true" /> ARCHIVE / NEWSROOM</p>

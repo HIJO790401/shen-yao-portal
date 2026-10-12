@@ -3,6 +3,7 @@ import Image from "next/image";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { SiteFooter } from "../../../components/SiteFooter";
 import { LocalizedLink } from "../../../components/LanguageControl";
+import { localizedAlternates, siteUrl } from "../../../site-config";
 import styles from "./novel.module.css";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -24,7 +25,7 @@ const copy = {
     publicNote: "作品進行中 · 正文暫不公開",
     synopsis: "八點十七分，審訊室迎來一件看似尋常的案件。沈耀不急著讓標籤代替判斷，而是追問行動、規則、證據與責任各自落在誰身上。當另一條線索進入城市，原本簡單的問題開始改變形狀。每次追問都可能讓真相更近，也讓提出判斷的人必須承擔其後果。",
     publication: "出版方式仍在評估：可能由出版社出版，也可能由作者自行出版。作品持續更新中；正式版本與發行資訊確定後，會在此頁公布。",
-    back: "返回作品總覽",
+    back: "返回文學與書籍",
     coverAlt: "《審訊室存在過的名字》原始預告海報，審訊室與作者肖像",
     sceneAlt: "空審訊室的寫實場景：桌椅、錄音器、單向玻璃與晨光",
   },
@@ -43,7 +44,7 @@ const copy = {
     publicNote: "WORK IN PROGRESS · MANUSCRIPT NOT PUBLIC",
     synopsis: "At 8:17 a.m., an apparently ordinary case reaches the interrogation room. Shen-Yao refuses to let a label stand in for judgment. He asks who acted, which rule applied, what the evidence shows, and where responsibility falls. As another lead enters the city, a simple question changes shape. Each inquiry may bring the truth closer while making the person who judges answer for the consequences.",
     publication: "The publication path remains undecided: a publisher's edition or an independent release are both under consideration. The work is still evolving. This page will carry confirmed edition and release information when available.",
-    back: "BACK TO WORKS",
+    back: "BACK TO LITERATURE & BOOKS",
     coverAlt: "Original promotional poster for The Name That Existed in the Interrogation Room, with the author's portrait",
     sceneAlt: "Photorealistic empty interrogation room with table, recorder, one-way glass and morning light",
   },
@@ -56,9 +57,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: { absolute: `${c.title}｜SERENE SCHOOL STUDIO` },
     description: c.story,
     robots: { index: true, follow: true },
-    alternates: {
-      canonical: `/${locale}/novel/interrogation-room`,
-      languages: { "zh-Hant": "/zh/novel/interrogation-room", en: "/en/novel/interrogation-room" },
+    alternates: localizedAlternates(locale, "/novel/interrogation-room"),
+    openGraph: {
+      type: "book",
+      url: `/${locale}/novel/interrogation-room`,
+      title: c.title,
+      description: c.story,
+      locale: locale === "en" ? "en_US" : "zh_TW",
+      alternateLocale: locale === "en" ? "zh_TW" : "en_US",
+      images: [{ url: "/media/novel/interrogation-room-poster.png", width: 1024, height: 1536, alt: c.coverAlt }],
     },
   };
 }
@@ -66,7 +73,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function InterrogationRoomNovelPage({ params }: PageProps) {
   const locale: Locale = (await params).locale === "en" ? "en" : "zh";
   const c = copy[locale];
-  return <><SiteHeader /><main className={styles.novel} lang={locale === "en" ? "en" : "zh-Hant"}>
+  const bookSchema = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": siteUrl(`/${locale}/novel/interrogation-room#book`),
+    name: c.title,
+    description: c.synopsis,
+    url: siteUrl(`/${locale}/novel/interrogation-room`),
+    image: siteUrl("/media/novel/interrogation-room-poster.png"),
+    inLanguage: locale === "en" ? "en" : "zh-Hant",
+    genre: ["Crime suspense", "World-run narrative"],
+    author: { "@id": siteUrl("/#person") },
+    isPartOf: { "@id": siteUrl("/#website") },
+  };
+  return <><SiteHeader /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookSchema) }} /><main className={styles.novel} lang={locale === "en" ? "en" : "zh-Hant"}>
     <section className={styles.hero} aria-labelledby="novel-title">
       <Image src="/media/novel/interrogation-room-scene.png" alt={c.sceneAlt} fill priority unoptimized sizes="100vw" />
       <div className={styles.heroVeil} />
@@ -102,7 +122,7 @@ export default async function InterrogationRoomNovelPage({ params }: PageProps) 
         <span className={styles.readerMark} aria-hidden="true">08:17</span>
       </div>
       <div className={styles.releaseHold}><p>{c.synopsis}</p><p>{c.publication}</p></div>
-      <LocalizedLink href="/works" className={styles.backLink}>{c.back} <span aria-hidden="true">↗</span></LocalizedLink>
+      <LocalizedLink href="/books" className={styles.backLink}>{c.back} <span aria-hidden="true">↗</span></LocalizedLink>
     </section>
   </main><SiteFooter /></>;
 }

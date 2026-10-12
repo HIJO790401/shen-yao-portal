@@ -11,13 +11,13 @@ const serif = Noto_Serif_TC({ variable: "--font-serif", subsets: ["latin"], weig
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: { default: "沉靜流派工作室｜SERENE SCHOOL STUDIO｜許文耀／沈耀888π", template: "%s｜沉靜流派工作室" },
-  description: "沉靜流派工作室創辦人沈耀888π／許文耀的官方網站。公開已於 Microsoft Store 上架的 SCBKR、語意防火牆、AICC OS v0.2.CANDIDATE 候選架構、動畫及音樂作品。",
-  keywords: ["沉靜流派", "沈耀888π", "許文耀", "Shen Yao 888pi", "Wen-Yao Hsu", "古文明符號", "數學公式", "SCBKR", "AICC OS", "AI Capability Compiler", "Semantic Firewall", "語意防火牆", "Artifacts of the Language God", "AI governance"],
+  description: "沉靜流派工作室創辦人沈耀888π／許文耀的官方網站。公開 SCBKR、語意防火牆、AICC OS 候選架構、動畫、音樂，以及《沉靜是一種語言》等文學與書籍作品。",
+  keywords: ["沉靜流派", "沈耀888π", "許文耀", "Shen Yao 888pi", "Wen-Yao Hsu", "古文明符號", "數學公式", "SCBKR", "AICC OS", "AI Capability Compiler", "Semantic Firewall", "語意防火牆", "Artifacts of the Language God", "AI governance", "沉靜是一種語言", "Stillness Is a Language", "審訊室存在過的名字", "literary essays"],
   authors: [{ name: "沈耀888π／許文耀" }],
   creator: "沈耀888π／許文耀",
   alternates: { canonical: "/zh", languages: { "zh-Hant": "/zh", en: "/en" } },
-  openGraph: { type: "website", locale: "zh_TW", alternateLocale: "en_US", title: "沉靜流派工作室｜SERENE SCHOOL STUDIO", description: "Semantic governance, animation and music by independent systems architect Wen-Yao Hsu.", images: [{ url: "/og.png", width: 1200, height: 630, alt: "SERENE SCHOOL STUDIO water-drop identity" }] },
-  twitter: { card: "summary_large_image", title: "沉靜流派工作室｜SERENE SCHOOL STUDIO", description: "Semantic governance, animation and music by independent architect Wen-Yao Hsu.", images: ["/og.png"] },
+  openGraph: { type: "website", locale: "zh_TW", alternateLocale: "en_US", title: "沉靜流派工作室｜SERENE SCHOOL STUDIO", description: "Semantic governance, systems, animation, music and literary works by independent architect and author Wen-Yao Hsu.", images: [{ url: "/og.png", width: 1200, height: 630, alt: "SERENE SCHOOL STUDIO water-drop identity" }] },
+  twitter: { card: "summary_large_image", title: "沉靜流派工作室｜SERENE SCHOOL STUDIO", description: "Semantic governance, systems, animation, music and literary works by Wen-Yao Hsu.", images: ["/og.png"] },
   icons: { icon: "/favicon.svg" },
 };
 

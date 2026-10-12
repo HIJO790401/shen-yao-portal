@@ -16,6 +16,11 @@ Languages: Traditional Chinese and English are available as separate routes.
 - English home: ${siteUrl("/en")}
 - Products and fixed-case demonstrations: ${siteUrl("/zh/products")}
 - Works and public records: ${siteUrl("/zh/works")}
+- Literary works and books (Traditional Chinese): ${siteUrl("/zh/books")}
+- Literary works and books (English): ${siteUrl("/en/books")}
+- 沉靜是一種語言 / Stillness Is a Language: ${siteUrl("/zh/books/stillness-is-a-language")}
+- Bilingual Part One preview: ${siteUrl("/zh/books/stillness-is-a-language/preview")} and ${siteUrl("/en/books/stillness-is-a-language/preview")}
+- 《審訊室存在過的名字》 / The Name That Existed in the Interrogation Room: ${siteUrl("/zh/novel/interrogation-room")}
 - Reality Newsroom and Responsibility Museum: ${siteUrl("/zh/news")}
 - Founder profile: ${siteUrl("/zh/about")}
 - Founding manifesto in Traditional Chinese: ${siteUrl("/zh/about#manifesto")}
@@ -26,6 +31,15 @@ Languages: Traditional Chinese and English are available as separate routes.
 ## Scope
 
 SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. Public work covers semantic governance, the Semantic Firewall, SCBKR responsibility-chain systems, the AICC OS candidate architecture, software architecture, animation, music, writing, the Reality Newsroom and the Responsibility Museum.
+
+## Literary works and books
+
+- 沉靜是一種語言 / Stillness Is a Language is a literary-essay book by Wen-Yao Hsu, also known across different creative periods as 嗨啾 / HI-JIU and 沈耀888PI / SHEN YAO888PI. These names identify one author, not three co-authors.
+- The original writing began in 2025. The revised written edition is dated 2026. The book does not rewrite SCBKR as having existed in 2025.
+- The Traditional Chinese edition is independently published by 許文耀 under the public studio identity 沉靜流派工作室 and is available from Pubu at https://www.pubu.com.tw/ebook/700139 for NT$199.
+- The public Traditional Chinese preview is the verified first 17 pages, 22.4% of the 76-page edition, ending with Part One. The full PDF and EPUB are not public website downloads.
+- The English edition, Stillness Is a Language: Before Words Are Found, has a public Part One sample with the same content boundary. Its store review is still in progress; this site does not claim a live English storefront before one is verified.
+- 《審訊室存在過的名字》 / The Name That Existed in the Interrogation Room is a separate ongoing fiction work. Its public page presents a synopsis, not the submitted manuscript.
 
 The founder's manifesto distinguishes computational power from a valid judgment path: compute can accelerate work, but the founder defines when and where it should be applied. The bilingual first-party statement is visible on the founder page; it is a founding position, not a claim that any particular system has been independently validated.
 

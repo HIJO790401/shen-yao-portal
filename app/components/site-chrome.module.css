@@ -72,7 +72,7 @@
 .nav {
   display: flex !important;
   align-items: center;
-  gap: clamp(17px, 2.4vw, 36px) !important;
+  gap: clamp(14px, 1.8vw, 29px) !important;
 }
 
 .nav a {
@@ -264,7 +264,7 @@
   outline-offset: 4px;
 }
 
-@media (max-width: 940px) {
+@media (max-width: 1080px) {
   .header {
     grid-template-columns: minmax(0, 1fr) auto auto !important;
     gap: 9px;
@@ -275,9 +275,19 @@
   .header.scrolled { height: 68px !important; }
 
   .menuButton {
-    display: grid !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
     grid-column: 3;
     grid-row: 1;
+  }
+
+  .menuButton span {
+    width: 18px !important;
+    min-width: 18px;
+    margin: 0;
   }
 
   .header :global(.language-control) {
@@ -291,6 +301,8 @@
     right: 0;
     left: 0;
     display: none !important;
+    max-height: calc(100svh - 72px);
+    overflow-y: auto;
     flex-direction: column;
     align-items: stretch;
     gap: 0 !important;

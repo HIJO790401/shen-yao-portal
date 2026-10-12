@@ -1,0 +1,19 @@
+receipt_id: R-20261012-LITERARY-BOOKS-HUB-V1-LOCAL-OWNER-REVIEW
+task_id: TASK-20261012-LITERARY-BOOKS-HUB-V1
+recorded_at: 2026-10-12T17:05:02+08:00
+owner: 許文耀／沈耀888π
+baseline_commit: 4e482ed4009a42d2e0a8bafa57eede86a4a222ce
+result: LOCAL_OWNER_REVIEW_READY
+verification:
+  typecheck: PASS
+  lint: PASS
+  build: PASS
+  tests: 47_PASS_0_FAIL
+  browser_visual_qa: PASS
+  public_asset_boundary: PASS
+  bilingual_routes_http_200: PASS
+publication:
+  git_commit: NOT_CREATED
+  github_push: NOT_PERFORMED
+  public_deployment: NOT_PERFORMED
+  owner_review_required: true
