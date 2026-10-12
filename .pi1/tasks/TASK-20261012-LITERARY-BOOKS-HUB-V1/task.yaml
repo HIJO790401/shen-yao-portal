@@ -25,6 +25,7 @@ excluded:
   - readmoo_link_before_public_listing
   - cms_schema_expansion
   - sites_version_save_or_external_deployment
-release_authorization: GITHUB_MAIN_PUSH_AUTHORIZED
-state: GITHUB_MAIN_PUSH_AUTHORIZED
-final_gate: SOURCE_COMPLETE_NOT_LIVE_AFTER_PUSH
+release_authorization: GITHUB_MAIN_PUSH_COMPLETE
+state: SOURCE_COMPLETE_NOT_LIVE
+source_commit: f67527f25961045c8d86b0f450ea0f1aa73e66e6
+final_gate: EXTERNAL_DEPLOYMENT_REQUIRES_SEPARATE_OWNER_AUTHORIZATION

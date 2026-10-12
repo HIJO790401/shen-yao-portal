@@ -1,0 +1,23 @@
+receipt_id: R-20261012-LITERARY-BOOKS-HUB-V1-GITHUB-MAIN
+task_id: TASK-20261012-LITERARY-BOOKS-HUB-V1
+recorded_at: 2026-10-12T17:23:07+08:00
+owner: 許文耀／沈耀888π
+authorization: OWNER_DIRECT_PUSH_COMMAND
+remote: https://github.com/HIJO790401/shen-yao-portal.git
+branch: main
+source_commit: f67527f25961045c8d86b0f450ea0f1aa73e66e6
+remote_head_after_push: f67527f25961045c8d86b0f450ea0f1aa73e66e6
+push_result: PASS
+state: SOURCE_COMPLETE_NOT_LIVE
+verification_before_push:
+  typecheck: PASS
+  lint: PASS
+  build: PASS
+  tests: 47_PASS_0_FAIL
+  visual_qa: PASS
+  pre_push_audit: PASS
+external_release:
+  sites_version_save: NOT_PERFORMED
+  private_deployment: NOT_PERFORMED
+  production_deployment: NOT_PERFORMED
+  dns_change: NOT_PERFORMED
