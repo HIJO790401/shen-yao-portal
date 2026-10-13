@@ -52,12 +52,14 @@ test("publishes a bilingual books hierarchy discoverable from the main site", as
 });
 
 test("books routes are indexable, bilingual and represented in public discovery files", async () => {
-  const [hub, detail, preview, sitemap, llms] = await Promise.all([
+  const [hub, detail, preview, sitemap, llms, rootLayout, localeProxy] = await Promise.all([
     source("app/[locale]/books/page.tsx"),
     source("app/[locale]/books/stillness-is-a-language/page.tsx"),
     source("app/[locale]/books/stillness-is-a-language/preview/page.tsx"),
     source("app/sitemap.ts"),
     source("app/llms.txt/route.ts"),
+    source("app/layout.tsx"),
+    source("proxy.ts"),
   ]);
 
   for (const page of [hub, detail, preview]) {
@@ -83,6 +85,10 @@ test("books routes are indexable, bilingual and represented in public discovery 
   assert.match(llms, /\/zh\/books\/stillness-is-a-language\/preview/);
   assert.match(llms, /\/en\/books\/stillness-is-a-language\/preview/);
   assert.match(llms, /full PDF and EPUB are not public website downloads/i);
+  assert.match(rootLayout, /x-serene-document-language/);
+  assert.match(rootLayout, /lang=\{documentLanguage\}/);
+  assert.match(localeProxy, /\/en/);
+  assert.match(localeProxy, /\/zh/);
 });
 
 test("book data preserves bilingual identity, edition and storefront boundaries", () => {
@@ -105,9 +111,10 @@ test("book data preserves bilingual identity, edition and storefront boundaries"
   assert.equal(stillnessIsALanguage.stores.zh.url, stillnessPubuUrl);
   assert.equal(stillnessPubuUrl, "https://www.pubu.com.tw/ebook/700139");
   assert.equal(stillnessIsALanguage.stores.zh.price, "NT$199");
-  assert.equal(stillnessIsALanguage.stores.en.state, "pending-platform-review");
+  assert.equal(stillnessIsALanguage.stores.en.state, "not-yet-for-sale");
   assert.equal(stillnessIsALanguage.stores.en.url, null);
   assert.equal(stillnessIsALanguage.stores.en.price, "US$6.25");
+  assert.match(stillnessIsALanguage.stores.en.note, /remains local and has not been uploaded/i);
 
   assert.equal(stillnessIsALanguage.preview.zh.proportion, "17 / 76 pages · 22.4%");
   assert.match(stillnessIsALanguage.preview.en.proportion, /16\.46%.*2,305 \/ 14,004 words/);
@@ -161,4 +168,35 @@ test("English public sample stops at Part One and contains all five authorized e
     ],
   );
   assert.doesNotMatch(previewSource, /Part Two|PART TWO|第二部/);
+});
+
+test("English public sample body remains identical to the owner-approved release copy", () => {
+  const approvedBody = {
+    openingSections: stillnessEnglishPreview.openingSections,
+    part: stillnessEnglishPreview.part,
+  };
+  const digest = createHash("sha256")
+    .update(JSON.stringify(approvedBody))
+    .digest("hex")
+    .toUpperCase();
+
+  assert.equal(
+    digest,
+    "B00ED399BE495F65877F7ED1AFB23544E8A2E02C75D34BC526624ABC21E0829C",
+    "the public English sample changed; recheck every sentence against Stillness_Is_a_Language_English_Sample_Part_One.md before updating this receipt",
+  );
+
+  const publicCopy = JSON.stringify(stillnessEnglishPreview);
+  for (const unauthorizedSoftening of [
+    "Both may still care",
+    "People do not necessarily fail to understand you",
+    "It can be an open door to honesty and possibility",
+    "That was when I felt what understanding could be",
+    "This reminder has its place in our time",
+  ]) {
+    assert.ok(
+      !publicCopy.includes(unauthorizedSoftening),
+      `owner-approved language must not be softened to: ${unauthorizedSoftening}`,
+    );
+  }
 });

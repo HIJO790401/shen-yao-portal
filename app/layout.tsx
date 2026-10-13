@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_TC, Noto_Serif_TC, Space_Grotesk } from "next/font/google";
+import { headers } from "next/headers";
 import { MotionExperience } from "./components/MotionExperience";
 import { scbkrMicrosoftStore, siteOrigin, siteUrl } from "./site-config";
 import "./globals.css";
@@ -31,6 +32,8 @@ const structuredData = {
   ],
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-Hant" suppressHydrationWarning><body className={`${sans.variable} ${tc.variable} ${serif.variable}`}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><MotionExperience />{children}</body></html>;
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const requestHeaders = await headers();
+  const documentLanguage = requestHeaders.get("x-serene-document-language") === "en" ? "en" : "zh-Hant";
+  return <html lang={documentLanguage} suppressHydrationWarning><body className={`${sans.variable} ${tc.variable} ${serif.variable}`}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><MotionExperience />{children}</body></html>;
 }

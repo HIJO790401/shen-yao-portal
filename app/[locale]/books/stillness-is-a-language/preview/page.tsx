@@ -54,7 +54,7 @@ export default async function StillnessPreviewPage({ params }: PageProps) {
         eyebrow: "PART ONE · PUBLIC PREVIEW",
         title: "Hearing Silence",
         intro:
-          "Author’s Preface, A Note on Reading, and all five essays in Part One. This is the complete authorized English sample, not the complete book.",
+          "Author’s Preface, A Note on Reading, and all five essays in Part One. This is the complete public English sample, not the complete book.",
         boundary:
           "Public sample: 2,305 of 14,004 words, or approximately 16.46% of the complete English manuscript. Parts Two through Five are not published here.",
         return: "RETURN TO BOOK",
@@ -120,6 +120,15 @@ export default async function StillnessPreviewPage({ params }: PageProps) {
                 <small>PART ONE PREVIEW · ALL RIGHTS RESERVED</small>
                 <h2>{stillnessEnglishPreview.title}</h2>
                 <p>{stillnessEnglishPreview.subtitle}</p>
+                <p className={styles.readerAuthor}>{stillnessEnglishPreview.authorLine}</p>
+                <dl className={styles.previewCopyright}>
+                  {stillnessEnglishPreview.copyright.map((item) => (
+                    <div key={item.label}>
+                      <dt>{item.label}</dt>
+                      <dd>{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
               </header>
 
               {stillnessEnglishPreview.openingSections.map((section) => (

@@ -66,14 +66,14 @@ export default async function StillnessBookPage({ params }: PageProps) {
         revised: "REVISED EDITION",
         price: "LIST PRICE",
         introduction: "The language before it had a name",
-        origin: "Two dates, one continuous subject",
+        origin: "Two moments in time, one subject who remains responsible",
         originalTitle: "2025 · THE WRITING BEGINS",
-        originalText: "The essays began as spoken pieces about understanding, silence, choice and responsibility. Their early judgments remain in the author’s own voice.",
+        originalText: "The essays began as spoken pieces about understanding, silence, choice and responsibility. The judgments written then retain their original speaking subject and force.",
         revisedTitle: "2026 · RESPONSIBILITY BECOMES A SYSTEM",
         revisedText: "SCBKR was built later. The revised edition connects that later responsibility practice without rewriting it back into 2025.",
         identity: "One author across three creative periods",
         publication: "Publication and public-release boundary",
-        publicationText: `The public sample ends with all five essays in Part One. The complete English manuscript, EPUB and print files are not public website downloads. The English edition is listed at ${store.price}, but no storefront link is shown until platform review produces a verified public product page.`,
+        publicationText: `The public sample ends with all five essays in Part One. The complete English manuscript, EPUB and print files are not public website downloads. The English list price is set at ${store.price}; the final fidelity-corrected EPUB remains local and has not been uploaded. No storefront link is shown until a verified public product page exists.`,
         qr: "The QR code printed on the cover leads to the studio homepage, not to a purchase checkout.",
         back: "ALL BOOKS",
       }
@@ -114,8 +114,8 @@ export default async function StillnessBookPage({ params }: PageProps) {
     author: {
       "@type": "Person",
       "@id": siteUrl("/#person"),
-      name: "Wen-Yao Hsu",
-      alternateName: ["許文耀", "嗨啾", "HI-JIU", "沈耀888PI", "SHEN YAO888PI"],
+      name: "許文耀",
+      alternateName: ["Wen-Yao Hsu", "WENYAOHUS", "嗨啾", "HI-JIU", "沈耀888PI", "SHEN YAO888PI"],
     },
     publisher: {
       "@type": "Person",
@@ -123,7 +123,6 @@ export default async function StillnessBookPage({ params }: PageProps) {
     },
     copyrightHolder: { "@id": siteUrl("/#person") },
     dateCreated: "2025-06-17",
-    dateModified: "2026-10-07",
     isPartOf: { "@id": siteUrl("/#website") },
     ...(locale === "zh"
       ? {

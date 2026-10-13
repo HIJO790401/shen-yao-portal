@@ -616,6 +616,11 @@
 .textReader header small { color: #3473ac; font: 800 9px/1.5 var(--font-sans), sans-serif; letter-spacing: 0.15em; }
 .textReader header h2 { margin: 20px 0 9px; color: #092f61; font: 600 clamp(37px, 5vw, 64px)/1.1 var(--font-serif), Georgia, serif; letter-spacing: -0.05em; }
 .textReader header p { margin: 0; color: #627e99; font-style: italic; }
+.textReader header .readerAuthor { margin-top: 20px; color: #164f84; font: 800 10px/1.6 var(--font-sans), sans-serif; letter-spacing: 0.15em; }
+.previewCopyright { max-width: 620px; margin: 34px auto 0; padding-top: 24px; border-top: 1px solid rgba(18, 89, 158, 0.13); text-align: left; }
+.previewCopyright div { display: grid; grid-template-columns: minmax(86px, 0.28fr) 1fr; gap: 14px; padding: 5px 0; }
+.previewCopyright dt { color: #3473ac; font: 800 9px/1.6 var(--font-sans), sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+.previewCopyright dd { margin: 0; color: #526f8b; font: 400 12px/1.65 var(--font-sans), sans-serif; }
 .textSection + .textSection { margin-top: 58px; }
 .textSection h2 { margin: 0 0 23px; color: #0a396e; font: 600 clamp(26px, 3vw, 41px)/1.25 var(--font-serif), Georgia, serif; letter-spacing: -0.03em; }
 .textSection h3 { margin: 40px 0 18px; color: #0b477f; font: 600 clamp(21px, 2.4vw, 30px)/1.4 var(--font-serif), Georgia, serif; }

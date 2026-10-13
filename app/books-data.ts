@@ -44,7 +44,7 @@ export const stillnessIsALanguage = {
     en: {
       displayLine: "WENYAOHUS / HI-JIU / SHEN YAO888PI",
       explanation:
-        "Wen-Yao Hsu is the author’s legal name, HI-JIU is the name used in his earlier livestream work, and SHEN YAO888PI is the name later used as an architect. The three names refer to one author, not three co-authors.",
+        "The author’s legal name is 許文耀, represented in English as Wen-Yao Hsu. HI-JIU is the name used in his earlier livestream work, and SHEN YAO888PI is the name later used as an architect. The three names refer to one author, not three co-authors.",
     },
   },
   edition: {
@@ -126,13 +126,13 @@ export const stillnessIsALanguage = {
         "Pubu 商品頁已公開；2026 年 10 月 12 日上傳的修正版 EPUB 當時仍在更新排隊轉檔。",
     },
     en: {
-      state: "pending-platform-review" as BookStoreState,
+      state: "not-yet-for-sale" as BookStoreState,
       platform: "Google Play Books",
       price: "US$6.25",
       url: null,
-      label: "Store review pending",
+      label: "Not yet available for sale",
       note:
-        "Google Play Books catalog status was account pending review on October 12, 2026. No public English product URL has been verified, so no purchase link is exposed.",
+        "The final fidelity-corrected EPUB remains local and has not been uploaded. Google Play Books account review was still pending on October 12, 2026. No public English product URL has been verified, so no purchase link is exposed.",
     },
   },
   sourceState: {
@@ -168,7 +168,7 @@ export const booksHubEntries: readonly BookHubEntry[] = [
     },
     status: {
       zh: "繁中版已出版 · 第一部公開試讀",
-      en: "TRADITIONAL CHINESE EDITION PUBLISHED · PART ONE PREVIEW",
+      en: "ZH EDITION PUBLISHED · EN PART ONE PREVIEW · EN STORE NOT PUBLIC",
     },
     cta: { zh: "進入書籍", en: "ENTER BOOK" },
   },

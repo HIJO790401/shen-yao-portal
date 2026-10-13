@@ -7,7 +7,7 @@ import { siteOrigin } from "./site-config";
 
 const updated = new Date("2026-09-28T00:00:00+08:00");
 const bilingualSearchCopyUpdated = new Date("2026-10-03T00:00:00+08:00");
-const booksUpdated = new Date("2026-10-12T00:00:00+08:00");
+const booksUpdated = new Date("2026-10-14T00:00:00+08:00");
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type ChangeFrequency = NonNullable<SitemapEntry["changeFrequency"]>;
