@@ -74,4 +74,4 @@ validation:
     canonical_and_hreflang: PASS
     external_demo_unchanged: PASS
     console_errors: ZERO
-final_gate: READY_FOR_DEPLOYMENT
+final_gate: COMPLETE

@@ -74,5 +74,5 @@ validation:
     mobile_390x844: PASS
     canonical_and_hreflang: PASS
     console_errors: ZERO
-final_gate: READY_FOR_DEPLOYMENT
+final_gate: COMPLETE
 

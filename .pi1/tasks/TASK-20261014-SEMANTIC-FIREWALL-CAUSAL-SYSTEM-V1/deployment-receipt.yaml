@@ -1,0 +1,50 @@
+receipt_id: R-20261014-SEMANTIC-FIREWALL-CAUSAL-SITES-V7
+type: SITES_PRODUCTION_DEPLOYMENT
+owner: 許文耀／沈耀888π
+deployed_source:
+  repository: HIJO790401/shen-yao-portal
+  branch: main
+  commit: a746259bb38faea863a312280a7d9b32bbb0f8b5
+  audited_public_source_commit: 39c93a7813245e6f215cc1c6335d5e2484c03d00
+archive:
+  local_sha256: A28E0428FDAACE218E9B03EA3B6C994E0935927B4E863208DF7D8B1D6DE76485
+  local_size_bytes: 45718158
+  sites_content_hash: sha256:bdf5bd45f299af2c438cd76873a25cefb3b82231e3f621ce36078f5d722b62ff
+  sites_size_bytes: 49971200
+  sites_file_count: 462
+sites:
+  project_id: appgprj_6a57846b68f0819186daf7489f59a72f
+  version_number: 7
+  version_id: appgprj_6a57846b68f0819186daf7489f59a72f~appgver_f27b79724d74819194acce6638aa6d20
+  deployment_id: appgdep_6ace9a7eebbc8191813cc01fabdcc184
+  deployment_status: succeeded
+  generated_url: https://silent-school-studio.shenyao888pi.chatgpt.site
+  custom_domain: https://silentschool.studio
+  deployed_at_utc: 2026-10-13T20:54:45.563715+00:00
+public_readback:
+  verified_on: 2026-10-14
+  result: PASS
+  routes:
+    - https://silentschool.studio/zh/products
+    - https://silentschool.studio/zh/products/semantic-firewall-causal-system
+    - https://silentschool.studio/en/products/semantic-firewall-causal-system
+    - https://silentschool.studio/zh/demo/semantic-firewall-causal-system
+    - https://silentschool.studio/en/demo/semantic-firewall-causal-system
+    - https://silentschool.studio/sitemap.xml
+    - https://silentschool.studio/llms.txt
+  assertions:
+    - fixed_synthetic_no_input_demo_renders
+    - public_integration_order_and_relation_checks_render
+    - external_demo_and_source_links_match_audited_public_urls
+    - existing_owner_contact_mailto_renders
+    - bilingual_canonical_and_hreflang_present
+    - sitemap_and_llms_include_product_and_demo
+    - desktop_and_mobile_390x844_have_no_horizontal_overflow
+    - browser_console_errors_zero
+release_boundaries:
+  external_interactive_demo_modified: false
+  fixed_synthetic_data_only: true
+  real_login_location_device_or_model_connected: false
+  enterprise_integration_claimed: false
+  production_saas_claimed: false
+  private_backend_or_rule_core_public: false

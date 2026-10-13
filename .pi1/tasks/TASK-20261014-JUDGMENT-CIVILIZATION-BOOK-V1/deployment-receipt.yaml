@@ -1,0 +1,48 @@
+receipt_id: R-20261014-JUDGMENT-CIVILIZATION-SITES-V7
+type: SITES_PRODUCTION_DEPLOYMENT
+owner: 許文耀／沈耀888π
+deployed_source:
+  repository: HIJO790401/shen-yao-portal
+  branch: main
+  commit: a746259bb38faea863a312280a7d9b32bbb0f8b5
+archive:
+  local_sha256: A28E0428FDAACE218E9B03EA3B6C994E0935927B4E863208DF7D8B1D6DE76485
+  local_size_bytes: 45718158
+  sites_content_hash: sha256:bdf5bd45f299af2c438cd76873a25cefb3b82231e3f621ce36078f5d722b62ff
+  sites_size_bytes: 49971200
+  sites_file_count: 462
+sites:
+  project_id: appgprj_6a57846b68f0819186daf7489f59a72f
+  version_number: 7
+  version_id: appgprj_6a57846b68f0819186daf7489f59a72f~appgver_f27b79724d74819194acce6638aa6d20
+  deployment_id: appgdep_6ace9a7eebbc8191813cc01fabdcc184
+  deployment_status: succeeded
+  generated_url: https://silent-school-studio.shenyao888pi.chatgpt.site
+  custom_domain: https://silentschool.studio
+  deployed_at_utc: 2026-10-13T20:54:45.563715+00:00
+public_readback:
+  verified_on: 2026-10-14
+  result: PASS
+  routes:
+    - https://silentschool.studio/zh/books
+    - https://silentschool.studio/zh/books/judgment-of-civilization
+    - https://silentschool.studio/en/books/judgment-of-civilization
+    - https://silentschool.studio/zh/books/judgment-of-civilization/cases
+    - https://silentschool.studio/en/books/judgment-of-civilization/cases
+    - https://silentschool.studio/sitemap.xml
+    - https://silentschool.studio/llms.txt
+  assertions:
+    - custom_domain_routes_render_current_owner_first_person_copy
+    - seven_public_case_cards_render
+    - bilingual_canonical_and_hreflang_present
+    - sitemap_and_llms_include_book_and_cases
+    - desktop_and_mobile_390x844_have_no_horizontal_overflow
+    - browser_console_errors_zero
+release_boundaries:
+  manuscript_state: BOOK_DRAFT
+  website_selection_count: 7
+  fixed_table_of_contents_claimed: false
+  completed_chapter_count_claimed: false
+  complete_manuscript_public: false
+  english_manuscript_public: false
+  store_or_isbn_claim_invented: false
