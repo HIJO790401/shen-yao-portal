@@ -6,6 +6,7 @@ owner_direction:
   - 中文與英文採同等頁面規格與閱讀體驗，不做同段混排。
   - 本輪先施工本機可瀏覽版本，正式發布另行授權。
   - 2026-10-12 站主確認本機版本並明確授權直接推送 GitHub main。
+  - 2026-10-14 站主要求先確認英文是否符合原意，確認後正式部署書籍專區。
 scope:
   - bilingual_books_hub
   - stillness_is_a_language_bilingual_detail_pages
@@ -25,7 +26,12 @@ excluded:
   - readmoo_link_before_public_listing
   - cms_schema_expansion
   - sites_version_save_or_external_deployment
-release_authorization: GITHUB_MAIN_PUSH_COMPLETE
-state: SOURCE_COMPLETE_NOT_LIVE
-source_commit: f67527f25961045c8d86b0f450ea0f1aa73e66e6
-final_gate: EXTERNAL_DEPLOYMENT_REQUIRES_SEPARATE_OWNER_AUTHORIZATION
+release_authorization:
+  github_main: COMPLETE
+  sites_production: OWNER_AUTHORIZED_2026-10-14
+state: SOURCE_VERIFIED_READY_FOR_SITES_DEPLOYMENT
+source_commits:
+  feature: f67527f25961045c8d86b0f450ea0f1aa73e66e6
+  source_release_receipt: 94c6549674d6e380f0f042249612357880b1bbb0
+  english_fidelity_fix: 6ee8815b59b7c4da8b3a77cea327aa17a3a772db
+final_gate: DEPLOYMENT_VERIFICATION_REQUIRED
