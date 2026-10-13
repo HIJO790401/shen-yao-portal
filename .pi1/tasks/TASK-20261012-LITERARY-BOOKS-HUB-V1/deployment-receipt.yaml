@@ -1,0 +1,46 @@
+receipt_id: R-20261014-LITERARY-BOOKS-SITES-V6
+type: SITES_PRODUCTION_DEPLOYMENT
+owner: 許文耀／沈耀888π
+deployed_source:
+  repository: HIJO790401/shen-yao-portal
+  branch: main
+  commit: 2d166a61cfddcfc001f8f69493bf5ec19c9b254d
+archive:
+  sha256: 28624F42C7895BE6A0FFC0A0C513C2B7E0F853126FACEC865A6A47B53E7FD12D
+  size_bytes: 36177004
+sites:
+  project_id: appgprj_6a57846b68f0819186daf7489f59a72f
+  version_number: 6
+  version_id: appgprj_6a57846b68f0819186daf7489f59a72f~appgver_d6a5998b4b6481918d5781bab8209ef5
+  deployment_id: appgdep_6ace6e3d9c34819197ef5d8c806063bd
+  deployment_status: succeeded
+  generated_url: https://silent-school-studio.shenyao888pi.chatgpt.site
+  custom_domain: https://silentschool.studio
+  deployed_at_utc: 2026-10-13T17:45:55.125629Z
+public_readback:
+  verified_on: 2026-10-14
+  result: PASS
+  routes:
+    - https://silentschool.studio/zh/books
+    - https://silentschool.studio/en/books
+    - https://silentschool.studio/zh/books/stillness-is-a-language
+    - https://silentschool.studio/en/books/stillness-is-a-language
+    - https://silentschool.studio/zh/books/stillness-is-a-language/preview
+    - https://silentschool.studio/en/books/stillness-is-a-language/preview
+    - https://silentschool.studio/media/books/stillness-is-a-language/preview-zh-part-one.pdf
+  assertions:
+    - all_routes_http_200
+    - english_html_lang_en
+    - traditional_chinese_html_lang_zh_hant
+    - english_owner_fidelity_sample_present
+    - chinese_preview_pdf_content_type_application_pdf
+english_fidelity:
+  source_paragraphs_matched: 36/36
+  public_sample_words: 2305
+  complete_manuscript_words: 14004
+  public_ratio_percent: 16.46
+release_boundaries:
+  full_book_public_download: false
+  english_store_link_public: false
+  english_list_price_is_not_a_public_purchase_claim: true
+  traditional_chinese_preview_pages: 17

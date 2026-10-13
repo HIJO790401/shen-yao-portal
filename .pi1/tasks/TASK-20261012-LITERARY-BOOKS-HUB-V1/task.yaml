@@ -25,13 +25,13 @@ excluded:
   - public_english_store_link_before_live_verification
   - readmoo_link_before_public_listing
   - cms_schema_expansion
-  - sites_version_save_or_external_deployment
 release_authorization:
   github_main: COMPLETE
-  sites_production: OWNER_AUTHORIZED_2026-10-14
-state: SOURCE_VERIFIED_READY_FOR_SITES_DEPLOYMENT
+  sites_production: COMPLETE_VERSION_6_2026-10-14
+state: LIVE_DEPLOYED_AND_PUBLIC_READBACK_VERIFIED
 source_commits:
   feature: f67527f25961045c8d86b0f450ea0f1aa73e66e6
   source_release_receipt: 94c6549674d6e380f0f042249612357880b1bbb0
   english_fidelity_fix: 6ee8815b59b7c4da8b3a77cea327aa17a3a772db
-final_gate: DEPLOYMENT_VERIFICATION_REQUIRED
+  deployed_source: 2d166a61cfddcfc001f8f69493bf5ec19c9b254d
+final_gate: PASS_PUBLIC_READBACK_2026-10-14
