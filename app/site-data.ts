@@ -31,7 +31,8 @@ export const products: HomeProduct[] = [
     index: "02",
     title: "反詐騙語意防火牆",
     en: "Anti-Scam Semantic Firewall",
-    kind: "LIVE DEMO",
+    kind: "FIXED-CASE DEMO",
+    kindZh: "固定案例 DEMO",
     tone: "red",
     description: "不是判斷訊息像不像詐騙，而是檢查它是否有資格進入人的決策鏈。",
     descriptionEn: "Instead of guessing whether a message looks fraudulent, audit whether it qualifies to enter a human decision chain.",
@@ -75,12 +76,12 @@ export const products: HomeProduct[] = [
 
 export const newsItems = [
   {
-    date: "2026.07.15",
+    date: "2026.10.14",
     category: "PLATFORM",
-    title: "沈耀官方網站進入公司級重構階段",
-    en: "Shen-Yao official platform enters a full-scale rebuild",
-    excerpt: "主站、產品動畫展示與國際實相新聞台將整合為同一個可搜尋、可查證的公開平台。",
-    excerptEn: "The main site, motion product demos and Reality Newsroom are becoming one searchable, verifiable public platform.",
+    title: "我已完成沉靜流派工作室公開平台整合",
+    en: "I completed the SERENE SCHOOL STUDIO public-platform integration",
+    excerpt: "我把主站、產品固定案例、實相新聞台、責任博物館、書籍與公開證據整合為同一個可搜尋、可查證、可持續更新的平台。",
+    excerptEn: "I brought the main site, fixed product cases, Reality Newsroom, Responsibility Museum, books and public evidence into one searchable, verifiable and maintainable platform.",
     href: "/news/platform-rebuild",
   },
   {

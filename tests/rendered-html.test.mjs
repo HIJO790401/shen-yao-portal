@@ -369,7 +369,7 @@ test("keeps the hackathon action trail on the founder site, outside the newsroom
   assert.match(home + about, /去偽存真：全民偵查黑客松/);
   assert.match(about, /OWNER-REPORTED HACKATHON RECORD/);
   assert.match(about, /本人紀錄：Gogolook 命題組 Team 11/);
-  assert.match(about, /目前未見主辦方公開個人名冊/);
+  assert.match(about, /目前沒有主辦方公開個人名冊可供交叉核對/);
   assert.match(about, /SCBKR \+ R-Lock/);
   assert.match(about, /ai-expo\.tw\/kiro_hackathon_2026/);
   assert.match(about, /instagram\.com\/p\/DW9Jwi5kTZO/);
@@ -403,7 +403,7 @@ test("publishes a bilingual source-labelled living resume and removes the legacy
   assert.match(resume, /SCBKR/);
   assert.match(resume, /AICC OS/);
   assert.match(resume, /ENGINEERING CANDIDATE; PUBLIC RUNTIME NOT RELEASED/);
-  assert.match(resume, /SOURCE COMPLETE \/ DEPLOYMENT PENDING/);
+  assert.match(resume, /PRODUCTION DOMAIN LIVE/);
   assert.match(resume, /DEMO \/ POC · NOT A PRODUCTION DECISION SYSTEM/);
   assert.match(resume, /4th-ai-arts-competition-submissions/);
   assert.match(resume, /COMMUNITY CONTENT; NO NVIDIA PARTNERSHIP/);

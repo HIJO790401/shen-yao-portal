@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const title = isEnglish ? "Wen-Yao Hsu / Shen-Yao 888π | AI Governance & Founder" : baseMetadata.title;
   const description = isEnglish
     ? "Wen-Yao Hsu / Shen-Yao 888π founded SERENE SCHOOL STUDIO and the Semantic Firewall. His work spans AI safety and governance, SCBKR responsibility chains, systems architecture, animation and music."
-    : "許文耀／沈耀888π創辦沉靜流派工作室與語意防火牆，以 SCBKR 責任鏈探索 AI 安全、AI 治理，並公開系統架構、動畫與音樂作品。";
+    : "許文耀／沈耀888π創辦沉靜流派工作室與語意防火牆，已公開建立 SCBKR 責任鏈、AI 安全與治理的可執行回放路徑，以及系統架構、動畫與音樂作品。";
   return {
     ...baseMetadata,
     title: isEnglish ? { absolute: title as string } : title,

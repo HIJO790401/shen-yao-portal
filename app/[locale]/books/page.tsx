@@ -20,15 +20,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? "Literature & Books | SERENE SCHOOL STUDIO"
     : "文學與書籍｜沉靜流派工作室";
   const description = isEnglish
-    ? "Books by Wen-Yao Hsu / Shen-Yao 888π, including Stillness Is a Language and The Name That Existed in the Interrogation Room, with controlled public previews and verified publication states."
-    : "許文耀／沈耀888π的文學與書籍專區，收錄《沉靜是一種語言》正式試讀與《審訊室存在過的名字》公開故事提要，清楚標示出版與公開邊界。";
+    ? "Books by Wen-Yao Hsu / Shen-Yao 888π: Stillness Is a Language, The Name That Existed in the Interrogation Room, and The Judgment of a False Civilization, which dismantles civilization’s falsehoods through responsibility-chain audit."
+    : "許文耀／沈耀888PI的文學與書籍專區，收錄《沉靜是一種語言》、《審訊室存在過的名字》與逐案解構文明虛偽的《虛偽文明的審判》，並清楚標示公開邊界。";
 
   return {
     title: { absolute: title },
     description,
     keywords: isEnglish
-      ? ["Wen-Yao Hsu books", "Shen-Yao 888PI", "Stillness Is a Language", "literary essays", "responsibility", "AI governance writing"]
-      : ["許文耀 書籍", "沈耀888PI", "沉靜是一種語言", "散文", "責任鏈", "審訊室存在過的名字"],
+      ? ["Wen-Yao Hsu books", "Shen-Yao 888PI", "Stillness Is a Language", "The Judgment of a False Civilization", "civilization falsehoods", "responsibility proof chain", "knowledge-use authority", "AI governance writing"]
+      : ["許文耀 書籍", "沈耀888PI", "沉靜是一種語言", "散文", "責任鏈", "審訊室存在過的名字", "虛偽文明的審判", "解構文明的虛偽", "知識使用權", "文明審判"],
     alternates: localizedAlternates(locale, "/books"),
     robots: { index: true, follow: true },
     openGraph: {
@@ -56,36 +56,36 @@ export default async function BooksHubPage({ params }: PageProps) {
   const copy = isEnglish
     ? {
         eyebrow: "LITERATURE / BOOKS / AUTHORIAL WORK",
-        title: "A book is where the subject stays answerable.",
+        title: "I write each book as a world I am willing to answer for.",
         intro:
-          "This archive separates literary work from products and news. Each title keeps its own world, language, publication state and public-release boundary.",
+          "I keep my literary work separate from products and news. Each title retains the world, language, publication state and public-release boundary I defined for it.",
         original: "ORIGINAL WRITING",
         originalValue: "2025 → PRESENT",
         languages: "LANGUAGES",
         languagesValue: "ZH-HANT / EN",
-        heading: "Two works. Two different worlds.",
+        heading: "I built three different worlds across three works.",
         headingNote:
-          "The luminous water of Stillness and the sealed interrogation room remain visually distinct while sharing one publishing architecture.",
+          "I give luminous water, a sealed interrogation room and an obsidian civilizational dossier distinct visual worlds while keeping them inside one publishing architecture.",
         boundary: "PUBLICATION BOUNDARY",
         boundaryText:
-          "Public previews are deliberate excerpts. Complete manuscripts, full PDFs, EPUB files and print assets remain outside the public website unless the author explicitly releases them.",
+          "I choose every public excerpt deliberately. Complete manuscripts, full PDFs, EPUB files and print assets remain outside the public website unless I explicitly release them.",
         waterLabel: "STILLNESS IS NOT AN ENDING",
       }
     : {
         eyebrow: "文學／書籍／作者主體",
-        title: "書，是主體留下責任的位置。",
+        title: "我把每本書寫成我願意承擔的世界。",
         intro:
-          "這裡把文學從產品與新聞中獨立出來。每一本作品保有自己的世界、語言、出版狀態與公開邊界，不被混成一般作品清單。",
+          "我把自己的文學作品從產品與新聞中獨立出來。每一本書保有我為它建立的世界、語言、出版狀態與公開邊界，不被混成一般作品清單。",
         original: "原作時間",
         originalValue: "2025 → 持續創作",
         languages: "語言版本",
         languagesValue: "繁中／英文",
-        heading: "兩部作品，兩套不同的世界。",
+        heading: "我在三部作品裡，建立三套不同的世界。",
         headingNote:
-          "《沉靜》保留水與光的生命感；《審訊室》保留封閉、冷硬的審訊場域。兩者只共享出版架構，不互相污染。",
+          "我讓《沉靜》保留水與光，讓《審訊室》保留封閉冷硬的場域，並以黑曜石、青銅與責任紅線建立《虛偽文明的審判》的案件檔案。三者只共享出版架構，不互相污染。",
         boundary: "公開邊界",
         boundaryText:
-          "試讀是作者明確釋出的作品範圍。完整書稿、完整版 PDF、EPUB 與印刷檔不會進入公開網站，除非作者另行決定公開。",
+          "每一份試讀都由我明確決定公開範圍。完整書稿、完整版 PDF、EPUB 與印刷檔不會進入公開網站，除非我另行決定公開。",
         waterLabel: "沉靜不是終止",
       };
 
@@ -138,16 +138,36 @@ export default async function BooksHubPage({ params }: PageProps) {
           </header>
 
           {booksHubEntries.map((book) => {
-            const isInterrogation = book.id === "interrogation-room";
+            const isInterrogation = book.theme === "interrogation";
+            const isJudgment = book.theme === "judgment";
+            const themeClass = isInterrogation
+              ? styles.interrogationCard
+              : isJudgment
+                ? styles.judgmentCard
+                : "";
             return (
               <LocalizedLink
-                className={`${styles.bookCard} ${isInterrogation ? styles.interrogationCard : ""}`}
+                className={`${styles.bookCard} ${themeClass}`}
                 href={book.route}
                 key={book.id}
               >
                 <div className={styles.bookVisual}>
                   {isInterrogation ? (
                     <span className={styles.interrogationSeal}>{isEnglish ? "THE NAME\nTHAT REMAINED" : "留下來的名字"}</span>
+                  ) : isJudgment ? (
+                    <span className={styles.judgmentCover}>
+                      <Image
+                        src="/media/books/judgment-of-civilization/case-004.jpg"
+                        alt={book.coverAlt[locale]}
+                        fill
+                        unoptimized
+                        sizes="(max-width: 760px) 84vw, 34vw"
+                      />
+                      <span className={styles.judgmentCoverTitle}>
+                        <small>{isEnglish ? "CIVILIZATIONAL CASE DOSSIER" : "文明案件檔案"}</small>
+                        <b>{book.title[locale]}</b>
+                      </span>
+                    </span>
                   ) : (
                     <span className={styles.cover}>
                       <Image

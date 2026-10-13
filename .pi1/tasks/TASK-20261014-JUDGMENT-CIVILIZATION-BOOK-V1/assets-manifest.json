@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "receiptVisibility": "repository-release-record",
+  "collection": {
+    "titleZh": "虛偽文明的審判",
+    "sitePath": "/media/books/judgment-of-civilization/",
+    "owner": "許文耀／沈耀888π",
+    "preparedDate": "2026-10-14",
+    "publicationBoundary": "Public visual assets only. No manuscript DOCX, PDF, EPUB, or full chapter text is included."
+  },
+  "assets": [
+    {
+      "file": "cover-draft.jpg",
+      "source": {
+        "kind": "owner-local-archive",
+        "originalName": "封面_DRAFT_v0.1.png",
+        "originalDeclaredExtension": ".png",
+        "detectedMime": "image/jpeg"
+      },
+      "width": 1024,
+      "height": 1536,
+      "bytes": 674985,
+      "mime": "image/jpeg",
+      "sha256": "75d7f26cd55351575e0fe2d271a15132b2696bae8b947d309d70cf6b8a053143",
+      "publicUse": "Draft-cover preview for the book listing and detail page; not a finished retail cover."
+    },
+    {
+      "file": "author-wenyao.png",
+      "source": {
+        "kind": "owner-local-archive",
+        "originalName": "作者照片_正式候選_v1.png",
+        "detectedMime": "image/png"
+      },
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2454686,
+      "mime": "image/png",
+      "sha256": "7b8183810c6edb332599bae6b6742f90d3223ca86251378b6f6b1e45e8be550f",
+      "publicUse": "Owner-author portrait. Preserve the supplied face; site presentation may only crop, mask, and color-align it."
+    },
+    {
+      "file": "case-001.jpg",
+      "source": {
+        "kind": "owner-local-publishing-archive",
+        "originalName": "CASE001_illustration.png",
+        "officialDriveName": "第一章插圖.png",
+        "originalDeclaredExtension": ".png",
+        "detectedMime": "image/jpeg"
+      },
+      "width": 864,
+      "height": 1536,
+      "bytes": 410917,
+      "mime": "image/jpeg",
+      "sha256": "c2fc072f80ac1c53421ba408abe03c08a15e8264c6509682aeaa816bb5f7fb85",
+      "publicUse": "CASE 001 visual card."
+    },
+    {
+      "file": "case-002.jpg",
+      "source": {
+        "kind": "owner-local-publishing-archive",
+        "originalName": "CASE002_illustration.jpg",
+        "officialDriveName": "第二章插圖｜CASE 002《語言病毒：不可驗證之物如何取得名字》｜9：16正式定案｜沈耀888π・許文耀｜血脈綁定🗝️.jpg",
+        "detectedMime": "image/jpeg"
+      },
+      "width": 864,
+      "height": 1536,
+      "bytes": 427803,
+      "mime": "image/jpeg",
+      "sha256": "14dfc07fd913c3c51ec6f8397464a45e878c08b04ed92f79ae65a3ccb2a981de",
+      "publicUse": "CASE 002 visual card."
+    },
+    {
+      "file": "case-003.jpg",
+      "source": {
+        "kind": "owner-local-publishing-archive",
+        "originalName": "CASE003_illustration.png",
+        "officialDriveName": "《虛偽文明的審判》｜第三章 CASE 003 插圖｜神話：描述如何開始取代證據",
+        "originalDeclaredExtension": ".png",
+        "detectedMime": "image/jpeg"
+      },
+      "width": 864,
+      "height": 1536,
+      "bytes": 430202,
+      "mime": "image/jpeg",
+      "sha256": "2e95fd59190b72fed89ab33ea352e1de4db53183702a671d68388277df31d225",
+      "publicUse": "CASE 003 visual card."
+    },
+    {
+      "file": "case-004.jpg",
+      "source": {
+        "kind": "owner-google-drive-official-book-folder",
+        "originalName": "《虛偽文明的審判》｜第四章 CASE 004 插圖｜神：不可驗證結構如何取得最高授權",
+        "detectedMime": "image/jpeg"
+      },
+      "width": 864,
+      "height": 1536,
+      "bytes": 444508,
+      "mime": "image/jpeg",
+      "sha256": "c400a224cfbf41d5ce233ad6f6c148f7ab7d7579c73252ab9eec132e067cf312",
+      "publicUse": "CASE 004 visual card."
+    },
+    {
+      "file": "interlude-04-2.jpg",
+      "source": {
+        "kind": "owner-google-drive-official-book-folder",
+        "originalName": "4.2插圖.jpg",
+        "detectedMime": "image/jpeg"
+      },
+      "width": 864,
+      "height": 1536,
+      "bytes": 436765,
+      "mime": "image/jpeg",
+      "sha256": "cb6ec296078745b813d27be92cc8022beb9550a8a770bbe532d82c0781ec2403",
+      "publicUse": "Interlude 4.2 visual card."
+    },
+    {
+      "file": "case-005.png",
+      "source": {
+        "kind": "owner-google-drive-official-book-folder",
+        "originalName": "第五章插圖.png",
+        "detectedMime": "image/png"
+      },
+      "width": 941,
+      "height": 1672,
+      "bytes": 3747796,
+      "mime": "image/png",
+      "sha256": "ac6a133f05f5b018fdba07d3784b015ae7129b86afbd4c3c4a211c8c8348b4af",
+      "publicUse": "CASE 005 visual card."
+    },
+    {
+      "file": "interlude-05-2.jpg",
+      "source": {
+        "kind": "owner-google-drive-official-book-folder",
+        "originalName": "5.2插圖.png",
+        "originalDeclaredExtension": ".png",
+        "detectedMime": "image/jpeg"
+      },
+      "width": 864,
+      "height": 1536,
+      "bytes": 476912,
+      "mime": "image/jpeg",
+      "sha256": "1747ef3ea182c3cd3c160a3d012d17b150d7e1f6c9ad12e2e9c06f08df1f466e",
+      "publicUse": "Interlude 5.2 visual card."
+    }
+  ]
+}

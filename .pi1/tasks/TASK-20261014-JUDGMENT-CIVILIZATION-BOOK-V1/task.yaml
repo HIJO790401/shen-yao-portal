@@ -1,0 +1,78 @@
+task_id: TASK-20261014-JUDGMENT-CIVILIZATION-BOOK-V1
+owner: 許文耀／沈耀888π
+goal: 將《虛偽文明的審判》納入沉靜流派工作室書籍專區，以文明審判案件檔案館呈現官網選錄，明確鎖定「解構文明的虛偽」及正文雙層結構，完成中英文公開摘要、發現性與正式部署。
+owner_authorization:
+  github_main: AUTHORIZED_CURRENT_TURN
+  sites_production: AUTHORIZED_CURRENT_TURN
+  public_summary_assets: AUTHORIZED_CURRENT_TURN
+current_source:
+  archive_ref: OWNER_PRIVATE_BOOK_ARCHIVE
+  title_zh: 虛偽文明的審判
+  manuscript_state: BOOK_DRAFT
+  provisional_structure: EIGHT_PARTS_THIRTY_FOUR_CASES
+  formal_chapter_structure: OWNER_TEXT_PLUS_RPC_00_TO_15
+  website_selection: FIVE_CASE_CARDS_PLUS_TWO_INTERLUDE_CARDS
+  selection_is_fixed_table_of_contents: false
+  chapter_completion_claimed: false
+scope:
+  - third_book_entry_in_books_hub
+  - independent_civilizational_judgment_dossier_detail_page
+  - seven_case_card_summary_archive
+  - source_faithful_owner_text_plus_rpc_method_explanation
+  - bilingual_owner_reviewed_overview_and_case_summaries
+  - owner_first_person_authorial_voice_across_detail_cases_and_books_hub
+  - book_collection_and_case_structured_data
+  - sitemap_and_llms_discovery
+  - works_literature_entry
+  - responsive_visual_qa
+  - github_main_push
+  - sites_production_deployment
+public_release_boundary:
+  allowed:
+    - corrected_web_presentation_of_cover_source
+    - owner_portrait_candidate_without_face_change
+    - seven_case_card_images
+    - owner_supplied_working_chapter_titles
+    - short_verdicts
+    - non_contiguous_summaries
+    - work_in_progress_and_publication_path_pending_status
+    - provisional_eight_part_thirty_four_case_writing_map
+  excluded:
+    - complete_chapters
+    - continuous_manuscript_excerpt
+    - manuscript_docx
+    - complete_pdf_or_epub
+    - fabricated_store_or_submission_status
+    - invalid_placeholder_isbn
+acceptance:
+  - books_hub_lists_three_distinct_works_without_breaking_existing_routes
+  - zh_and_en_detail_and_cases_routes_are_separate_and_indexable
+  - all_seven_case_cards_render_with_correct_titles_and_release_state
+  - seven_cards_are_labeled_as_website_selections_not_fixed_toc_or_completed_chapters
+  - core_subject_states_dismantling_civilizations_falsehoods_in_zh_and_en
+  - authorial_reason_and_verdicts_remain_in_owner_first_person_without_fake_neutralization
+  - formal_chapter_structure_states_owner_text_plus_rpc_00_to_15
+  - phenomena_and_knowledge_are_not_misrepresented_as_the_accused
+  - english_copy_is_overview_only_and_does_not_claim_a_complete_english_edition
+  - public_assets_exclude_private_manuscripts_and_invalid_isbn
+  - book_and_collection_json_ld_are_valid_source_objects
+  - sitemap_and_llms_include_only_public_routes_and_owner_attribution
+  - typecheck_lint_build_tests_pass
+  - desktop_and_mobile_browser_qa_pass
+  - github_main_remote_sha_matches_release_commit
+  - production_deployment_succeeds_and_custom_domain_public_readback_passes
+validation:
+  automated:
+    lint: PASS
+    build: PASS
+    tests: 57_OF_57_PASS
+    drizzle_schema: PASS
+    git_diff_check: PASS
+    secret_and_private_core_scan: PASS
+  browser:
+    desktop_routes: PASS
+    mobile_390x844: PASS
+    canonical_and_hreflang: PASS
+    console_errors: ZERO
+final_gate: READY_FOR_DEPLOYMENT
+

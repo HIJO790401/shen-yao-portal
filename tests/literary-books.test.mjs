@@ -92,10 +92,14 @@ test("books routes are indexable, bilingual and represented in public discovery 
 });
 
 test("book data preserves bilingual identity, edition and storefront boundaries", () => {
-  assert.equal(booksHubEntries.length, 2);
+  assert.equal(booksHubEntries.length, 3);
   assert.deepEqual(
     booksHubEntries.map(({ id }) => id),
-    ["stillness-is-a-language", "interrogation-room"],
+    [
+      "stillness-is-a-language",
+      "interrogation-room",
+      "judgment-of-civilization",
+    ],
   );
 
   assert.equal(stillnessIsALanguage.edition.zh.title, "沉靜是一種語言");
@@ -104,8 +108,8 @@ test("book data preserves bilingual identity, edition and storefront boundaries"
   assert.equal(stillnessIsALanguage.edition.en.subtitle, "Before Words Are Found");
   assert.equal(stillnessIsALanguage.authorIdentity.zh.displayLine, "許文耀／嗨啾／沈耀888PI");
   assert.equal(stillnessIsALanguage.authorIdentity.en.displayLine, "WENYAOHUS / HI-JIU / SHEN YAO888PI");
-  assert.match(stillnessIsALanguage.authorIdentity.zh.explanation, /同一位作者/);
-  assert.match(stillnessIsALanguage.authorIdentity.en.explanation, /one author, not three co-authors/i);
+  assert.match(stillnessIsALanguage.authorIdentity.zh.explanation, /三個名字都指向我，不是三位合著者/);
+  assert.match(stillnessIsALanguage.authorIdentity.en.explanation, /All three names refer to me, not three co-authors/i);
 
   assert.equal(stillnessIsALanguage.stores.zh.state, "publicly-available");
   assert.equal(stillnessIsALanguage.stores.zh.url, stillnessPubuUrl);

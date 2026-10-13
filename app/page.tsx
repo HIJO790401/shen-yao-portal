@@ -129,7 +129,8 @@ export default function Home() {
           <div className={styles.aboutPanel} data-serene-reveal="rise">
             <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="關於沉靜流派" en="ABOUT THE STUDIO" /></p>
             <h2><Lang zh="古文明符號 × 數學公式 × 系統架構。" en="ANCIENT SYMBOLS × FORMULAS × SYSTEMS." /></h2>
-            <p><Lang zh="沉靜流派把符號做成語言、把公式做成責任結構，並以 SCBKR 責任鏈與語意防火牆探索 AI 安全、AI 治理；固定案例 Demo、動畫與音樂則呈現工程和創作的不同面向。" en="SERENE SCHOOL turns symbols into language and formulas into responsibility structures. SCBKR and the Semantic Firewall explore AI safety and AI governance; fixed-case demos, animation and music show the studio's engineering and creative work." /></p>
+            <p><Lang zh="我在沉靜流派把符號做成語言、把公式做成責任結構，再把 AI 安全、AI 治理的判斷路徑落成 SCBKR、語意防火牆與 AICC 架構；固定案例 Demo、動畫、音樂與書寫，都是我用不同媒介承擔同一套判斷的方法。" en="At SERENE SCHOOL, I turn symbols into language and formulas into responsibility structures, then make judgment paths for AI safety and AI governance concrete through SCBKR, the Semantic Firewall and AICC architecture. Fixed-case demos, animation, music and writing are different media through which I take responsibility for the same method." /></p>
+            <p><Lang zh="這些不是只停在概念的提案：SCBKR 2.3.1 已在 Microsoft Store 免費上架，系統原始碼與固定案例已公開，論文、文章、音樂動畫與書籍試讀也各自保留可核對的入口。" en="These are not proposals left at the level of concepts: SCBKR 2.3.1 is available free on Microsoft Store, system source and fixed cases are public, and the paper, essays, music-animation work and book previews each retain a traceable entry point." /></p>
             <LocalizedLink href="/#founder"><Lang zh="了解更多" en="DISCOVER MORE" /> <span aria-hidden="true">›</span></LocalizedLink>
           </div>
 
@@ -145,7 +146,7 @@ export default function Home() {
                   <h3><Lang zh={product.title} en={product.en} /></h3>
                   <p>
                     <Lang
-                      zh={product.href ? (product.kindZh ?? (product.kind === "LIVE DEMO" ? "安全防護操作" : product.kind)) : "合法產品空位"}
+                      zh={product.href ? (product.kindZh ?? product.kind) : "合法產品空位"}
                       en={product.href ? product.kind : "LEGAL PRODUCT SLOT"}
                     />
                   </p>
@@ -202,7 +203,7 @@ export default function Home() {
             <span className={styles.literatureMeta}>2025 ORIGINAL · 2026 REVISED EDITION</span>
             <h2 id="latest-book-title"><Lang zh="沉靜是一種語言" en="STILLNESS IS A LANGUAGE" /></h2>
             <h3><Lang zh="在找不到語言之前" en="BEFORE WORDS ARE FOUND" /></h3>
-            <p><Lang zh="從理解、沉默、選擇到責任：這是作者在語言尚未命名以前寫下的起點，也是後來把責任落地的前身。繁中與英文試讀分開呈現。" en="From understanding, silence and choice to responsibility: these essays preserve the point before the language had a name, and the origin from which responsibility was later made concrete. Chinese and English previews remain separate." /></p>
+            <p><Lang zh="我從理解、沉默與選擇寫到責任；這本書保存我在語言尚未命名以前的起點，也是我後來把責任做成系統的前身。繁中與英文試讀分開呈現。" en="I wrote from understanding, silence and choice toward responsibility. This book preserves my starting point before the language had a name, and the origin from which I later made responsibility concrete as systems. The Chinese and English previews remain separate." /></p>
             <div className={styles.literatureActions}>
               <LocalizedLink href="/books/stillness-is-a-language"><Lang zh="進入書籍頁" en="ENTER THE BOOK" /> <span aria-hidden="true">→</span></LocalizedLink>
               <LocalizedLink href="/books"><Lang zh="瀏覽全部書籍" en="VIEW ALL BOOKS" /> <span aria-hidden="true">↗</span></LocalizedLink>
@@ -214,21 +215,21 @@ export default function Home() {
           <div className={styles.newsIntro}>
             <p className={styles.sectionKicker}><i aria-hidden="true" /> ARCHIVE / NEWSROOM</p>
             <h2 id="news-museum-title"><Lang zh="實相新聞台 × 責任博物館" en="REALITY NEWSROOM × RESPONSIBILITY MUSEUM" /></h2>
-            <p><Lang zh="記錄真實世界的脈動，保存人類責任的軌跡；讓報導、影像與責任證據在同一座公開架構中被看見。" en="Reporting, moving image and responsibility evidence live in one public architecture—recording the world while preserving the trail of human responsibility." /></p>
+            <p><Lang zh="我建立實相新聞台記錄正在發生的事，也建立責任博物館保存事件留下的責任軌跡；報導、影像、來源與責任證據在同一座公開架構中接受核對。" en="I built the Reality Newsroom to record events in motion and the Responsibility Museum to preserve the trails of responsibility they leave behind. Reporting, moving image, sources and responsibility evidence remain together in one public architecture for verification." /></p>
             <LocalizedLink href="/news"><Lang zh="探索更多內容" en="EXPLORE THE ARCHIVE" /> <span aria-hidden="true">→</span></LocalizedLink>
           </div>
           <div className={styles.newsPillars}>
             <LocalizedLink href="/news">
               <span aria-hidden="true"><RadioTower strokeWidth={1.45} /></span>
-              <div><h3><Lang zh="實相新聞台" en="REALITY NEWSROOM" /></h3><p><Lang zh="即時、真實、深度報導世界正在發生的事。" en="Timely, grounded reporting on the world in motion." /></p></div>
+              <div><h3><Lang zh="實相新聞台" en="REALITY NEWSROOM" /></h3><p><Lang zh="我把公開報導、影音與來源整理成可回查的事件紀錄。" en="I organize public reporting, video and sources into event records that can be checked again." /></p></div>
             </LocalizedLink>
             <LocalizedLink href="/news#museum">
               <span aria-hidden="true"><Landmark strokeWidth={1.45} /></span>
-              <div><h3><Lang zh="責任博物館" en="RESPONSIBILITY MUSEUM" /></h3><p><Lang zh="保存記憶、啟動反思，讓責任成為未來的指南針。" en="Preserve memory and turn responsibility into a compass." /></p></div>
+              <div><h3><Lang zh="責任博物館" en="RESPONSIBILITY MUSEUM" /></h3><p><Lang zh="我保存事件中的主體、決策、後果與承擔，不讓責任在敘事裡消失。" en="I preserve the subjects, decisions, consequences and accountability within events so responsibility does not disappear inside narrative." /></p></div>
             </LocalizedLink>
             <LocalizedLink href="/news">
               <span aria-hidden="true"><ShieldCheck strokeWidth={1.45} /></span>
-              <div><h3><Lang zh="共同守護未來" en="GUARDING THE FUTURE" /></h3><p><Lang zh="每一次閱讀、每一段參與，都是改變。" en="Every reading and every act of participation matters." /></p></div>
+              <div><h3><Lang zh="讓責任留下來" en="KEEP RESPONSIBILITY VISIBLE" /></h3><p><Lang zh="我公開依據與邊界，讓每一項判斷都能被追問、核對與回放。" en="I publish grounds and boundaries so every judgment can be questioned, verified and replayed." /></p></div>
             </LocalizedLink>
           </div>
         </section>
@@ -236,7 +237,7 @@ export default function Home() {
         <section className={styles.publicRecord} id="public-record" data-serene-reveal="rise">
           <div>
             <p className={styles.sectionKicker}><i aria-hidden="true" /> <Lang zh="公開紀錄" en="PUBLIC RECORD" /></p>
-            <h2><Lang zh="讓外部世界能查到、讀懂、回放。" en="SEARCHABLE. READABLE. REPLAYABLE." /></h2>
+            <h2><Lang zh="我把作品、工程與公開證據收回同一條可查、可讀、可回放的路徑。" en="I BRING MY WORK, ENGINEERING AND PUBLIC EVIDENCE INTO ONE SEARCHABLE, READABLE, REPLAYABLE PATH." /></h2>
           </div>
           <div className={styles.recordGrid}>
             {publicRecords.map((record) => (

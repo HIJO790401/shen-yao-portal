@@ -61,12 +61,12 @@ export default function WorksPage() {
   const readyDemos = productFilms.filter((film) => film.status === "ready");
   return <><SiteHeader/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }} /><main className={styles.worksPage}>
     <section className={styles.worksHero}>
-      <div><small>SELECTED WORKS · SYSTEMS / MOTION / MUSIC / WRITING</small><h1><Lang zh={<>作品<br/>不是清單。</>} en={<>WORKS<br/>ARE NOT A LIST.</>} /></h1><p><Lang zh="每件作品依真實媒介分流：能運算的系統進固定案例 Demo，候選系統進架構動畫，動畫與音樂回到公開影音，文章回到原始發布頁。" en="Each work stays in its real medium: executable systems become fixed-case demos, candidate systems become architecture films, animation and music return to public media, and writing links to its original publication." /></p></div>
+      <div><small>SELECTED WORKS · SYSTEMS / MOTION / MUSIC / WRITING</small><h1><Lang zh={<>作品<br/>不是清單。</>} en={<>WORKS<br/>ARE NOT A LIST.</>} /></h1><p><Lang zh="我讓每件作品留在它真正成立的媒介：能運算的系統進固定案例 Demo，候選架構只呈現已定義的路徑，動畫與音樂回到公開影音，文章回到我的原始發布頁。" en="I keep each work in the medium where it actually exists: executable systems become fixed-case demos, candidate architectures show only defined paths, animation and music return to public media, and writing links to my original publication." /></p></div>
       <aside><span>SYSTEMS<br/>{readyDemos.length} AUTO DEMOS</span><span>ANIMATION<br/>EXTERNAL MEDIA</span><span>MUSIC<br/>EXTERNAL MEDIA</span><span>WRITING<br/>PRIMARY LINKS</span></aside>
     </section>
 
     <section className={styles.worksSection}>
-      <header><span>01</span><div><h2><Lang zh="系統、架構與固定案例" en="SYSTEMS, ARCHITECTURE & FIXED CASES" /></h2><p><Lang zh="以下十四套展示不收訪客輸入；畫面只重播母規格架構、Repo 內建案例、原公式或策展資料。SCBKR 責任鏈語言模型依指示暫緩動畫。" en="These fourteen displays accept no visitor input; they replay only the owner specification architecture, repository fixtures, source formulas or curated case data. Motion for the SCBKR Responsibility Chain Language Model remains deferred by the owner." /></p></div></header>
+      <header><span>01</span><div><h2><Lang zh="系統、架構與固定案例" en="SYSTEMS, ARCHITECTURE & FIXED CASES" /></h2><p><Lang zh="我把十五套系統作品接成各自的固定案例或架構時間軸，不收訪客輸入，也不讓畫面替產品虛構能力；每一段只重播我已定義的母規格、Repo 內建案例、原公式或策展資料。SCBKR 責任鏈語言模型由我決定暫緩動畫。" en="I connect fifteen system works to their own fixed-case or architecture timelines. They accept no visitor input, and the visuals do not invent product capability; every sequence replays only my defined owner specification, repository fixtures, source formulas or curated case data. I have kept motion for the SCBKR Responsibility Chain Language Model deferred." /></p></div></header>
       <div className={styles.worksGrid}>{readyDemos.map((film) => <LocalizedLink className={styles.workCard} href={`/demo/${film.slug}`} key={film.slug}>
         <div><small>{film.index} · {film.label}</small><h3><Lang zh={film.name} en={film.nameEn} /></h3><p><Lang zh={film.introZh} en={film.introEn} /></p></div>
         <span><Lang zh="播放展示" en="PLAY DEMO" /> →</span>
@@ -74,7 +74,7 @@ export default function WorksPage() {
     </section>
 
     <section className={styles.worksSection} id="music-animation" aria-labelledby="music-animation-title">
-      <header><span>02</span><div><h2 id="music-animation-title"><Lang zh="音樂與動畫" en="MUSIC & ANIMATION" /></h2><p><Lang zh="直接觀看目前已公開的音樂動畫；網站保留作品脈絡與入口，影音仍由原始平台傳輸。新 3D 建模與十秒開場影片完成後，才會列為新作品版本。" en="Watch the currently published music-animation works here. This site preserves their context and entry points while the original platforms deliver the media. New 3D work and the ten-second intro will be listed only after they exist as new versions." /></p></div></header>
+      <header><span>02</span><div><h2 id="music-animation-title"><Lang zh="音樂與動畫" en="MUSIC & ANIMATION" /></h2><p><Lang zh="我把已公開的音樂動畫放回原始平台播放，官網保存作品名稱、脈絡與入口，不重新上傳或替作品改名。新 3D 建模完成後，我才會把它列為新的作品版本。" en="I keep my published music-animation works playing from their original platforms while the site preserves each title, context and entry point without re-uploading or renaming it. I will list new 3D work only after that version has been completed." /></p></div></header>
 
       <div className={styles.mediaShowcase}>
         <article className={styles.mediaFeature}>
@@ -109,15 +109,15 @@ export default function WorksPage() {
           <div className={styles.mediaVideo}>
             <VideoEmbed
               url="https://youtu.be/2UFVuPkDkTc?si=x63L1sVECKuIgzT4"
-              title="公開音樂動畫作品 / Public Music-Animation Work"
+              title="主體未眠 / The Subject Never Sleeps"
             />
           </div>
           <div className={styles.mediaFeatureCopy}>
             <small>YOUTUBE · ORIGINAL STREAM · PUBLIC WORK</small>
-            <h3><Lang zh="公開音樂動畫作品" en="PUBLIC MUSIC-ANIMATION WORK" /></h3>
+            <h3><Lang zh="主體未眠" en="THE SUBJECT NEVER SLEEPS" /></h3>
             <p><Lang
-              zh="本站直接嵌入原始 YouTube 影音，不另行上傳，也不在未核對前替作品杜撰正式片名；正式標題與發布資訊以原始影片頁為準。"
-              en="This site embeds the original YouTube stream without duplicating the upload or inventing a formal title before it is verified. The original video page remains authoritative for its published title and details."
+              zh="我以五個聲部守住辨認、邊界、情緒、照見與責任；官網直接嵌入我的原始 YouTube 作品，不另行上傳。"
+              en="I use five voices to guard identity, boundaries, emotion, reflection and responsibility. The site embeds my original YouTube work without duplicating the upload."
             /></p>
             <a href="https://youtu.be/2UFVuPkDkTc?si=x63L1sVECKuIgzT4" target="_blank" rel="noreferrer"><Lang zh="前往 YouTube" en="OPEN ON YOUTUBE" /> ↗</a>
           </div>
@@ -129,7 +129,7 @@ export default function WorksPage() {
     </section>
 
     <section className={styles.worksSection} id="literature" aria-labelledby="literature-work-title">
-      <header><span>03</span><div><h2 id="literature-work-title"><Lang zh="文學與書籍" en="LITERATURE & BOOKS" /></h2><p><Lang zh="書籍不再混在一般作品清單裡。《沉靜是一種語言》提供正式第一部試讀與已核實的繁中購買入口；《審訊室存在過的名字》保留獨立審訊室世界，公開頁先呈現故事提要；作品持續更新中。" en="Books now have a dedicated editorial home. Stillness Is a Language offers a verified Part One preview and a confirmed Traditional Chinese storefront; The Name That Existed in the Interrogation Room retains its own interrogation-room world and public synopsis while the work continues to evolve." /></p></div></header>
+      <header><span>03</span><div><h2 id="literature-work-title"><Lang zh="文學與書籍" en="LITERATURE & BOOKS" /></h2><p><Lang zh="我讓三部作品保有各自的世界與公開邊界：《沉靜是一種語言》公開正式第一部試讀與繁中購買入口；《審訊室存在過的名字》保留獨立審訊室世界；《虛偽文明的審判》由我逐案拆解文明的虛偽，官網只公開我選定的圖卡、短判詞與摘要。" en="I keep three works in their own worlds and release boundaries: Stillness Is a Language has a formal Part One preview and verified Traditional Chinese storefront; The Name That Existed in the Interrogation Room keeps its sealed world; and in The Judgment of a False Civilization I dismantle civilization’s falsehoods case by case, releasing only the artwork, short verdicts and summaries I have selected." /></p></div></header>
       <div className={styles.literatureGrid}>
         <LocalizedLink className={`${styles.literatureCard} ${styles.stillnessWork}`} href="/books/stillness-is-a-language">
           <div className={styles.literatureVisual}>
@@ -143,17 +143,25 @@ export default function WorksPage() {
 
         <LocalizedLink className={`${styles.literatureCard} ${styles.interrogationWork}`} href="/novel/interrogation-room">
           <div className={styles.literatureScene}><Image src="/media/novel/interrogation-room-scene.png" alt="空審訊室、桌椅、單向玻璃與晨光" fill unoptimized sizes="(max-width: 760px) 100vw, 42vw" /></div>
-          <div className={styles.literatureCopy}><small>08:17 · FICTION · WORK IN PROGRESS</small><h3><Lang zh="審訊室存在過的名字" en="THE NAME THAT EXISTED IN THE INTERROGATION ROOM" /></h3><p><Lang zh="所有人都進過審訊室，只有一個名字留了下來。公開頁呈現故事提要；作品持續更新中。" en="Many entered the interrogation room. Only one name remained. The public page presents a synopsis while the work continues to evolve." /></p><span><Lang zh="進入作品頁" en="ENTER THE WORK" /> ↗</span></div>
+          <div className={styles.literatureCopy}><small>08:17 · FICTION · WORK IN PROGRESS</small><h3><Lang zh="審訊室存在過的名字" en="THE NAME THAT EXISTED IN THE INTERROGATION ROOM" /></h3><p><Lang zh="所有人都進過審訊室，只有一個名字留了下來。公開頁先呈現故事提要；作品持續更新中。" en="Many entered the interrogation room. Only one name remained. The public page first presents a synopsis while the work continues to evolve." /></p><span><Lang zh="進入作品頁" en="ENTER THE WORK" /> ↗</span></div>
+        </LocalizedLink>
+
+        <LocalizedLink className={`${styles.literatureCard} ${styles.judgmentWork}`} href="/books/judgment-of-civilization">
+          <div className={`${styles.literatureScene} ${styles.judgmentScene}`}>
+            <Image src="/media/books/judgment-of-civilization/case-004.jpg" alt="《虛偽文明的審判》第四案圖卡" fill unoptimized sizes="(max-width: 760px) 100vw, 42vw" />
+            <span className={styles.judgmentDossierMark}>CASE DOSSIER · 001—005</span>
+          </div>
+          <div className={styles.literatureCopy}><small>8 PARTS · 34 PROVISIONAL CASES · 7 WEB SELECTIONS</small><h3><Lang zh="虛偽文明的審判" en="THE JUDGMENT OF A FALSE CIVILIZATION" /></h3><p><Lang zh="我在這套作品裡逐案解構文明如何讓沒有責任鏈的知識使用權取得合法性；我審判的不是現象與知識本身。我只在官網公開選定圖卡、短判詞與摘要，完整書稿不公開。" en="In this work, I dismantle case by case how knowledge-use authority without a responsibility chain became legitimate; phenomena and knowledge themselves are not the accused. I release only selected artwork, short verdicts and summaries on the site, not the full manuscript." /></p><span><Lang zh="進入文明案件檔案" en="ENTER THE CIVILIZATIONAL DOSSIER" /> ↗</span></div>
         </LocalizedLink>
       </div>
       <LocalizedLink className={styles.booksHubLink} href="/books"><Lang zh="瀏覽文學與書籍專區" en="EXPLORE LITERATURE & BOOKS" /> <span aria-hidden="true">→</span></LocalizedLink>
     </section>
 
     <section className={styles.worksSection}>
-      <header><span>04</span><div><h2><Lang zh="公開文章與外部紀錄" en="PUBLIC WRITING & EXTERNAL RECORDS" /></h2><p><Lang zh="連結直接回原始發布位置；NVIDIA 項目清楚標示為開發者社群文章，不冒充官方合作或背書。" en="Links return to original publication locations. NVIDIA items are explicitly developer-community posts, never presented as official collaboration or endorsement." /></p></div></header>
+      <header><span>04</span><div><h2><Lang zh="公開文章與外部紀錄" en="PUBLIC WRITING & EXTERNAL RECORDS" /></h2><p><Lang zh="我讓每個連結直接回到原始發布位置，也把本人發布、開發者社群文章與第三方媒體報導分開標示；我的判斷由我署名承擔，平台出現不被改寫成平台背書。" en="I link every record back to its original publication and distinguish my own releases, developer-community posts and third-party media coverage. I sign and answer for my judgments; appearing on a platform is not recast as platform endorsement." /></p></div></header>
       <div className={styles.worksGrid}>{articleWorks.map((item) => <ExternalCard item={item} key={item.href}/>)}</div>
     </section>
 
-    <div className={styles.worksNotice}><Lang zh="邊界：本頁只整理目前可核實的公開作品入口。尚未完成的 3D、音樂專輯、開場影片或商用 API 不會先用視覺包裝成已存在。" en="Boundary: this page organizes only verifiable public work. Unfinished 3D, music releases, intro film or commercial APIs are not visually packaged as if they already exist." /></div>
+    <div className={styles.worksNotice}><Lang zh="我的公開邊界：本頁只放我已公開、可核對的作品入口；尚未完成的版本不會被我先包裝成已經存在。" en="My public boundary: this page contains only work I have released and made verifiable. I do not package unfinished versions as if they already existed." /></div>
   </main><SiteFooter/></>;
 }

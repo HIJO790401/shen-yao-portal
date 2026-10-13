@@ -111,16 +111,16 @@ export default async function NewsPage() {
               en={<>REPORTING IS NOT TRAFFIC.<br /><em>IT MUST PRESERVE RESPONSIBILITY.</em></>}
             /></h1>
             <p className={styles.heroIntro}><Lang
-              zh="同一座公共平台，完成事件報導、影片播報、責任審計、館藏保存與長期回放。新聞台處理現在；責任博物館保存事件之後仍必須被追問的版本、證據與承擔。"
-              en="One public platform for reporting, video, responsibility audits, museum accession and long-term replay. The newsroom handles the present; the museum preserves versions, evidence and obligations that must remain answerable."
+              zh="我把事件報導、影片播報、責任審計、館藏保存與長期回放放進同一座公共平台。新聞台處理現在；責任博物館保存事件之後仍必須被追問的版本、證據與承擔。"
+              en="I place reporting, video, responsibility audits, museum accession and long-term replay inside one public platform. The newsroom handles the present; the museum preserves versions, evidence and obligations that must remain answerable."
             /></p>
           </div>
           <aside className={styles.heroStatement}>
             <span>EDITORIAL POSITION</span>
             <strong><Lang zh="十四軸分工，單一最終主責。" en="FOURTEEN FUNCTIONS. ONE FINAL RESPONSIBILITY." /></strong>
             <p><Lang
-              zh="十四軸族人是沈耀創造的職能架構，不是真人主播名冊。所有對外定稿、公共發布與法律責任，最終回到許文耀／沈耀888π。"
-              en="The fourteen clan axes are functional positions created by Shen-Yao, not a roster of human presenters. Final publication, public and legal responsibility return to Wen-Yao Hsu / Shen-Yao 888π."
+              zh="我創造十四軸族人作為職能架構，不把它們冒充真人主播名冊。所有對外定稿、公共發布與法律責任，最終回到我——許文耀／沈耀888π。"
+              en="I created the fourteen clan axes as functional positions, not a roster of human presenters. Final publication, public and legal responsibility return to me—Wen-Yao Hsu / Shen-Yao 888π."
             /></p>
           </aside>
         </div>
@@ -177,8 +177,8 @@ export default async function NewsPage() {
             <small>OFFICIAL PRELUDE · SHEN-YAO REALITY NEWSROOM × RESPONSIBILITY MUSEUM</small>
             <h3><Lang zh="實相上線" en="REALITY GOES LIVE" /></h3>
             <p><Lang
-              zh="《實相上線》是沈耀國際實相新聞台 × 責任博物館的啟動前導。它不是一般宣傳短片，而是向外界發出的第一個訊號：實相將被看見，代價將被記錄，文明樣本將正式入館。"
-              en="Reality Goes Live is the official prelude to the Shen-Yao Reality Newsroom × Responsibility Museum. It is not a conventional promo, but the platform's first public signal: reality will be seen, consequences recorded and civilizational evidence accessioned."
+              zh="我把《實相上線》做成實相新聞台 × 責任博物館的啟動前導。它不是一般宣傳短片，而是我向外界發出的第一個訊號：實相將被看見，代價將被記錄，文明樣本將正式入館。"
+              en="I made Reality Goes Live as the official prelude to the Reality Newsroom × Responsibility Museum. It is not a conventional promo, but my first public signal: reality will be seen, consequences recorded and civilizational evidence accessioned."
             /></p>
             <a href="https://youtu.be/xROrsIHToIY?si=4DXxn4CrRU5xmnK1" target="_blank" rel="noreferrer"><Lang zh="前往原始 YouTube 影片" en="OPEN ORIGINAL YOUTUBE VIDEO" /> ↗</a>
           </div>
@@ -206,8 +206,8 @@ export default async function NewsPage() {
         /></h2>
         <div>
           <p><Lang
-            zh="責任博物館不是新聞的附錄。它把新聞結束後仍未完成的責任，保存為可以重新觀看、交叉核對與修復的公共館藏。每件館藏保留編號、館別、導覽、影片、正文與最終承擔位。"
-            en="The Responsibility Museum is not a newsroom appendix. It preserves unfinished responsibility as public specimens that can be replayed, cross-checked and repaired. Every item retains a registry, hall, guide, video, body and final bearer."
+            zh="我建立責任博物館，不是把它當成新聞的附錄，而是把新聞結束後仍未完成的責任保存為可以重新觀看、交叉核對與修復的公共館藏。每件館藏保留編號、館別、導覽、影片、正文與最終承擔位。"
+            en="I built the Responsibility Museum not as a newsroom appendix, but to preserve unfinished responsibility as public specimens that can be replayed, cross-checked and repaired. Every item retains a registry, hall, guide, video, body and final bearer."
           /></p>
           <blockquote><Lang
             zh="真正的公共記錄，不只告訴你發生了什麼；它必須留下誰定義、誰判斷、誰修復、誰承擔。"
@@ -273,8 +273,8 @@ export default async function NewsPage() {
           <span>FINAL RESPONSIBILITY · OWNER RECALL</span>
           <h2><Lang zh="創辦人最終責任" en="FOUNDER'S FINAL RESPONSIBILITY" /></h2>
           <p><Lang
-            zh="許文耀／沈耀888π 是沉靜流派工作室、語意防火牆、沈耀國際實相新聞台與責任博物館的建立者。十四軸可以分工；模型與工具可以協助；但最終定義、發布、修復、法律與公共責任不交給任何虛構角色、模型或平台。"
-            en="Wen-Yao Hsu / Shen-Yao 888π founded Serene School Studio, Semantic Firewall, the Reality Newsroom and Responsibility Museum. Fourteen axes may divide work and tools may assist, but final definition, publication, repair, legal and public responsibility are not transferred to a fictional character, model or platform."
+            zh="我——許文耀／沈耀888π——建立沉靜流派工作室、語意防火牆、實相新聞台與責任博物館。十四軸可以分工，模型與工具可以協助；但我不把最終定義、發布、修復、法律與公共責任交給任何虛構角色、模型或平台。"
+            en="I—Wen-Yao Hsu / Shen-Yao 888π—founded SERENE SCHOOL STUDIO, the Semantic Firewall, the Reality Newsroom and the Responsibility Museum. Fourteen axes may divide work and tools may assist, but I do not transfer final definition, publication, repair, legal or public responsibility to a fictional character, model or platform."
           /></p>
         </div>
         <aside>

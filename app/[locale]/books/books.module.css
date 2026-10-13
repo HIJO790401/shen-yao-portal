@@ -371,6 +371,112 @@
 .interrogationCard .bookCopy p { color: #cbc7c3; }
 .interrogationCard .bookAction { color: #f0d8d1; border-color: rgba(218, 175, 162, 0.32); background: rgba(255, 255, 255, 0.035); }
 
+.judgmentCard {
+  position: relative;
+  color: #f3e9d2;
+  border-color: rgba(203, 158, 86, 0.3);
+  background:
+    linear-gradient(112deg, rgba(31, 24, 19, 0.98), rgba(9, 13, 17, 0.98)),
+    #0d1014;
+  box-shadow: 0 38px 110px rgba(20, 14, 10, 0.28);
+}
+
+.judgmentCard::after {
+  position: absolute;
+  top: 0;
+  right: clamp(28px, 5vw, 80px);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(153, 30, 24, 0.72), transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.judgmentCard .bookVisual {
+  min-height: 620px;
+  background:
+    radial-gradient(circle at 48% 42%, rgba(201, 151, 78, 0.14), transparent 38%),
+    linear-gradient(145deg, #17130f, #080c11 64%, #12161a);
+}
+
+.judgmentCard .bookVisual::before {
+  background:
+    linear-gradient(90deg, transparent 49.8%, rgba(201, 151, 78, 0.2) 50%, transparent 50.2%),
+    linear-gradient(0deg, transparent 49.8%, rgba(201, 151, 78, 0.14) 50%, transparent 50.2%),
+    radial-gradient(circle, transparent 0 31%, rgba(201, 151, 78, 0.15) 31.2% 31.5%, transparent 31.7% 47%, rgba(201, 151, 78, 0.1) 47.2% 47.5%, transparent 47.7%);
+  opacity: 0.8;
+}
+
+.judgmentCover {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(430px, 92%);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(222, 180, 109, 0.38);
+  border-radius: 2px;
+  background: #090c10;
+  box-shadow:
+    0 36px 85px rgba(0, 0, 0, 0.58),
+    0 0 0 10px rgba(211, 163, 88, 0.035);
+  transform: perspective(1000px) rotateY(3deg);
+  transition: transform 700ms cubic-bezier(0.16, 0.75, 0.18, 1);
+}
+
+.judgmentCover::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 9, 12, 0.06), rgba(6, 9, 12, 0.18) 47%, rgba(5, 7, 9, 0.94) 86%),
+    linear-gradient(90deg, rgba(126, 21, 18, 0.34) 0 2px, transparent 2px);
+  content: "";
+}
+
+.judgmentCover img {
+  object-fit: cover;
+  object-position: center 28%;
+  filter: saturate(0.86) contrast(1.08) brightness(0.84);
+}
+
+.judgmentCard:hover .judgmentCover {
+  transform: perspective(1000px) rotateY(0) translateY(-5px);
+}
+
+.judgmentCoverTitle {
+  position: absolute;
+  z-index: 2;
+  right: 28px;
+  bottom: 28px;
+  left: 28px;
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid rgba(226, 187, 119, 0.55);
+  padding-top: 18px;
+  color: #f3e7c9;
+}
+
+.judgmentCoverTitle small {
+  color: #d7ac64;
+  font: 800 9px/1.4 var(--font-sans), sans-serif;
+  letter-spacing: 0.18em;
+}
+
+.judgmentCoverTitle b {
+  max-width: 330px;
+  font: 600 clamp(26px, 3vw, 43px)/1.12 var(--font-serif), Georgia, serif;
+  letter-spacing: -0.035em;
+}
+
+.judgmentCard .bookMeta { color: #d2a65f; }
+.judgmentCard .bookCopy h3 { color: #f4ead5; }
+.judgmentCard .bookCopy p { color: #c8baa2; }
+.judgmentCard .bookAction {
+  color: #eed8ad;
+  border-color: rgba(211, 164, 91, 0.32);
+  background: rgba(255, 247, 229, 0.035);
+}
+
 .boundaryNote {
   display: grid;
   grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1.55fr);

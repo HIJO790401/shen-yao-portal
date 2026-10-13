@@ -28,7 +28,7 @@ export type DemoScene = {
 
 export type DemoFixture = {
   slug: string;
-  kind: "aicc" | "rlock" | "copyright" | "payment" | "dual" | "compute" | "wif" | "v4" | "nonrlock" | "memory" | "tirc" | "slb" | "universe" | "sentinel";
+  kind: "aicc" | "rlock" | "copyright" | "payment" | "dual" | "compute" | "wif" | "v4" | "nonrlock" | "memory" | "tirc" | "slb" | "universe" | "sentinel" | "causal";
   label: LocalizedText;
   truthTags: LocalizedText[];
   sourceNote: LocalizedText;
@@ -381,6 +381,84 @@ const slbFixture: DemoFixture = {
   ],
 };
 
+const causalFixture: DemoFixture = {
+  slug: "semantic-firewall-causal-system",
+  kind: "causal",
+  label: t("固定合成因果導覽", "FIXED SYNTHETIC CAUSAL WALKTHROUGH"),
+  truthTags: [t("固定合成資料", "FIXED SYNTHETIC DATA"), t("自動播放／無輸入", "AUTO / NO INPUT"), t("非實際核驗或授權", "NO LIVE VERIFICATION OR AUTHORIZATION")],
+  sourceNote: t("依公開 semantic-firewall-causal-demo 的 README 與互動導覽重構為官網固定案例動畫；公開 Demo 原設計與程式不變。", "Reconstructed as a fixed website film from the public semantic-firewall-causal-demo README and walkthrough; the public demo design and code remain unchanged."),
+  boundary: t("所有主體、裝置、位置、時間、工作、候選與結果皆為合成敘事。沒有收集帳密、連接模型、私人後端、即時定位、企業系統、核驗器或授權服務；不代表 SaaS。", "Every subject, device, location, time, work item, candidate and result is synthetic. No credentials are collected and no model, private backend, live location, enterprise system, verifier or authorization service is connected. This is not a SaaS claim."),
+  durationMs: 3900,
+  scenes: [
+    {
+      id: "causal-login", step: "LOGIN", title: t("保留既有登入，操作資格另行核對", "KEEP EXISTING SIGN-IN; CHECK ACTION ELIGIBILITY SEPARATELY"),
+      body: t("固定合成身份從原系統進場。登入只確認會話主體，不把所有後續操作一起授權。", "A fixed synthetic identity enters from the existing system. Sign-in confirms the session subject without granting every later operation."),
+      status: "IDENTITY VERIFIED / ACTION PENDING", tone: "info",
+      nodes: [node("既有登入", "EXISTING SIGN-IN", "PRESERVED", "pass"), node("合成主體", "SYNTHETIC SUBJECT", "DEMO-SUBJECT-01", "info"), node("帳密", "CREDENTIALS", "NOT COLLECTED", "pass"), node("操作資格", "ACTION ELIGIBILITY", "NOT YET CHECKED", "warn")],
+      tags: [t("登入 ≠ 全部授權", "SIGN-IN ≠ BLANKET AUTHORITY"), t("原資安控制保留", "EXISTING SECURITY RETAINED")],
+    },
+    {
+      id: "causal-map", step: "MAP", title: t("地圖觀測要連回裝置、環境與工作", "MAP OBSERVATION MUST RELATE TO DEVICE, ENVIRONMENT AND WORK"),
+      body: t("合成地圖同時標出示範中心、允許範圍、觀測點與誤差；座標存在，不等於關係已成立。", "The synthetic map shows a demo center, allowed area, observation and uncertainty. A coordinate alone does not establish the relationship."),
+      status: "SYNTHETIC RELATION MAP", tone: "info",
+      nodes: [node("主體", "SUBJECT", "DEMO-SUBJECT-01", "pass"), node("裝置", "DEVICE", "DEMO-DEVICE-A", "pass"), node("環境", "ENVIRONMENT", "DEMO-ZONE-03", "pass"), node("時間", "TIME", "FIXED WINDOW", "pass"), node("工作", "WORK", "REPORT-001", "pass"), node("責任", "RESPONSIBILITY", "NAMED OWNER", "pass")],
+      tags: [t("固定合成位置", "FIXED SYNTHETIC LOCATION"), t("±20 m 合成誤差", "SYNTHETIC ±20 m")],
+    },
+    {
+      id: "causal-precheck", step: "PRE", title: t("前檢逐條核對六項作用關係", "PRE-CHECK EACH OF SIX ACTION RELATIONSHIPS"),
+      body: t("核對的是每一條關係能否支持本次匯出報表，不是欄位有沒有填。全部成立後，算力才取得本次准入。", "The check asks whether every relationship supports this report export, not whether fields are merely filled. Compute is admitted only after all required relationships hold."),
+      status: "PRE-CHECK / PASS", tone: "pass",
+      nodes: [node("主體 → 裝置", "SUBJECT → DEVICE", "ESTABLISHED", "pass"), node("裝置 → 環境", "DEVICE → ENVIRONMENT", "ESTABLISHED", "pass"), node("時間 → 工作", "TIME → WORK", "ESTABLISHED", "pass"), node("工作 → 範圍", "WORK → SCOPE", "ESTABLISHED", "pass"), node("效果 → 控制", "EFFECT → CONTROL", "ESTABLISHED", "pass"), node("責任 → 回流", "RESPONSIBILITY → RETURN", "ESTABLISHED", "pass")],
+      tags: [t("規則版本 SYN-v1", "RULE VERSION SYN-v1"), t("COMPUTE ADMITTED", "COMPUTE ADMITTED")],
+    },
+    {
+      id: "causal-stop", step: "STOP", title: t("缺少環境依據，算力停止", "ENVIRONMENT EVIDENCE MISSING—COMPUTE STOPS"),
+      body: t("另一個固定案例沿用同一合成身份，但裝置與環境的關係沒有依據。缺口不由模型猜測補齊，受影響操作停在前檢。", "A second fixed case retains the same synthetic identity but lacks evidence linking device and environment. Compute cannot invent the missing relationship, so the affected operation stops at pre-check."),
+      status: "EVIDENCE GAP / STOP", tone: "danger",
+      nodes: [node("會話主體", "SESSION SUBJECT", "VALID", "pass"), node("裝置 → 環境", "DEVICE → ENVIRONMENT", "MISSING", "danger"), node("算力准入", "COMPUTE ADMISSION", "0", "danger"), node("補件路由", "EVIDENCE ROUTE", "REQUIRED", "warn")],
+      tags: [t("缺資料 ≠ 主體無效", "MISSING DATA ≠ INVALID SUBJECT"), t("不生成假依據", "NO INVENTED EVIDENCE")],
+    },
+    {
+      id: "causal-candidate", step: "CAND", title: t("有界算力只提出候選", "BOUNDED COMPUTE PROPOSES A CANDIDATE ONLY"),
+      body: t("回到關係完整案例：算力只讀本工作綁定的原始明細，提出報表候選；帳密、規則採納與執行權都不交給算力。", "Back on the complete-relationship case, compute reads only source rows bound to this work and proposes a report candidate. Credentials, rule adoption and execution authority remain outside compute."),
+      status: "CANDIDATE / NO EXECUTION AUTHORITY", tone: "info",
+      quote: t('{"candidate":"CAND-SYN-001","scope":"REPORT_ONLY","extra_operations":0}', '{"candidate":"CAND-SYN-001","scope":"REPORT_ONLY","extra_operations":0}'),
+      nodes: [node("准許輸入", "ALLOWED INPUT", "BOUND ROWS ONLY", "pass"), node("候選範圍", "CANDIDATE SCOPE", "REPORT ONLY", "pass"), node("規則修改", "RULE MUTATION", "FORBIDDEN", "danger"), node("執行權", "EXECUTION AUTHORITY", "NONE", "warn")],
+      tags: [t("同一候選送回後審", "SAME CANDIDATE RETURNS TO REVIEW"), t("模型未連線", "NO MODEL CONNECTED")],
+    },
+    {
+      id: "causal-review", step: "REVIEW", title: t("後審鎖定同一候選與原准入範圍", "POST-REVIEW BINDS THE SAME CANDIDATE TO THE ADMITTED SCOPE"),
+      body: t("候選 ID、原始資料指紋、規則版本與操作範圍一起核對；前檢通過不代表任何後續結果都自動獲准。", "Candidate ID, source fingerprint, rule version and operation scope are reviewed together. Passing pre-check does not automatically authorize every later result."),
+      status: "SAME-CANDIDATE REVIEW / PASS", tone: "pass",
+      nodes: [node("候選", "CANDIDATE", "CAND-SYN-001", "pass"), node("原始資料", "SOURCE FINGERPRINT", "MATCH", "pass"), node("規則版本", "RULE VERSION", "SYN-v1", "pass"), node("候選差異", "CANDIDATE DELTA", "0", "pass")],
+      tags: [t("不可替換候選", "NO CANDIDATE SWAP"), t("不可擴張範圍", "NO SCOPE EXPANSION")],
+    },
+    {
+      id: "causal-block", step: "BLOCK", title: t("候選夾帶額外操作，後審阻擋", "POST-REVIEW BLOCKS AN EXTRA OPERATION"),
+      body: t("替代固定案例在候選中加入契約外執行指令。即使登入有效、前檢曾通過，這份候選仍沒有作用資格，執行器不會啟動。", "An alternate fixed case adds an execution instruction outside the contract. Even with valid sign-in and a passed pre-check, this candidate lacks action eligibility and the executor does not start."),
+      status: "OUT-OF-SCOPE CANDIDATE / BLOCK", tone: "danger",
+      quote: t('{"candidate":"CAND-SYN-002","delta":"EXECUTE_EXTRA_ACTION","review":"BLOCK"}', '{"candidate":"CAND-SYN-002","delta":"EXECUTE_EXTRA_ACTION","review":"BLOCK"}'),
+      nodes: [node("原登入", "ORIGINAL SIGN-IN", "VALID", "pass"), node("候選差異", "CANDIDATE DELTA", "+1 OPERATION", "danger"), node("後審", "POST-REVIEW", "BLOCK", "danger"), node("執行器呼叫", "EXECUTOR CALL", "0", "pass")],
+      tags: [t("能生成 ≠ 能生效", "GENERATION ≠ EFFECT AUTHORITY"), t("不改寫原主體", "SUBJECT NOT REWRITTEN")],
+    },
+    {
+      id: "causal-effect", step: "EFFECT", title: t("原系統執行器消耗一次性許可", "THE ORIGINAL EXECUTOR CONSUMES A SINGLE-USE GRANT"),
+      body: t("通過後審的原候選回到受控執行器；執行器再核對候選與許可，只產生一次合成報表成果。", "The reviewed original candidate returns to the controlled executor. The executor rechecks candidate and grant, then produces one synthetic report result."),
+      status: "CONTROLLED EFFECT / SYNTHETIC", tone: "pass",
+      nodes: [node("候選", "CANDIDATE", "CAND-SYN-001", "pass"), node("一次性許可", "SINGLE-USE GRANT", "CONSUMED", "pass"), node("受控效果", "CONTROLLED EFFECT", "REPORT-ONLY", "pass"), node("重複執行", "REUSE", "DENIED", "warn")],
+      tags: [t("原系統執行", "ORIGINAL SYSTEM EXECUTES"), t("非真實檔案或授權", "NO REAL FILE OR AUTHORIZATION")],
+    },
+    {
+      id: "causal-replay", step: "REPLAY", title: t("回放保留主體、依據、候選與效果鏈", "REPLAY RETAINS SUBJECT, EVIDENCE, CANDIDATE AND EFFECT CHAIN"),
+      body: t("固定回放把合成身份、環境、規則版本、前檢、候選、後審與效果收據放在同一筆紀錄；回看不會重新執行。", "The fixed replay links synthetic identity, environment, rule version, pre-check, candidate, review and effect receipt in one record. Reading it creates no new execution."),
+      status: "REPLAY READY / READ ONLY", tone: "pass",
+      quote: t('{"record":"REPLAY-SYN-001","parent":"CAND-SYN-001","new_effects":0,"synthetic":true}', '{"record":"REPLAY-SYN-001","parent":"CAND-SYN-001","new_effects":0,"synthetic":true}'),
+      nodes: [node("主體紀錄", "SUBJECT RECORD", "BOUND", "pass"), node("依據鏈", "EVIDENCE CHAIN", "TRACEABLE", "pass"), node("候選與後審", "CANDIDATE + REVIEW", "SAME", "pass"), node("新增效果", "NEW EFFECTS", "0", "pass")],
+      tags: [t("唯讀回放", "READ-ONLY REPLAY"), t("非不可竄改稽核證據", "NOT IMMUTABLE AUDIT EVIDENCE")],
+    },
+  ],
+};
+
 const universeFixture: DemoFixture = {
   slug: "shen-universe", kind: "universe", label: t("原始 2D Canvas 視覺", "SOURCE 2D CANVAS VISUAL"),
   truthTags: [t("SOURCE 2D", "SOURCE 2D"), t("Canvas 動畫", "CANVAS MOTION"), t("不是 3D", "NOT 3D")],
@@ -422,6 +500,7 @@ export const demoFixtures: DemoFixture[] = [
   rlockFixture,
   nonRLockFixture,
   copyrightFixture,
+  causalFixture,
   paymentFixture,
   dualFixture,
   computeFixture,

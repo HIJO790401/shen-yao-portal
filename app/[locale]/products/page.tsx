@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const isEnglish = locale === "en";
   const title = isEnglish ? "AI Safety & Governance Products | SERENE SCHOOL STUDIO" : baseMetadata.title;
   const description = isEnglish
-    ? "AI safety and governance products from SERENE SCHOOL STUDIO: SCBKR is available free on Microsoft Store, alongside AICC OS v0.2.CANDIDATE, Semantic Firewall, WIF, TIRC and bounded fixed-case demos."
+    ? "AI safety and governance products from SERENE SCHOOL STUDIO: the Semantic Firewall Causal Security System, AICC OS v0.2.CANDIDATE, WIF, TIRC and bounded fixed-case demos. SCBKR is available free on Microsoft Store."
     : baseMetadata.description;
   return {
     ...baseMetadata,

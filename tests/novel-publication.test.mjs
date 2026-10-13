@@ -14,8 +14,8 @@ test("publishes bilingual story overview without releasing submitted manuscript 
     readdir(new URL("public/media/novel/", root)),
   ]);
   assert.match(page, /robots:\s*\{ index: true, follow: true \}/);
-  assert.match(page, /出版方式仍在評估/);
-  assert.match(page, /作品持續更新中/);
+  assert.match(page, /我尚未決定由出版社出版或自行出版/);
+  assert.match(page, /作品仍由我持續完成/);
   assert.match(page, /外部若要反證，必須對準這些依據/);
   assert.match(works, /公開頁先呈現故事提要/);
   assert.match(sitemap, /\/novel\/interrogation-room/);

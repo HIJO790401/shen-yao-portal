@@ -71,15 +71,15 @@ const engineeringWorks = [
     title: "SERENE PORTAL",
     subtitleZh: "工作室官網、內容系統與站主編輯器",
     subtitleEn: "STUDIO PORTAL, CONTENT SYSTEM & OWNER CMS",
-    status: "PUBLIC ENGINEERING · SOURCE COMPLETE / DEPLOYMENT PENDING",
+    status: "PUBLIC ENGINEERING · PRODUCTION DOMAIN LIVE",
     summaryZh:
       "中英獨立路由、產品與作品展示、實相新聞台、責任博物館、站主 CMS、D1 內容資料與 R2 圖片上傳的完整網站工程。",
     summaryEn:
       "A complete web project with separate Chinese and English routes, product and work showcases, newsroom, museum, owner CMS, D1 content data and R2 image uploads.",
     stack: "NEXT.JS · REACT · TYPESCRIPT · D1 · R2 · DRIZZLE",
     href: "https://github.com/HIJO790401/shen-yao-portal",
-    licenseZh: "公開原始碼；正式網域部署待驗收",
-    licenseEn: "PUBLIC SOURCE; PRODUCTION DOMAIN PENDING REVIEW",
+    licenseZh: "公開原始碼；silentschool.studio 正式網域已公開",
+    licenseEn: "PUBLIC SOURCE; PRODUCTION DOMAIN LIVE AT SILENTSCHOOL.STUDIO",
   },
   {
     number: "04",
@@ -323,7 +323,7 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
             </p>
             <p className={styles.heroSummary}>
               <Lang
-                zh="於台灣台中獨立研發語意治理、AI 責任鏈與本地模型工作流，公開建立 Semantic Firewall、SCBKR，並提出 AICC OS 模組化能力編譯與版本治理架構；創作延伸至動畫、音樂、符號設計與雙語長文。所有系統、作品與公開發布由本人獨立策劃、設計、開發並承擔最終責任。"
+                zh="我在台灣台中獨立研發語意治理、AI 責任鏈與本地模型工作流，公開建立 Semantic Firewall、SCBKR，並定義 AICC OS 模組化能力編譯與版本治理架構；我的創作也延伸至動畫、音樂、符號設計與雙語長文。所有系統、作品與公開發布都由我獨立策劃、設計、開發並承擔最終責任。"
                 en="Based in Taichung, Taiwan, I independently develop semantic-governance, AI responsibility-chain and local-model workflows, including the Semantic Firewall and SCBKR, and I define the AICC OS architecture for modular capability compilation and version governance. My practice also spans animation, music, symbolic design and bilingual long-form writing. I independently plan, design, develop and take final responsibility for the studio's systems, works and publications."
               />
             </p>
@@ -385,8 +385,8 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
             <div>
               <h2 id="engineering-title"><Lang zh="把責任公式，做成能檢查的系統。" en="TURNING RESPONSIBILITY FORMULAS INTO INSPECTABLE SYSTEMS." /></h2>
               <p><Lang
-                zh="以下只列出公開 Repo 能直接支撐的技術、功能與狀態；公開可讀不等於全部採用開源授權，也不等於已進入正式商業部署。"
-                en="The following descriptions are limited to technology, functions and states directly supported by public repositories. Publicly readable source does not automatically mean open-source licensing or production adoption."
+                zh="我在這裡只列出公開 Repo 能直接支撐的技術、功能與狀態；公開可讀不等於全部採用開源授權，也不等於已進入正式商業部署。"
+                en="I list only the technology, functions and states directly supported by public repositories. Publicly readable source does not automatically mean open-source licensing or production adoption."
               /></p>
             </div>
           </header>
@@ -460,7 +460,7 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
           <header className={styles.sectionHeader}>
             <div><span>03</span><p>WRITING & CREATIVE WORK</p></div>
             <div>
-              <h2 id="writing-title"><Lang zh="工程之外，持續用文章、動畫與音樂建構同一套世界。" en="BEYOND ENGINEERING, THE SAME WORLD IS BUILT THROUGH WRITING, ANIMATION AND MUSIC." /></h2>
+              <h2 id="writing-title"><Lang zh="工程之外，我也用文章、動畫與音樂建構同一套世界。" en="BEYOND ENGINEERING, I BUILD THE SAME WORLD THROUGH WRITING, ANIMATION AND MUSIC." /></h2>
             </div>
           </header>
 
@@ -498,10 +498,10 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
             <p>SOURCE & CLAIM BOUNDARY</p>
             <h2 id="boundary-title"><Lang zh="這份履歷不靠虛構頭銜增加份量。" en="THIS RESUME DOES NOT RELY ON INVENTED CREDENTIALS." /></h2>
             <p><Lang
-              zh="本站不虛構公司登記、團隊規模、學位、專利、獎項、客戶、採用或合作關係。GitHub Repo 用來證明公開工程；第一方文章用來證明本人主張；第三方媒體與平台紀錄則保留它們原本能證明的範圍。DeepSeek、OpenAI、LinkedIn、NVIDIA 等平台上的留言或社群文章，不會被改寫成官方合作。"
-              en="This site does not invent company registration, team size, degrees, patents, awards, clients, adoption or partnerships. GitHub repositories evidence public engineering; first-party writing evidences the founder's own positions; media and platform records retain only what their sources can support. Comments or community posts on platforms such as DeepSeek, OpenAI, LinkedIn or NVIDIA are never recast as official collaboration."
+              zh="我不虛構公司登記、團隊規模、學位、專利、獎項、客戶、採用或合作關係。我用 GitHub Repo 證明公開工程，用第一方文章保存我的主張；第三方媒體與平台紀錄則只保留它們原本能證明的範圍。DeepSeek、OpenAI、LinkedIn、NVIDIA 等平台上的留言或社群文章，我不會把它們改寫成官方合作。"
+              en="I do not invent company registration, team size, degrees, patents, awards, clients, adoption or partnerships. I use GitHub repositories to evidence public engineering and first-party writing to preserve my own positions; media and platform records retain only what their sources can support. I do not recast comments or community posts on platforms such as DeepSeek, OpenAI, LinkedIn or NVIDIA as official collaboration."
             /></p>
-            <p className={styles.updated}><Lang zh="公開資料校準日期：2026 年 9 月 26 日" en="PUBLIC-SOURCE REVIEWED: 26 SEPTEMBER 2026" /></p>
+            <p className={styles.updated}><Lang zh="公開資料校準日期：2026 年 10 月 14 日" en="PUBLIC-SOURCE REVIEWED: 14 OCTOBER 2026" /></p>
           </div>
         </section>
 

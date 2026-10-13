@@ -15,12 +15,17 @@ Languages: Traditional Chinese and English are available as separate routes.
 - Chinese home: ${siteUrl("/zh")}
 - English home: ${siteUrl("/en")}
 - Products and fixed-case demonstrations: ${siteUrl("/zh/products")}
+- Semantic Firewall Causal Security System (Traditional Chinese): ${siteUrl("/zh/products/semantic-firewall-causal-system")}
+- Semantic Firewall Causal Security System (English): ${siteUrl("/en/products/semantic-firewall-causal-system")}
+- Website fixed-case demo: ${siteUrl("/zh/demo/semantic-firewall-causal-system")} and ${siteUrl("/en/demo/semantic-firewall-causal-system")}
 - Works and public records: ${siteUrl("/zh/works")}
 - Literary works and books (Traditional Chinese): ${siteUrl("/zh/books")}
 - Literary works and books (English): ${siteUrl("/en/books")}
 - 沉靜是一種語言 / Stillness Is a Language: ${siteUrl("/zh/books/stillness-is-a-language")}
 - Bilingual Part One preview: ${siteUrl("/zh/books/stillness-is-a-language/preview")} and ${siteUrl("/en/books/stillness-is-a-language/preview")}
 - 《審訊室存在過的名字》 / The Name That Existed in the Interrogation Room: ${siteUrl("/zh/novel/interrogation-room")}
+- 《虛偽文明的審判》 / The Judgment of a False Civilization: ${siteUrl("/zh/books/judgment-of-civilization")} and ${siteUrl("/en/books/judgment-of-civilization")}
+- Civilizational case archive: ${siteUrl("/zh/books/judgment-of-civilization/cases")} and ${siteUrl("/en/books/judgment-of-civilization/cases")}
 - Reality Newsroom and Responsibility Museum: ${siteUrl("/zh/news")}
 - Founder profile: ${siteUrl("/zh/about")}
 - Founding manifesto in Traditional Chinese: ${siteUrl("/zh/about#manifesto")}
@@ -40,10 +45,25 @@ SERENE SCHOOL STUDIO is the independent studio of Wen-Yao Hsu / Shen-Yao 888π. 
 - The public Traditional Chinese preview is the verified first 17 pages, 22.4% of the 76-page edition, ending with Part One. The full PDF and EPUB are not public website downloads.
 - The English edition, Stillness Is a Language: Before Words Are Found, has a public Part One sample with the same content boundary. Its store review is still in progress; this site does not claim a live English storefront before one is verified.
 - 《審訊室存在過的名字》 / The Name That Existed in the Interrogation Room is a separate ongoing fiction work. Its public page presents a synopsis, not the submitted manuscript.
+- 《虛偽文明的審判》 / The Judgment of a False Civilization is Wen-Yao Hsu / Shen-Yao 888PI’s ongoing civilizational judgment work. It dismantles how civilization grants action authority to knowledge without first closing responsibility; phenomena and knowledge themselves are not the accused. The Chinese source remains a BOOK_DRAFT with an eight-part, 34-case provisional writing map. The public site selects seven artworks, short verdicts and summaries; this is not a fixed table of contents or completed-chapter claim. The full manuscript is not public, the English pages are an overview rather than a completed English manuscript, and the publication path remains undecided.
 
 The founder's manifesto distinguishes computational power from a valid judgment path: compute can accelerate work, but the founder defines when and where it should be applied. The bilingual first-party statement is visible on the founder page; it is a founding position, not a claim that any particular system has been independently validated.
 
 Product demos on this site are curated, fixed-case interface replays. They do not accept visitor input and must not be described as live AI services unless a page explicitly says otherwise.
+
+## Semantic Firewall Causal Security System
+
+- Product name: 語意防火牆資安因果系統 / Semantic Firewall Causal Security System
+- Definer: 許文耀 / Wenyao Hsu, also publicly known as 沈耀888π / Shen-Yao 888π
+- Position: a causal-responsibility component designed to fit between existing enterprise authentication, bounded compute and the existing controlled executor.
+- Public flow: keep existing sign-in; establish relationships among subject, device, environment, time, work, adopted rules and responsibility; run a pre-check; allow bounded compute to propose a candidate; review the exact same candidate; return an approved effect to the existing system for controlled execution and replay.
+- Sign-in verifies identity but does not authorize every operation. Missing environment or responsibility evidence stops before compute. A candidate that adds an operation or mismatches the source is blocked during review.
+- Website pages and films use fixed synthetic scenarios and accept no visitor credentials, location or free-form input.
+- Public interactive walkthrough: https://hijo790401.github.io/semantic-firewall-causal-demo/
+- Public narrative source: https://github.com/HIJO790401/semantic-firewall-causal-demo
+- The public repository has no visible LICENSE and must not be described as an open-source product solely because its code is public.
+- The public surface connects to no real authentication, GPS, device verifier, model, private backend, enterprise system, authorization service, database or audit evidence. It does not prove a deployed SaaS or completed enterprise integration.
+- Private backend code, the rule core, complete formulas, local product workspace and enterprise integration data remain outside the website and public repository.
 
 ## ICAISG 2026 academic acceptance
 
@@ -85,7 +105,7 @@ Music-animation and newsroom videos are streamed from their original TikTok or Y
 ## Published music-animation and launch media
 
 - 語之神神器展覽篇 / Artifacts of the Language God (TikTok): https://vt.tiktok.com/ZS9rDg3ATyPX4-sKjkh/
-- Public music-animation work (YouTube; use the original video page as the authority for its formal title): https://youtu.be/2UFVuPkDkTc
+- 《主體未眠》 / The Subject Never Sleeps (original music-animation on YouTube): https://youtu.be/2UFVuPkDkTc
 - 實相上線 / Reality Goes Live, official prelude to the Reality Newsroom × Responsibility Museum: https://youtu.be/xROrsIHToIY
 
 ## Public activity

@@ -223,6 +223,76 @@ function SentinelVisual({ scene }: { scene: DemoScene }) {
   </div>;
 }
 
+const causalRelations = [
+  { zh: "主體", en: "SUBJECT" },
+  { zh: "裝置", en: "DEVICE" },
+  { zh: "環境", en: "ENVIRONMENT" },
+  { zh: "時間", en: "TIME" },
+  { zh: "工作", en: "WORK" },
+  { zh: "責任", en: "RESPONSIBILITY" },
+];
+
+function CausalVisual({ scene }: { scene: DemoScene }) {
+  const rail = scene.step === "CAND" ? "compute" : scene.step === "EFFECT" ? "executor" : ["LOGIN", "MAP"].includes(scene.step) ? "system" : "firewall";
+  const isStop = scene.step === "STOP";
+  const isBlock = scene.step === "BLOCK";
+  const isMap = scene.step === "MAP" || isStop;
+
+  const relationState = (index: number) => {
+    if (scene.step === "LOGIN") return index === 0 ? "pass" : "wait";
+    if (scene.step === "MAP") return index < 5 ? "pass" : "wait";
+    if (isStop && index === 2) return "missing";
+    if (isStop && index > 2) return "wait";
+    return "pass";
+  };
+
+  return <div className={styles.causalVisual} data-scene={scene.step.toLowerCase()}>
+    <div className={styles.causalRail} aria-label="Existing system to semantic firewall, compute and controlled executor">
+      <span data-active={rail === "system"}><small>01</small><b>EXISTING SYSTEM</b></span>
+      <i>→</i>
+      <span data-active={rail === "firewall"}><small>02</small><b>SEMANTIC FIREWALL</b></span>
+      <i>↔</i>
+      <span data-active={rail === "compute"}><small>03</small><b>COMPUTE</b></span>
+      <i>→</i>
+      <span data-active={rail === "executor"}><small>04</small><b>CONTROLLED EXECUTOR</b></span>
+    </div>
+
+    <div className={styles.causalDeck}>
+      <div className={`${styles.causalMapCard} ${isMap ? styles.causalMapActive : ""}`}>
+        <div className={styles.causalPanelHeading}><span>FIXED SYNTHETIC MAP</span><b className={isStop ? styles.toneDanger : styles.toneInfo}>{isStop ? "EVIDENCE MISSING" : "±20 m"}</b></div>
+        <div className={styles.causalMapPlane} aria-label="Synthetic environment boundary, observation and uncertainty">
+          <span className={styles.causalFence} />
+          <span className={styles.causalAccuracy} />
+          <span className={styles.causalObservation}><i /></span>
+          <small>DEMO CENTER</small>
+          <em>SYNTHETIC ONLY</em>
+        </div>
+        <div className={styles.causalRelationChain}>
+          {causalRelations.map((item, index) => {
+            const state = relationState(index);
+            return <div data-state={state} key={item.en}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <b><Lang zh={item.zh} en={item.en} /></b>
+              <small><Lang zh={state === "pass" ? "已成立" : state === "missing" ? "依據缺失" : "待核對"} en={state === "pass" ? "ESTABLISHED" : state === "missing" ? "EVIDENCE MISSING" : "PENDING"} /></small>
+            </div>;
+          })}
+        </div>
+      </div>
+
+      <div className={`${styles.causalAuditCard} ${isStop || isBlock ? styles.causalAuditBlocked : ""}`}>
+        <div className={styles.causalPanelHeading}><span>{isBlock ? "SAME-CANDIDATE REVIEW" : isStop ? "PRE-CHECK GATE" : scene.step === "CAND" ? "BOUNDED WORK CONTRACT" : "CAUSAL RESPONSIBILITY CHECK"}</span><b className={toneClass[scene.tone]}>{scene.status}</b></div>
+        <div className={styles.causalDecisionMark} data-tone={scene.tone}>
+          <span>{isStop ? "STOP" : isBlock ? "BLOCK" : scene.step}</span>
+          <i />
+          <small>{isStop ? "COMPUTE = 0" : isBlock ? "EXECUTOR = 0" : scene.step === "EFFECT" ? "ONE CONTROLLED EFFECT" : "FIXED CASE"}</small>
+        </div>
+        {scene.quote && <pre className={styles.causalReceipt}><Lang zh={scene.quote.zh} en={scene.quote.en} /></pre>}
+        <div className={styles.causalEvidence}><Nodes scene={scene} /><SceneTags scene={scene} /></div>
+      </div>
+    </div>
+  </div>;
+}
+
 function SceneVisual({ fixture, scene, playing, replayKey }: { fixture: DemoFixture; scene: DemoScene; playing: boolean; replayKey: number }) {
   if (fixture.kind === "aicc") return <AiccVisual scene={scene} />;
   if (fixture.kind === "rlock") return <RLockVisual scene={scene} />;
@@ -237,6 +307,7 @@ function SceneVisual({ fixture, scene, playing, replayKey }: { fixture: DemoFixt
   if (fixture.kind === "slb") return <SlbVisual scene={scene} />;
   if (fixture.kind === "universe") return <UniverseVisual scene={scene} playing={playing} replayKey={replayKey} />;
   if (fixture.kind === "sentinel") return <SentinelVisual scene={scene} />;
+  if (fixture.kind === "causal") return <CausalVisual scene={scene} />;
   return <WifVisual scene={scene} />;
 }
 

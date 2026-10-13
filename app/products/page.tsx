@@ -10,7 +10,7 @@ import demoStyles from "../demo-system.module.css";
 
 export const metadata: Metadata = {
   title: "產品與工程作品",
-  description: "沉靜流派工作室的 AI 安全與治理產品：已於 Microsoft Store 免費上架的 SCBKR 責任鏈語言模型、AICC OS v0.2.CANDIDATE 候選架構、語意防火牆、WIF、TIRC 與固定案例展示。",
+  description: "沉靜流派工作室的 AI 安全與治理產品：語意防火牆資安因果系統、已於 Microsoft Store 免費上架的 SCBKR 責任鏈語言模型、AICC OS v0.2.CANDIDATE、WIF、TIRC 與固定案例展示。",
   alternates: localizedAlternates("zh", "/products"),
   openGraph: { url: "/zh/products" },
 };
@@ -24,8 +24,8 @@ export default function ProductsPage() {
       <section className="products-hero-v3">
         <div className="products-hero-copy-v3">
           <p className="brand-section-label">CODE-AUDITED SYSTEM ARCHIVE · 2026</p>
-          <h1><Lang zh={<>不是把 Repo<br/>包裝成產品。</>} en={<>NOT REPACKAGING<br/>REPOSITORIES.</>} /></h1>
-          <p className="products-hero-decree-v3"><Lang zh="AI 安全與 AI 治理不是替產品貼標籤；先讀懂每段輸入、運算、輸出與失敗邊界，再決定它應該如何被看見。" en="AI safety and AI governance are not product labels. We first examine each input, computation, output and failure boundary before deciding how a system should be shown." /></p>
+          <h1><Lang zh={<>我不是把 Repo<br/>包裝成產品。</>} en={<>I DO NOT REPACKAGE<br/>REPOSITORIES AS PRODUCTS.</>} /></h1>
+          <p className="products-hero-decree-v3"><Lang zh="我不把 AI 安全與 AI 治理當成產品標籤。我先讀懂每段輸入、運算、輸出與失敗邊界，再決定它能展示什麼、不能宣稱什麼。" en="I do not use AI safety and AI governance as product labels. I first examine each input, computation, output and failure boundary, then decide what a system can show and what it cannot claim." /></p>
           <div className="products-audit-metrics-v3">
             <div><b>{count}</b><span><Lang zh="已盤點作品" en="AUDITED WORKS" /></span></div>
             <div><b>3</b><span><Lang zh="正確系統族" en="SYSTEM FAMILIES" /></span></div>
@@ -45,7 +45,7 @@ export default function ProductsPage() {
 
       <section className="audit-principle-v3">
         <span>SCBKR / π1</span>
-        <h2><Lang zh={<>能展示多少，<br/><em>由證據決定。</em></>} en={<>EVIDENCE DECIDES<br/><em>WHAT CAN BE SHOWN.</em></>} /></h2>
+        <h2><Lang zh={<>我能展示多少，<br/><em>由證據決定。</em></>} en={<>EVIDENCE DECIDES<br/><em>WHAT I CAN SHOW.</em></>} /></h2>
         <div>
           <p><b>01</b><Lang zh="固定案例就標固定案例，不冒充即時 AI。" en="A fixed case stays labeled as a fixed case, never live AI." /></p>
           <p><b>02</b><Lang zh="估算值就標 Estimate，不冒充實測成本。" en="An estimate stays labeled Estimate, never measured cost." /></p>
@@ -96,6 +96,7 @@ export default function ProductsPage() {
                 <div><dt><Lang zh="展示施工" en="MOTION ROUTE" /></dt><dd><Lang zh={product.motionZh} en={product.motionEn} /></dd></div>
               </dl>
               <div className={demoStyles.productActions}>
+                {product.detailHref && <LocalizedLink href={product.detailHref}><Lang zh="產品完整說明" en="FULL PRODUCT PAGE" /> <span>→</span></LocalizedLink>}
                 {product.storeUrl && <a href={product.storeUrl} target="_blank" rel="noreferrer"><Lang zh="Microsoft Store 免費取得" en="GET FREE ON MICROSOFT STORE" /> <span>↗</span></a>}
                 {film?.status === "ready" ? <LocalizedLink href={`/demo/${film.slug}`}><Lang zh="觀看固定案例" en="WATCH FIXED CASE" /> <span>▶</span></LocalizedLink> :
                   film ? <LocalizedLink href={`/demo/${film.slug}`}><Lang zh={film.status === "repair" ? "查看修復狀態" : "查看暫緩原因"} en={film.status === "repair" ? "VIEW REPAIR STATE" : "VIEW DEFERRED STATE"} /> <span>→</span></LocalizedLink> : null}
@@ -108,8 +109,8 @@ export default function ProductsPage() {
 
       <section className="product-next-gate-v3">
         <p className="brand-section-label">NEXT CONSTRUCTION GATE</p>
-        <h2><Lang zh={<>動畫不是裝飾。<br/>它必須重播真實運算。</>} en={<>MOTION IS NOT DECORATION.<br/>IT MUST REPLAY REAL COMPUTATION.</>} /></h2>
-        <p><Lang zh="十四套作品已接上各自的固定案例或架構時間軸；其中包含 AICC v0.2.CANDIDATE 架構、規則掃描、六案反詐、metadata-only 記憶索引、安全合成文件、非醫療支持案例、確定性哨兵與真實 2D Canvas。僅 SCBKR 責任鏈語言模型依 Owner 指示暫緩動畫。" en="Fourteen works now have dedicated fixed-case or architecture timelines, including the AICC v0.2.CANDIDATE architecture, rule scanning, six anti-scam cases, a metadata-only memory index, a safe synthetic document, non-medical support cases, a deterministic sentinel and a real 2D Canvas. Only the SCBKR Responsibility Chain Language Model remains motion-deferred by the owner." /></p>
+        <h2><Lang zh={<>動畫不是裝飾。<br/>它必須重播可核對的來源流程。</>} en={<>MOTION IS NOT DECORATION.<br/>IT MUST REPLAY SOURCE-GROUNDED BEHAVIOR.</>} /></h2>
+        <p><Lang zh="我已把十五套作品接上各自的固定案例或架構時間軸；其中包含語意防火牆資安因果接入、AICC v0.2.CANDIDATE 架構、規則掃描、六案反詐、metadata-only 記憶索引、安全合成文件、非醫療支持案例、確定性哨兵與真實 2D Canvas。我決定暫緩 SCBKR 責任鏈語言模型的動畫，避免用假畫面取代真實流程。" en="I have given fifteen works their own fixed-case or architecture timelines, including the Semantic Firewall causal-security integration, AICC v0.2.CANDIDATE, rule scanning, six anti-scam cases, a metadata-only memory index, a safe synthetic document, non-medical support cases, a deterministic sentinel and a real 2D Canvas. I have kept the SCBKR Responsibility Chain Language Model motion-deferred so that fabricated motion does not stand in for its real flow." /></p>
         <div><LocalizedLink href="/news"><Lang zh="進入新聞台" en="OPEN NEWSROOM" /> <span>↗</span></LocalizedLink><LocalizedLink href="/"><Lang zh="回到官網" en="BACK TO STUDIO" /> <span>↗</span></LocalizedLink></div>
       </section>
     </main>

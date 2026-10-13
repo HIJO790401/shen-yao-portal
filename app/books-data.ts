@@ -8,7 +8,11 @@ export type BookStoreState =
   | "not-yet-for-sale";
 
 export type BookHubEntry = {
-  id: "stillness-is-a-language" | "interrogation-room";
+  id:
+    | "stillness-is-a-language"
+    | "interrogation-room"
+    | "judgment-of-civilization";
+  theme: "stillness" | "interrogation" | "judgment";
   route: string;
   coverSrc: LocalizedBookValue;
   coverAlt: LocalizedBookValue;
@@ -39,12 +43,12 @@ export const stillnessIsALanguage = {
     zh: {
       displayLine: "許文耀／嗨啾／沈耀888PI",
       explanation:
-        "許文耀是本名；嗨啾是早期直播時使用的名字；沈耀888PI 是後來以架構師身分使用的名字。三個名字指向同一位作者，不是三位合著者。",
+        "我本名許文耀；嗨啾是我早期直播時使用的名字；沈耀888PI 是我後來以架構師身分使用的名字。三個名字都指向我，不是三位合著者。",
     },
     en: {
       displayLine: "WENYAOHUS / HI-JIU / SHEN YAO888PI",
       explanation:
-        "The author’s legal name is 許文耀, represented in English as Wen-Yao Hsu. HI-JIU is the name used in his earlier livestream work, and SHEN YAO888PI is the name later used as an architect. The three names refer to one author, not three co-authors.",
+        "My legal name is 許文耀, represented in English as Wen-Yao Hsu. HI-JIU is the name I used in my earlier livestream work, and SHEN YAO888PI is the name I later used as an architect. All three names refer to me, not three co-authors.",
     },
   },
   edition: {
@@ -147,6 +151,7 @@ export const stillnessIsALanguage = {
 export const booksHubEntries: readonly BookHubEntry[] = [
   {
     id: "stillness-is-a-language",
+    theme: "stillness",
     route: stillnessIsALanguage.detailRoute,
     coverSrc: stillnessIsALanguage.coverSrc,
     coverAlt: stillnessIsALanguage.coverAlt,
@@ -174,6 +179,7 @@ export const booksHubEntries: readonly BookHubEntry[] = [
   },
   {
     id: "interrogation-room",
+    theme: "interrogation",
     route: "/novel/interrogation-room",
     coverSrc: {
       zh: "/media/novel/interrogation-room-poster.png",
@@ -204,5 +210,39 @@ export const booksHubEntries: readonly BookHubEntry[] = [
       en: "WORK IN PROGRESS · MANUSCRIPT NOT PUBLIC",
     },
     cta: { zh: "查看作品", en: "VIEW WORK" },
+  },
+  {
+    id: "judgment-of-civilization",
+    theme: "judgment",
+    route: "/books/judgment-of-civilization",
+    coverSrc: {
+      zh: "/media/books/judgment-of-civilization/cover-draft.jpg",
+      en: "/media/books/judgment-of-civilization/cover-draft.jpg",
+    },
+    coverAlt: {
+      zh: "《虛偽文明的審判》創作期封面視覺",
+      en: "Draft-period cover artwork for The Judgment of a False Civilization",
+    },
+    eyebrow: {
+      zh: "文明案件 · 責任證成鏈 · 創作中",
+      en: "CIVILIZATIONAL CASES · RESPONSIBILITY PROOF CHAIN · IN PROGRESS",
+    },
+    title: {
+      zh: "虛偽文明的審判",
+      en: "The Judgment of a False Civilization",
+    },
+    subtitle: {
+      zh: "文明案件檔案／責任證成鏈",
+      en: "Civilizational Case Dossiers / Responsibility Proof Chain",
+    },
+    summary: {
+      zh: "我逐案解構文明的虛偽，把祭祀、語言、神話、神、制度與權力拆回現象、證據、授權、後果與責任。",
+      en: "I dismantle civilization’s falsehoods case by case, returning sacrifice, language, myth, divinity, institutions and power to evidence, authorization, consequence and responsibility.",
+    },
+    status: {
+      zh: "八部／34 案暫定母架構 · 官網選錄 7 件摘要",
+      en: "8-PART / 34-CASE DRAFT MAP · 7 WEB SELECTIONS",
+    },
+    cta: { zh: "進入審判檔案", en: "ENTER THE DOSSIER" },
   },
 ];

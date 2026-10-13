@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     : "沉靜流派工作室｜許文耀／沈耀888π｜AI 安全與治理";
   const description = isEnglish
     ? "Wen-Yao Hsu / Shen-Yao 888π's independent studio for AI safety and governance: the SCBKR Windows application on Microsoft Store, Semantic Firewall, AICC OS candidate architecture, animation and music."
-    : "許文耀／沈耀888π的沉靜流派工作室：以 SCBKR 責任鏈語言模型、語意防火牆與 AICC OS 候選架構探索 AI 安全、AI 治理，並公開動畫與音樂作品。";
+    : "許文耀／沈耀888π的沉靜流派工作室：已公開 SCBKR 責任鏈語言模型、語意防火牆與 AICC OS 候選架構，建立 AI 安全與治理的可執行、可回放責任路徑，並發布動畫與音樂作品。";
   return {
     title: { absolute: title },
     description,

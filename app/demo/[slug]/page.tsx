@@ -44,7 +44,8 @@ export default async function ProductFilmPage({ params }: { params: Promise<{ sl
       <div className="formula">{film.formula}</div>
       <div className="actions">
         {film.storeUrl && <a className="button primary" href={film.storeUrl} target="_blank" rel="noreferrer"><Lang zh="從 Microsoft Store 免費取得" en="GET FREE FROM MICROSOFT STORE" /> ↗</a>}
-        {film.sourceRepo && <a className={`button ${film.storeUrl ? "ghost" : "primary"}`} href={film.sourceRepo} target="_blank" rel="noreferrer"><Lang zh="查看原始碼證據" en="OPEN SOURCE EVIDENCE"/> ↗</a>}
+        {film.sourceRepo && <a className={`button ${film.storeUrl ? "ghost" : "primary"}`} href={film.sourceRepo} target="_blank" rel="noreferrer"><Lang zh="查看公開原始碼證據" en="VIEW PUBLIC SOURCE EVIDENCE"/> ↗</a>}
+        {film.slug === "semantic-firewall-causal-system" && <LocalizedLink className="button ghost" href="/products/semantic-firewall-causal-system"><Lang zh="查看產品完整說明" en="VIEW FULL PRODUCT PAGE"/></LocalizedLink>}
         <LocalizedLink className="button ghost" href="/products"><Lang zh="返回產品中心" en="BACK TO PRODUCTS"/></LocalizedLink>
       </div>
     </section>

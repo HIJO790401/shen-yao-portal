@@ -75,6 +75,13 @@ export const productFilms: ProductFilm[] = [
     steps: [{ key: "01", zh: "鎖定授權情境", en: "Lock license case" }, { key: "02", zh: "逐用途判定", en: "Judge each use" }, { key: "03", zh: "保留失敗條件", en: "Preserve failure conditions" }],
   },
   {
+    code: "SF-07", slug: "semantic-firewall-causal-system", index: "SF-07", name: "語意防火牆資安因果系統", nameEn: "Semantic Firewall Causal Security System", label: "FIXED SYNTHETIC CAUSAL WALKTHROUGH", status: "ready", statusZh: "九幕固定案例動畫可播放", statusEn: "NINE-SCENE FIXED CASE FILM READY",
+    headlineZh: "登入確認身分；作用資格仍須逐次核對。", headlineEn: "Sign-in confirms identity; action eligibility is still checked each time.",
+    introZh: "官網以固定合成案例重播既有登入、主體／裝置／環境／時間／工作／責任關係、前檢、有界算力候選、同一候選後審、原系統受控執行與回放；缺依據即停，候選越界即阻擋。", introEn: "A fixed synthetic case replays existing sign-in, subject/device/environment/time/work/responsibility relationships, pre-check, bounded-compute candidate, same-candidate review, controlled execution by the original system and replay. Missing evidence stops the path; an out-of-scope candidate is blocked.",
+    formula: "EXISTING SYSTEM → SEMANTIC FIREWALL ↔ COMPUTE → CONTROLLED EXECUTOR → REPLAY", sourceRepo: "https://github.com/HIJO790401/semantic-firewall-causal-demo",
+    steps: [{ key: "01", zh: "保留既有登入", en: "Keep existing sign-in" }, { key: "02", zh: "核對六項關係", en: "Check six relationships" }, { key: "03", zh: "缺依據先停止", en: "Stop on missing evidence" }, { key: "04", zh: "有界算力只提候選", en: "Bounded compute proposes only" }, { key: "05", zh: "後審同一候選", en: "Review the same candidate" }, { key: "06", zh: "原系統受控執行", en: "Original system executes" }, { key: "07", zh: "保留回放紀錄", en: "Preserve replay record" }],
+  },
+  {
     code: "RG-01", slug: "scbkr", index: "RG-01", name: "SCBKR 責任鏈語言模型", nameEn: "SCBKR Responsibility Chain Language Model", label: "2.3.1 FREE · MICROSOFT STORE · MOTION DEFERRED", status: "deferred", statusZh: "2.3.1 FREE 已上架／動畫暫緩", statusEn: "2.3.1 FREE LIVE · MOTION DEFERRED",
     headlineZh: "一般 AI 聊天，加上由使用者建立、修改、簽名與承擔的責任規則鏈。", headlineEn: "General AI chat plus a responsibility-rule chain authored, edited, signed and owned by the user.",
     introZh: "公開 2.3.1 FREE 版以硬路由分類輸入，由已連線模型草擬 S／C／B／K／R，交 Kernel Validator 檢查；規則須由使用者簽名並具備明確適用條件，相似檢索只召回候選。確認時重查來源與證據，過期或不可追溯的草稿停止入庫。Store 與 Repo 提供產品證據，官網動畫仍暫緩。", introEn: "The public 2.3.1 FREE edition routes input and lets a connected model draft S/C/B/K/R for Kernel validation. User-signed rules need explicit applicability conditions; similarity retrieves candidates only. Sources and evidence are rechecked at confirmation, and stale or untraceable drafts stop before storage. Store and repository provide product evidence; the website film remains deferred.",

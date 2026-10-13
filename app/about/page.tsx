@@ -59,9 +59,9 @@ const publicRecords = [
 ];
 
 const disciplines = [
-  { index: "01", zh: "古文明符號與語之神器", en: "ANCIENT SYMBOLS & LANGUAGE ARTIFACTS", textZh: "從水滴、聖書體、幾何封印到神器視覺，把符號視為可讀、可回放的語言結構，並以動畫、音樂與光影讓規則顯形。", textEn: "Water, sacred scripts, geometric seals and artifacts are treated as readable, replayable language structures, made perceptible through motion, music and light." },
-  { index: "02", zh: "數學公式與責任結構", en: "MATHEMATICAL FORMULAS & RESPONSIBILITY", textZh: "以 E%mc²、SCBKR 與 0／1／π 等公式壓縮主體、因果、邊界、依據與責任，讓抽象思想能被檢查與追問。", textEn: "Formulas including E%mc², SCBKR and 0/1/π compress subject, causality, boundary, grounds and responsibility into structures that can be inspected and challenged." },
-  { index: "03", zh: "系統架構、候選與可執行工程", en: "SYSTEM ARCHITECTURE, CANDIDATES & EXECUTABLE ENGINEERING", textZh: "把公式落成已有公開工程紀錄的語意防火牆、責任閘門與 WORM 回放，也把 AICC OS v0.2.CANDIDATE 整理成候選架構與無輸入動畫；分別公開版本、來源狀態與能力邊界。", textEn: "The formulas become publicly evidenced engineering for the Semantic Firewall, responsibility gates and WORM replay, while AICC OS v0.2.CANDIDATE remains a candidate architecture with a no-input film; version, source status and capability boundaries are disclosed separately." },
+  { index: "01", zh: "古文明符號與語之神器", en: "ANCIENT SYMBOLS & LANGUAGE ARTIFACTS", textZh: "我從水滴、聖書體、幾何封印與神器視覺出發，把符號做成可讀、可回放的語言結構，再用動畫、音樂與光影讓規則顯形。", textEn: "I work from water, sacred scripts, geometric seals and artifacts, turning symbols into readable, replayable language structures and making their rules perceptible through motion, music and light." },
+  { index: "02", zh: "數學公式與責任結構", en: "MATHEMATICAL FORMULAS & RESPONSIBILITY", textZh: "我以 E%mc²、SCBKR 與 0／1／π 等公式壓縮主體、因果、邊界、依據與責任，讓抽象思想能被檢查與追問。", textEn: "I use formulas including E%mc², SCBKR and 0/1/π to compress subject, causality, boundary, grounds and responsibility into structures that can be inspected and challenged." },
+  { index: "03", zh: "系統架構、候選與可執行工程", en: "SYSTEM ARCHITECTURE, CANDIDATES & EXECUTABLE ENGINEERING", textZh: "我把公式落成已有公開工程紀錄的語意防火牆、責任閘門與 WORM 回放，也把 AICC OS v0.2.CANDIDATE 整理成候選架構與無輸入動畫；每一項的版本、來源狀態與能力邊界分開公開。", textEn: "I turn the formulas into publicly evidenced engineering for the Semantic Firewall, responsibility gates and WORM replay, while keeping AICC OS v0.2.CANDIDATE as a candidate architecture with a no-input film. I disclose version, source state and capability boundary separately for each work." },
 ];
 
 const pressCoverageUrl = "https://securitybrief.asia/story/semantic-firewall-promises-ai-cost-savings-safer-chat-models";
@@ -126,8 +126,8 @@ export default function AboutPage() {
             </div>
             <p className={styles.introduction}>
               <Lang
-                zh="我是古文明符號、數學公式與系統架構的混合型創作者，也是一人工作室的獨立架構師。我把符號做成語言，把公式做成責任結構，再用語意防火牆與 SCBKR 探索 AI 安全、AI 治理中可執行、可回放的責任路徑；動畫、音樂、程式碼與文章是同一套方法的不同輸出。"
-                en="I work at the intersection of ancient symbols, mathematical formulas and system architecture as an independent one-person studio. Symbols become language and formulas become responsibility structures; the Semantic Firewall and SCBKR explore executable, replayable accountability paths for AI safety and AI governance. Animation, music, code and writing are different outputs of the same method."
+                zh="我是古文明符號、數學公式與系統架構的混合型創作者，也是一人工作室的獨立架構師。我把符號做成語言，把公式做成責任結構，並把判斷方法落成語意防火牆、SCBKR、公開 Demo 與可回放工程。動畫、音樂、程式碼、論文與書寫，是我用不同媒介完成並承擔的同一套方法。"
+                en="I work at the intersection of ancient symbols, mathematical formulas and system architecture as an independent one-person studio. I turn symbols into language and formulas into responsibility structures, then make that method concrete through the Semantic Firewall, SCBKR, public demos and replayable engineering. Animation, music, code, research papers and writing are different media through which I complete and answer for the same method."
               />
             </p>
 
@@ -171,7 +171,7 @@ export default function AboutPage() {
           <div className={styles.sectionIntro}>
             <p><Lang zh="工作方法" en="FOUNDER PRACTICE" /></p>
             <h2 id="practice-title"><Lang zh="符號、公式、系統，是同一套創作方法。" en="SYMBOLS, FORMULAS AND SYSTEMS — ONE CREATIVE METHOD." /></h2>
-            <p><Lang zh="三條主線彼此相連，並各自回到實際作品、公式定義、程式碼或公開發布紀錄。" en="The three lines remain connected, with each returning to actual works, defined formulas, source code or a public publication record." /></p>
+            <p><Lang zh="我讓這三條主線彼此相連，也讓每一條都回到我已完成的作品、公式定義、程式碼或公開發布紀錄，而不是停在抽象風格。" en="I connect these three lines and return each one to work I have completed, defined formulas, source code or a public publication record rather than leaving it as an abstract style." /></p>
           </div>
           <div className={styles.disciplineGrid}>
             {disciplines.map((discipline) => (
@@ -189,8 +189,8 @@ export default function AboutPage() {
             <p>OWNER-REPORTED HACKATHON RECORD · 2026.03 · TAIWAN</p>
             <h2 id="public-activity-title"><Lang zh="從責任公式，走到本人紀錄的公開現場。" en="FROM RESPONSIBILITY FORMULAS TO AN OWNER-DOCUMENTED ON-SITE DEMONSTRATION." /></h2>
             <p><Lang
-              zh="這段行動軌跡來自創辦人原始 Repo、現場照片、Instagram 與 YouTube 紀錄。官方活動頁只用來核對賽事日期、Gogolook 命題與活動內容；目前未見主辦方公開個人名冊可交叉驗證 Team 11、個人身分或展示內容。"
-              en="This activity trail comes from the founder's repository, on-site photograph, Instagram and YouTube records. The official event page is used only to verify the event dates, Gogolook challenge and event format; no public organizer roster was found that independently verifies Team 11, the individual's identity or the demonstrated system."
+              zh="我用原始 Repo、現場照片、Instagram 與 YouTube 保存這段行動軌跡。官方活動頁可核對賽事日期、Gogolook 命題與活動內容；Team 11、我的參賽身分與展示內容則由我的第一方紀錄承擔，目前沒有主辦方公開個人名冊可供交叉核對。"
+              en="I preserve this activity trail through my original repository, on-site photograph, Instagram and YouTube records. The official event page verifies the dates, Gogolook challenge and event format. My Team 11 participation and demonstrated system remain my first-party record because the organizer has not published an individual roster for cross-checking."
             /></p>
           </div>
 
@@ -210,8 +210,8 @@ export default function AboutPage() {
               <span>OWNER-REPORTED · AGENT FOR TRUTH HACKATHON</span>
               <h3><Lang zh="去偽存真：全民偵查黑客松" en="AGENT FOR TRUTH HACKATHON" /></h3>
               <p><Lang
-                zh="依創辦人 Repo 與現場照片，許文耀表示其於 2026 年 3 月參與 Gogolook 命題，並展示自行設計的 SCBKR + R-Lock 反詐治理介面。Team 11 與個人參賽身分屬創辦人第一方紀錄。"
-                en="According to the founder's repository and on-site photograph, Wen-Yao Hsu reports participating in the Gogolook challenge in March 2026 and demonstrating his SCBKR + R-Lock anti-scam governance interface. Team 11 and the individual's entrant status remain first-party founder records."
+                zh="2026 年 3 月，我參與 Gogolook 命題，並在現場展示我設計的 SCBKR + R-Lock 反詐治理介面。Team 11 與我的參賽身分由原始 Repo、現場照片及本人公開影音紀錄保存。"
+                en="In March 2026, I entered the Gogolook challenge and demonstrated the SCBKR + R-Lock anti-scam governance interface I designed. My Team 11 participation is preserved through the original repository, on-site photograph and my public video records."
               /></p>
               <p><Lang
                 zh="核心問題不是訊息『像不像詐騙』，而是它是否具備足夠可檢查的責任結構，是否有資格進入人的決策流程。這是本人紀錄的現場展示，不是主辦方技術認證、成效驗證或得獎聲明。"
@@ -294,7 +294,7 @@ export default function AboutPage() {
           <div className={styles.sectionIntro}>
             <p><Lang zh="外部來源" en="PUBLIC SOURCES" /></p>
             <h2 id="public-record-title"><Lang zh="身份與工作，附上可追溯的公開來源。" en="IDENTITY AND WORK, TRACEABLE THROUGH PUBLIC SOURCES." /></h2>
-            <p><Lang zh="第一方發布、開發者社群文章、外部作者頁與媒體報導分開標示，避免把平台出現誤寫成平台背書。" en="First-party publishing, developer-community posts, external author pages and media coverage are labelled separately—presence on a platform is not presented as endorsement." /></p>
+            <p><Lang zh="我把第一方發布、開發者社群文章、外部作者頁與媒體報導分開標示：哪些判斷由我負責，哪些是外部報導，訪客可以直接沿來源核對。" en="I label my first-party publications, developer-community posts, external author pages and media coverage separately, so visitors can see which judgments I answer for and which statements come from external reporting, then verify the source directly." /></p>
           </div>
           <div className={styles.recordGrid}>
             {publicRecords.map((record, index) => (

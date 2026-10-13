@@ -1,0 +1,77 @@
+task_id: TASK-20261014-SEMANTIC-FIREWALL-CAUSAL-SYSTEM-V1
+owner: 許文耀／沈耀888π
+goal: 依公開 GitHub README 與公開互動導覽，將「語意防火牆資安因果系統」納入沉靜流派工作室既有產品與 DEMO 架構，完成中英文產品頁、固定情境動畫、導覽入口、搜尋發現性與正式部署。
+owner_authorization:
+  github_main: AUTHORIZED_CURRENT_TURN
+  sites_production: AUTHORIZED_CURRENT_TURN
+  public_repo_read: AUTHORIZED_CURRENT_TURN
+source:
+  repository: https://github.com/HIJO790401/semantic-firewall-causal-demo
+  verified_public_commit: 39c93a7813245e6f215cc1c6335d5e2484c03d00
+  interactive_walkthrough: https://hijo790401.github.io/semantic-firewall-causal-demo/
+  source_class: PUBLIC_SYNTHETIC_NARRATIVE
+scope:
+  - bilingual_product_detail_page
+  - product_archive_entry
+  - website_standard_no_input_demo
+  - existing_login_to_controlled_execution_flow
+  - subject_device_environment_time_work_rule_responsibility_relation_map
+  - missing_evidence_stop_scenario
+  - out_of_scope_candidate_block_scenario
+  - existing_enterprise_contact_route
+  - bilingual_metadata_jsonld_sitemap_and_llms_discovery
+  - owner_first_person_why_build_and_public_result_statement
+  - desktop_mobile_and_link_qa
+  - github_main_push
+  - sites_production_deployment
+public_boundary:
+  allowed:
+    - fixed_synthetic_identity_device_environment_work_candidate_and_outcome
+    - public_relationship_flow_and_visual_language
+    - public_readme_and_frontend_narrative
+    - source_repository_and_interactive_walkthrough_links
+  excluded:
+    - private_backend
+    - causal_rule_core
+    - full_private_formulas
+    - local_product_workspace
+    - real_credentials_or_location
+    - model_connection
+    - enterprise_connectors_or_customer_data
+    - real_verification_authorization_or_audit_evidence
+forbidden_claims:
+  - production_saas
+  - completed_enterprise_integration
+  - live_authentication_location_model_or_authorization_service
+  - public_repo_contains_full_product_or_private_core
+  - login_success_authorizes_all_operations
+  - compute_can_self_approve_or_execute
+  - open_source_license_without_visible_license
+acceptance:
+  - zh_and_en_product_pages_are_separate_and_indexable
+  - product_archive_has_direct_detail_and_demo_entries
+  - website_demo_preserves_public_demo_logic_without_modifying_external_demo
+  - all_public_scenarios_are_fixed_synthetic_and_no_input
+  - source_boundary_is_visible_in_zh_and_en
+  - public_demo_non_connection_is_scoped_to_the_synthetic_website_display_not_misrepresented_as_no_product_landing
+  - enterprise_contact_uses_existing_owner_email
+  - sitemap_llms_and_jsonld_include_exact_public_routes
+  - typecheck_lint_tests_and_build_pass
+  - desktop_mobile_demo_and_external_link_qa_pass
+  - github_main_remote_sha_matches_release_commit
+  - sites_production_and_custom_domain_readback_pass
+validation:
+  automated:
+    lint: PASS
+    build: PASS
+    tests: 57_OF_57_PASS
+    drizzle_schema: PASS
+    git_diff_check: PASS
+    secret_and_private_core_scan: PASS
+  browser:
+    desktop_routes: PASS
+    mobile_390x844: PASS
+    canonical_and_hreflang: PASS
+    external_demo_unchanged: PASS
+    console_errors: ZERO
+final_gate: READY_FOR_DEPLOYMENT

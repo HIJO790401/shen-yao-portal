@@ -12,8 +12,8 @@ const serif = Noto_Serif_TC({ variable: "--font-serif", subsets: ["latin"], weig
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: { default: "沉靜流派工作室｜SERENE SCHOOL STUDIO｜許文耀／沈耀888π", template: "%s｜沉靜流派工作室" },
-  description: "沉靜流派工作室創辦人沈耀888π／許文耀的官方網站。公開 SCBKR、語意防火牆、AICC OS 候選架構、動畫、音樂，以及《沉靜是一種語言》等文學與書籍作品。",
-  keywords: ["沉靜流派", "沈耀888π", "許文耀", "Shen Yao 888pi", "Wen-Yao Hsu", "古文明符號", "數學公式", "SCBKR", "AICC OS", "AI Capability Compiler", "Semantic Firewall", "語意防火牆", "Artifacts of the Language God", "AI governance", "沉靜是一種語言", "Stillness Is a Language", "審訊室存在過的名字", "literary essays"],
+  description: "沉靜流派工作室創辦人沈耀888π／許文耀的官方網站。公開 SCBKR、語意防火牆、AICC OS 候選架構、AI 治理、動畫、音樂，以及《沉靜是一種語言》《虛偽文明的審判》等文學與書籍作品。",
+  keywords: ["沉靜流派", "沈耀888π", "許文耀", "Shen Yao 888pi", "Wen-Yao Hsu", "古文明符號", "數學公式", "SCBKR", "AICC OS", "AI Capability Compiler", "Semantic Firewall", "語意防火牆", "語意防火牆資安因果系統", "causal security system", "causal responsibility", "subject rules", "effect eligibility", "bounded compute", "candidate review", "controlled execution", "audit replay", "Artifacts of the Language God", "AI governance", "AI safety", "AI accountability", "沉靜是一種語言", "Stillness Is a Language", "審訊室存在過的名字", "虛偽文明的審判", "The Judgment of a False Civilization", "文明審判", "責任證成鏈", "literary essays"],
   authors: [{ name: "沈耀888π／許文耀" }],
   creator: "沈耀888π／許文耀",
   alternates: { canonical: "/zh", languages: { "zh-Hant": "/zh", en: "/en" } },
