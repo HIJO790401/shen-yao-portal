@@ -1,7 +1,7 @@
 task_id: TASK-20261019-HF2007-RESEARCH-RELEASE-V1
 owner: "許文耀／沈耀888π"
 project: "沉靜流派工作室／SERENE SCHOOL STUDIO"
-status: authorized_build
+status: complete
 authorized_actions:
   - edit_site_source
   - package_owner_provided_research_artifacts
@@ -11,8 +11,8 @@ authorized_actions:
   - deploy_existing_public_site
   - correct_grounded_google_drive_narrative
 goal:
-  zh: "在既有正式官網建立公開研究與驗證紀錄，發布 HF2007 被採用的最小可驗證論文與實驗版本。"
-  en: "Add a Public Research & Verification record to the existing official site and release the accepted minimum verifiable HF2007 paper and experiment artifacts."
+  zh: "在既有正式官網建立公開研究與驗證紀錄，以官網論文敘事、正式錄取證據與專用 GitHub 形成 HF2007 公開閉環。"
+  en: "Add a Public Research & Verification record to the existing official site and close the HF2007 public evidence loop through the site narrative, formal acceptance proof and a dedicated GitHub repository."
 source_boundary:
   official_site: "https://silentschool.studio"
   github: "https://github.com/HIJO790401/shen-yao-portal.git"
@@ -38,3 +38,9 @@ acceptance:
   - official_site_acceptance_paper_github_hash_closed_loop
   - sites_production_deployed_and_public_readback_verified
   - grounded_drive_narrative_corrected_and_read_back
+completion:
+  website_commit: "7d5ae1c95264299d62fa742ca5ecd8c1ed66f9d4"
+  research_repository_commit: "4b6d9a15fe0893151eb5cb968e97bbeadfa1d18a"
+  sites_version: 8
+  deployment_status: succeeded
+  public_readback: PASS

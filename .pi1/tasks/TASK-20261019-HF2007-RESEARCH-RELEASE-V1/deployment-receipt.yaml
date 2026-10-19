@@ -1,0 +1,72 @@
+receipt_id: R-20261019-HF2007-RESEARCH-SITES-V8
+type: SITES_PRODUCTION_DEPLOYMENT_AND_PUBLIC_RESEARCH_RELEASE
+owner: "許文耀／沈耀888π"
+task_id: TASK-20261019-HF2007-RESEARCH-RELEASE-V1
+deployed_source:
+  repository: HIJO790401/shen-yao-portal
+  branch: main
+  commit: 7d5ae1c95264299d62fa742ca5ecd8c1ed66f9d4
+research_repository:
+  url: https://github.com/HIJO790401/hf2007-t0-admission-gating
+  branch: main
+  commit: 4b6d9a15fe0893151eb5cb968e97bbeadfa1d18a
+  visibility: public
+  github_pages: disabled
+  public_readback: PASS
+artifacts:
+  paper_sha256: ffca3677f1a36b38825f081ca9b3fa77ad1b2b66715ba7987b27531a6f8b34e4
+  experiment_sha256: 958d880c5d82f895c0687c18a55392040e66356b82b3a47f2a32195b10047118
+  location: dedicated_github_repository
+  website_duplicate_downloads: false
+archive:
+  local_sha256: 2130AE560C28EC05FD92FA6887A11AAC2365C919D40FCCD9BED115916E96D1A2
+  local_size_bytes: 47064637
+  sites_content_hash: sha256:780c5cb8ee0b6ff14ef04234d6a74bd3762a7a055971605147695c405b9449c6
+  sites_size_bytes: 51435520
+  sites_file_count: 466
+sites:
+  project_id: appgprj_6a57846b68f0819186daf7489f59a72f
+  version_number: 8
+  version_id: appgprj_6a57846b68f0819186daf7489f59a72f~appgver_5d51b532059c81918e067ce8bc57e3de
+  deployment_id: appgdep_6ad56551eea08191ba53508740718bfd
+  deployment_status: succeeded
+  generated_url: https://silent-school-studio.shenyao888pi.chatgpt.site
+  custom_domain: https://silentschool.studio
+  deployed_at_utc: 2026-10-19T00:33:41.652833+00:00
+public_readback:
+  verified_on: 2026-10-19
+  result: PASS
+  routes:
+    - https://silentschool.studio/zh/research
+    - https://silentschool.studio/en/research
+    - https://silentschool.studio/zh/research/hf2007-t0-path-legitimacy
+    - https://silentschool.studio/en/research/hf2007-t0-path-legitimacy
+    - https://silentschool.studio/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf
+    - https://silentschool.studio/llms.txt
+    - https://github.com/HIJO790401/hf2007-t0-admission-gating
+  assertions:
+    - bilingual_research_pages_return_http_200
+    - research_pages_render_system_precedes_paper_narrative
+    - official_acceptance_pdf_returns_http_200
+    - dedicated_github_repository_returns_http_200
+    - llms_txt_exposes_hf2007_research_and_repository
+    - website_contains_no_duplicate_hf2007_artifact_downloads
+validation:
+  typescript: PASS
+  eslint: PASS
+  production_build: PASS
+  tests: "58/58 PASS"
+  mobile_390px_overflow: false
+  desktop_bilingual_qa: PASS
+drive_current_status_overrides:
+  - document_id: 1phmBdqjLwD1kUz_K4w8upWN-oH7Grrxfu1lklCTnsMk
+    result: UPDATED_AND_READ_BACK
+  - document_id: 1nwksxKFFUEiXdvs4rtEML1NkzIjoXivZMmkhOXd1sRY
+    result: UPDATED_AND_READ_BACK
+  - document_id: 1zSbB30K87rK-zfwueohoQlFVXUYazHyMkaHZrecZKkk
+    result: UPDATED_AND_READ_BACK
+release_boundary:
+  website_role: paper_narrative_acceptance_evidence_github_entry
+  repository_role: exact_paper_experiment_hashes_provenance_reproduction
+  private_runtime_exposed: false
+  publication_or_indexing_claimed: false
