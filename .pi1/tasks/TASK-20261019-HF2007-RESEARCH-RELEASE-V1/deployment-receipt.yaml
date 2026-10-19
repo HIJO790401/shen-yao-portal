@@ -1,11 +1,11 @@
-receipt_id: R-20261019-HF2007-RESEARCH-SITES-V8
+receipt_id: R-20261019-HF2007-RESEARCH-SITES-V9
 type: SITES_PRODUCTION_DEPLOYMENT_AND_PUBLIC_RESEARCH_RELEASE
 owner: "許文耀／沈耀888π"
 task_id: TASK-20261019-HF2007-RESEARCH-RELEASE-V1
 deployed_source:
   repository: HIJO790401/shen-yao-portal
   branch: main
-  commit: 7d5ae1c95264299d62fa742ca5ecd8c1ed66f9d4
+  commit: 71c5100b0c1291982fc6ec759d6e54eb692c3ca7
 research_repository:
   url: https://github.com/HIJO790401/hf2007-t0-admission-gating
   branch: main
@@ -19,20 +19,20 @@ artifacts:
   location: dedicated_github_repository
   website_duplicate_downloads: false
 archive:
-  local_sha256: 2130AE560C28EC05FD92FA6887A11AAC2365C919D40FCCD9BED115916E96D1A2
-  local_size_bytes: 47064637
-  sites_content_hash: sha256:780c5cb8ee0b6ff14ef04234d6a74bd3762a7a055971605147695c405b9449c6
-  sites_size_bytes: 51435520
-  sites_file_count: 466
+  local_sha256: 999DACB731A98C492F8DE301108143B53109C45CEB7946913982DB02B0677056
+  local_size_bytes: 45738497
+  sites_content_hash: sha256:a4e33cbed7731db29dfb618c594182ff2d54de879405a84c09689528182be86b
+  sites_size_bytes: 50063360
+  sites_file_count: 462
 sites:
   project_id: appgprj_6a57846b68f0819186daf7489f59a72f
-  version_number: 8
-  version_id: appgprj_6a57846b68f0819186daf7489f59a72f~appgver_5d51b532059c81918e067ce8bc57e3de
-  deployment_id: appgdep_6ad56551eea08191ba53508740718bfd
+  version_number: 9
+  version_id: appgprj_6a57846b68f0819186daf7489f59a72f~appgver_4012e645577c81918253d8444a05e449
+  deployment_id: appgdep_6ad567bdc7f481918ab20ef279d16d64
   deployment_status: succeeded
   generated_url: https://silent-school-studio.shenyao888pi.chatgpt.site
   custom_domain: https://silentschool.studio
-  deployed_at_utc: 2026-10-19T00:33:41.652833+00:00
+  deployed_at_utc: 2026-10-19T00:44:03.830593+00:00
 public_readback:
   verified_on: 2026-10-19
   result: PASS
@@ -51,6 +51,7 @@ public_readback:
     - dedicated_github_repository_returns_http_200
     - llms_txt_exposes_hf2007_research_and_repository
     - website_contains_no_duplicate_hf2007_artifact_downloads
+    - visible_button_readback_contains_only_github_and_acceptance_certificate
 validation:
   typescript: PASS
   eslint: PASS

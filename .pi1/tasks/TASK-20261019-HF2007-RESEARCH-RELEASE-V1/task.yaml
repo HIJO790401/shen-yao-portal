@@ -39,8 +39,8 @@ acceptance:
   - sites_production_deployed_and_public_readback_verified
   - grounded_drive_narrative_corrected_and_read_back
 completion:
-  website_commit: "7d5ae1c95264299d62fa742ca5ecd8c1ed66f9d4"
+  website_commit: "71c5100b0c1291982fc6ec759d6e54eb692c3ca7"
   research_repository_commit: "4b6d9a15fe0893151eb5cb968e97bbeadfa1d18a"
-  sites_version: 8
+  sites_version: 9
   deployment_status: succeeded
   public_readback: PASS
