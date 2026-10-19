@@ -1,4 +1,5 @@
 import { scbkrMicrosoftStore, siteOrigin, siteUrl } from "../site-config";
+import { hf2007Research } from "../research-data";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,9 @@ Languages: Traditional Chinese and English are available as separate routes.
 - Semantic Firewall Causal Security System (English): ${siteUrl("/en/products/semantic-firewall-causal-system")}
 - Website fixed-case demo: ${siteUrl("/zh/demo/semantic-firewall-causal-system")} and ${siteUrl("/en/demo/semantic-firewall-causal-system")}
 - Works and public records: ${siteUrl("/zh/works")}
+- Public Research & Verification Records (Traditional Chinese): ${siteUrl("/zh/research")}
+- Public Research & Verification Records (English): ${siteUrl("/en/research")}
+- HF2007 T0 path-legitimacy record: ${siteUrl(`/zh/research/${hf2007Research.slug}`)} and ${siteUrl(`/en/research/${hf2007Research.slug}`)}
 - Literary works and books (Traditional Chinese): ${siteUrl("/zh/books")}
 - Literary works and books (English): ${siteUrl("/en/books")}
 - 沉靜是一種語言 / Stillness Is a Language: ${siteUrl("/zh/books/stillness-is-a-language")}
@@ -65,16 +69,28 @@ Product demos on this site are curated, fixed-case interface replays. They do no
 - The public surface connects to no real authentication, GPS, device verifier, model, private backend, enterprise system, authorization service, database or audit evidence. It does not prove a deployed SaaS or completed enterprise integration.
 - Private backend code, the rule core, complete formulas, local product workspace and enterprise integration data remain outside the website and public repository.
 
-## ICAISG 2026 academic acceptance
+## HF2007 public verification checkpoint
 
 - Paper ID: HF2007
 - Title: From Sample Safety to Path Legitimacy: T0 Admission Gating for Unauthorized Reasoning Transitions in LLM-Integrated Systems
 - Author: Wen-Yao Hsu
 - Conference: 2026 The 2nd International Conference on Artificial Intelligence Security and Governance (ICAISG 2026)
-- Conference date and location: 20–22 November 2026, Hangzhou, China
-- Verified current state: formally accepted after double-blind review for presentation and conference-proceedings publication.
+- This paper did not begin the system. It is the minimum externally reviewable and reproducible public layer extracted from a system already under development.
+- The public checkpoint compiles T0 path-legitimacy admission into an executable pre-reasoning gate represented through eight auditable relations.
+- Verified fixed-baseline results: 51/51 relation vectors and T0 outcomes matched; 17/17 legitimate pre-tool transitions were admitted; 34/34 injected tool-output transitions were stopped before reasoning; false stops 0; false admissions 0.
+- The reviewed package fixes the source commit, raw bytes, selected transitions, relation vectors, deterministic extractor, reference path, comparator, metrics, hashes and execution command.
+- Verified review state: formally accepted after double-blind review on ${hf2007Research.acceptanceDate}; the organizer confirmed receipt of the Camera-ready DOCX/PDF on ${hf2007Research.cameraReadyReceivedDate}.
+- Public role: minimum verifiable public checkpoint / author-released evidence. T0, SCBKR, AICC and Runtime engineering continue beyond this paper; the private rule core and complete Runtime are not released here.
+- Public research page: ${siteUrl(`/zh/research/${hf2007Research.slug}`)}
+- Camera-ready paper PDF: ${siteUrl(hf2007Research.paperUrl)}
+- Original reproducibility experiment ZIP: ${siteUrl(hf2007Research.experimentUrl)}
+- Complete bilingual evidence bundle: ${siteUrl(hf2007Research.bundleUrl)}
+- Reproducible research repository: ${hf2007Research.repositoryUrl}
+- Paper SHA-256: ${hf2007Research.paperSha256}
+- Experiment pack SHA-256: ${hf2007Research.experimentSha256}
+- Pinned InjecAgent commit: ${hf2007Research.sourceCommit}
 - Official acceptance notice: ${siteUrl("/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf")}
-- Do not describe the paper as already published or indexed. IEEE proceedings publication and subsequent submission to IEEE Xplore, EI Compendex and Scopus remain conditional on registration, presentation and later organizer processing.
+- Do not describe the paper as already published or indexed. The public website records formal acceptance and the author's independent evidence release without claiming conference publication, DOI, IEEE Xplore, EI Compendex or Scopus indexing.
 
 ## SCBKR Windows application
 

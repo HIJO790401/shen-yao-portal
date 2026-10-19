@@ -466,6 +466,60 @@ test("publishes the ICAISG 2026 HF2007 acceptance proof without overstating publ
   await assert.rejects(access(new URL("public/media/icaisg/HF2007-ICAISG-2027-Re-ReviewForm.pdf", projectRoot)));
 });
 
+test("publishes a bilingual HF2007 research checkpoint without treating the paper as the origin or boundary of the system", async () => {
+  const [researchData, hub, detail, researchCss, header, footer, home, resume, sitemap, llms, layout] = await Promise.all([
+    source("app/research-data.ts"),
+    source("app/[locale]/research/page.tsx"),
+    source("app/[locale]/research/hf2007-t0-path-legitimacy/page.tsx"),
+    source("app/[locale]/research/research.module.css"),
+    source("app/components/SiteHeader.tsx"),
+    source("app/components/SiteFooter.tsx"),
+    source("app/page.tsx"),
+    source("app/resume/page.tsx"),
+    source("app/sitemap.ts"),
+    source("app/llms.txt/route.ts"),
+    source("app/layout.tsx"),
+  ]);
+
+  assert.match(hub, /系統不是從論文開始/);
+  assert.match(hub, /The system did not begin with a paper/);
+  assert.match(detail, /論文從系統而來，不是系統從論文開始/);
+  assert.match(detail, /The paper came from the system\. The system did not come from the paper/);
+  assert.match(detail, /51 \/ 51|hf2007Research\.results/);
+  assert.match(researchData, /17 \/ 17/);
+  assert.match(researchData, /34 \/ 34/);
+  assert.match(researchData, /0 \/ 0/);
+  assert.match(detail, /ScholarlyArticle/);
+  assert.match(detail, /八條可稽核關係/);
+  assert.match(detail, /eight auditable relations/i);
+
+  assert.match(researchData, /HF2007_CameraReady_MinorRevision_CLEAN\.pdf/);
+  assert.match(researchData, /HF2007_Major_Revision_Experiment_Pack\.zip/);
+  assert.match(researchData, /HF2007_Public_Evidence_Release_v1\.0\.zip/);
+  assert.match(researchData, /ffca3677f1a36b38825f081ca9b3fa77ad1b2b66715ba7987b27531a6f8b34e4/);
+  assert.match(researchData, /958d880c5d82f895c0687c18a55392040e66356b82b3a47f2a32195b10047118/);
+  assert.match(researchData, /https:\/\/github\.com\/HIJO790401\/hf2007-t0-admission-gating/);
+
+  assert.match(header, /href="\/research"/);
+  assert.match(footer, /href="\/research"/);
+  assert.match(home, /\/research\/hf2007-t0-path-legitimacy/);
+  assert.match(resume, /\/research\/hf2007-t0-path-legitimacy/);
+  assert.match(sitemap, /"\/research"/);
+  assert.match(sitemap, /"\/research\/hf2007-t0-path-legitimacy"/);
+  assert.match(llms, /\/zh\/research/);
+  assert.match(llms, /\/en\/research/);
+  assert.match(llms, /minimum externally reviewable and reproducible public layer/);
+  assert.match(layout, /T0 Admission Gating/);
+  assert.match(researchCss, /prefers-reduced-motion/);
+  assert.match(researchCss, /@media \(max-width: 760px\)/);
+
+  const combined = hub + detail + llms;
+  assert.match(combined, /FORMALLY ACCEPTED|正式錄取/);
+  assert.match(combined, /AUTHOR PUBLIC|作者自主公開/);
+  assert.match(combined, /No claim of conference publication|不宣稱已完成會議出版/i);
+  assert.doesNotMatch(combined, /already published in IEEE Xplore|已進入 IEEE Xplore/i);
+});
+
 test("labels SecurityBrief Asia as dated third-party coverage with claim boundaries", async () => {
   const [home, about, works, siteData, layout, news] = await Promise.all([
     source("app/page.tsx"),

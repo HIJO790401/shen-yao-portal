@@ -9,6 +9,7 @@ const updated = new Date("2026-09-28T00:00:00+08:00");
 const bilingualSearchCopyUpdated = new Date("2026-10-03T00:00:00+08:00");
 const booksUpdated = new Date("2026-10-14T00:00:00+08:00");
 const causalSecurityUpdated = new Date("2026-10-14T04:00:00+08:00");
+const researchUpdated = new Date("2026-10-19T00:00:00+08:00");
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type ChangeFrequency = NonNullable<SitemapEntry["changeFrequency"]>;
@@ -54,6 +55,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   add(routeSpec("/books/stillness-is-a-language/preview", booksUpdated, "monthly", 0.78));
   add(routeSpec("/books/judgment-of-civilization", booksUpdated, "weekly", 0.84));
   add(routeSpec("/books/judgment-of-civilization/cases", booksUpdated, "weekly", 0.8));
+  add(routeSpec("/research", researchUpdated, "weekly", 0.92));
+  add(routeSpec("/research/hf2007-t0-path-legitimacy", researchUpdated, "weekly", 0.94));
   add(routeSpec("/novel/interrogation-room", new Date("2026-10-05T00:00:00+08:00"), "monthly", 0.76));
   for (const { slug } of productFilms) {
     if (isPublicSlug(slug)) add(routeSpec(`/demo/${slug}`, slug === "semantic-firewall-causal-system" ? causalSecurityUpdated : slug === "scbkr" ? bilingualSearchCopyUpdated : updated, "monthly", slug === "semantic-firewall-causal-system" ? 0.84 : 0.72));

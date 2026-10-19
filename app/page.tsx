@@ -6,6 +6,7 @@ import {
   Images,
   Landmark,
   LibraryBig,
+  Microscope,
   RadioTower,
   ShieldCheck,
 } from "lucide-react";
@@ -25,6 +26,7 @@ const quickLinks: Array<{ href: string; icon: LucideIcon; zh: string; en: string
   { href: "/", icon: HomeIcon, zh: "首頁", en: "HOME" },
   { href: "/products", icon: Boxes, zh: "產品", en: "PRODUCTS" },
   { href: "/#works", icon: Images, zh: "作品", en: "WORKS" },
+  { href: "/research", icon: Microscope, zh: "研究", en: "RESEARCH" },
   { href: "/news", icon: LibraryBig, zh: "新聞台 × 博物館", en: "NEWS × MUSEUM" },
   { href: "/#founder", icon: Fingerprint, zh: "自介", en: "ABOUT" },
 ];
@@ -65,20 +67,22 @@ type PublicRecord = {
   textEn?: string;
   image?: string;
   featured?: boolean;
+  internal?: boolean;
 };
 
 const publicRecords: PublicRecord[] = [
   {
-    label: "ICAISG 2026 · OFFICIAL ACCEPTANCE · 2026.09.09",
-    zh: "HF2007 國際論文正式錄取",
-    en: "HF2007 FORMALLY ACCEPTED BY ICAISG 2026",
+    label: "HF2007 · PUBLIC VERIFICATION CHECKPOINT · FORMALLY ACCEPTED",
+    zh: "T0 路徑合法性公開驗證紀錄",
+    en: "T0 PATH LEGITIMACY PUBLIC VERIFICATION RECORD",
     textZh:
-      "〈From Sample Safety to Path Legitimacy〉經雙盲審查正式錄取發表與會議論文集出版。IEEE 論文集出版及後續資料庫提交，仍以完成註冊、會議發表與主辦方處理為前提。",
+      "系統不是從論文開始；HF2007 是我從既有系統開發節點抽出的最小可驗證公開證據。T0 准入閘門與固定 51-transition 實驗已完成外部審查、重現核對與正式錄取。",
     textEn:
-      "From Sample Safety to Path Legitimacy was formally accepted after double-blind review for presentation and conference-proceedings publication. IEEE proceedings publication and subsequent database submission remain conditional on registration, presentation and organizer processing.",
-    href: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf",
+      "The system did not begin with the paper. HF2007 is the minimum verifiable public evidence extracted from an existing development checkpoint. The T0 gate and fixed 51-transition experiment completed external review, reproducibility checks and formal acceptance.",
+    href: "/research/hf2007-t0-path-legitimacy",
     image: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification-page-1.png",
     featured: true,
+    internal: true,
   },
   { label: "MICROSOFT STORE · OFFICIAL DISTRIBUTION · 2026.08.25", zh: "SCBKR Windows 應用免費取得", en: "GET THE SCBKR WINDOWS APPLICATION FREE", href: scbkrMicrosoftStore.url },
   { label: "GITHUB", zh: "官方工程作品總入口", en: "Official Engineering Archive", href: "https://github.com/HIJO790401" },
@@ -240,14 +244,8 @@ export default function Home() {
             <h2><Lang zh="我把作品、工程與公開證據收回同一條可查、可讀、可回放的路徑。" en="I BRING MY WORK, ENGINEERING AND PUBLIC EVIDENCE INTO ONE SEARCHABLE, READABLE, REPLAYABLE PATH." /></h2>
           </div>
           <div className={styles.recordGrid}>
-            {publicRecords.map((record) => (
-              <a
-                className={record.featured ? styles.recordFeatured : undefined}
-                href={record.href}
-                key={record.href}
-                target="_blank"
-                rel="noreferrer"
-              >
+            {publicRecords.map((record) => {
+              const content = <>
                 <span>{record.label}</span>
                 <h3><Lang zh={record.zh} en={record.en} /></h3>
                 {record.textZh && <p><Lang zh={record.textZh} en={record.textEn ?? ""} /></p>}
@@ -263,8 +261,18 @@ export default function Home() {
                   </figure>
                 )}
                 <b aria-hidden="true">↗</b>
-              </a>
-            ))}
+              </>;
+
+              return record.internal ? (
+                <LocalizedLink className={record.featured ? styles.recordFeatured : undefined} href={record.href} key={record.href}>
+                  {content}
+                </LocalizedLink>
+              ) : (
+                <a className={record.featured ? styles.recordFeatured : undefined} href={record.href} key={record.href} target="_blank" rel="noreferrer">
+                  {content}
+                </a>
+              );
+            })}
           </div>
         </section>
 

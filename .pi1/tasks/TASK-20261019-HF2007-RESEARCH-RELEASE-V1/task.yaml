@@ -1,0 +1,40 @@
+task_id: TASK-20261019-HF2007-RESEARCH-RELEASE-V1
+owner: "許文耀／沈耀888π"
+project: "沉靜流派工作室／SERENE SCHOOL STUDIO"
+status: authorized_build
+authorized_actions:
+  - edit_site_source
+  - package_owner_provided_research_artifacts
+  - update_github_main
+  - create_public_hf2007_research_repository
+  - publish_hf2007_evidence_repository
+  - deploy_existing_public_site
+  - correct_grounded_google_drive_narrative
+goal:
+  zh: "在既有正式官網建立公開研究與驗證紀錄，發布 HF2007 被採用的最小可驗證論文與實驗版本。"
+  en: "Add a Public Research & Verification record to the existing official site and release the accepted minimum verifiable HF2007 paper and experiment artifacts."
+source_boundary:
+  official_site: "https://silentschool.studio"
+  github: "https://github.com/HIJO790401/shen-yao-portal.git"
+  research_repository: "https://github.com/HIJO790401/hf2007-t0-admission-gating"
+  baseline_commit: "42789c803436bf34df86d0ad020b8d91614f81a8"
+  paper_sha256: "ffca3677f1a36b38825f081ca9b3fa77ad1b2b66715ba7987b27531a6f8b34e4"
+  experiment_sha256: "958d880c5d82f895c0687c18a55392040e66356b82b3a47f2a32195b10047118"
+forbidden:
+  - expose_private_runtime
+  - alter_original_paper_bytes
+  - alter_original_experiment_pack_bytes
+  - claim_ieee_or_indexing
+  - substitute_other_repository_as_hf2007_source
+acceptance:
+  - bilingual_research_hub_and_detail_routes
+  - owner_first_system_development_narrative
+  - exact_artifact_hashes_and_reproduction_evidence
+  - navigation_home_resume_sitemap_llms_and_metadata_integration
+  - desktop_and_mobile_browser_qa
+  - typecheck_lint_build_and_tests_pass
+  - github_main_pushed
+  - dedicated_hf2007_repository_public_and_verified
+  - official_site_acceptance_paper_github_hash_closed_loop
+  - sites_production_deployed_and_public_readback_verified
+  - grounded_drive_narrative_corrected_and_read_back

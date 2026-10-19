@@ -109,6 +109,7 @@ type PublicEvidenceRecord = {
   noteEn: string;
   href: string;
   image?: string;
+  detailHref?: string;
 };
 
 const publicEvidence: PublicEvidenceRecord[] = [
@@ -127,6 +128,7 @@ const publicEvidence: PublicEvidenceRecord[] = [
       "THE VERIFIED CURRENT STATE IS FORMAL ACCEPTANCE. IEEE PROCEEDINGS PUBLICATION AND SUBSEQUENT SUBMISSION TO IEEE XPLORE, EI COMPENDEX AND SCOPUS REMAIN CONDITIONAL ON REGISTRATION, PRESENTATION AND LATER ORGANIZER PROCESSING; NO PUBLICATION OR INDEXING CLAIM IS MADE YET.",
     href: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf",
     image: "/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification-page-1.png",
+    detailHref: "/research/hf2007-t0-path-legitimacy",
   },
   {
     kind: "OFFICIAL DISTRIBUTION · MICROSOFT STORE",
@@ -430,6 +432,11 @@ export default function ResumePage({ locale = "zh" }: { locale?: "zh" | "en" }) 
                   <h3><Lang zh={record.titleZh} en={record.titleEn} /></h3>
                   <p><Lang zh={record.textZh} en={record.textEn} /></p>
                   <aside><Lang zh={record.noteZh} en={record.noteEn} /></aside>
+                  {record.detailHref && (
+                    <LocalizedLink href={record.detailHref}>
+                      <Lang zh="進入 HF2007 論文與可重現實驗紀錄" en="OPEN THE HF2007 PAPER AND REPRODUCIBLE EXPERIMENT RECORD" /> <span aria-hidden="true">→</span>
+                    </LocalizedLink>
+                  )}
                   {record.image && (
                     <a className={styles.evidenceDocument} href={record.href} target="_blank" rel="noreferrer">
                       <span className={styles.evidenceDocumentImage}>
