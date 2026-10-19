@@ -53,10 +53,8 @@ export default async function HF2007ResearchPage({ params }: PageProps) {
         accepted: "FORMALLY ACCEPTED",
         released: "AUTHOR PUBLIC EVIDENCE RELEASE",
         continuing: "ACTIVE ENGINEERING CONTINUES",
-        paper: "READ THE PAPER",
-        repository: "VIEW REPRODUCIBLE GITHUB",
+        repository: "OPEN PAPER & REPRODUCIBLE GITHUB",
         acceptance: "VIEW ACCEPTANCE EVIDENCE",
-        bundle: "DOWNLOAD COMPLETE EVIDENCE BUNDLE",
         why: "WHY I RELEASE THIS CHECKPOINT",
         whyTitle: "The paper came from the system. The system did not come from the paper.",
         whyP1: "HF2007 was written at a specific point in the development and implementation of my system. I extracted the smallest layer that could be reviewed and reproduced externally without disclosing the private core: T0 admission, an auditable eight-relation representation, a fixed 51-transition experiment, source provenance, hashes and deterministic results.",
@@ -84,11 +82,10 @@ export default async function HF2007ResearchPage({ params }: PageProps) {
           ["05 · CONTINUATION", "Current engineering", "T0, SCBKR, AICC and Runtime work continue beyond the paper."],
         ],
         evidence: "OPEN EVIDENCE",
-        evidenceTitle: "Read the exact paper and reproduce the accepted experiment.",
-        evidenceText: "The original paper PDF and experiment ZIP remain byte-identical. The public wrapper adds bilingual context, checksums, status, provenance and the required third-party notice without altering the accepted artifacts.",
-        experiment: "DOWNLOAD ORIGINAL EXPERIMENT ZIP",
-        hashTitle: "IMMUTABLE ARTIFACT HASHES",
-        hashText: "Use these SHA-256 values to verify the exact public artifacts.",
+        evidenceTitle: "Read the paper and reproduce the experiment in the dedicated GitHub repository.",
+        evidenceText: "The dedicated research repository carries the complete paper, original reproducibility experiment, checksums, provenance, execution instructions and version history. The official website keeps the research narrative and formal acceptance evidence without duplicating those artifacts.",
+        hashTitle: "GITHUB-VERIFIABLE ARTIFACT HASHES",
+        hashText: "Use these SHA-256 values to verify the paper and experiment published in the dedicated repository.",
         paperHash: "CAMERA-READY PAPER PDF",
         experimentHash: "MAJOR-REVISION EXPERIMENT PACK",
         sourceCommit: "PINNED INJECAGENT COMMIT",
@@ -120,10 +117,8 @@ export default async function HF2007ResearchPage({ params }: PageProps) {
         accepted: "正式錄取",
         released: "作者自主公開證據",
         continuing: "現行工程持續落地",
-        paper: "閱讀論文",
-        repository: "查看可重現 GitHub",
+        repository: "前往 GitHub 閱讀論文與重現實驗",
         acceptance: "查看正式錄取證據",
-        bundle: "下載完整證據封裝",
         why: "我為什麼公開這個節點",
         whyTitle: "論文從系統而來，不是系統從論文開始。",
         whyP1: "HF2007 形成於我的系統開發與落地過程中的一個具體節點。我從當時已存在的架構中，抽出不涉及私有核心、但足以接受外部審查與獨立重現的最小層：T0 准入、八條關係的可稽核表示、固定 51-transition 實驗、來源、Hash 與確定性結果。",
@@ -151,11 +146,10 @@ export default async function HF2007ResearchPage({ params }: PageProps) {
           ["05 · 延續", "現行工程", "T0、SCBKR、AICC 與 Runtime 繼續超越論文向後落地。"],
         ],
         evidence: "公開證據",
-        evidenceTitle: "閱讀被採用的原始論文，重現同一套實驗。",
-        evidenceText: "原始論文 PDF 與實驗 ZIP 保持 byte-identical。外層公開封裝只增加中英文說明、Checksum、狀態、來源與第三方授權聲明，不改寫被採用的成品。",
-        experiment: "下載原始可重現實驗 ZIP",
-        hashTitle: "不可變成品 Hash",
-        hashText: "使用 SHA-256 核對公開成品是否仍是同一版本。",
+        evidenceTitle: "在專用 GitHub 閱讀論文，並重現同一套實驗。",
+        evidenceText: "專用研究 Repository 完整承接論文、原始可重現實驗、Checksum、來源、執行說明與版本紀錄。官網只保留研究敘事與正式錄取證據，不重複承載這些檔案。",
+        hashTitle: "可在 GitHub 核對的成品 Hash",
+        hashText: "使用這些 SHA-256 值核對專用 Repository 內的論文與實驗成品。",
         paperHash: "CAMERA-READY 論文 PDF",
         experimentHash: "MAJOR-REVISION 實驗包",
         sourceCommit: "INJECAGENT 固定 COMMIT",
@@ -194,10 +188,6 @@ export default async function HF2007ResearchPage({ params }: PageProps) {
     mainEntityOfPage: siteUrl(`/${locale}/research/${hf2007Research.slug}`),
     isPartOf: { "@id": siteUrl("/#website") },
     abstract: isEnglish ? copy.intro : copy.whyP1,
-    associatedMedia: [
-      { "@type": "MediaObject", name: "HF2007 Camera-ready paper", contentUrl: siteUrl(hf2007Research.paperUrl), encodingFormat: "application/pdf" },
-      { "@type": "DataDownload", name: "HF2007 reproducibility experiment pack", contentUrl: siteUrl(hf2007Research.experimentUrl), encodingFormat: "application/zip" },
-    ],
     citation: siteUrl(hf2007Research.acceptanceUrl),
     sameAs: hf2007Research.repositoryUrl,
   };
@@ -218,10 +208,8 @@ export default async function HF2007ResearchPage({ params }: PageProps) {
               <span className={styles.statusPill}>{copy.continuing}</span>
             </div>
             <div className={styles.heroActions}>
-              <a href={hf2007Research.paperUrl}>{copy.paper}<span aria-hidden="true">↗</span></a>
               <a href={hf2007Research.repositoryUrl} target="_blank" rel="noreferrer">{copy.repository}<span aria-hidden="true">↗</span></a>
               <a href={hf2007Research.acceptanceUrl} target="_blank" rel="noreferrer">{copy.acceptance}<span aria-hidden="true">↗</span></a>
-              <a href={hf2007Research.bundleUrl}>{copy.bundle}<span aria-hidden="true">↓</span></a>
             </div>
           </div>
           <div className={styles.acceptancePanel}>
@@ -289,11 +277,8 @@ export default async function HF2007ResearchPage({ params }: PageProps) {
               <h2>{hf2007Research.publicReleaseVersion}</h2>
               <p>{copy.evidenceText}</p>
               <div className={styles.downloadGrid}>
-                <a href={hf2007Research.paperUrl}>{copy.paper}<span aria-hidden="true">↗</span></a>
                 <a href={hf2007Research.repositoryUrl} target="_blank" rel="noreferrer">{copy.repository}<span aria-hidden="true">↗</span></a>
                 <a href={hf2007Research.acceptanceUrl} target="_blank" rel="noreferrer">{copy.acceptance}<span aria-hidden="true">↗</span></a>
-                <a href={hf2007Research.bundleUrl}>{copy.bundle}<span aria-hidden="true">↓</span></a>
-                <a href={hf2007Research.experimentUrl}>{copy.experiment}<span aria-hidden="true">↓</span></a>
               </div>
             </div>
             <div className={styles.hashes}>

@@ -493,12 +493,15 @@ test("publishes a bilingual HF2007 research checkpoint without treating the pape
   assert.match(detail, /八條可稽核關係/);
   assert.match(detail, /eight auditable relations/i);
 
-  assert.match(researchData, /HF2007_CameraReady_MinorRevision_CLEAN\.pdf/);
-  assert.match(researchData, /HF2007_Major_Revision_Experiment_Pack\.zip/);
-  assert.match(researchData, /HF2007_Public_Evidence_Release_v1\.0\.zip/);
+  assert.doesNotMatch(researchData + detail + llms, /\/media\/research\/hf2007/);
+  assert.doesNotMatch(researchData, /paperUrl|experimentUrl|bundleUrl/);
+  assert.doesNotMatch(detail, /DOWNLOAD COMPLETE EVIDENCE BUNDLE|下載完整證據封裝|DOWNLOAD ORIGINAL EXPERIMENT ZIP|下載原始可重現實驗 ZIP/);
   assert.match(researchData, /ffca3677f1a36b38825f081ca9b3fa77ad1b2b66715ba7987b27531a6f8b34e4/);
   assert.match(researchData, /958d880c5d82f895c0687c18a55392040e66356b82b3a47f2a32195b10047118/);
   assert.match(researchData, /https:\/\/github\.com\/HIJO790401\/hf2007-t0-admission-gating/);
+  assert.match(detail, /GitHub repository carries the complete paper|專用研究 Repository 完整承接論文/);
+  assert.match(llms, /GitHub repository carries the complete paper/);
+  assert.match(detail + llms, /HF2007-ICAISG-2026-Acceptance-Notification\.pdf/);
 
   assert.match(header, /href="\/research"/);
   assert.match(footer, /href="\/research"/);
@@ -518,6 +521,11 @@ test("publishes a bilingual HF2007 research checkpoint without treating the pape
   assert.match(combined, /AUTHOR PUBLIC|作者自主公開/);
   assert.match(combined, /No claim of conference publication|不宣稱已完成會議出版/i);
   assert.doesNotMatch(combined, /already published in IEEE Xplore|已進入 IEEE Xplore/i);
+
+  await assert.rejects(access(new URL("public/media/research/hf2007/HF2007_CameraReady_MinorRevision_CLEAN.pdf", projectRoot)));
+  await assert.rejects(access(new URL("public/media/research/hf2007/HF2007_Major_Revision_Experiment_Pack.zip", projectRoot)));
+  await assert.rejects(access(new URL("public/media/research/hf2007/HF2007_Public_Evidence_Release_v1.0.zip", projectRoot)));
+  await assert.rejects(access(new URL("public/media/research/hf2007/HF2007_Public_Evidence_Release_v1.0.zip.sha256", projectRoot)));
 });
 
 test("labels SecurityBrief Asia as dated third-party coverage with claim boundaries", async () => {

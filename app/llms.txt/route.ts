@@ -82,12 +82,10 @@ Product demos on this site are curated, fixed-case interface replays. They do no
 - Verified review state: formally accepted after double-blind review on ${hf2007Research.acceptanceDate}; the organizer confirmed receipt of the Camera-ready DOCX/PDF on ${hf2007Research.cameraReadyReceivedDate}.
 - Public role: minimum verifiable public checkpoint / author-released evidence. T0, SCBKR, AICC and Runtime engineering continue beyond this paper; the private rule core and complete Runtime are not released here.
 - Public research page: ${siteUrl(`/zh/research/${hf2007Research.slug}`)}
-- Camera-ready paper PDF: ${siteUrl(hf2007Research.paperUrl)}
-- Original reproducibility experiment ZIP: ${siteUrl(hf2007Research.experimentUrl)}
-- Complete bilingual evidence bundle: ${siteUrl(hf2007Research.bundleUrl)}
-- Reproducible research repository: ${hf2007Research.repositoryUrl}
-- Paper SHA-256: ${hf2007Research.paperSha256}
-- Experiment pack SHA-256: ${hf2007Research.experimentSha256}
+- Dedicated reproducible research repository: ${hf2007Research.repositoryUrl}
+- The dedicated GitHub repository carries the complete paper, original reproducibility experiment, SHA-256 checksums, provenance, execution instructions and version history. The official website does not duplicate those artifact downloads.
+- Paper SHA-256, verifiable against the GitHub artifact: ${hf2007Research.paperSha256}
+- Experiment pack SHA-256, verifiable against the GitHub artifact: ${hf2007Research.experimentSha256}
 - Pinned InjecAgent commit: ${hf2007Research.sourceCommit}
 - Official acceptance notice: ${siteUrl("/media/icaisg/HF2007-ICAISG-2026-Acceptance-Notification.pdf")}
 - Do not describe the paper as already published or indexed. The public website records formal acceptance and the author's independent evidence release without claiming conference publication, DOI, IEEE Xplore, EI Compendex or Scopus indexing.
